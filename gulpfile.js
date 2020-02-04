@@ -5,17 +5,17 @@ const defaultBrowser = ['C:\\Program Files \\Firefox Developer Edition\\firefox.
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const concat = require('gulp-concat');
+//const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
-const postcss = require('gulp-postcss');
+//const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
 const pipeline = require('readable-stream').pipeline;
-const uglify = require('gulp-uglify');
-const svgstore = require('gulp-svgstore');
-const svgmin = require('gulp-svgmin');
-const rename = require('gulp-rename');
+//const uglify = require('gulp-uglify');
+//const svgstore = require('gulp-svgstore');
+//const svgmin = require('gulp-svgmin');
+//const rename = require('gulp-rename');
 
 /*
  SOURCE FILES
@@ -88,8 +88,8 @@ function styles() {
     return gulp.src('src/styles/ac/main.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error',sass.logError))
-        .pipe(postcss([ autoprefixer(), cssnano() ]))
-        .pipe(concat('ac.css'))
+       // .pipe(postcss([ autoprefixer(), cssnano() ]))
+        //.pipe(concat('ac.css'))
         .pipe(sourcemaps.write('src/styles/'))
         .pipe(gulp.dest('src/styles/'))
         .pipe(browserSync.stream());
@@ -126,8 +126,14 @@ function serve() {
 
 }
 
+function watch() {
+      gulp.watch('src/styles/ac/**/*.scss',  styles);
+}
+
 exports.serve = serve;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.svgdefs = svgdefs;
 exports.vendorStyles = vendorStyles;
+
+exports.watch = watch;
