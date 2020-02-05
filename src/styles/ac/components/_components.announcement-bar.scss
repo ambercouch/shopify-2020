@@ -54,6 +54,10 @@
   &footer {
     display: block
   }
+  &text{
+    @extend .o-box;
+    @extend .o-box--flush;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-announcement-bar--

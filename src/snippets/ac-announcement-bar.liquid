@@ -1,0 +1,18 @@
+{%- if section.settings.announcement_bar_enabled -%}
+  <div class="c-masthead__announcement-bar">
+    <div class="c-announcement-bar">
+      {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
+        {%- if section.settings.announcement_bar_link != blank -%}
+          <a class="c-announcement-bar__link" href="{{ section.settings.announcement_bar_link }}">
+            {{ section.settings.announcement_bar_text | escape }}
+          </a>
+        {%- else -%}
+          <div class="c-announcement-bar__text">
+            <p>{{ section.settings.announcement_bar_text | escape }}</p>
+
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div><!-- .c-announcement-bar -->
+  </div>
+{%- endif -%}
