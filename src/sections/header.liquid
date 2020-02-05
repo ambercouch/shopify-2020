@@ -16,27 +16,16 @@
 
   <header id="masthead" class="site__masthead{{ siteMastheadModClass }} {{ siteMastheadOverlayClass }} {{ hidePageMasthead }}" role="banner">
     <div class="c-masthead">
-   {% include 'ac-announcement-bar' %}
-    {% if template.name == 'index' %}
-      <h1>
-    {% else %}
-      <div class="h1">
-    {% endif %}
-        <a href="/" class="logo-image">
-          {% if section.settings.logo != blank %}
-            {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-            <img src="{{ section.settings.logo | img_url: image_size }}"
-                srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                alt="{{ section.settings.logo.alt | default: shop.name }}">
-          {% else %}
-            {{ shop.name }}
-          {% endif %}
-        </a>
-    {% if template.name == 'index' %}
-      </h1>
-    {% else %}
+      {% include 'ac-announcement-bar' %}
+      <div class="c-masthead__branding">
+        <div class="c-masthead__site-title">
+          {% include 'ac-site-logo' %}
+        </div>
       </div>
-    {% endif %}
+
+      <div class="masthead__site-control">
+        {% include 'ac-site-control' %}
+      </div><!-- .masthead__controls -->
 
     <a href="/cart">
       {% include 'icon-cart' %}
@@ -73,18 +62,17 @@
       <label for="Search-{{ section.id }}" class="label-hidden">
         {{ 'general.search.placeholder' | t }}
       </label>
-
       <input type="search"
         name="q"
         id="Search-{{ section.id }}"
         value="{{ search.terms | escape }}"
         placeholder="{{ 'general.search.placeholder' | t }}">
-
       <button type="submit" class="button">
         {% include 'icon-search' %}
         <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
       </button>
     </form>
+
     </div><!-- .c-masthead -->
   </header>
 
@@ -117,6 +105,7 @@
       {% endfor %}
     </ul>
   </nav>
+
 </section>
 
 {% if section.settings.logo != blank %}
