@@ -1,3 +1,4 @@
+{% include 'ac-theme-vars-header' %}
 {%- comment -%}
   This is a required section for the Shopify Theme Store.
   It is available in the "Header" section in the theme editor.
@@ -11,21 +12,28 @@
   - Home page only: only shows on the home page
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header">
-  {%- if section.settings.announcement_bar_enabled -%}
-    <div>
-      {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
-        {%- if section.settings.announcement_bar_link != blank -%}
-          <a href="{{ section.settings.announcement_bar_link }}">
-            {{ section.settings.announcement_bar_text | escape }}
-          </a>
-        {%- else -%}
-          <p>{{ section.settings.announcement_bar_text | escape }}</p>
-        {%- endif -%}
-      {%- endif -%}
-    </div>
-  {%- endif -%}
 
-  <header role="banner">
+
+  <header id="masthead" class="site__masthead{{ siteMastheadModClass }} {{ siteMastheadOverlayClass }} {{ hidePageMasthead }}" role="banner">
+    <div class="c-masthead">
+    {%- if section.settings.announcement_bar_enabled -%}
+      <div class="c-masthead__announcement-bar">
+      <div class="c-announcement-bar">
+        {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
+          {%- if section.settings.announcement_bar_link != blank -%}
+            <a class="c-announcement-bar__link" href="{{ section.settings.announcement_bar_link }}">
+              {{ section.settings.announcement_bar_text | escape }}
+            </a>
+          {%- else -%}
+            <div class="announcement-bar__text">
+            <p>{{ section.settings.announcement_bar_text | escape }}</p>
+
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div><!-- .c-announcement-bar -->
+      </div>
+    {%- endif -%}
     {% if template.name == 'index' %}
       <h1>
     {% else %}
@@ -94,6 +102,7 @@
         <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
       </button>
     </form>
+    </div><!-- .c-masthead -->
   </header>
 
   <nav role="navigation">
