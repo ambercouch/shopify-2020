@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
 <head>
   <meta charset="utf-8">
@@ -52,17 +53,20 @@
   {{ content_for_header }}
 </head>
 
-<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
-
+<body id="siteBody" class="template-{{ template.name | handle }}">
+<div id="page" class="site">
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-  {% section 'header' %}
+
+    {% section 'header' %}
+
+
 
   <main role="main" id="MainContent">
     {{ content_for_layout }}
   </main>
 
   {% section 'footer' %}
-
+</div>
 </body>
 </html>
