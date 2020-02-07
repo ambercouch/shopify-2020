@@ -4,6 +4,9 @@
 
 .c-socials {
   display: block;
+  a{
+    color: $brand-col-3;
+  }
 }
 
 /*
@@ -14,6 +17,7 @@
   &type {
     display: block
   }
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-socials--
@@ -34,6 +38,8 @@
   &heading {
     display: block;
     @include act-font-size($act-fs-m);
+    font-weight: 700;
+    color: $brand-col-4;
   }
 
   &title {

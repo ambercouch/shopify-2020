@@ -43,7 +43,8 @@
   }
 
   &link {
-    display: inline
+    display: inline;
+    text-decoration: none;
   }
 
   &list{
@@ -83,6 +84,9 @@
     //min-width: 300px;
     //max-width: 100%;
     //display: inline-flex;
+  }
+  &footer{
+    flex-direction: column;
   }
 }
 

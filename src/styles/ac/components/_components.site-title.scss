@@ -17,6 +17,9 @@
   &type {
     display: block
   }
+  &footer{
+    @include size(90px);
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-site-title--

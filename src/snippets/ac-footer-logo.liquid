@@ -1,0 +1,15 @@
+
+  <div class="c-site-title--footer">
+    <a href="/" class="c-site-title__link">
+      {% if section.settings.logo != blank %}
+        {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+        <img src="{{ section.settings.logo | img_url: image_size }}"
+             srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+             alt="{{ section.settings.logo.alt | default: shop.name }}"
+             class="c-site-title__img" >
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
+  </div>
+

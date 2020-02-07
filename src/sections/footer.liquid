@@ -1,5 +1,26 @@
+{%- assign footer_linklist = section.settings.footer_linklist -%}
 <footer class="l-site__footer">
 <div class="l-footer">
+
+<div class="l-footer__site-title">
+  {% include 'ac-footer-logo' %}
+</div>
+  {% if linklists[footer_linklist].links.size > 0 %}
+
+  <div class="l-footer__nav-menu">
+    <div class="c-nav-menu--footer">
+      <ul class="c-nav-menu__list--footer">
+        {% for link in linklists[footer_linklist].links %}
+          <li  class="c-nav-menu__item" >
+            <a  class="c-nav-menu__link"  href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+  {% endif %}
+
   <div class="l-footer__socials">
     <div class="c-socials">
       <div class="c-socials__header">
@@ -41,14 +62,8 @@
     {% endunless %}
   {% endif %}
 
-  {%- assign footer_linklist = section.settings.footer_linklist -%}
-  {% if linklists[footer_linklist].links.size > 0 %}
-    <ul>
-      {% for link in linklists[footer_linklist].links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+
+
 
   <div>
     <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
@@ -61,6 +76,10 @@
   {
     "name": "Footer",
     "settings": [
+  {
+  "type": "header",
+  "content": "Footer Links"
+  },
       {
         "type": "link_list",
         "id": "footer_linklist",
@@ -72,7 +91,27 @@
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
-      }
+      },
+  {
+  "type": "header",
+  "content": "Footer Logo"
+  },
+
+  {
+  "type": "image_picker",
+  "id": "logo",
+  "label": "Logo image"
+  },
+  {
+  "type": "range",
+  "id": "logo_max_width",
+  "min": 50,
+  "max": 450,
+  "step": 10,
+  "unit": "px",
+  "label": "Custom logo width",
+  "default": 250
+  }
     ]
   }
 
