@@ -203,7 +203,7 @@ pre {
  * 1. Remove the gray background on active links in IE 10.
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
-a {
+a, a:focus {
   background-color: transparent;
   /* 1 */
   -webkit-text-decoration-skip: objects;
@@ -1109,11 +1109,11 @@ table {
  * Note: Declaring the item class might not be necessary everywhere,
  * but is for example in <dl> lists for the <dd> children.
  */
-.o-list-bare {
+.o-list-bare, .c-site-control__list, .c-nav-menu__list, [class*=c-nav-menu__list--] {
   list-style: none;
   margin-left: 0; }
 
-.o-list-bare__item {
+.o-list-bare__item, .c-nav-menu__item, [class*=c-nav-menu__item--] {
   margin-left: 0; }
 
 /* ==========================================================================
@@ -1138,20 +1138,20 @@ table {
  *
  * 1. So we can apply the `.o-box` class to naturally-inline elements.
  */
-.o-box, .c-announcement-bar, [class*=c-announcement-bar--] {
+.o-box, .c-announcement-bar, [class*=c-announcement-bar--], .c-announcement-bar__text {
   display: block;
   /* [1] */
   padding: 24px; }
-  .o-box:after, .c-announcement-bar:after, [class*=c-announcement-bar--]:after {
+  .o-box:after, .c-announcement-bar:after, [class*=c-announcement-bar--]:after, .c-announcement-bar__text:after {
     content: "" !important;
     display: block !important;
     clear: both !important; }
-  .o-box > :last-child, .c-announcement-bar > :last-child, [class*=c-announcement-bar--] > :last-child {
+  .o-box > :last-child, .c-announcement-bar > :last-child, [class*=c-announcement-bar--] > :last-child, .c-announcement-bar__text > :last-child {
     margin-bottom: 0; }
 
 /* Size variants
    ========================================================================== */
-.o-box--flush {
+.o-box--flush, .c-announcement-bar__text {
   padding: 0; }
 
 .o-box--tiny {
@@ -3168,7 +3168,7 @@ table {
     /* [1] */
     box-shadow: none !important;
     text-shadow: none !important; }
-  a,
+  a, a:focus,
   a:visited {
     text-decoration: underline; }
   a[href]:after {
@@ -3231,38 +3231,303 @@ table {
   display: none !important; }
 
 /*
-  BEM BLOCK .actest
+ MIXINS
  */
-.actest, [class*=actest--] {
+/**
+ * @description
+ * This mixin enables you to use the CSS3 value `rem`, which lets you define
+ * property sizes based on the root element's font-size.
+ *
+ * @author drublic
+ *
+ * @link caniuse http://caniuse.com/rem
+ * @link spec http://www.w3.org/TR/css3-values/#relative0
+ *
+ * Note: Depending on the font-size of the root-element `rem` calculates a
+ * property of a current element. The fallback solution accepts a
+ * `default-font-size`-argument which is 16px by default.
+ */
+/*
+  * Returns a number without unit. E.g. 30px -> 30
+  * Borrowed from https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+  *
+  * @param value {String}
+  * @returns
+  *   <Number>
+  */
+/*
+  * Outputs properties that use rem with a px fallback.
+  * It also takes px values and converts them to rem.
+  *
+  * @param property
+  * @param values
+  * @param default-font-size int optional
+  * @returns
+  *   <property>: <parsed value>px;
+  *   <property>: <parsed value>rem;
+  *
+  * @example
+  *   .selector {
+  *     @include x-rem(font-size, 1.3);
+  *     @include x-rem(padding, 20px);
+  *   }
+  */
+/*
+ * With thanks to @lar_zzz, @paranoida, @rowanmanning and ultimately
+ * @thierrylemoulec for refining and improving my initial mixin.
+ */
+.icon--menu {
+  position: relative;
+  padding: 0.5em;
+  padding-left: 2.75em;
+  display: inline-block;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  margin: 0.5em;
+  height: 2em;
+  width: 2em; }
+  .icon--menu:after {
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid 0.1875em #000;
+    border-bottom: solid 0.1875em #000;
+    position: absolute;
+    left: 0.5em;
+    height: 0.9375em; }
+  .icon--menu:before {
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid 0.1875em #000;
+    border-bottom: solid 0.1875em #000;
+    position: absolute;
+    left: 0.5em;
+    height: 0.9375em;
+    margin-top: 0.375em; }
+
+.icon--menu--right {
+  position: relative;
+  padding: 0.5em;
+  padding-right: 2.75em;
+  display: inline-block;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  margin: 0.5em;
+  height: 2em;
+  width: 2em; }
+  .icon--menu--right:after {
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid 0.1875em #000;
+    border-bottom: solid 0.1875em #000;
+    position: absolute;
+    right: 0.5em;
+    height: 0.9375em; }
+  .icon--menu--right:before {
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid 0.1875em #000;
+    border-bottom: solid 0.1875em #000;
+    position: absolute;
+    right: 0.5em;
+    height: 0.9375em;
+    margin-top: 0.375em; }
+
+.icon--menu--blank {
+  position: relative;
+  display: inline-block;
+  border-radius: 3px;
+  margin: 0.5em;
+  height: 2em;
+  width: 2em; }
+  .icon--menu--blank:after {
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid 0.1875em #000;
+    border-bottom: solid 0.1875em #000;
+    position: absolute;
+    height: 0.9375em; }
+  .icon--menu--blank:before {
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid 0.1875em #000;
+    border-bottom: solid 0.1875em #000;
+    position: absolute;
+    height: 0.9375em;
+    margin-top: 0.375em; }
+
+/**
+* Hide content off-screen without resorting to `display:none;`, also provide
+* breakpoint specific hidden elements.
+*/
+/*
+BASE
+ */
+html {
+  font-family: objektiv-mk1, sans-serif; }
+  html:hover[data-env-local]:after {
+    text-transform: uppercase;
+    content: attr(data-env-local);
+    display: inline-block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: red;
+    font-size: 12px;
+    line-height: 1;
+    padding: 6px;
+    color: white;
+    opacity: 0.5; }
+  html:hover[data-env-local]:before {
+    text-transform: uppercase;
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: red;
+    font-size: 12px;
+    line-height: 1;
+    padding: 6px;
+    color: white;
+    opacity: 0.5;
+    z-index: 9999; }
+    @media (max-width: 27.49em) {
+      html:hover[data-env-local]:before {
+        content: 'tiny'; } }
+    @media (min-width: 27.5em) and (max-width: 52.49em) {
+      html:hover[data-env-local]:before {
+        content: 'mobile'; } }
+    @media (min-width: 52.5em) and (max-width: 68.74em) {
+      html:hover[data-env-local]:before {
+        content: 'tablet'; } }
+    @media (min-width: 68.75em) and (max-width: 81.24em) {
+      html:hover[data-env-local]:before {
+        content: 'desktop'; } }
+    @media (min-width: 81.25em) {
+      html:hover[data-env-local]:before {
+        content: 'wide'; } }
+
+html {
+  min-height: 100%;
+  font-weight: 300; }
+  @media (max-width: 52.49em) {
+    html {
+      font-size: 1.125em;
+      /* [1] */ } }
+
+body {
+  background: white;
+  min-height: 100%;
+  color: #fff; }
+
+a, a:focus {
+  color: #fcec47; }
+  a:hover, a:focus {
+    color: #d9c704; }
+
+blockquote {
+  border-left: solid;
+  padding-left: 12px;
+  margin-left: 12px; }
+
+cite {
+  font-size: 18.16066px;
+  font-size: 0.82548rem;
+  line-height: 1.2; }
+
+table {
+  text-align: left; }
+
+dt {
+  font-weight: bold; }
+
+dd {
+  margin-bottom: 24px; }
+
+li {
+  padding-left: 1em; }
+
+big {
+  font-size: 125%; }
+
+img[height], img[width] {
+  max-width: 100%;
+  height: auto; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  color: #fff; }
+
+/*
+LAYOUTS
+ */
+/*
+  BEM BLOCK .l-masthead
+ */
+.l-masthead {
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+
+/*
+  BEM ELEMENTS .l-masthead__
+ */
+.l-masthead__announcement-bar {
+  grid-column-start: 1;
+  grid-column-end: 3; }
+
+.l-masthead__branding {
+  padding: 12px 0 12px 12px;
+  align-items: center; }
+
+.l-masthead__site-control {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 12px 12px 12px 0; }
+
+/*
+  BEM BLOCK .l-site
+ */
+.l-site, [class*=l-site--] {
+  display: block;
+  background: #1d1c3b; }
+
+/*
+  BEM BLOCK MODIFIER .l-site--
+ */
+.l-site--type {
   display: block; }
 
 /*
-  BEM BLOCK MODIFIER .actest--
+  BEM ELEMENTS .l-site__
  */
-.actest--type {
+.l-site__header, [class*=l-site__header--] {
   display: block; }
+
+.l-site__heading {
+  display: block; }
+
+.l-site__title {
+  display: inline; }
+
+.l-site__link {
+  display: inline; }
+
+.l-site__content {
+  display: block; }
+
+.l-site__footer {
+  display: block;
+  text-align: center; }
 
 /*
-  BEM ELEMENTS .actest__
+COMPONENTS
  */
-.actest__header, [class*=actest__header--] {
-  display: block; }
-
-.actest__heading {
-  display: block; }
-
-.actest__title {
-  display: inline; }
-
-.actest__link {
-  display: inline; }
-
-.actest__content {
-  display: block; }
-
-.actest__footer {
-  display: block; }
-
 /*
   BEM BLOCK .c-announcement-bar
  */
@@ -3297,6 +3562,277 @@ table {
   display: block; }
 
 .c-announcement-bar__footer {
+  display: block; }
+
+/*
+  BEM BLOCK .c-site-title
+ */
+.c-site-title, [class*=c-site-title--] {
+  display: block;
+  margin: 0;
+  width: 50px;
+  height: 50px; }
+
+/*
+  BEM BLOCK MODIFIER .c-site-title--
+ */
+.c-site-title--type {
+  display: block; }
+
+/*
+  BEM ELEMENTS .c-site-title__
+ */
+.c-site-title__header, [class*=c-site-title__header--] {
+  display: block; }
+
+.c-site-title__heading {
+  display: block; }
+
+.c-site-title__title {
+  display: inline; }
+
+.c-site-title__link {
+  display: inline; }
+
+.c-site-title__content {
+  display: block; }
+
+.c-site-title__footer {
+  display: block; }
+
+/*
+  BEM BLOCK .c-icon
+ */
+.c-icon, [class*=c-icon--] {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  fill: currentColor; }
+  .no-svg .c-icon, .no-svg [class*=c-icon--] {
+    display: none; }
+
+/*
+  BEM BLOCK MODIFIER .c-icon--
+ */
+.c-icon--type {
+  display: block; }
+
+.c-icon--menu {
+  width: 35px;
+  height: 25px;
+  color: #e61c6d; }
+
+.c-icon--cart {
+  width: 25px;
+  height: 25px;
+  color: #66ffcc; }
+
+.c-icon--search {
+  width: 25px;
+  height: 25px;
+  color: #5cc7f2; }
+
+/*
+  BEM ELEMENTS .c-icon__
+ */
+.c-icon__header, [class*=c-icon__header--] {
+  display: block; }
+
+.c-icon__heading {
+  display: block; }
+
+.c-icon__title {
+  display: inline; }
+
+.c-icon__link {
+  display: inline; }
+
+.c-icon__content {
+  display: block; }
+
+.c-icon__footer {
+  display: block; }
+
+/*
+  BEM BLOCK .c-site-control
+ */
+.c-site-control, [class*=c-site-control--] {
+  display: block;
+  max-width: 160px;
+  width: 100%; }
+
+/*
+  BEM BLOCK MODIFIER .c-site-control--
+ */
+.c-site-control--type {
+  display: block; }
+
+/*
+  BEM ELEMENTS .c-site-control__
+ */
+.c-site-control__list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0; }
+
+.c-site-control__header, [class*=c-site-control__header--] {
+  display: block; }
+
+.c-site-control__heading {
+  display: block; }
+
+.c-site-control__title {
+  display: inline; }
+
+.c-site-control__link {
+  display: inline; }
+
+.c-site-control__content {
+  display: block; }
+
+.c-site-control__footer {
+  display: block; }
+
+.c-site-control__label {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important; }
+
+.c-site-control__cart-count {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important; }
+
+/*
+  BEM BLOCK .c-site-search
+ */
+.c-site-search, [class*=c-site-search--] {
+  display: none; }
+
+/*
+  BEM BLOCK MODIFIER .c-site-search--
+ */
+.c-site-search--type {
+  display: block; }
+
+/*
+  BEM ELEMENTS .c-site-search__
+ */
+.c-site-search__header, [class*=c-site-search__header--] {
+  display: block; }
+
+.c-site-search__heading {
+  display: block; }
+
+.c-site-search__title {
+  display: inline; }
+
+.c-site-search__link {
+  display: inline; }
+
+.c-site-search__content {
+  display: block; }
+
+.c-site-search__footer {
+  display: block; }
+
+/*
+  BEM BLOCK .c-nav-menu
+ */
+.c-nav-menu, [class*=c-nav-menu--] {
+  display: block; }
+
+/*
+  BEM BLOCK MODIFIER .c-nav-menu--
+ */
+.c-nav-menu--main {
+  display: none; }
+  @media (min-width: 68.75em) {
+    .c-nav-menu--main {
+      display: block; } }
+
+/*
+  BEM ELEMENTS .c-nav-menu__
+ */
+.c-nav-menu__header, [class*=c-nav-menu__header--] {
+  display: block; }
+
+.c-nav-menu__heading {
+  display: block; }
+
+.c-nav-menu__title {
+  display: inline; }
+
+.c-nav-menu__link {
+  display: inline; }
+
+.c-nav-menu__list, [class*=c-nav-menu__list--] {
+  display: flex;
+  justify-content: center; }
+
+.c-nav-menu__item, [class*=c-nav-menu__item--] {
+  display: block;
+  padding: 6px; }
+
+.c-nav-menu__content {
+  display: block; }
+
+.c-nav-menu__footer {
+  display: block; }
+
+.c-nav-menu__item--social .icon {
+  width: 48px;
+  height: 48px; }
+
+/*
+  BEM BLOCK .c-socials
+ */
+.c-socials, [class*=c-socials--] {
+  display: block; }
+
+/*
+  BEM BLOCK MODIFIER .c-socials--
+ */
+.c-socials--type {
+  display: block; }
+
+/*
+  BEM ELEMENTS .c-socials__
+ */
+.c-socials__header, [class*=c-socials__header--] {
+  display: block; }
+
+.c-socials__heading {
+  display: block;
+  font-size: 57.39558px;
+  font-size: 2.60889rem;
+  line-height: 1.14991; }
+
+.c-socials__title {
+  display: inline; }
+
+.c-socials__link {
+  display: inline; }
+
+.c-socials__content {
+  display: block; }
+
+.c-socials__footer {
   display: block; }
 
 /*# sourceMappingURL=src/styles/main.css.map */

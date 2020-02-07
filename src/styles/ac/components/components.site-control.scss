@@ -1,0 +1,76 @@
+/*
+  BEM BLOCK .c-site-control
+ */
+
+.c-site-control {
+  display: block;
+  max-width: 160px;
+  width: 100%;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-site-control--
+ */
+
+.c-site-control-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-site-control--
+
+[class*=c-site-control--] {
+  @extend .c-site-control;
+}
+
+/*
+  BEM ELEMENTS .c-site-control__
+ */
+
+.c-site-control__ {
+  &list{
+    display: flex;
+    justify-content: space-between;
+    @extend .o-list-bare;
+    margin-bottom: 0;
+  }
+  &item{
+
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &label{
+    @include inuit-hidden-visually();
+  }
+  &cart-count{
+    @include inuit-hidden-visually();
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-site-control--
+
+[class*=c-site-control__header--] {
+  @extend .c-site-control__header;
+}

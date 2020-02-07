@@ -15,6 +15,24 @@ SETTINGS
 @import "inuit";
 @import "tools/tools.aliases";
 
+/*
+ MIXINS
+ */
+@import "mixins";
+
+/*
+BASE
+ */
+@import "base";
+
+/*
+LAYOUTS
+ */
+@import "layouts";
+
+/*
+COMPONENTS
+ */
 @import "components";
 
 body{

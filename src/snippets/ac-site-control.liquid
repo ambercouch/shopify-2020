@@ -3,14 +3,14 @@
   <ul class="c-site-control__list">
     <li class="c-site-control__item--menu">
       <a id="menuButtonOpen" href="#" class="c-site-control__link" data-state="off">
-        <span class="c-site-control__lable">Menu</span>
-        {% include 'icon-hamburger' %}
+        <span class="c-site-control__label">Menu</span>
+        {% include 'icon-bbd-menu' %}
       </a>
     </li>
     <li class="c-site-control__item--search">
       <a id="searchControl" href="#" class="c-site-control__link" data-state="off">
-        <span class="c-site-control__lable">Search</span>
-        {% include 'icon-search' %}
+        <span class="c-site-control__label">Search</span>
+        {% include 'icon-bbd-search' %}
       </a>
     </li>
     {% if shop.customer_accounts_enabled %}
@@ -18,7 +18,7 @@
       {% if customer %}
         <li class="c-site-control__item--account">
           <a href="/account" class="c-site-control__link">
-            <span class="c-site-control__lable">
+            <span class="c-site-control__label">
               {{ 'layout.customer.account' | t }}
             </span>
             {% include 'icon-user' %}
@@ -35,8 +35,8 @@
     {% endif %}
     <li class="c-site-control__item--cart" data-button-cart >
       <a href="/cart" class="c-site-control__link" >
-        <span class="c-site-control__lable">{{ 'layout.cart.title' | t }}</span>
-        {% include 'icon-cart' %}
+        <span class="c-site-control__label">{{ 'layout.cart.title' | t }}</span>
+        {% include 'icon-bbd-cart' %}
         <span data-cart-count class="c-site-control__cart-count">({{ cart.item_count }})</span>
       </a>
     </li>
@@ -44,7 +44,7 @@
 
 
 
-  <div id="searchFormMain" class="c-site-control__search-site" data-state="off">
+  <div id="searchFormMain" class="c-site-control__site-search" data-state="off">
     {% include 'ac-site-search-form' %}
   </div><!-- site-controls__search -->
 

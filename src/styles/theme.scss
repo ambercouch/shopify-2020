@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 /**
- * [replace with theme name] | Built with Slate
+ * [Bibado Theme] | Built with Slate
  */
 @import '~normalize.css/normalize';
 
@@ -19,7 +19,7 @@
 @import './core/media';
 @import './core/responsive-tables';
 @import './core/rte';
-@import './core/typography';
+//@import './core/typography';
 
 // Components
 @import './components/buttons';

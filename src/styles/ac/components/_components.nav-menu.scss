@@ -1,0 +1,101 @@
+/*
+  BEM BLOCK .c-nav-menu
+ */
+
+.c-nav-menu {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-nav-menu--
+ */
+
+.c-nav-menu-- {
+  &main {
+      display: none;
+    @include mq($from : desktop){
+      display: block;
+    }
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-nav-menu--
+
+[class*=c-nav-menu--] {
+  @extend .c-nav-menu;
+}
+
+/*
+  BEM ELEMENTS .c-nav-menu__
+ */
+
+.c-nav-menu__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &list{
+    @extend .o-list-bare;
+    display: flex;
+    justify-content: center;
+  }
+  &item{
+    display: block;
+    @extend .o-list-bare__item;
+    padding: $act-unit-t;
+  }
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu--
+
+[class*=c-nav-menu__header--] {
+  @extend .c-nav-menu__header;
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__list--
+
+[class*=c-nav-menu__list--] {
+  @extend .c-nav-menu__list;
+}
+
+.c-nav-menu__list--{
+  &social{
+    //min-width: 300px;
+    //max-width: 100%;
+    //display: inline-flex;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__item--
+
+[class*=c-nav-menu__item--] {
+  @extend .c-nav-menu__item;
+}
+
+.c-nav-menu__item--{
+  &social{
+    .icon{
+      @include size($act-unit-l);
+    }
+  }
+}

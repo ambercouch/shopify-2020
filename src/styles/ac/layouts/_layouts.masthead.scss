@@ -1,0 +1,33 @@
+/*
+  BEM BLOCK .l-masthead
+ */
+
+.l-masthead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/*
+  BEM ELEMENTS .l-masthead__
+ */
+
+.l-masthead__ {
+  &announcement-bar{
+    grid-column-start:1;
+    grid-column-end: 3;
+  }
+  &branding{
+    padding: $act-unit-s 0 $act-unit-s $act-unit-s;
+    align-items: center;
+  }
+  &site-control{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: $act-unit-s $act-unit-s $act-unit-s 0;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-masthead--
+
+

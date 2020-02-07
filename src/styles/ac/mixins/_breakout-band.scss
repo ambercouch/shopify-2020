@@ -1,0 +1,16 @@
+@mixin breakout-band($bgc : #ccc, $padding : 0){
+  position: relative;
+  z-index: 1;
+  &:after{
+    position: absolute;
+    content: '';
+    width: 100vw;
+    right: 50%;
+    top: 0;
+    height: 100%;
+    display: block;
+    background: $bgc;
+    z-index: -1;
+    transform: translate( 50%, 0 );
+  }
+}

@@ -30,9 +30,11 @@
   {%- if page_description -%}
     <meta name="description" content="{{ page_description | escape }}">
   {%- endif -%}
-
+<!-- include 'social-meta-tags' -->
   {% include 'social-meta-tags' %}
+  <!-- include 'style-tags' -->
   {% include 'style-tags', layout: 'theme' %}
+  <!-- include 'css-variables' -->
   {% include 'css-variables' %}
 
   <script>
@@ -54,15 +56,12 @@
 </head>
 
 <body id="siteBody" class="template-{{ template.name | handle }}">
-<div id="page" class="site">
+<div id="page" class="l-site">
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
-
 
     {% section 'header' %}
 
-
-
-  <main role="main" id="MainContent">
+  <main class="l-site__main" role="main" id="MainContent">
     {{ content_for_layout }}
   </main>
 

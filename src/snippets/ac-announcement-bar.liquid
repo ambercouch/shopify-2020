@@ -1,5 +1,4 @@
-{%- if section.settings.announcement_bar_enabled -%}
-  <div class="c-masthead__announcement-bar">
+
     <div class="c-announcement-bar">
       {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
         {%- if section.settings.announcement_bar_link != blank -%}
@@ -14,5 +13,4 @@
         {%- endif -%}
       {%- endif -%}
     </div><!-- .c-announcement-bar -->
-  </div>
-{%- endif -%}
+

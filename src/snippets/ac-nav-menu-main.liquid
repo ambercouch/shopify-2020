@@ -1,0 +1,29 @@
+<nav class="c-nav-menu--main" role="navigation" >
+  <ul  class="c-nav-menu__list">
+    {% for link in linklists[section.settings.menu].links %}
+      {% if link.links != blank %}
+        <li  class="c-nav-menu__item">
+          <a  class="c-nav-menu__link" href="{{ link.url }}">
+            <span  class="c-nav-menu__label">{{ link.title }} </span>
+            {% include 'icon-arrow-down' %}
+          </a>
+          <ul>
+            {% for childlink in link.links %}
+              <li>
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

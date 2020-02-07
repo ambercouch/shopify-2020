@@ -4,7 +4,9 @@
 
 .c-site-title {
   display: block;
-  display: none;
+  margin: 0;
+  @include size(50px);
+
 }
 
 /*

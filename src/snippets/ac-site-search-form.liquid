@@ -1,6 +1,6 @@
-<div class="search-site">
-  <form  id="siteSearchForm" name="searchstore" class="search-site__form" action="/search" method="get" role="search" data-state="off">
-    <label class="search-site__label" for="Search" class="label-hidden">
+<div class="c-site-search">
+  <form  id="siteSearchForm" name="searchstore" class="c-site-search__form" action="/search" method="get" role="search" data-state="off">
+    <label class="c-site-search__label" for="Search" class="label-hidden">
       {{ 'general.search.placeholder' | t }}
     </label>
     <input type="search"
@@ -8,15 +8,15 @@
            id="Search"
            value="{{ search.terms | escape  | replace : '*' , ' ' | strip }}"
            placeholder="{{ 'general.search.placeholder' | t }}"
-           class="search-site__input">
+           class="c-site-search__input">
 
     <button id="searchSubmit" type="submit" class="btn search-site__control--search">
-      {% include 'icon-search' %}
-      <span class="icon-fallback-text search-site__text">{{ 'general.search.submit' | t }}</span>
+      {% include 'icon-bbd-search' %}
+      <span class="icon-fallback-text search-site__fallback-text">{{ 'general.search.submit' | t }}</span>
     </button>
     <button id="searchControlClose"  class="btn search-site__control--close">
       {% include 'icon-close' %}
-      <span class="icon-fallback-text search-site__text">Cancel</span>
+      <span class="icon-fallback-text search-site__fallback-text">Cancel</span>
     </button>
   </form>
 </div>
