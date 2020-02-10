@@ -6,7 +6,6 @@
   {% include 'ac-footer-logo' %}
 </div>
   {% if linklists[footer_linklist].links.size > 0 %}
-
   <div class="l-footer__nav-menu">
     <div class="c-nav-menu--footer">
       <ul class="c-nav-menu__list--footer">
@@ -17,7 +16,6 @@
         {% endfor %}
       </ul>
     </div>
-
   </div>
   {% endif %}
 
@@ -49,6 +47,15 @@
   </div>
   </div>
 
+
+  {% if section.settings.footer_newsletter_enable %}
+    <div class="l-footer__subscribe-form">
+      {% include 'ac-subscribe-form' %}
+    </div>
+  {% else %}
+    <!-- NEWS LETTER DISABLED -->
+  {% endif %}
+
   {% if section.settings.show_payment_icons %}
     {% unless shop.enabled_payment_types == empty %}
       <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
@@ -62,12 +69,14 @@
     {% endunless %}
   {% endif %}
 
-
-
-
-  <div>
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+  <div class="l-footer__site-info">
+    <div class="c-site-info">
+    <small class="c-site-info__copy-right">{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. </small><br>
+      <small class="c-site-info__patent">UK Patent granted: GB2528484; UK Patent pending: 1803843.0</small><br>
+      <small class="c-site-info__powered-by" > {{ powered_by_link }}</small>
+    </div>
   </div>
+
 </div>
 </footer>
 
@@ -85,6 +94,12 @@
         "id": "footer_linklist",
         "label": "First menu",
         "default": "footer"
+      },
+      {
+      "type": "checkbox",
+      "id": "footer_newsletter_enable",
+      "label": "Show newsletter signup",
+      "default": false
       },
       {
         "type": "checkbox",

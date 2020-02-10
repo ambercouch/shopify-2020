@@ -1,0 +1,64 @@
+.o-btn{
+  transition: background 0.3s ease;
+  display: inline-block;
+  line-height:1;
+  width: auto;
+  border: none;
+  padding: $act-unit;
+  @include act-font-size($act-fs-4, 1);
+  background: $brand-col-1;
+  color: #fff;
+  text-decoration: none;
+}
+
+.o-btn{
+  &:hover,&:focus{
+    background: darken($brand-col-1, 5%);
+    color: #fff;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+
+[class*=o-btn--]{
+  @extend .o-btn;
+}
+.o-btn--{
+  &tiny {
+    @extend .o-btn;
+    padding: $act-unit-t;
+    @include inuit-font-size($act-fs-6, 1);
+  }
+  &small {
+    @extend .o-btn;
+    padding: $act-unit-s;
+    @include inuit-font-size($act-fs-5, 1);
+  }
+  &bg5{
+    background: $brand-col-5;
+  }
+  &full {
+    @extend .o-btn;
+    width: 100%;
+  }
+  &block {
+    @extend .o-btn;
+    width: 100%;
+    display: block !important;
+  }
+  &ghost{
+    background: transparent !important;
+    border: solid 1px;
+  }
+  &transparent{
+    @extend .o-btn;
+    background: transparent;
+  }
+  &rounded {
+    @extend .o-btn;
+    border-radius: $act-unit;
+    padding: $act-unit-s $act-unit;
+  }
+
+}

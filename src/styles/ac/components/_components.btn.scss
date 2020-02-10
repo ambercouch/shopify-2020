@@ -1,0 +1,63 @@
+/*
+  BEM BLOCK .c-btn
+ */
+
+.c-btn {
+ @extend .o-btn;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-btn--
+ */
+
+.c-btn-- {
+  &subscribe-submit{
+    @extend .o-btn--small;
+    @extend .o-btn--full;
+    @extend .o-btn--bg5;
+    color: $brand-col-2;
+    border-radius: 0 $act-unit-s $act-unit-s 0 ;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-btn--
+
+[class*=c-btn--] {
+  @extend .c-btn;
+}
+
+/*
+  BEM ELEMENTS .c-btn__
+ */
+
+.c-btn__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-btn--
+
+[class*=c-btn__header--] {
+  @extend .c-btn__header;
+}

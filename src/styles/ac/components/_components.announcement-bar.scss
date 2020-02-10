@@ -8,6 +8,8 @@
   text-align: center;
   background: $brand-col-1;
   @extend .o-box;
+  color: $brand-col-2;
+  @include act-font-size($act-fs-5, 1);
 }
 
 /*

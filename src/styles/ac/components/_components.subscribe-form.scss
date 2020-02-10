@@ -1,0 +1,100 @@
+/*
+  BEM BLOCK .c-subscribe-form
+ */
+
+.c-subscribe-form {
+  display: block;
+  text-align: left;
+  //background: white;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-subscribe-form--
+ */
+
+.c-subscribe-form-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-subscribe-form--
+
+[class*=c-subscribe-form--] {
+  @extend .c-subscribe-form;
+}
+
+/*
+  BEM ELEMENTS .c-subscribe-form__
+ */
+
+.c-subscribe-form__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+  &intro-text{
+    color: $brand-col-5;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &label{
+    @include inuit-hidden-visually;
+  }
+  &form-wrapper{
+    //display: none;
+    .contact-form{
+      //display: none;
+    }
+  }
+  &input-group{
+    display: flex;
+  }
+  &input{
+    display: block;
+    border: none;
+    padding: $act-unit-s;
+    @include act-font-size($act-fs-5, 1);
+  }
+  &btn{
+    width: 35%;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-subscribe-form__header--
+
+[class*=c-subscribe-form__header--] {
+  @extend .c-subscribe-form__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-subscribe-form__input--
+
+[class*=c-subscribe-form__input--] {
+  @extend .c-subscribe-form__input;
+}
+
+.c-subscribe-form__input--{
+  &text{
+    width: 65%;
+    border-radius: $act-unit-s 0 0 $act-unit-s;
+  }
+
+}
+

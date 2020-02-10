@@ -1,0 +1,35 @@
+
+  <div class="c-subscribe-form">
+    <div class="c-subscribe-form__intro-text">
+      <p>Enter your email address to join our mailing list so that you receive similar articles along with news of new BIBaDO products and special discounts</p>
+    </div>
+
+      <div class="c-subscribe-form__form-wrapper">
+        {% form 'customer' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+            <p class="c-subscribe-form__confirm--success form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
+            <label class="c-subscribe-form__label" for="Email" class="h4">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+            <div class="c-subscribe-form__input-group">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input class="c-subscribe-form__input--text" type="email"
+                     name="contact[email]"
+                     id="Email"
+                     class="input-group__field newsletter__input"
+                     value="{% if customer %}{{ customer.email }}{% endif %}"
+                     placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                     autocorrect="off"
+                     autocapitalize="off">
+              <div class="c-subscribe-form__btn">
+                      <button type="submit" class=" c-btn--subscribe-submit" name="commit" id="Subscribe">
+                      <span class="o-btn__text">{{ 'general.newsletter_form.submit' | t }}</span>
+                    </button>
+                  </div>
+            </div>
+          {% endif %}
+        {% endform %}
+      </div>
+
+  </div>
+
