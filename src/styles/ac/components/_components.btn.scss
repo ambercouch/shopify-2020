@@ -18,6 +18,15 @@
     color: $brand-col-2;
     border-radius: 0 $act-unit-s $act-unit-s 0 ;
   }
+  &content-block{
+    border-radius:  $act-unit-s;
+    background: transparent;
+    border: solid ;
+    margin: 0 auto;
+    &:hover{
+      background: rgba(white, 0.5);
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-btn--

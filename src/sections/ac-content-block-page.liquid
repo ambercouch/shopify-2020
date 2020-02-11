@@ -12,6 +12,8 @@
   - Button link: link of the button
 {%- endcomment -%}
 
+{%- assign cb_page = pages[section.settings.cb_page] -%}
+
 {%- assign cb_image_layout =  section.settings.cb_image_layout -%}
 {%- assign cb_text_layout =  section.settings.cb_text_layout -%}
 {%- assign cb_background_colour_class =  section.settings.cb_background_colour -%}
@@ -27,7 +29,7 @@
   {%- assign cb_sub_class =  'has-sub-heading' -%}
 {% endif %}
 <section class="l-main__content-block u-bgc-{{ cb_background_colour_class  }} ">
-  <div class="c-content-block is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }}">
+  <div class="c-content-block is-image-layout-{{ cb_image_layout }} ">
 
     {% if section.settings.cb_title != blank %}
       <header class="c-content-block__header  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
@@ -54,18 +56,19 @@
     {% endif %}
 
     {% if section.settings.cb_image != blank %}
-    <div class="c-content-block__image is-pos-{{ cb_image_pos_class }}">
+      <div class="c-content-block__image is-pos-{{ cb_image_pos_class }}">
         {% include 'responsive-image' with
           image: section.settings.cb_image,
           max_width: 700,
           max_height: 700
         %}
-    </div>
+      </div>
     {% endif %}
 
+
   <div class="c-content-block__body is-text-layout-{{ cb_text_layout }}">
-    {% if section.settings.cb_text != blank %}
-      <div class="c-content-block__text u-col-{{ cb_text_colour_class }}" >{{ section.settings.cb_text }}</div>
+    {% if section.settings.cb_page != blank %}
+      <div class="c-content-block__text u-col-{{ cb_text_colour_class }}" >{{ cb_page.content }}</div>
     {% endif %}
     {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
       <div class="c-content-block__footer">
@@ -81,7 +84,7 @@
 
 {% schema %}
   {
-    "name": "Content Block",
+    "name": "Content Block Page",
     "settings": [
   {
   "type": "select",
@@ -119,39 +122,39 @@
   }
   ]
   },
-      {
-        "type": "image_picker",
-        "id": "cb_image",
-        "label": "Image"
-      },
-      {
-        "type": "select",
-        "id": "cb_image_layout",
-        "label": "Image alignment",
-        "default": "background",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          },
-          {
-          "value": "center",
-          "label": "Center"
-          },
-          {
-          "value": "background",
-          "label": "Background"
-          },
-          {
-          "value": "hidden",
-          "label": "Hidden"
-          }
-        ]
-      },
+  {
+  "type": "image_picker",
+  "id": "cb_image",
+  "label": "Image"
+  },
+  {
+  "type": "select",
+  "id": "cb_image_layout",
+  "label": "Image alignment",
+  "default": "background",
+  "options": [
+  {
+  "value": "left",
+  "label": "Left"
+  },
+  {
+  "value": "right",
+  "label": "Right"
+  },
+  {
+  "value": "center",
+  "label": "Center"
+  },
+  {
+  "value": "background",
+  "label": "Background"
+  },
+  {
+  "value": "hidden",
+  "label": "Hidden"
+  }
+  ]
+  },
   {
   "type": "select",
   "id": "cb_image_position",
@@ -168,14 +171,9 @@
   },
   {
   "value": "below-text",
-  "label": "Below text"
+  "label": "Below page"
   }
   ]
-  },
-  {
-  "type": "image_picker",
-  "id": "cb_logo_image",
-  "label": "Logo"
   },
   {
   "type": "select",
@@ -267,12 +265,11 @@
   "label": "Sub Heading",
   "default": "Some sub heading strap line"
   },
-      {
-        "type": "richtext",
-        "id": "cb_text",
-        "label": "Text",
-        "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
-      },
+  {
+    "type": "page",
+    "id": "cb_page",
+    "label": "Page 123"
+  },
   {
   "type": "select",
   "id": "cb_text_colour",
@@ -350,7 +347,7 @@
     ],
     "presets": [
       {
-        "name": "Content Block",
+        "name": "Content Block Page",
         "category": "Content"
       }
     ]

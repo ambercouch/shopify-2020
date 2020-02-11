@@ -9,6 +9,9 @@
   flex-direction: column;
   min-height: 75vh;
   justify-content: center;
+  &.has-image-pos-below-text{
+    padding-bottom: 0;
+  }
 }
 
 /*
@@ -38,9 +41,8 @@
 
   &heading {
     display: block;
-    @include act-font-size($act-fs-k, 1);
     margin-bottom: $act-unit-s;
-    color: $brand-col-1;
+    //color: $brand-col-1;
     font-weight: 700;
     .is-heading-hidden &{
       @include inuit-hidden-visually;
@@ -51,22 +53,31 @@
     display: inline;
   }
 
-  &link {
-    display: inline
-  }
 
   &content {
     display: block
   }
 
   &footer {
-    display: block
+    display: block;
+    text-align: center;
   }
   &image{
-
+    margin-bottom: $act-unit;
     .is-image-layout-hidden &{
       display: none !important;
     }
+    &.is-pos-above-header{
+      order: -1;
+    }
+    &.is-pos-below-text{
+      order: 3;
+      margin-bottom: 0;
+    }
+  }
+  &link{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
   }
 }
 
