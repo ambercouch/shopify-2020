@@ -103,3 +103,15 @@
     }
   }
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__item--
+
+[class*=c-nav-menu__link--] {
+  @extend .c-nav-menu__link;
+}
+
+.c-nav-menu__link--{
+  &footer{
+    @include a($col : $brand-col-3);
+  }
+}

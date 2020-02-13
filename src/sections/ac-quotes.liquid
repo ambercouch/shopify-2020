@@ -1,9 +1,17 @@
-<div class="page-width" data-section-id="{{ section.id }}" data-section-type="quotes">
-  {% if section.settings.title != blank %}
-    <div class="section-header text-center">
-      <h2>{{ section.settings.title | escape }}</h2>
-    </div>
-  {% endif %}
+<section class="l-main__content-block" data-section-id="{{ section.id }}" data-section-type="quotes">
+  <div class="c-content-block--quote ">
+    {% if section.settings.title != blank %}
+      <header class="c-content-block__header--quote">
+        <h2 class="c-content-block__heading--quote u-col-{{ cb_heading_colour_class }} u-fs-{{ cb_heading_size_class }}">
+          <span  class="c-content-block__title--quote">{{ section.settings.title | escape }}</span>
+        </h2>
+        {% if section.settings.cb_sub_title != blank %}
+          <h4 class="c-content-block__sub-heading">
+            {{  section.settings.cb_sub_title }}
+          </h4>
+        {% endif %}
+      </header>
+    {% endif %}
 
   {% if section.blocks.size > 0 %}
     <div class="quotes-wrapper">
@@ -28,7 +36,8 @@
   {% if section.blocks.size == 0 %}
     {% include 'no-blocks' %}
   {% endif %}
-</div>
+  </div>
+</section>
 
 {% schema %}
   {

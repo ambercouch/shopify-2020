@@ -7,7 +7,7 @@
   padding-bottom: $act-unit;
   display: flex;
   flex-direction: column;
-  min-height: 75vh;
+
   justify-content: center;
   &.has-image-pos-below-text{
     padding-bottom: 0;
@@ -21,6 +21,9 @@
 .c-content-block-- {
   &type {
     display: block
+  }
+  &quote{
+    text-align: center;
   }
 }
 
@@ -62,6 +65,7 @@
     display: block;
     text-align: center;
   }
+
   &image{
     margin-bottom: $act-unit;
     .is-image-layout-hidden &{
@@ -75,9 +79,9 @@
       margin-bottom: 0;
     }
   }
+
   &link{
-    @extend .c-btn;
-    @extend .c-btn--content-block;
+   display: inline;
   }
 }
 
@@ -86,6 +90,27 @@
 [class*=c-content-block__header--] {
   @extend .c-content-block__header;
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .c-content-block__link--
+
+ [class*=c-content-block__link--] {
+   @extend .c-content-block__link;
+ }
+
+ .c-content-block__link--{
+   &btn{
+     display: block;
+     @extend .c-btn;
+     @extend .c-btn--content-block;
+     padding-left: $act-unit-t;
+     padding-right: $act-unit-t;
+   }
+   &block{
+     display: flex;
+     flex-direction: column;
+     text-decoration: none;
+   }
+ }
 
 .is-text-layout-center{
   text-align: center;

@@ -4,7 +4,7 @@
 
 .l-footer {
   display: block;
-  padding: $act-unit-s;
+  padding:  $act-unit $act-unit-s;
   padding-bottom: 0;
 }
 
@@ -55,6 +55,7 @@
   &site-title{
     display: flex;
     justify-content: center;
+    margin-bottom: $act-unit;
   }
   &site-info{
     background: $brand-col-1;

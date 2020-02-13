@@ -31,7 +31,7 @@
 <section class="l-main__content-block u-bgc-{{ cb_background_colour_class  }} ">
   <div class="c-content-block is-image-layout-{{ cb_image_layout }} ">
 
-    {% if section.settings.cb_title != blank %}
+    {% if section.settings.title != blank %}
       <header class="c-content-block__header  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
 
         {% if section.settings.cb_logo_image != blank %}
@@ -45,7 +45,7 @@
         {% endif %}
 
         <h2 class="c-content-block__heading u-col-{{ cb_heading_colour_class }} u-fs-{{ cb_heading_size_class }}">
-          <span  class="c-content-block__title">{{ section.settings.cb_title | escape }}</span>
+          <span  class="c-content-block__title">{{ section.settings.title | escape }}</span>
         </h2>
         {% if section.settings.cb_sub_title != blank %}
           <h4 class="c-content-block__sub-heading">
@@ -201,9 +201,9 @@
   },
   {
     "type": "text",
-    "id": "cb_title",
+    "id": "title",
     "label": "Heading",
-    "default": "Image with text"
+    "default": "Page Block Heading"
   },
   {
   "type": "select",

@@ -17,6 +17,7 @@
     @extend .o-btn--bg5;
     color: $brand-col-2;
     border-radius: 0 $act-unit-s $act-unit-s 0 ;
+    height: 100%;
   }
   &content-block{
     border-radius:  $act-unit-s;
