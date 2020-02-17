@@ -24,6 +24,7 @@
   }
   &quote{
     text-align: center;
+    padding-bottom: $act-unit-l;
   }
 }
 
@@ -39,12 +40,13 @@
 
 .c-content-block__ {
   &header {
-    display: block
+    display: block;
+    margin-bottom: $act-unit-s;
   }
 
   &heading {
     display: block;
-    margin-bottom: $act-unit-s;
+    margin-bottom: 0;
     //color: $brand-col-1;
     font-weight: 700;
     .is-heading-hidden &{
@@ -91,6 +93,11 @@
   @extend .c-content-block__header;
 }
 
+.c-content-block__header--{
+  &quote{
+    margin-bottom: $act-unit;
+  }
+}
 //BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
 
 [class*=c-content-block__heading--] {

@@ -1,0 +1,68 @@
+/*
+  BEM BLOCK .c-quote-list
+ */
+
+.c-quote-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-quote-list--
+ */
+
+.c-quote-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-quote-list--
+
+[class*=c-quote-list--] {
+  @extend .c-quote-list;
+}
+
+/*
+  BEM ELEMENTS .c-quote-list__
+ */
+
+.c-quote-list__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &quote{
+    width: 100%;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quote-list__header--
+
+[class*=c-quote-list__header--] {
+  @extend .c-quote-list__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quote-list__quote--
+
+[class*=c-quote-list__quote--] {
+  @extend .c-quote-list__quote;
+}
