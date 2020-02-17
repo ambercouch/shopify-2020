@@ -71,3 +71,5 @@ gulpfile.js
 src/styles/main.css
 
 src/styles/src/styles/main.css.map
+
+src/assets/ac_shopify.js
