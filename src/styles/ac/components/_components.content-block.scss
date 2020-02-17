@@ -48,7 +48,7 @@
     display: block;
     margin-bottom: 0;
     //color: $brand-col-1;
-    font-weight: 700;
+    font-weight: 500;
     .is-heading-hidden &{
       @include inuit-hidden-visually;
     }
