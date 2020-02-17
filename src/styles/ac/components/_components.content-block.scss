@@ -85,10 +85,22 @@
   }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-content-block--
+//BEM ELEMENT MODIFIER FALLBACK .c-content-block__header--
 
 [class*=c-content-block__header--] {
   @extend .c-content-block__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
+
+[class*=c-content-block__heading--] {
+  @extend .c-content-block__heading;
+}
+
+.c-content-block__heading--{
+  &quote{
+    color: $brand-col-4;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-content-block__link--

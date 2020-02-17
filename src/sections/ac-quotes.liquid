@@ -14,17 +14,18 @@
     {% endif %}
 
   {% if section.blocks.size > 0 %}
-    <div class="quotes-wrapper">
-      <div class="quotes-slider" id="Quotes-{{ section.id }}" data-count="{{ section.blocks.size }}">
+    <div class="c-content-block__quote-list">
+      <div class="c-quote-list" id="Quotes-{{ section.id }}" data-count="{{ section.blocks.size }}">
+        <div class="c-quote-list__list">
         {% for block in section.blocks %}
-          <div class="quotes-slide--{{ block.id }}" {{ block.shopify_attributes }}>
-            <blockquote class="quotes-slider__text text-center">
-              <span class="quote-icon">{% include 'icon-quote' %}</span>
+          <div class="c-quote-list__quote--{{ block.id }}" {{ block.shopify_attributes }}>
+            <blockquote class="c-quote">
+              <span class="c-quote__icon">{% include 'icon-quote' %}</span>
               {% if block.settings.quote != blank %}
-                <div class="rte-setting">{{ block.settings.quote }}</div>
+                <div class="c-quote__text ">{{ block.settings.quote }}</div>
               {% endif %}
               {% if block.settings.author != blank %}
-                <cite>{{ block.settings.author | escape }}</cite>
+                <cite class="c-quote-list__quote-cite ">{{ block.settings.author | escape }}</cite>
               {% endif %}
             </blockquote>
           </div>
@@ -32,6 +33,7 @@
       </div>
     </div>
   {% endif %}
+    </div>
 
   {% if section.blocks.size == 0 %}
     {% include 'no-blocks' %}
