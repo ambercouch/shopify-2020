@@ -1,10 +1,10 @@
-<nav class="c-nav-menu--main" role="navigation" >
-  <ul  class="c-nav-menu__list">
-    {% for link in linklists[section.settings.menu].links %}
+<nav class="c-nav-menu--mobile" role="navigation" >
+  <ul  class="c-nav-menu__list--mobile">
+    {% for link in linklists[section.settings.mobile_menu].links %}
       {% if link.links != blank %}
-        <li class="c-nav-menu__item">
-          <a  class="c-nav-menu__link" href="{{ link.url }}">
-            <span  class="c-nav-menu__label">{{ link.title }} </span>
+        <li  class="c-nav-menu__item--mobile">
+          <a  class="c-nav-menu__link--mobile" href="{{ link.url }}">
+            <span  class="c-nav-menu__label--mobile">{{ link.title }} </span>
             {% include 'icon-arrow-down' %}
           </a>
           <ul>

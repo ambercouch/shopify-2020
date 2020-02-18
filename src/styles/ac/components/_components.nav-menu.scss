@@ -85,6 +85,9 @@
     //max-width: 100%;
     //display: inline-flex;
   }
+  &mobile{
+    flex-direction: column;
+  }
   &footer{
     flex-direction: column;
   }

@@ -39,7 +39,16 @@
     </div>
   </header>
 
-
+  <div id="mobileNavigation" class="site__off-page-container" >
+    <div id="mobileNavOffPageContainer" class="l-off-page-container" data-state="off" data-container="mobileNavOffPageContainer" >
+      <div class="l-off-page-container__nav-menu">
+        <div class="" data-state="off" data-control="mobileNavOffPageContainer" >
+          close
+        </div>
+        {% include "ac-nav-menu-mobile" %}
+      </div>
+    </div>
+  </div>
 
 </section>
 
@@ -106,9 +115,15 @@
       {
         "type": "link_list",
         "id": "menu",
-        "label": "Menu",
+        "label": "Main Menu",
         "default": "main-menu"
-      }
+      },
+  {
+  "type": "link_list",
+  "id": "mobile_menu",
+  "label": "Main Menu",
+  "default": "main-menu"
+  }
     ]
   }
 {% endschema %}
