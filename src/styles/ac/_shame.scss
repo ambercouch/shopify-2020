@@ -11,3 +11,8 @@
 .flickity-page-dots .dot {
   background: #fff !important;
 }
+
+
+[data-container][data-state=off]{
+  pointer-events: none !important;
+}
