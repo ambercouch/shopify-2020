@@ -9,20 +9,22 @@
 
   z-index: 1000;
   opacity: 0;
-  padding: $act-unit-h $act-unit-l $act-unit;
+  padding: 0 $act-unit $act-unit;
 
   background: $brand-col-4;
   height: 100vh;
 
+  left: 0;
+  top: 0;
+
   &[data-state=off]{
     opacity: 0 !important;
-    @include inuit-hidden-visually();
+    //@include inuit-hidden-visually();
   }
 
   &[data-state=on]{
     opacity: 1;
-    left: 0;
-    top: 0;
+
   }
 
   @include mq($from : desktop){
@@ -44,6 +46,10 @@
     height: 100vh;
     background: $brand-col-4;
   }
+  &mobile-nav{
+    width: 170px;
+    max-width: 60%;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-off-page-container--
@@ -58,7 +64,9 @@
 
 .l-off-page-container__ {
   &header {
-    display: block
+    display: block;
+    padding-top: $act-unit;
+    margin-bottom: $act-unit;
   }
 
   &heading {

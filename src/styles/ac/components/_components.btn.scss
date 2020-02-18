@@ -28,6 +28,12 @@
       background: rgba(white, 0.5);
     }
   }
+  &mobile-nav-close{
+    @extend .o-btn--small;
+    @extend .o-btn--transparent;
+    @extend .o-btn--flush;
+    color: $brand-col-2;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-btn--
@@ -64,10 +70,25 @@
   &footer {
     display: block
   }
+  &label{
+    display: inline;
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-btn--
+//BEM ELEMENT MODIFIER FALLBACK .c-btn__header--
 
 [class*=c-btn__header--] {
   @extend .c-btn__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-btn__label--
+
+[class*=c-btn__label--] {
+  @extend .c-btn__label;
+}
+
+.c-btn__label--{
+  &mobile-nav-close{
+    display: none;
+  }
 }
