@@ -60,5 +60,8 @@
     border-radius: $act-unit;
     padding: $act-unit-s $act-unit;
   }
+  &flush{
+    padding: 0!important;
+  }
 
 }

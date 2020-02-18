@@ -40,11 +40,11 @@
   </header>
 
   <div id="mobileNavigation" class="site__off-page-container" >
-    <div id="mobileNavOffPageContainer" class="l-off-page-container" data-state="off" data-container="mobileNavOffPageContainer" >
+    <div id="mobileNavOffPageContainer" class="l-off-page-container--mobile-nav" data-state="off" data-container="mobileNavOffPageContainer" >
+      <div class="l-off-page-container__header" data-state="off" data-control="mobileNavOffPageContainer" >
+        <div class="c-btn--mobile-nav-close"><span class="c-btn__icon">{% include 'icon-close' %}</span><span class="c-btn__label--mobile-nav-close">close</span></div>
+      </div>
       <div class="l-off-page-container__nav-menu">
-        <div class="" data-state="off" data-control="mobileNavOffPageContainer" >
-          close
-        </div>
         {% include "ac-nav-menu-mobile" %}
       </div>
     </div>
