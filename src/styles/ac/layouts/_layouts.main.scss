@@ -61,3 +61,13 @@
 [class*=l-main__header--] {
   @extend .l-main__header;
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .l-main__content-block--
+
+[class*=l-main__content-block--] {
+  @extend .l-main__content-block;
+}
+
+.l-main__content-block--{
+
+}
