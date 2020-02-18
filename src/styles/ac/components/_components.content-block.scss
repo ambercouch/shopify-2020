@@ -26,6 +26,11 @@
     text-align: center;
     padding-bottom: $act-unit-l;
   }
+  &dribble-bib{
+    @include mq($from : desktop){
+      background: red !important;
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-content-block--
