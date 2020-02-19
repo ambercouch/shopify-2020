@@ -1,22 +1,30 @@
-<div class="c-site-search">
-  <form  id="siteSearchForm" name="searchstore" class="c-site-search__form" action="/search" method="get" role="search" data-state="off">
-    <label class="c-site-search__label" for="Search" class="label-hidden">
+<div class="c-site-search-form">
+  <form  id="siteSearchForm" name="searchstore" class="c-site-search-form__form" action="/search" method="get" role="search" data-state="off">
+    <label class="c-site-search-form__label" for="Search" class="label-hidden">
       {{ 'general.search.placeholder' | t }}
     </label>
+<div class="c-site-search-form__input-wrapper">
+  <div class="c-site-search-form__btn--search-submit">
+    <button id="searchSubmit" type="submit" class="c-btn--search-submit search-site__control--search">
+      {% include 'icon-bbd-search' %}
+      <span class="icon-fallback-text search-site__fallback-text">{{ 'general.search.submit' | t }}</span>
+    </button>
+  </div>
+
+
     <input type="search"
            name="q"
            id="Search"
            value="{{ search.terms | escape  | replace : '*' , ' ' | strip }}"
            placeholder="{{ 'general.search.placeholder' | t }}"
-           class="c-site-search__input">
-
-    <button id="searchSubmit" type="submit" class="btn search-site__control--search">
-      {% include 'icon-bbd-search' %}
-      <span class="icon-fallback-text search-site__fallback-text">{{ 'general.search.submit' | t }}</span>
-    </button>
-    <button id="searchControlClose"  class="btn search-site__control--close">
+           class="c-site-search-form__input">
+<div class="c-site-search-form__btn--search-close">
+    <button id="searchControlClose"  class="c-btn--search-close search-site__control--close" data-control="siteSearch" data-state="off">
       {% include 'icon-close' %}
       <span class="icon-fallback-text search-site__fallback-text">Cancel</span>
     </button>
+</div>
+</div>
+
   </form>
 </div>

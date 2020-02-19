@@ -34,6 +34,16 @@
     @extend .o-btn--flush;
     color: $brand-col-2;
   }
+  &search-submit{
+    @extend .o-btn--transparent;
+    @extend .o-btn--tiny;
+    colour: $brand-col-2;
+  }
+  &search-close{
+    @extend .o-btn--transparent;
+    @extend .o-btn--tiny;
+    colour: $brand-col-2;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-btn--

@@ -105,6 +105,11 @@
       @include size($act-unit-l);
     }
   }
+  &mobile{
+    padding: $act-unit-t;
+    margin-bottom: $act-unit-t;
+    display: none !important
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__item--
@@ -116,5 +121,8 @@
 .c-nav-menu__link--{
   &footer{
     @include a($col : $brand-col-3);
+  }
+  &mobile{
+    @include a($col : $brand-col-2);
   }
 }

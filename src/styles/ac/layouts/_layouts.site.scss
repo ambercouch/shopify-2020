@@ -53,6 +53,17 @@
     text-align: center;
 
   }
+  &site-search-form{
+    padding: $act-unit 0;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    max-height: 100px;
+    &[data-state=off]{
+      padding: 0;
+      transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+      max-height: 0 !important;
+      overflow: hidden;
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-site--
