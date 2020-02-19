@@ -28,7 +28,6 @@
   }
   &dribble-bib{
     @include mq($from : desktop){
-      background: red !important;
     }
   }
 }

@@ -67,6 +67,10 @@
 
     {% section 'header' %}
 
+  <div id="searchFormMain" class="l-site__site-search-form" data-state="off" data-container="siteSeach" >
+    {% include 'ac-site-search-form' %}
+  </div><!-- site-controls__search -->
+
   <main class="l-site__main" role="main" id="MainContent">
     <div class="l-main">
     {{ content_for_layout }}

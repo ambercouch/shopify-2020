@@ -35,6 +35,14 @@
     width: 25px;
     height: 25px;
     color: $brand-col-5;
+    .c-site-search-form &{
+      color: $brand-col-2;
+    }
+  }
+  &close{
+    .c-site-search-form &{
+      color: $brand-col-2;
+    }
   }
 
 }
