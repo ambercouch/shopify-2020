@@ -1,0 +1,21 @@
+<div class="c-tag-list">
+
+
+  {% if collection.all_tags.size > 0 %}
+    <ul class="c-tag-list__list">
+      {% for tag in collection.all_tags %}
+        {% if current_tags contains tag %}
+          <li class="c-tag-list__item is-active">
+            {{ tag | link_to_remove_tag: tag }}
+          </li>
+        {% else %}
+          <li class="c-tag-list__item">
+            {{ tag | link_to_tag: tag }}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>
+

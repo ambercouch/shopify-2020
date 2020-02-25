@@ -1,0 +1,154 @@
+/*
+  BEM BLOCK .c-thumb
+ */
+
+.c-thumb {
+  display: block;
+  padding: $act-unit-s;
+    background: $brand-col-4;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-thumb--
+ */
+
+.c-thumb-- {
+  &type {
+    display: block
+  }
+  &search-result{
+    background: $brand-col-2;
+    padding: 0;
+  }
+  &blog{
+    background: white;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-thumb--
+
+[class*=c-thumb--] {
+  @extend .c-thumb;
+}
+
+/*
+  BEM ELEMENTS .c-thumb__
+ */
+
+.c-thumb__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block;
+    @include act-font-size($inuit-font-size-h3,1);
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link-title{
+    color: $brand-col-2;
+    text-decoration: none;
+  }
+
+  &link {
+    display: inline
+  }
+  &link-image{
+    margin: 0;
+  }
+  &link-read-more{
+    @include a($col : $brand-col-2);
+  }
+  &feature-image{
+    margin-bottom: $act-unit;
+  }
+  &meta{
+    color: $brand-col-2;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &info{
+  display: block;
+}
+  &excerpt{
+    color: $brand-col-2;
+    p{
+      margin-bottom: $act-unit-t;
+    }
+    >*:last-child{
+      margin-bottom: 0;
+    }
+
+  }
+
+  &btn{
+    text-align: center;
+    padding: $act-unit-s 0;
+    margin: $act-unit-s 0;
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-thumb--
+
+[class*=c-thumb__header--] {
+  @extend .c-thumb__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-thumb__info--
+
+[class*=c-thumb__info--] {
+  @extend .c-thumb__info;
+}
+
+
+.c-thumb__info--{
+  &search-result{
+    background: #fff;
+    padding: $act-unit-s;
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-thumb__feature-image--
+
+[class*=c-thumb__feature-image--] {
+  @extend .c-thumb__feature-image;
+}
+
+
+.c-thumb__feature-image--{
+  &search-result{
+    margin-bottom: 0;
+    padding: $act-unit-s;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-thumb__feature-image--
+
+[class*=c-thumb__btn--] {
+  @extend .c-thumb__btn;
+}
+
+
+.c-thumb__btn--{
+  &search-result{
+    margin-bottom: 0;
+    padding: $act-unit-s;
+  }
+  &blog{
+    display: none;
+  }
+}

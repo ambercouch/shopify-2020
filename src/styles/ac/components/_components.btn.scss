@@ -24,6 +24,8 @@
     background: transparent;
     border: solid ;
     margin: 0 auto;
+    padding-top: $act-unit-s;
+    padding-bottom: $act-unit-s;
     &:hover{
       background: rgba(white, 0.5);
     }
@@ -43,6 +45,34 @@
     @extend .o-btn--transparent;
     @extend .o-btn--tiny;
     colour: $brand-col-2;
+  }
+  &collection-thumb{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    color: $brand-col-2;
+    min-width: 200px;
+  }
+  &product-thumb{
+     @extend .c-btn;
+     @extend .c-btn--content-block;
+     color: $brand-col-2;
+     min-width: 200px;
+     padding-top: $act-unit-s;
+     padding-bottom: $act-unit-s;
+     &:hover{
+       color: $brand-col-2;
+     }
+   }
+  &thumb{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    color: $brand-col-2;
+    min-width: 200px;
+    padding-top: $act-unit-s;
+    padding-bottom: $act-unit-s;
+    &:hover{
+      color: $brand-col-2;
+    }
   }
 }
 

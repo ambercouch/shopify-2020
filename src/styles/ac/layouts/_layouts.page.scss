@@ -1,0 +1,148 @@
+/*
+  BEM BLOCK .l-page
+ */
+
+.l-page {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .l-page--
+ */
+
+.l-page-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-page--
+
+[class*=l-page--] {
+  @extend .l-page;
+}
+
+/*
+  BEM ELEMENTS .l-page__
+ */
+
+.l-page__ {
+  &header {
+    display: block;
+    text-align: center;
+  }
+
+  &heading {
+    display: block;
+    padding-top: 0 $act-unit;
+  }
+
+  &title {
+    display: inline;
+  }
+  &title-search-results{
+    font-weight: 700;
+    font-family: $act-font-family-sans;
+    @include act-font-size($act-fs-4);
+    color: $brand-col-2;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block;
+    padding: 0 $act-unit $act-unit;
+    text-align: center;
+    margin-bottom: $act-unit-l;
+  }
+
+  &footer {
+    display: block
+  }
+  &feature-image{
+    margin-bottom: $act-unit;
+  }
+  &tag-list{
+    display: none;
+  }
+  &sub-heading{
+    color: $brand-col-2;
+    margin-bottom: 0;
+  }
+  &site-search-form{
+    padding: $act-unit 0;
+    display: none;
+  }
+  &footer{
+    padding: $act-unit-s;
+  }
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__header--
+
+[class*=l-page__header--] {
+  @extend .l-page__header;
+}
+
+.l-page__header--{
+  &shop-collections{
+    background: $brand-col-5;
+    margin-bottom: 0;
+    color: $brand-col-2;
+    padding: $act-unit-l 0;
+  }
+  &search{
+    background: $brand-col-3;
+    color: $brand-col-2;
+    padding: $act-unit-l 0;
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__heading--
+
+[class*=l-page__heading--] {
+  @extend .l-page__heading;
+}
+
+.l-page__heading--{
+  &shop-collections{
+    color: $brand-col-2;
+    margin-bottom: 0;
+    font-weight: 700;
+  }
+  &search{
+    margin-bottom: 0;
+    color: $brand-col-2;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__sub-heading--
+
+[class*=l-page__sub-heading--] {
+  @extend .l-page__sub-heading;
+}
+
+.l-page__sub-heading--{
+  &shop-collections{
+    background: $brand-col-5;
+    margin-bottom: 0;
+    color: $brand-col-2;
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__feature-image--
+
+[class*=l-page__feature-image--] {
+  @extend .l-page__feature-image;
+}
+
+.l-page__feature-image--{
+  &shop-collections{
+    margin-bottom: 0;
+  }
+}

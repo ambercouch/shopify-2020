@@ -1,0 +1,62 @@
+<div class="c-thumb{{ modClass }}">
+  <!-- modclass {{ modClass }} ac-thumb.liquid -->
+{% if item.object_type == 'article' %}
+  {% assign imageType = 'image' %}
+  {% else %}
+  {% assign imageType = 'feature_image' %}
+  {% endif %}
+  {% if item[imageType] != blank %}
+    <div class="c-thumb__feature-image{{ modClass }}">
+    <a class="c-thumb__link-image" href="{{ item.url | within: collection }}">
+      {% include 'responsive-image' with
+        image: item[imageType],
+        max_width: 700,
+        max_height: 800
+      %}
+    </a>
+    </div>
+  {% endif %}
+  <div class="c-thumb__info{{ modClass }}">
+  <h4 class="c-thumb__heading">
+    <span class="c-thumb__title">
+      <a class="c-thumb__link-title" href="{{ item.url | within: collection }}">{{ item.title }}</a>
+    </span>
+  </h4>
+  <div class="c-thumb__meta">
+    {% case item.object_type%}
+    {% when 'product' %}
+      {% include 'ac-thumb-meta-product' %}
+    {% when 'article' %}
+      {% include 'ac-thumb-meta-article' %}
+    {% endcase %}
+  </div>
+    <div class="c-thumb__info{{ modClass }}">
+      {% case item.object_type%}
+       {% when 'product' %}
+
+      {% when 'article' %}
+        <div class="c-thumb__excerpt">
+          {{ item.excerpt }}
+        </div>
+        <div class="c-thumb__read-more">
+          <a class="c-thumb__link-read-more" href="item.url">Read More</a>
+        </div>
+
+
+      {% endcase %}
+    </div>
+    <div class="c-thumb__btn{{ modClass }}">
+      {% case item.object_type%}
+      {% when 'product' %}
+        {% assign btnLabel = 'View Product' %}
+      {% when 'collection' %}
+      {% assign btnLabel = 'View Products' %}
+      {% when 'article' %}
+      {% assign btnLabel = 'Read More' %}
+      {% endcase %}
+      <a class="c-btn--thumb " href="{{ item.url }}">
+        <span class="c-btn__link-label">{{ btnLabel }}</span>
+      </a>
+    </div>
+  </div>
+</div>

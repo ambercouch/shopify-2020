@@ -3,6 +3,7 @@
  */
 
 .c-content-block {
+
   padding-top: $act-unit;
   padding-bottom: $act-unit;
   display: flex;
@@ -11,6 +12,10 @@
   justify-content: center;
   &.has-image-pos-below-text{
     padding-bottom: 0;
+  }
+
+  &.has-footer-image{
+    padding-bottom: 200px;
   }
 }
 
@@ -29,6 +34,16 @@
   &dribble-bib{
     @include mq($from : desktop){
     }
+  }
+  &collection-list-1{
+     text-align: center;
+     padding-bottom: $act-unit-l;
+     margin-bottom: $act-unit;
+   }
+  &collection-list-2{
+    text-align: center;
+    padding-bottom: $act-unit-l;
+    margin-bottom: 0;
   }
 }
 
@@ -89,6 +104,26 @@
   &link{
    display: inline;
   }
+  &link-thumb{
+    text-decoration: none;
+    color: white;
+  }
+  &sub-heading{
+    font-weight: 300;
+    font-family: $act-font-family-sans;
+  }
+  &logo{
+    margin-bottom: 0;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  &block-image{
+    position: absolute;
+    left: -24px;
+    bottom: 0;
+    width: 200px;
+  }
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-content-block__header--
@@ -133,7 +168,21 @@
      flex-direction: column;
      text-decoration: none;
    }
+
  }
+
+//BEM ELEMENT MODIFIER FALLBACK .c-content-block__sub-heading--
+
+[class*=c-content-block__sub-heading--] {
+  @extend .c-content-block__sub-heading;
+}
+
+.c-content-block__sub-heading--{
+  &collection-list-2{
+    font-family: $act-font-family-headings;
+    font-weight: 500;
+  }
+}
 
 .is-text-layout-center{
   text-align: center;

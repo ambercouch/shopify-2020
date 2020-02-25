@@ -1,27 +1,15 @@
 {% paginate blog.articles by 5 %}
-
-  {%- assign blog_title = blog.title -%}
-
-  {% if current_tags %}
-    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
-  {% endif %}
-
-  <h1>{{ blog_title }}</h1>
-
+{%- assign blog_title = blog.title -%}
+<div class="l-main__page--blog">
+  <div class="l-page--blog">
+    <header class="l-page__header" role="banner">
+      <h1 class="l-page__heading" >
+        <span class="l-page__title">Blog</span>
+      </h1>
+    </header>
   {% if blog.all_tags.size > 0 %}
-    <h2>{{ 'blogs.general.categories' | t }}</h2>
-
-    <ul>
-      {% for tag in blog.all_tags %}
-
-        {% if current_tags contains tag %}
-          <li>{{ tag }}</li>
-        {% else %}
-          <li>{{ tag | link_to_tag: tag }}</li>
-        {% endif %}
-
-      {% endfor %}
-    </ul>
+    <h2>Tags</h2>
+    {% include 'ac-tag-list-blog' %}
   {% endif %}
 
 
@@ -30,13 +18,17 @@
   Article Previews
   ====================
   {% endcomment %}
+    <div class="l-page__thumb-list">
 
-  {% for article in blog.articles %}
+
+  {% for item in blog.articles %}
+    {% include 'ac-thumbnail' with modClass : '--blog' %}
+    {% comment %}
+
     <h3>
       <a href="{{ article.url }}">{{ article.title }}</a>
     </h3>
 
-    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
 
     <p>
       {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
@@ -86,11 +78,18 @@
     <p>
       <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
     </p>
-
+{% endcomment %}
   {% endfor %}
+    </div>
 
   {% if paginate.pages > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
+    <div class="l-page__footer">
+      <div class="l-page__pagination">
+        {% include 'pagination' %}
+      </div>
 
+    </div>
+  {% endif %}
+  </div>
+</div>
 {% endpaginate %}

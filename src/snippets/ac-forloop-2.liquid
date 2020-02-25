@@ -1,0 +1,27 @@
+{% assign blockLink =  collection.metafields.content-block.url1 %}
+<!-- forloop.index {{ forloop.index }} -->
+<div class="l-product-list__item">
+  <div class="l-product-list__content-block--{{ collection.metafields.content-block.title1 | handle  }}">
+    <div class="c-content-block--collection-list-1 c-content-block--{{  collection.metafields.content-block.title1 | handle }}">
+      {%  if blockLink != blank %}
+        <a href="{{blockLink}}" class="c-content-block__link-thumb">
+      {% endif %}
+      <header class="c-content-block__header ">
+        <h2 class="c-content-block__heading">
+                <span class="c-content-block__title">
+                  {{ collection.metafields.content-block.title1 }}
+                </span>
+        </h2>
+        <h4 class="c-content-block__sub-heading--collection-list-1">
+          {{ collection.metafields.content-block.subtitle1 }}
+        </h4>
+      </header>
+      <div class="c-content-block__body">
+        <p>{{ collection.metafields.content-block.text1 }}</p>
+      </div>
+          {%  if blockLink != blank %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

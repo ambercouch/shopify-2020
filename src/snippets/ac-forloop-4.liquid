@@ -1,0 +1,54 @@
+{% assign blockLink =  collection.metafields.content-block.url2 %}
+{% assign logoImage = images[collection.metafields.content-block.logo2] %}
+{% assign blockImage = images[collection.metafields.content-block.image2] %}
+{% if  images[collection.metafields.content-block.image2] %}
+{% assign hasImageClass = 'has-footer-image' %}
+{% endif %}
+<!-- forloop.index {{ forloop.index }} -->
+<div class="l-product-list__item">
+  <div class="l-product-list__content-block--{{ collection.metafields.content-block.title2 | handle  }} ">
+    <div class="c-content-block--collection-list-2 c-content-block--{{  collection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
+      {%  if blockLink != blank %}
+      <a href="{{blockLink}}" class="c-content-block__link-thumb">
+        {% endif %}
+      <header class="c-content-block__header ">
+
+        {% if logoImage != blank %}
+          <h3 class="c-content-block__logo">
+            {% include 'responsive-image' with
+              image: logoImage,
+              max_width: 700,
+              max_height: 700
+            %}
+          </h3>
+        {% endif %}
+
+        <h3 class="c-content-block__heading">
+                <span class="c-content-block__title">
+                  {{ collection.metafields.content-block.title2 }}
+                </span>
+        </h3>
+        <h4 class="c-content-block__sub-heading--collection-list-2">
+          {{ collection.metafields.content-block.subtitle2 }}
+        </h4>
+      </header>
+       
+      <div class="c-content-block__body">
+        <p>{{ collection.metafields.content-block.text2 }}</p>
+      </div>
+        {%  if blockLink != blank %}
+      </a>
+      {% endif %}
+      {% if collection.metafields.content-block.image2 %}
+        <div class="c-content-block__block-image">
+          {% include 'responsive-image' with
+            image: blockImage,
+            max_width: 700,
+            max_height: 700
+          %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

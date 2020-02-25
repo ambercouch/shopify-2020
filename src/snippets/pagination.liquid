@@ -1,3 +1,55 @@
-<div class="pagination">
-  {{ paginate | default_pagination }}
+<div class="c-pagination">
+  {%- if paginate.pages > 1 -%}
+    <nav class="c-pagination__nav" role="navigation">
+      <ol class="c-pagination__list">
+        {%- if paginate.previous-%}
+          <li class="c-pagination__item">
+            <a class="c-pagination__link--prev" href="{{ paginate.previous.url }}">
+              <span class="c-pagination__icon--prev" aria-hidden="true">&laquo;</span>
+              <span class="c-pagination__access-text--prev visuallyhidden">Previous page</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="c-pagination__item is-disabled" >
+            <span class="c-pagination__icon--prev"  aria-hidden="true">&laquo;</span>
+            <span class="c-pagination__access-text--prev visuallyhidden">Previous page</span>
+          </li>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <li class="c-pagination__item--page" >
+              <a class="c-pagination__link--page" href="{{ part.url }}">
+                <span class="c-pagination__access-text--page visuallyhidden">page</span> <span class="c-pagination__label--page">{{ part.title }}</span>
+              </a>
+            </li>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <li class="c-pagination__item--page is-active" >
+                  <span class="c-pagination__access-text--page visuallyhidden">page</span> <span class="c-pagination__label--page">{{ part.title }}</span>
+              </li>
+            {%- else -%}
+              <li class="c-pagination__item--page" >
+                <span class="c-pagination__access-text--page visuallyhidden">page</span> <span class="c-pagination__label--page">{{ part.title }}</span>
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li class="c-pagination__item--next">
+            <a class="c-pagination__link--next" href="{{ paginate.next.url }}">
+              <span class="c-pagination__access-text--next visuallyhidden">Next page</span>
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {%- else -%}
+          <li class="c-pagination__item--next is-disabled">
+            <span class="visuallyhidden">Next page</span>
+            <span aria-hidden="true">&raquo;</span>
+          </li>
+        {%- endif -%}
+      </ol>
+    </nav>
+  {%- endif -%}
 </div>

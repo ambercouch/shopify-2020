@@ -18,6 +18,9 @@
            value="{{ search.terms | escape  | replace : '*' , ' ' | strip }}"
            placeholder="{{ 'general.search.placeholder' | t }}"
            class="c-site-search-form__input">
+
+  <input type="hidden" name="type" value="product" />
+
 <div class="c-site-search-form__btn--search-close">
     <button id="searchControlClose"  class="c-btn--search-close search-site__control--close" data-control="siteSearch" data-state="off">
       {% include 'icon-close' %}

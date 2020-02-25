@@ -2,26 +2,39 @@
   This page represents the /collections and /products pages.
 {% endcomment %}
 
-<h1>{{ page_title }}</h1>
+<div class="l-main__page--shop-collections">
+  <div class="l-page--shop-collections">
+    <header class="l-page__header--shop-collections" role="banner">
+      <h1 class="l-page__heading--shop-collections" >
+        <span class="l-page__title">Shop</span>
+      </h1>
+      <h4 class="l-page__sub-heading">Discover products that <br>make your life easier!</h4>
+      </header>
+    <div class="l-page__feature-image--shop-collections">
+      <img src="{{ 'collection_list_header.png' | asset_img_url : 'master' }}" alt="" class="l-page__img">
+    </div>
+    <div class="l-page__product-list--collections">
+      <div class="l-product-list--collections">
+        <div class="l-product-list__list">
+          {% for collection in collections %}
 
-{% for collection in collections %}
-  {% unless collection.handle == 'frontpage' %}
-    <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
-      {% if collection.image != blank or collection.products.first != blank %}
-        {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
-        {% include 'responsive-image' with
-          image: image_object,
-          max_width: 480,
-          max_height: 480
-        %}
-      {% else %}
-        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-      {% endif %}
-    </a>
+            {% assign hideCollection = collection.metafields.global.hide_collection %}
+            {% assign showCollection = collection.metafields.global.show_collection %}
 
-    <p>
-      <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
-    </p>
-  {% endunless %}
-{% endfor %}
+
+            {% if collection.image != blank and hideCollection != "true" %}
+              <div class="l-product-list__item">
+                <div class="l-product-list__collection-thumb">
+                  {% include 'ac-collection-thumb' %}
+
+              </div>
+              </div>
+            {% endif %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>

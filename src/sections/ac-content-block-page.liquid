@@ -72,7 +72,7 @@
     {% endif %}
     {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
       <div class="c-content-block__footer">
-      <a class="c-content-block__link u-col-{{ cb_button_colour_class }}" href="{{ section.settings.cb_button_link }}">
+      <a class="c-content-block__link--btn u-col-{{ cb_button_colour_class }}" href="{{ section.settings.cb_button_link }}">
         <span class="c-content-block__link-label">{{ section.settings.cb_button_label | escape }}</span>
       </a>
       </div>

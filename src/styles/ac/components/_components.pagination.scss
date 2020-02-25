@@ -1,0 +1,127 @@
+/*
+  BEM BLOCK .c-pagination
+ */
+
+.c-pagination{
+  display: block;
+  text-align: center;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-pagination--
+ */
+
+.c-pagination--{
+  &type{
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-pagination--
+
+[class*=c-pagination--]{
+  @extend .c-pagination;
+}
+
+/*
+  BEM ELEMENTS .c-pagination__
+ */
+
+.c-pagination__{
+  &header{
+    display: block
+  }
+
+  &heading{
+    display: block
+  }
+
+  &title{
+    display: inline;
+  }
+
+  &link{
+    display: block;
+    text-decoration: none;
+  }
+
+  &content{
+    display: block
+  }
+
+  &footer{
+    display: block
+  }
+  &access-text{
+    @include inuit-hidden-visually();
+  }
+  &list{
+    @extend .o-list-bare;
+    display: inline-flex;
+    margin-bottom: 0;
+  }
+  &item{
+    display: inline-block;
+    @include size($act-unit);
+    margin: 0 $act-unit-t;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-pagination__header--
+
+[class*=c-pagination__header--]{
+  @extend .c-pagination__header;
+}
+
+.c-pagination__header--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-pagination__access-text--
+
+[class*=c-pagination__access-text--]{
+  @extend .c-pagination__access-text;
+}
+
+.c-pagination__access-text--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-pagination__item--
+
+[class*=c-pagination__item--]{
+  @extend .c-pagination__item;
+}
+
+.c-pagination__item--{
+  &page{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-pagination__link--
+
+[class*=c-pagination__link--]{
+  @extend .c-pagination__link;
+}
+
+v--{
+  &page{
+
+  }
+}
+
+.c-pagination__item{
+  &.is-active{
+    background: rgba(white, 0.2);
+  }
+}
+
