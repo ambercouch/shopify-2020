@@ -1,0 +1,139 @@
+/*
+  BEM BLOCK .c-product-form
+ */
+
+.c-product-form {
+  display: block;
+  margin-bottom: $act-unit-s;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-product-form--
+ */
+
+.c-product-form-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-product-form--
+
+[class*=c-product-form--] {
+  @extend .c-product-form;
+}
+
+/*
+  BEM ELEMENTS .c-product-form__
+ */
+
+.c-product-form__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &product-price{
+    margin-bottom: $act-unit;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  &input-wrapper{
+    display: block;
+  }
+  &label{
+   @include inuit-hidden-visually();
+  }
+  &select{
+    @include size(100%);
+    display: block;
+    border: solid 3px $brand-col-2;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: $act-unit-t;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 13.4 9' enable-background='new 0 0 13.4 9' xml:space='preserve'%3E%3Cpath fill='%231D1C3B' d='M6.8,9L0.4,2.6C-0.1,2-0.1,1,0.4,0.4C1-0.1,2-0.1,2.6,0.4l4.2,4.2l4.1-4.2c0.6-0.6,1.5-0.6,2.1,0 c0.6,0.6,0.6,1.5,0,2.1L6.8,9z'/%3E%3C/svg%3E%0A");    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+  }
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__header--
+
+[class*=c-product-form__header--] {
+  @extend .c-product-form__header;
+}
+
+.c-product-form__header--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__input-wrapper--
+
+[class*=c-product-form__input-wrapper--] {
+  @extend .c-product-form__input-wrapper;
+}
+
+.c-product-form__input-wrapper--{
+  &qty{
+    display: none;
+  }
+  &select{
+    @include size(100%);
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__label--
+
+[class*=c-product-form__label--] {
+  @extend .c-product-form__label;
+}
+
+.c-product-form__label--{
+  &qty{
+    display: none;
+  }
+}
+
+.shopify-product-form{
+  .c-product-form &{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: $act-unit-s;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__select--
+
+[class*=c-product-form__select--] {
+  @extend .c-product-form__select;
+}
+
+.c-product-form__select--{
+
+}

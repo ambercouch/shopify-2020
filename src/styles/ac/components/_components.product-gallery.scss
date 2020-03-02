@@ -1,0 +1,145 @@
+/*
+  BEM BLOCK .c-product-gallery
+ */
+
+.c-product-gallery {
+  display: block;
+  padding: $act-unit-s $act-unit;
+
+  .responsive-image__wrapper:before{
+padding-top: 100vw !important;
+  }
+  .responsive-image__wrapper{
+    width: 100vw !important;
+    max-width: 100% !important;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .c-product-gallery--
+ */
+
+.c-product-gallery-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-product-gallery--
+
+[class*=c-product-gallery--] {
+  @extend .c-product-gallery;
+}
+
+/*
+  BEM ELEMENTS .c-product-gallery__
+ */
+
+.c-product-gallery__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-bare;
+    margin-bottom: 0;
+  }
+  &item{
+    width: 25%;
+    height: 25vw;
+    padding: $act-unit-t;
+  }
+  &img{
+  //  display: block;
+    @include size(100%);
+    object-fit: cover;
+  }
+  &focus-image-container{
+    width: 100%;
+    height: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   margin: $act-unit-t 0 ;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-gallery__header--
+
+[class*=c-product-gallery__header--] {
+  @extend .c-product-gallery__header;
+}
+
+.c-product-gallery__header--{
+  &type{
+
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-gallery__list--
+
+ [class*=c-product-gallery__list--] {
+   @extend .c-product-gallery__list;
+ }
+
+.c-product-gallery__list--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-gallery__item--
+
+[class*=c-product-gallery__item--] {
+  @extend .c-product-gallery__item;
+}
+
+.c-product-gallery__item--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-gallery__img--
+
+[class*=c-product-gallery__img--] {
+  @extend .c-product-gallery__img;
+}
+
+.c-product-gallery__img--{
+  &type{
+
+  }
+  &focus{
+
+    height: 100vw !important;
+    max-height: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+
+
+
+

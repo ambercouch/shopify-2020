@@ -3,7 +3,6 @@
  */
 
 .c-content-block {
-
   padding-top: $act-unit;
   padding-bottom: $act-unit;
   display: flex;
@@ -24,9 +23,6 @@
  */
 
 .c-content-block-- {
-  &type {
-    display: block
-  }
   &quote{
     text-align: center;
     padding-bottom: $act-unit-l;
@@ -45,9 +41,59 @@
     padding-bottom: $act-unit-l;
     margin-bottom: 0;
   }
+  &product{
+    padding: $act-unit-t $act-unit 0;
+  }
+  &charity{
+    background: $brand-col-5;
+    padding: $act-unit $act-unit;
+    margin-bottom: $act-unit;
+  }
+  &features{
+    padding: $act-unit-t $act-unit 0;
+    margin-bottom: $act-unit-s;
+    &:after{
+      content : '';
+      display: block;
+      margin-top: $act-unit;
+      border-bottom: solid 3px $brand-col-6;
+    }
+
+  }
+  &care{
+    padding: $act-unit-t $act-unit 0;
+    margin-bottom: $act-unit-s;
+  }
+  &how-it-works{
+    padding: $act-unit-t $act-unit 0;
+    margin-bottom: $act-unit-s;
+    &:after{
+      content : '';
+      display: block;
+      margin-top: $act-unit;
+      border-bottom: solid 3px $brand-col-6;
+    }
+  }
+  &benefits{
+    padding: $act-unit-t $act-unit 0;
+    margin-bottom: $act-unit-s;
+  }
+  &safety{
+    padding: $act-unit-t $act-unit 0;
+    margin-bottom: $act-unit-s;
+    &:after{
+      content : '';
+      display: block;
+      margin-top: $act-unit;
+      border-bottom: solid 3px $brand-col-6;
+    }
+  }
+  &btn{
+    background: #000;
+  }
 }
 
-//BEM BLOCK MODIFIER FALLBACK .c-content-block--
+// BEM BLOCK MODIFIER FALLBACK .c-content-block--
 
 [class*=c-content-block--] {
   @extend .c-content-block;
@@ -123,10 +169,16 @@
     bottom: 0;
     width: 200px;
   }
+  &img{
+    max-width: none;
+  }
+  &btn{
+    display: block;
+  }
 
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-content-block__header--
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__header--
 
 [class*=c-content-block__header--] {
   @extend .c-content-block__header;
@@ -137,7 +189,7 @@
     margin-bottom: $act-unit;
   }
 }
-//BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
 
 [class*=c-content-block__heading--] {
   @extend .c-content-block__heading;
@@ -147,9 +199,33 @@
   &quote{
     color: $brand-col-4;
   }
+  &product{
+    color: $brand-col-2;
+    margin-bottom: $act-unit;
+  }
+  &features{
+    color: $brand-col-2;
+    margin-bottom: $act-unit;
+  }
+  &how-it-works{
+    color: $brand-col-2;
+    margin-bottom: $act-unit;
+  }
+  &care{
+    color: $brand-col-2;
+    margin-bottom: $act-unit;
+  }
+  &benefits{
+    color: $brand-col-2;
+    margin-bottom: $act-unit;
+  }
+  &safety{
+    color: $brand-col-2;
+    margin-bottom: $act-unit;
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-content-block__link--
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__link--
 
  [class*=c-content-block__link--] {
    @extend .c-content-block__link;
@@ -171,7 +247,7 @@
 
  }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-content-block__sub-heading--
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__sub-heading--
 
 [class*=c-content-block__sub-heading--] {
   @extend .c-content-block__sub-heading;
@@ -184,6 +260,40 @@
   }
 }
 
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__img--
+
+[class*=c-content-block__img--] {
+  @extend .c-content-block__img;
+
+}
+
+.c-content-block__img--{
+  &charity{
+    max-width: 200px !important;
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__btn--
+
+[class*=c-content-block__btn--] {
+  @extend .c-content-block__btn;
+
+}
+
+.c-content-block__btn--{
+  &care{
+    @include breakout-band($bgc : $brand-col-4);
+  }
+  &benefits{
+    @include breakout-band($bgc : $brand-col-1);
+  }
+}
+
+/*
+  BEM ATTRIBUTES
+ */
+
 .is-text-layout-center{
   text-align: center;
 }
+
