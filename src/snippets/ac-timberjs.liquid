@@ -1,0 +1,17 @@
+<!-- TIMBER JS -->
+
+<script src="{{ 'timber.js' | asset_url }}" defer="defer"></script>
+
+{% comment %}
+  Ajaxify your cart with this plugin.
+  Documentation:
+  - http://shopify.com/timber#ajax-cart
+{% endcomment %}
+<!-- AJAX CART -->
+
+{{ 'handlebars.min.js' | asset_url | script_tag }}
+
+{% include 'ac-ajax-cart-template' %}
+
+<script src="{{ 'ajax-cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'aj-cart-test.js' | asset_url }}" defer="defer" ></script>

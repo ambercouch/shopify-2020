@@ -1,0 +1,18 @@
+console.log('aj cart test');
+jQuery(function($) {
+  console.log('ajax cart test')
+  ajaxCart.init({
+    formSelector: '.shopify-product-form',
+    cartContainer: '#CartContainer',
+    addToCartSelector: '.c-btn--product-form-submit',
+    cartCountSelector: '.CartCount',
+    cartCostSelector: '#CartCost',
+    moneyFormat: {{ shop.money_format | json }}
+});
+});
+
+jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
+  // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
+  timber.RightDrawer.open();
+  //freeshipping();
+});
