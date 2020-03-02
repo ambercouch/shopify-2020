@@ -2,48 +2,67 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY state toggle multi control');
-ACSHOPIFY = {
+console.log('ACSHOPIFY ajax cart');
+const ACSHOPIFY = {
   common: {
     init: function() {
       'use strict';
       //uncomment to debug
 
-      let elem = document.querySelector('.c-quote-list__list');
-      let flkty = new Flickity( elem, {
-        // options
-        cellAlign: 'left',
-        contain: true,
-        prevNextButtons: false,
-      });
 
+      let elemQuote = document.querySelector('.c-quote-list__list');
+      if(elemQuote){
+        let flktyQuote = new Flickity( elemQuote, {
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+        });
+      }else{
+        console.log('No .c-quote-list__list');
+      }
+
+
+      let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      if(elemProductThumb){
+        let flktyProductThumb = new Flickity( elemProductThumb, {
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+          imagesLoaded: true
+        });
+      }else{
+        console.log('No .c-quote-list__list');
+      }
+
+      $('[data-control-radio]').each(function(){
+          console.log('radio-control');
+      });
       $('[data-control]').each(function() {
 
-        console.log('data-state');
+        const containerId = $(this).attr('data-control');
 
-        let containerId = $(this).attr('data-control');
+        const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
 
-        let controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
+        const control = $(controlSelector);
 
-        let control = $(controlSelector);
-        console.log(control);
-        let controlGroupId = control.attr('data-state-group');
+        const controlGroupId = control.attr('data-state-group');
 
-        let containerSelector = (containerId != '' )? '[data-container='+ containerId + ']' : '[data-container]';
-        let container = $(containerSelector);
+        const containerSelector = (containerId != '' )? '[data-container='+ containerId + ']' : '[data-container]';
+        const container = $(containerSelector);
         control.off('click');
         control.on('click',  function (e) {
 
-          let state = control.attr('data-state');
-          console.log('state');
-          console.log(state);
+          const state = control.attr('data-state');
           e.preventDefault();
-
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
 
           if (controlGroupId){
 
-            ACSHOPIFY.fn.actStateToggleGroup(control, controlGroupId);
+            ACSHOPIFY.fn.actStateToggleGroup(control, controlGroupId, state);
+            ACSHOPIFY.fn.actStateToggleSelect(container, state);
+            //ACSHOPIFY.fn.actStateToggleGroup(container, controlGroupId);
 
           }else{
 
@@ -75,16 +94,25 @@ ACSHOPIFY = {
       // console.log('posts');
     }
   },
-  fn:{
-    actStateToggleGroup : function (control, stateGroupId){
-      $('[data-state-group='+stateGroupId+']').not(control).attr('data-state', 'off');
+  fn:{actStateToggleGroup : function (control, stateGroupId, state){
+        $('[data-state-group='+stateGroupId+']').not(control).each(function(){
+          if ('off' === $(this).attr('data-state') ) {
+            $(this).attr('data-state', 'on');
+          } else if ('on' === $(this).attr('data-state') ) {
+            $(this).attr('data-state', 'off');
+          } else{
+            console.log('compfail');
+            console.log($(this).attr('data-state'));
+          }
+        })
+
     },
-    actStateToggleSelect : function (control, state) {
+    actStateToggleSelect : function (element, state) {
       if('off' === state ){
-        control.attr('data-state', 'on');
+        element.attr('data-state', 'on');
       }
       if('on' === state){
-        control.attr('data-state', 'off')
+        element.attr('data-state', 'off');
       }
     },
     actStateToggle: function (container, showButton, parent, listParent) {
