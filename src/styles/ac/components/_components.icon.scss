@@ -3,10 +3,9 @@
  */
 
 .c-icon {
+  @include size(100%);
     display: inline-block;
     vertical-align: middle;
-    width: 20px;
-    height: 20px;
     fill: currentColor;
     .no-svg & {
       display: none;
@@ -43,6 +42,10 @@
     .c-site-search-form &{
       color: $brand-col-2;
     }
+  }
+  &arrow-left{
+    @include size(25px);
+    color: $brand-col-5;
   }
 
 }

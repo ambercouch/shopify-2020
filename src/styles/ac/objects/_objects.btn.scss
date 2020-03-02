@@ -63,5 +63,15 @@
   &flush{
     padding: 0!important;
   }
+  &icon-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
+.o-btn__icon--{
+  &left{
+    margin-right: $act-unit-s;
+  }
 }

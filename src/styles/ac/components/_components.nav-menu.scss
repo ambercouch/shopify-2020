@@ -101,9 +101,7 @@
 
 .c-nav-menu__item--{
   &social{
-    .icon{
       @include size($act-unit-l);
-    }
   }
   &mobile{
     padding: $act-unit-t;

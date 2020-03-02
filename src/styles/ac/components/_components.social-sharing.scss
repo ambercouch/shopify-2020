@@ -1,0 +1,92 @@
+/*
+  BEM BLOCK .c-social-sharing
+ */
+
+.c-social-sharing {
+  display: block;
+  color: $brand-col-2;;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-social-sharing--
+ */
+
+.c-social-sharing-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-social-sharing--
+
+[class*=c-social-sharing--] {
+  @extend .c-social-sharing;
+}
+
+/*
+  BEM ELEMENTS .c-social-sharing__
+ */
+
+.c-social-sharing__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline;
+    color: $brand-col-2;
+  }
+  &label{
+    display: inline;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-bare;
+    display: flex;
+    justify-content: center;
+  }
+  &item{
+    padding: $act-unit-s;
+  }
+  &icon{
+    @include size(40px);
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-social-sharing__header--
+
+[class*=c-social-sharing__header--] {
+  @extend .c-social-sharing__header;
+}
+
+.c-social-sharing__header--{
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-social-sharing__label--
+
+[class*=c-social-sharing__label--] {
+  @extend .c-social-sharing__label;
+}
+
+.c-social-sharing__label--{
+  &access{
+    @include inuit-hidden-visually();
+  }
+}
+

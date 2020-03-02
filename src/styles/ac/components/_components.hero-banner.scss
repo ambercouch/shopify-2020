@@ -1,0 +1,131 @@
+/*
+  BEM BLOCK .c-hero-banner
+ */
+
+.c-hero-banner {
+  display: block;
+  margin-bottom: $act-unit;
+  position: relative;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-hero-banner--
+ */
+
+.c-hero-banner-- {
+  &stacked {
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: center;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-hero-banner--
+
+[class*=c-hero-banner--] {
+  @extend .c-hero-banner;
+}
+
+/*
+  BEM ELEMENTS .c-hero-banner__
+ */
+
+.c-hero-banner__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block;
+    position: absolute;
+    top:75%;
+    transform: translate(0, -50%);
+    padding-left: $act-unit;
+    line-height: 1;
+    @include mq($from : desktop){
+      padding-left: $act-unit-l;
+    }
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &image{
+    position: relative;
+  }
+  &img{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    @include mq($from : desktop){
+      height: auto;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-hero-banner__header--
+
+[class*=c-hero-banner__header--] {
+  @extend .c-hero-banner__header;
+}
+
+.c-hero-banner__header--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-hero-banner__heading--
+
+[class*=c-hero-banner__heading--] {
+  @extend .c-hero-banner__heading;
+}
+
+.c-hero-banner__heading--{
+  &stacked{
+    position: static;
+    transform: translate(0, 0);
+    padding-left: 0;
+    text-align: center;
+    margin-bottom: 0;
+    color: $brand-col-2;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-hero-banner__image--
+
+[class*=c-hero-banner__image--] {
+  @extend .c-hero-banner__image;
+}
+
+.c-hero-banner__image--{
+  &stacked{
+    position: static;
+    margin-bottom: $act-unit;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-hero-banner__img--
+
+[class*=c-hero-banner__img--] {
+  @extend .c-hero-banner__img;
+}
+
+.c-hero-banner__img--{
+  &stacked{
+    position: static;
+  }
+}
+

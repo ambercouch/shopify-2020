@@ -1,0 +1,195 @@
+/*
+  BEM BLOCK .c-recipe
+ */
+
+.c-recipe {
+  display: block;
+  position: relative;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-recipe--
+ */
+
+.c-recipe-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-recipe--
+
+[class*=c-recipe--] {
+  @extend .c-recipe;
+}
+
+/*
+  BEM ELEMENTS .c-recipe__
+ */
+
+.c-recipe__ {
+  &header {
+    display: block
+  }
+  &heading {
+    margin-bottom: 0;
+    display: inline-block;
+    width: auto;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block;
+    text-align: center;
+    background: $brand-col-1;
+    @extend .o-box;
+    p{
+      @include act-font-size($act-fs-2);
+      font-family: $act-font-family-headings;
+    }
+  }
+  &footer-icon{
+    padding: $act-unit-s;
+    .icon{
+      @include size(40px);
+    }
+  }
+  &tab-content{
+    background: $brand-col-2;
+    color: #fff;
+    @extend .o-box;
+    position: relative;
+    z-index: 2;
+    &[data-state=on]{
+      z-index: 3;
+      position: relative;
+    }
+    &[data-state=off]{
+      z-index: 1;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+  &tab{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    &[data-state=on]{
+      position: relative;
+    }
+    &[data-state=off]{
+      position: absolute;
+    }
+  }
+  &tab-title{
+    background: $brand-col-2;
+    color: #fff;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    border-radius: $act-unit-s $act-unit-s 0 0;
+    padding: $act-unit-t 0;
+    cursor: pointer;
+    pointer-events: all;
+  }
+  &list{
+    display: block;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__header--
+
+[class*=c-recipe__header--] {
+  @extend .c-recipe__header;
+}
+
+.c-recipe__header--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__heading--
+
+[class*=c-recipe__heading--] {
+  @extend .c-recipe__heading;
+}
+
+.c-recipe__heading--{
+  &method{
+    color: $brand-col-2
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__list--
+
+[class*=c-recipe__list--] {
+  @extend .c-recipe__list;
+}
+
+.c-recipe__list--{
+  &ingredients{
+    @extend .o-list-bare;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__tab--
+
+[class*=c-recipe__tab--] {
+  @extend .c-recipe__tab;
+}
+
+.c-recipe__tab--{
+  &method{
+    position: relative;
+    color: $brand-col-3;
+  }
+  &ingredients{
+    text-align: right;
+    position: relative;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__tab-content--
+
+[class*=c-recipe__tab-content--] {
+  @extend .c-recipe__tab-content;
+}
+
+.c-recipe__tab-content--{
+  &method{
+    background: $brand-col-5;
+    text-align: left;
+    color: $brand-col-2;
+  }
+  &ingredients{
+    text-align: left;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__tab-title--
+
+[class*=c-recipe__tab-title--] {
+  @extend .c-recipe__tab-title;
+}
+
+.c-recipe__tab-title--{
+  &method{
+    background: $brand-col-5;
+    color: $brand-col-2;
+  }
+}
+

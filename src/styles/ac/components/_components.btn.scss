@@ -20,7 +20,7 @@
     height: 100%;
   }
   &content-block{
-    border-radius:  $act-unit-s;
+    border-radius:  $act-unit-t;
     background: transparent;
     border: solid ;
     margin: 0 auto;
@@ -72,6 +72,56 @@
     padding-bottom: $act-unit-s;
     &:hover{
       color: $brand-col-2;
+    }
+  }
+  &product-form-submit{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    @extend .o-btn--full;
+    color: $brand-col-3;
+    @include act-font-size($act-fs-5,1);
+    &:hover, &:focus{
+      background: lighten($brand-col-3, 20%);
+      color: white;
+      border-color: $brand-col-3;
+    }
+  }
+  &product-bundle-link{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    @extend .o-btn--full;
+    color: white;
+    background: $brand-col-3;
+    @include act-font-size($act-fs-5,1);
+    border-radius: $act-unit-t;
+    border: solid 3px $brand-col-3;
+    &:hover,&:focus{
+      background: darken($brand-col-3, 10%) !important;
+      color: white;
+    }
+  }
+  &block-care{
+     @extend .o-btn--transparent;
+     @extend .o-btn--full;
+     color: $brand-col-2;
+     font-family: $act-font-family-headings;
+     font-weight: 700;
+     padding: $act-unit 0;
+     text-align: center;
+   }
+  &block-benefits{
+    @extend .c-btn--block-care;
+  }
+  &product-back{
+    @extend .o-btn--icon-left;
+    @extend .o-btn--transparent;
+    color: $brand-col-5;
+    font-family: $act-font-family-headings;
+    font-weight: 700;
+    &:hover, &:focus{
+      color: darken($brand-col-5, 10%);
+      @extend .o-btn--icon-left;
+      @extend .o-btn--transparent;
     }
   }
 }
