@@ -34,7 +34,7 @@
 
       {% if settings[social_link] != blank %}
         <li class="c-nav-menu__item--social">
-          <a class="c-nav-menu__item--social" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+          <a class="c-nav-menu__link--social" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
             {% include social_icon %}
             <span class="icon-fallback-text">{{ social }}</span>
           </a>
