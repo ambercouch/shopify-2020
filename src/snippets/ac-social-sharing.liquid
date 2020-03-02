@@ -1,0 +1,38 @@
+<!-- /snippets/social-sharing.liquid -->
+<div class="c-social-sharing">
+
+  <ul class="c-social-sharing__list">
+
+    {% if settings.share_facebook %}
+    <li class="c-social-sharing__item">
+      <a class="c-social-sharing__link" target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
+        <div class="c-social-sharing__icon">{% include 'icon-facebook' %}</div>
+        <span class="c-social-sharing__label--access" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
+        <span class="c-social-sharing__label--access visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% if settings.share_twitter %}
+    <li class="c-social-sharing__item">
+      <a class="c-social-sharing__link" target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
+        <div class="c-social-sharing__icon">{% include 'icon-twitter' %}</div>
+        <span class="c-social-sharing__label--access" aria-hidden="true">{{ 'general.social.share_on_twitter' | t }}</span>
+        <span class="c-social-sharing__label--access visually-hidden">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% if settings.share_pinterest %}
+    <li class="c-social-sharing__item">
+      <a class="c-social-sharing__link" target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}">
+       <div class="c-social-sharing__icon">{% include 'icon-pinterest' %}</div>
+        <span class="c-social-sharing__label--access"aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
+        <span class="c-social-sharing__label--access visually-hidden">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
+      </a>
+    </li>
+    {% endif %}
+
+  </ul>
+
+</div>
