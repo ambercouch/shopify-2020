@@ -1,0 +1,38 @@
+<div class="c-product-gallery">
+
+  <div class="c-product-gallery__focus-image-container">
+
+{% for image in product.images %}
+  {% capture wrapper_class %}
+    {%- unless featured_image == image -%}
+      hide
+    {%- endunless -%}
+  {% endcapture %}
+  <div class="c-product-gallery__focus-image">
+  {% include 'responsive-image' with
+    image: image,
+    max_width: 700,
+    max_height: 700,
+    image_attributes: "data-product-featured-image",
+    wrapper_class: wrapper_class,
+    image_class : 'c-product-gallery__img--focus'
+    wrapper_attributes: "data-product-image-wrapper",
+  %}
+  </div>
+
+{% endfor %}
+  </div>
+
+  {% if product.images.size > 1 %}
+    <ul class="c-product-gallery__list--thumb">
+      {% for image in product.images %}
+        <li class="c-product-gallery__item--thumb">
+          <a class="c-product-gallery__link--thumb" href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail{% if featured_image == image %} aria-current="true"{% endif %}>
+            <img class="c-product-gallery__img--thumb" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>
