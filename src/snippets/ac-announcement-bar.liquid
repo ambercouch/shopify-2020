@@ -1,6 +1,5 @@
-
+{%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
     <div class="c-announcement-bar">
-      {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
         {%- if section.settings.announcement_bar_link != blank -%}
           <a class="c-announcement-bar__link" href="{{ section.settings.announcement_bar_link }}">
             {{ section.settings.announcement_bar_text | escape }}
@@ -11,6 +10,5 @@
 
           </div>
         {%- endif -%}
-      {%- endif -%}
     </div><!-- .c-announcement-bar -->
-
+{%- endif -%}
