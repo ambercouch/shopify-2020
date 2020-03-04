@@ -26,8 +26,9 @@
     margin: 0 auto;
     padding-top: $act-unit-s;
     padding-bottom: $act-unit-s;
-    &:hover{
+    &:hover,&:focus{
       background: rgba(white, 0.5);
+      color: white;
     }
   }
   &mobile-nav-close{
@@ -51,6 +52,10 @@
     @extend .c-btn--content-block;
     color: $brand-col-2;
     min-width: 200px;
+    &:hover, &:focus{
+      @extend .c-btn--content-block;
+      color: $brand-col-2;
+    }
   }
   &product-thumb{
      @extend .c-btn;
@@ -122,6 +127,46 @@
       color: darken($brand-col-5, 10%);
       @extend .o-btn--icon-left;
       @extend .o-btn--transparent;
+    }
+  }
+  &cart-update{
+    @extend .o-btn--flush;
+    @extend .o-btn--tiny;
+    @extend .o-btn--transparent;
+    color: $brand-col-2;
+    &:hover, &:focus{
+      color: $brand-col-2;
+      @extend .o-btn--transparent;
+      @extend .o-btn--tiny;
+    }
+  }
+  &cart-remove{
+    padding: 3px;
+    @extend .o-btn--transparent;
+    color: #ccc;
+    border-radius: 50%;
+    border: solid 1px;
+    &:hover, &:focus{
+      padding: 3px;
+      @extend .o-btn--transparent;
+      color: #ccc;
+      border: solid 1px;
+
+    }
+  }
+  &cart-submit{
+    @extend .o-btn--full;
+    background: white;
+    color: $brand-col-2;
+    border:solid 3px;
+    border-radius: $act-unit-s;
+    font-family: $act-font-family-headings;
+    font-weight: 700;
+    &:hover, &:focus{
+      @extend .o-btn--full;
+      background: white;
+      color: $brand-col-2;
+      border:solid 3px;
     }
   }
 }

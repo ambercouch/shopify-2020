@@ -1,0 +1,103 @@
+/*
+  BEM BLOCK .c-cart-drawer
+ */
+
+.c-cart-drawer {
+  display: none;
+  background: $brand-col-4;
+  color: $brand-col-2;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  .js-drawer-open &{
+    display: block;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .c-cart-drawer--
+ */
+
+.c-cart-drawer-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-cart-drawer--
+
+[class*=c-cart-drawer--] {
+  @extend .c-cart-drawer;
+}
+
+/*
+  BEM ELEMENTS .c-cart-drawer__
+ */
+
+.c-cart-drawer__ {
+  &header {
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    background: $brand-col-3;
+    width: 100%;
+    padding: $act-unit-s $act-unit-t;
+  }
+
+  &heading {
+    display: block;
+    margin: 0 auto;
+    font-family: $act-font-family-headings;
+    font-weight: 700;
+    @include act-font-size($act-fs-2,1);
+  }
+
+  &title {
+    display: inline;
+  }
+  &notice{
+    text-align: center;
+    @extend .o-box;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &icon{
+    cursor: pointer;
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-cart-drawer__header--
+
+[class*=c-cart-drawer__header--] {
+  @extend .c-cart-drawer__header;
+}
+
+.c-cart-drawer__header--{
+
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-cart-drawer__icon--
+
+[class*=c-cart-drawer__icon--] {
+  @extend .c-cart-drawer__icon;
+}
+
+.c-cart-drawer__icon--{
+  &close{
+    width: 0;
+  }
+}
+

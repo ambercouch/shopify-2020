@@ -20,6 +20,13 @@
     background: $brand-col-2;
     padding: 0;
   }
+  &cart{
+    padding: 0;
+    background: #fff;
+    color: $brand-col-2;
+    display: grid;
+    grid-template-columns: 135px 1fr;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-product-thumb--
@@ -39,6 +46,7 @@
 
   &heading {
     display: block;
+    @include act-font-size($act-fs-5);
     @include act-font-size($inuit-font-size-h3,1);
     font-weight: 700;
     margin-bottom: 0;
@@ -74,20 +82,71 @@
     display: block
   }
   &info{
-  display: block;
-}
+    display: block;
+  }
   &btn{
     text-align: center;
     padding: $act-unit-s 0;
     margin: $act-unit-s 0;
 
   }
+  &wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  &qty-sep{
+    display: none;
+  }
+  &input{
+    width: auto;
+  }
+  &variant{
+    margin: $act-unit-t;
+    margin-left: 0;
+    @include act-font-size($act-fs-6, 1);
+  }
+  &variant-title{
+  }
+  &options{
+    @include act-font-size($act-fs-6);
+  }
+  &qty{
+    display: flex;
+  }
+  &cart-remove{
+    text-align: right;
+    margin-bottom: $act-unit-t;
+  }
+  &img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-product-thumb--
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__header--
 
 [class*=c-product-thumb__header--] {
   @extend .c-product-thumb__header;
+}
+
+.c-product-thumb__header--{
+
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__heading--
+
+[class*=c-product-thumb__heading--] {
+  @extend .c-product-thumb__heading;
+}
+
+.c-product-thumb__heading--{
+  &cart{
+    color: $brand-col-2;
+    margin-bottom: $act-unit-t;
+    @include act-font-size($act-fs-5,1)
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__info--
@@ -117,4 +176,87 @@
     margin-bottom: 0;
     padding: $act-unit-s;
   }
+  &cart{
+    margin-bottom: 0;
+    border-radius: $act-unit-s;
+    border: solid 3px $brand-col-2;
+    @include size(135px);
+  }
 }
+
+
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__wrapper--
+
+[class*=c-product-thumb__wrapper--] {
+  @extend .c-product-thumb__wrapper;
+}
+
+
+.c-product-thumb__wrapper--{
+  &search-result{
+    background: #fff;
+    padding: $act-unit-s;
+
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__input--
+
+[class*=c-product-thumb__input--] {
+  @extend .c-product-thumb__input;
+}
+
+
+.c-product-thumb__input--{
+  &qty{
+    text-align: center;
+    width: $act-unit;
+    @include act-font-size($act-fs-5);
+    padding: 0;
+    line-height: 1.4;
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__btn--
+
+[class*=c-product-thumb__btn--] {
+  @extend .c-product-thumb__btn;
+}
+
+
+.c-product-thumb__btn--{
+  &cart-update{
+    margin: 0;
+    padding: 0;
+    margin-left: $act-unit-s;
+    display: flex;
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__content--
+
+[class*=c-product-thumb__content--] {
+  @extend .c-product-thumb__content;
+}
+
+
+.c-product-thumb__content--{
+  &cart{
+    padding: $act-unit-t;
+    padding-left: $act-unit-s;
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__img--
+
+[class*=c-product-thumb__img--] {
+  @extend .c-product-thumb__img;
+}
+
+
+.c-product-thumb__img--{
+  &cart{
+    border-radius: $act-unit-s;
+  }
+}
+

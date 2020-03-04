@@ -308,7 +308,7 @@ console.log('ajaxCart init')
     // Show empty cart
     if (cart.item_count === 0) {
       $cartContainer
-      .append('<p>' + {{ 'cart.general.empty' | t | json }} + '</p>');
+      .append('<div class="c-cart-drawer__notice"><p>' + {{ 'cart.general.empty' | t | json }} + '</p></div>');
       cartCallback(cart);
       return;
     }

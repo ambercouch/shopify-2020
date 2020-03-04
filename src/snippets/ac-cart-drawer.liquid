@@ -1,80 +1,15 @@
 <div id="DrawerOverlay"></div>
-<div id="CartDrawer" class="drawer drawer--right">
-  <div class="shippingbar shipping-bar wrapper">
-    <h5 class="top-bar__message"></h5>
-  </div>
-  <div class="drawer__header">
-    <div class="drawer__title h3">
-      <div class='cartrow first_cart_row'>
-        <!--div class='bgscol1 logo-container'>
-              <a href='/'> <img src="{{'logo.png' | asset_url }}" class='cartlogo' />  </a> </div>
-            <div class='bgscol1'>
-              <ul class='cartlist'>
-                {%if  settings.cart_phone !='' %}
-                <li>Got a Question? Call Us</li>
-                <li> <span class='cartphonenumber'>{{ settings.cart-phone }} </span>
-                </li>
-                {%endif%}
+<div id="CartDrawer" class="c-cart-drawer is-right">
 
-              </ul>
-            </div-->
-
-
-      </div>
+  <div class="c-cart-drawer__header">
+    <div class="c-cart-drawer__heading">
+      <span class="c-cart-drawer__title" >{{ 'cart.general.title' | t }}</span>
     </div>
-    <div class="drawer__close js-drawer-close">
-
-      <span class="fallback-text">X</span>
-
+    <div class="c-cart-drawer__icon--close js-drawer-close">
+      {% include "icon-close" %}
+      <span class="icon-fallback-text">X</span>
     </div>
   </div>
-  <div id="CartContainer"></div>
-
-  <div class="cartrow drawer-row bottomrow text-center">
-    <p class="cupom-code-drawer"><strong>{{ settings.cart_text_1 }}</strong></p>
-    {% if settings.secure_image_drawer_enable %}
-      <img class="drawer-badges" src="{{'trust_drawer_badge.png' | asset_img_url: '900x' }}"  />
-    {% else %}
-      <img class="drawer-badges" src="{{'secure-partners.png' | asset_img_url: '900x' }}"  />
-    {% endif %}
-
-    {% if settings.review_drawer_enable %}
-      <div class="drawer-reviews">
-        <section class="drawer-review_single">
-          <div class="drawer-review_user">
-            {% if settings.cart_review_image1_enable %}<img class="drawer-user_image" src="{{ 'cartreview1.png' | asset_img_url: '50x' }}" />{% endif %}
-            <span class="user-name">{{ settings.cart_review_title_1 }}</span>
-          </div>
-          <span class="review-stars-verified"> Verified Purchase</span>
-          <p>{{ settings.cart_review_text_1 }}</p>
-        </section>
-
-        <section class="drawer-review_single">
-          <div class="drawer-review_user">
-            {% if settings.cart_review_image2_enable %}<img class="drawer-user_image" src="{{ 'cartreview2.png' | asset_img_url: '50x' }}" /> {% endif %}
-            <span class="user-name">{{ settings.cart_review_title_2 }}</span>
-          </div>
-          <span class="review-stars-verified"> Verified Purchase</span>
-          <p>{{ settings.cart_review_text_2 }}</p>
-        </section>
-
-        <section class="drawer-review_single">
-          <div class="drawer-review_user">
-            {% if settings.cart_review_image3_enable %}<img class="drawer-user_image" src="{{ 'cartreview3.png' | asset_img_url: '50x' }}" />{% endif %}
-            <span class="user-name">{{ settings.cart_review_title_3 }}</span>
-          </div>
-          <span class="review-stars-verified"> Verified Purchase</span>
-          <p>{{ settings.cart_review_text_3 }}</p>
-        </section>
-      </div>
-
-      {% if settings.secure_image_drawer_enable %}
-        <img class="drawer-badges" src="{{'trust_drawer_badge.png' | asset_img_url: '900x' }}"  />
-      {% else %}
-        <img class="drawer-badges" src="{{'secure-partners.png' | asset_img_url: '900x' }}"  />
-      {% endif %}
-      <a class='conshop ' href='/collections/all'> Continue Shopping </a>
-    {% endif %}
-  </div>
+  <div id="CartContainer" class="c-cart-drawer__cart" ></div>
 
 </div>
