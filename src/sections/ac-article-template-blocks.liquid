@@ -27,7 +27,7 @@
     </span>
   </div>
 
-  <div class="l-page__content--recipe">
+  <div class="l-page__content--article">
     {% if  article.content != blank %}
       <div class="rte">
         {{ article.content }}
@@ -85,9 +85,7 @@
     {% endif %}
     {% if blockText %}
     <div class="l-page__flex-item--text">
-      <div class="rte" >
         {{blockText }}
-      </div>
     </div>
       {% endif %}
   </div>
@@ -103,10 +101,12 @@
   {% endif %}
 
 </article>
-{% if section.settings.show_share_buttons %}
-  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
-{% endif %}
-{% include 'relatedblogs' %}
+<div class="c-recipe__footer">
+  <p>Share this article!</p>
+  <div class="c-recipe__social-sharing">
+    {% include 'ac-social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+  </div>
+</div>
 
 {% schema %}
   {

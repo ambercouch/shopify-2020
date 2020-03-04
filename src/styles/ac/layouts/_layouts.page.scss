@@ -113,6 +113,7 @@
     padding: 0 $act-unit $act-unit;
     text-align: left;
     margin-bottom: $act-unit-l;
+
   }
 
 }
@@ -226,6 +227,9 @@
   &recipe{
     text-align: left;
   }
+  &article{
+    margin-bottom: 0;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__footer--
@@ -238,6 +242,24 @@
   &product{
     //margin-bottom: $act-unit-s;
   }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__flex-item--
+
+[class*=l-page__flex-item--] {
+  @extend .l-page__flex-item;
+}
+
+.l-page__flex-item--{
+  &image{
+    padding: 0;
+  }
+  &text{
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
 }
 
 #wprev-slider-2656 .wprev_preview_bg1_T1 {
