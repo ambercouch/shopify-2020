@@ -1,0 +1,67 @@
+/*
+  BEM BLOCK .cta
+ */
+
+.cta {
+  display: block;
+  background: $brand-col-1;
+  @extend .o-box;
+  @include breakout-band($bgc : $brand-col-1);
+  text-align: center;
+  color: $brand-col-2;
+  font-weight: 700;
+  font-family: $act-font-family-headings;
+  margin-top: $act-unit;
+}
+
+/*
+  BEM BLOCK MODIFIER .cta--
+ */
+
+.cta-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .cta--
+
+[class*=cta--] {
+  @extend .cta;
+}
+
+/*
+  BEM ELEMENTS .cta__
+ */
+
+.cta__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .cta--
+
+[class*=cta__header--] {
+  @extend .cta__header;
+}

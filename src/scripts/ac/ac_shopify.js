@@ -2,13 +2,24 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY ajax cart some test ');
+console.log('ACSHOPIFY ajax cart reviews ');
 const ACSHOPIFY = {
   common: {
     init: function() {
       jQuery('body').addClass('ac-jquery-loaded');
       'use strict';
       //uncomment to debug
+
+
+        setTimeout(function(){
+          if ($(window).width() > 899){
+            $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
+          }else{
+            $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)');
+          }
+
+        }, 3000);
+
 
 
       let elemQuote = document.querySelector('.c-quote-list__list');

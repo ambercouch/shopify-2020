@@ -1,0 +1,41 @@
+<div class="l-main__page--reviews">
+  <div class="l-page--reviews">
+
+
+    <header class="l-page__header--reviews" role="banner">
+      <h1 class="l-page__heading--reviews" >
+        <span class="l-page__title"> {{ page.title }}</span>
+      </h1>
+    </header>
+
+    {% if page.content != '' %}
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    {% endif %}
+
+        <div class="srs_slider" id="srs_template_2656">
+
+        </div>
+
+        <div class="c-cta--reviews hide">
+          <div class="c-cta__content">
+            <div class="c-cta__intro-text">
+
+              <p>{{ page.metafields.global.cta_text }}</p>
+
+            </div>
+              <div class="c-cta__btn">
+                <a href="{{ page.metafields.global.cta_url }}" class="c-btn--reviews-cta">{{ page.metafields.global.cta_button_text }}</a>
+              </div>
+          </div>
+        </div>
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+
+
+</script>

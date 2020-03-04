@@ -169,6 +169,22 @@
       border:solid 3px;
     }
   }
+  &reviews-cta{
+    @extend .o-btn--full;
+    @extend .o-btn--transparent;
+    color: $brand-col-2;
+    border-radius: $act-unit-s;
+    border:solid 3px;
+    font-family: $act-font-family-sans;
+    &:hover, &:focus{
+      @extend .o-btn--full;
+      @extend .o-btn--transparent;
+      border-radius: $act-unit-s;
+      color: $brand-col-2;
+      border:solid 3px;
+      background: rgba(#fff, 0.3);
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-btn--
