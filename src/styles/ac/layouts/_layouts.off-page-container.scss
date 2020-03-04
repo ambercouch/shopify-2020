@@ -16,6 +16,9 @@
 
   left: 0;
   top: 0;
+  bottom:0;
+
+  overflow: auto;
 
   &[data-state=off]{
     opacity: 0 !important;
