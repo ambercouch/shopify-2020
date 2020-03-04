@@ -2,7 +2,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY ajax cart');
+console.log('ACSHOPIFY ajax cart some test ');
 const ACSHOPIFY = {
   common: {
     init: function() {
