@@ -4,6 +4,7 @@
 
 .c-icon {
   @include size(100%);
+  min-width: 20px;
     display: inline-block;
     vertical-align: middle;
     fill: currentColor;

@@ -121,5 +121,8 @@
   }
   &mobile{
     @include a($col : $brand-col-2);
+    &:hover, &:focus{
+      color: $brand-col-2;
+    }
   }
 }
