@@ -25,6 +25,10 @@
     background: white;
     padding-bottom: $act-unit-s;
   }
+  &article{
+    background: #fff;
+    color: $brand-col-2;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-page--
@@ -104,7 +108,11 @@
       border-bottom: solid 3px $brand-col-6;
       margin-top: $act-unit * 1.5;
     }
-
+  }
+  &flex-item{
+    padding: 0 $act-unit $act-unit;
+    text-align: left;
+    margin-bottom: $act-unit-l;
   }
 
 }

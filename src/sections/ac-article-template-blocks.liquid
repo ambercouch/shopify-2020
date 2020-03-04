@@ -1,0 +1,135 @@
+{% assign hImage = article.metafields.global.hero_image %}
+
+{% if article.metafields.global.feature_image == null %}
+  {% assign fImage =  article.image.src | img_url: '500x' %}
+{% else %}
+  {% assign fImage =  article.metafields.global.feature_image | file_img_url: '500x' %}
+{% endif %}
+
+{% if article.metafields.global.author != null %}
+  {% assign aAuthor =  article.metafields.global.author %}
+{% else %}
+  {% assign aAuthor =  article.author  %}
+{% endif %}
+
+<article class="l-page__article" role="article">
+  {% if hImage != null %}
+    <div class="l-page__hero-banner">
+      {% include "ac-hero-banner" with modClass : '--stacked'%}
+    </div>
+  {% endif %}
+  <div class="l-page__meta">
+    <span class="l-page__meta-text--author">
+      {{ 'blogs.article.by_author' | t: author: aAuthor }}
+    </span>
+    <span class="l-page____meta-text--date">
+      {{ article.published_at | time_tag: format: 'month_day_year' }}
+    </span>
+  </div>
+
+  <div class="l-page__content--recipe">
+    {% if  article.content != blank %}
+      <div class="rte">
+        {{ article.content }}
+      </div>
+    {% endif %}
+  </div>
+
+
+
+ {% for i in (1..10) %}
+   {% capture namespace %}block{{ i }}{% endcapture %}
+
+   {% case article.metafields[namespace]['layout_image']  %}
+     {% when 'center' %}
+     {% assign classImagePos = "is-image-center" %}
+     {% when 'right' %}
+     {% assign classImagePos = "is-image-right" %}
+      {% when 'left' %}
+      {% assign classImagePos = "is-image-left" %}
+     {% when'none' %}
+      {% assign classImagePos = "is-image-none" %}
+     {% else %}
+    {% assign classImagePos = '' %}
+     {% endcase %}
+
+   {% case article.metafields[namespace]['size_image']  %}
+   {% when '50' %}
+   {% assign classImageSize = "is-image-size-50" %}
+   {% when '30' %}
+   {% assign classImageSize = "is-image-size-30" %}
+
+     {% else %}
+   {% assign classImageSize = "is-image-size-none" %}
+   {% endcase %}
+
+   {% if  article.metafields[namespace]['text'] %}
+   {% assign blockText = article.metafields[namespace]['text'] %}
+     {% else %}
+     {% assign blockText = null %}
+ {% endif %}
+   {% if  article.metafields[namespace]['image'] %}
+     {% assign blockImage = article.metafields[namespace]['image'] %}
+     {% assign blockImageUrl = blockImage | file_img_url: '500x' %}
+     {% else %}
+     {% assign blockImage = null %}
+     {% assign blockImageUrl = null %}
+   {% endif %}
+
+   {% if article.metafields[namespace]['image'] or article.metafields[namespace]['text'] %}
+  <div class="l-page__flex-wrapper--block {{ classImagePos }} {{  classImageSize }}">
+    {% if blockImage %}
+      <div class="l-page__flex-item--image">
+        <img src="{{ blockImageUrl }}" alt="{{ blockImage }}" class="l-page__img">
+      </div>
+    {% endif %}
+    {% if blockText %}
+    <div class="l-page__flex-item--text">
+      <div class="rte" >
+        {{blockText }}
+      </div>
+    </div>
+      {% endif %}
+  </div>
+   {% endif %}
+
+  {% endfor %}
+
+
+  {% if article.metafields.global.footer_text %}
+  <div class="l-page__footer-info">
+    {{ article.metafields.global.footer_text }}
+  </div>
+  {% endif %}
+
+</article>
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+{% include 'relatedblogs' %}
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
