@@ -92,7 +92,7 @@
 .u-col-w{
   color: white !important;
   &:hover{
-    color: darken($brand-col-9, 20%) !important;
+    color: white;
   }
   &-hov:hover{
     color: white !important;
@@ -101,7 +101,7 @@
 .u-col-blacks{
   color: black !important;
   &:hover{
-    color: darken($brand-col-9, 20%) !important;
+    color: black
   }
   &-hov:hover{
     color: black !important;
