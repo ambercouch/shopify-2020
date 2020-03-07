@@ -77,14 +77,15 @@
    {% endif %}
 
    {% if article.metafields[namespace]['image'] or article.metafields[namespace]['text'] %}
-  <div class="l-page__flex-wrapper--block {{ classImagePos }} {{  classImageSize }}">
+  <div class="l-page__flex-block {{ classImagePos }} {{  classImageSize }}">
+    <div class="l-flex-block {{ classImagePos }} {{  classImageSize }}">
     {% if blockImage %}
-      <div class="l-page__flex-item--image">
+      <div class="l-flex-block__item--image">
         <img src="{{ blockImageUrl }}" alt="{{ blockImage }}" class="l-page__img">
       </div>
     {% endif %}
     {% if blockText %}
-    <div class="l-page__flex-item--text">
+    <div class="l-flex-block__item--text">
         {{blockText }}
     </div>
       {% endif %}
