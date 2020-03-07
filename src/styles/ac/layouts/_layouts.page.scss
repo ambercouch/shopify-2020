@@ -29,6 +29,11 @@
     background: #fff;
     color: $brand-col-2;
   }
+  &static-page {
+    color: $brand-col-2;
+    background: white;
+    text-align: left;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-page--
@@ -142,6 +147,9 @@
   &reviews{
     padding: $act-unit 0 !important;
 }
+  &static-page{
+
+  }
 }
 
 
@@ -172,6 +180,10 @@
     color: $brand-col-2;
     margin-bottom: 0;
   }
+  &static-page{
+    padding-top: $act-unit;
+    color: $brand-col-2 !important;
+  }
 
 }
 
@@ -188,6 +200,7 @@
     color: $brand-col-2;
 
   }
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__feature-image--
@@ -229,6 +242,9 @@
   }
   &article{
     margin-bottom: 0;
+  }
+  &static-page{
+    text-align: left;
   }
 }
 
