@@ -21,11 +21,48 @@
     <a class="c-btn--product-bundle-link" href="/collections/bibado-bundle">Build your own bundle and save up to 30%!</a>
   </div>
 
+
+  {% assign productType = product.type %}
   <div class="l-page__content--product">
+
+  {% for i in (1..10) %}
+    {% assign blockimageId = 'block_image_'  | append : i %}
+    {% assign blockTitleId = 'block_title_'  | append : i %}
+    {% assign blockContentId = 'block_content_'  | append : i %}
+    {% assign blockContentId = 'block_url_'  | append : i %}
+    {% assign blockContentId = 'block_link_'  | append : i %}
+
+    {% if product.metafields.blocks[blockTitleId] != nill %}
+      this is the product
+    {% assign blockTitle = product.metafields.blocks[blockTitleId] %}
+    {% elsif shop.metafields[productType][blockTitleId]  != nill %}
+      This is the shop
+    {% assign blockTitle = shop.metafields[productType][blockTitleId] %}
+      {% else %}
+      no matches
+    {% endif %}
+
+    block title {{  blockTitle }}<br>
+
+    shop.metafields['coverall-bib']['block_title_1'] {{ shop.metafields['coverall-bib']['block_title_1'] }}
+
     <div class="l-page__content-block--product">
       <div class="c-content-block--product">
         <h2 class="c-content-block__heading--product">
-          <span class="c-content-block__title" >Product Description</span>
+          <span class="c-content-block__title" > stuff - {{ blockTitle  }}</span>
+        </h2>
+        <div class="c-content-block__body">
+          {{ product.description }}
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+
+    <div class="l-page__content-block--product">
+      <div class="c-content-block--product">
+        <h2 class="c-content-block__heading--product">
+          <span class="c-content-block__title" >stuff - {{ productType  }}</span>
         </h2>
         <div class="c-content-block__body">
           {{ product.description }}
