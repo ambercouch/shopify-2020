@@ -16,10 +16,10 @@
     background: white;
   }
   &product{
-    color: $brand-col-2;
-    background: white;
-    padding-bottom: $act-unit-s;
-  }
+     color: $brand-col-2;
+     background: white;
+     padding-bottom: $act-unit-s;
+   }
   &reviews{
     color: $brand-col-2;
     background: white;
@@ -34,6 +34,7 @@
     background: white;
     text-align: left;
   }
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-page--
@@ -76,6 +77,10 @@
     padding: 0 $act-unit $act-unit;
     text-align: center;
     margin-bottom: $act-unit-l;
+  }
+
+  &content-block{
+    display: block;
   }
 
   &feature-image{
@@ -278,6 +283,27 @@
 
 }
 
+//BEM ELEMENT MODIFIER FALLBACK .l-page__content-block--
+
+[class*=l-page__content-block--] {
+  @extend .l-page__content-block;
+}
+
+.l-page__content-block--{
+  &product{
+    padding: 0 $act-unit;
+    &:after{
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      border-bottom: solid 3px $brand-col-6;
+    }
+
+  }
+
+}
+
 #wprev-slider-2656 .wprev_preview_bg1_T1 {
 
   background: $brand-col-2 !important;
@@ -322,3 +348,5 @@
   text-align: center !important;
 
 }
+
+
