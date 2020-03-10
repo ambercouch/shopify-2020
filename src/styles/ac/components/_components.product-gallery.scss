@@ -4,7 +4,7 @@
 
 .c-product-gallery {
   display: block;
-  padding: $act-unit-s $act-unit;
+  //padding: $act-unit-s $act-unit;
 
   .responsive-image__wrapper:before{
 padding-top: 100vw !important;
@@ -62,11 +62,13 @@ padding-top: 100vw !important;
   &list{
     @extend .o-list-bare;
     margin-bottom: 0;
+    padding: 0 $act-unit-s;
   }
   &item{
     width: 25%;
     height: 25vw;
     padding: $act-unit-t;
+    
   }
   &img{
   //  display: block;
@@ -79,7 +81,7 @@ padding-top: 100vw !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   margin: $act-unit-t 0 ;
+   margin: 0 ;
   }
 }
 
@@ -131,11 +133,11 @@ padding-top: 100vw !important;
 
   }
   &focus{
-
     height: 100vw !important;
     max-height: 100vw !important;
     width: 100% !important;
     max-width: 100% !important;
+    padding: $act-unit-s;
   }
 }
 

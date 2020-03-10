@@ -26,13 +26,16 @@
   <div class="l-page__content--product">
 
   {% for i in (1..10) %}
+    {% assign nextI = i | plus:  1 %}
     {% assign blockimageId = 'block_image_'  | append : i %}
     {% assign blockTitleId = 'block_title_'  | append : i %}
     {% assign blockContentId = 'block_content_'  | append : i %}
     {% assign blockUrlId = 'block_url_'  | append : i %}
     {% assign blockLinkTextId = 'block_link_text_'  | append : i %}
-    {% assign blockBGC = 'block_background_color_'  | append : i %}
-    {% assign blockBGC = 'block_text_color_'  | append : i %}
+    {% assign blockBgColId = 'block_background_color_'  | append : i %}
+    {% assign blockNextBgColId = 'block_background_color_'  | append : nextI %}
+    {% assign blockTextColid = 'block_text_color_'  | append : i %}
+
 
     {% if product.metafields.blocks[blockTitleId] != nill %}
 
@@ -94,10 +97,46 @@
       {% assign blockLinkText = nil %}
     {% endif %}
 
+    {% if product.metafields.blocks[blockBgColId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockBgCol = product.metafields.blocks[blockBgColId] %}
+      {% assign classHasBgc = 'has-bgc' %}
+
+      {% elsif shop.metafields[productType][blockBgColId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockBgCol = shop.metafields[productType][blockBgColId] %}
+      {% assign classHasBgc = 'has-bgc' %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockBgCol = nil %}
+      {% assign classHasBgc = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockNextBgColId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockNextBdCol = product.metafields.blocks[blockNextBgColId] %}
+      {% assign classHasNextBgc = 'has-next-bgc' %}
+
+      {% elsif shop.metafields[productType][blockNextBgColId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockNextBdCol = shop.metafields[productType][blockNextBgColId] %}
+      {% assign classHasNextBgc = 'has-next-bgc' %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockNextBdCol = nil %}
+      {% assign classHasNextBgc = nil %}
+    {% endif %}
+
 
     {% if blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil %}
 
-    <div class="l-page__content-block--product">
+    <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }}">
       <div class="c-content-block--product">
     {% if blockTitle != nil %}
         <h2 class="c-content-block__heading--product">
@@ -110,7 +149,7 @@
             {% endif %}
           {% if blockLinkText != nil %}
           <div class="c-content-block__btn--{{ i }}">
-            <a href="{{ blockUrl }}" class="c-btn--block--"{{ i }} >{{ blockLinkText }}</a>
+            <a href="{{ blockUrl }}" class="c-btn--block" >{{ blockLinkText }}</a>
           </div>
           {% endif %}
 

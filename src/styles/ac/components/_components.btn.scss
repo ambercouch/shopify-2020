@@ -83,18 +83,6 @@
     @extend .c-btn;
     @extend .c-btn--content-block;
     @extend .o-btn--full;
-    color: $brand-col-3;
-    @include act-font-size($act-fs-5,1);
-    &:hover, &:focus{
-      background: lighten($brand-col-3, 20%);
-      color: white;
-      border-color: $brand-col-3;
-    }
-  }
-  &product-bundle-link{
-    @extend .c-btn;
-    @extend .c-btn--content-block;
-    @extend .o-btn--full;
     color: white;
     background: $brand-col-3;
     @include act-font-size($act-fs-5,1);
@@ -103,6 +91,34 @@
     &:hover,&:focus{
       background: darken($brand-col-3, 10%) !important;
       color: white;
+    }
+  }
+  &product-bundle-link{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    @extend .o-btn--full;
+    color: $brand-col-3;
+    @include act-font-size($act-fs-5,1);
+    &:hover, &:focus{
+      background: lighten($brand-col-3, 20%);
+      color: white;
+      border-color: $brand-col-3;
+    }
+  }
+  &block{
+    @extend .o-btn--transparent;
+    @extend .o-btn--full;
+    color: $brand-col-3;
+    font-family: $act-font-family-headings;
+    font-weight: 700;
+    text-align: center;
+    border: solid 3px $brand-col-3;
+  border-radius: $act-unit-t;
+    &:hover{
+      @extend .o-btn--transparent;
+      @extend .o-btn--full;
+      color: $brand-col-3;
+      border: solid 3px $brand-col-3;
     }
   }
   &block-care{

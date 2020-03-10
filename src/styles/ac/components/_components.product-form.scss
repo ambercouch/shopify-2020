@@ -4,7 +4,9 @@
 
 .c-product-form {
   display: block;
-  margin-bottom: $act-unit-s;
+  margin-bottom: $act-unit * 1.5;
+  padding-bottom: $act-unit-l;
+  border-bottom: solid 3px $brand-col-6;
 }
 
 /*
@@ -76,6 +78,8 @@
     background-position: right .7em top 50%, 0 0;
     /* icon size, then gradient */
     background-size: .65em auto, 100%;
+    padding-left: $act-unit-s;
+    @include act-font-size($inuit-font-size-h5,1)
   }
 
 }
