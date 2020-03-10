@@ -1,0 +1,259 @@
+{% paginate collection.products by limit %}
+  {% if collection.image.src %}
+  {% assign classHasFeatureImage = 'has-feature-image' %}
+  {% endif %}
+
+  <div data-section-id="{{ section.id }}" data-section-type="collection-template">
+
+    <div class="l-main__page--collection-bundle">
+      <div class="l-page--collection-bundle {{ classHasFeatureImage }} ">
+
+        <header class="l-page__header" role="banner">
+
+          {% if collection.image.src %}
+            <div class="l-page__feature-image">
+              <img class="l-page__img" src="{{ collection.image.src | collection_img_url: 'large' }}"  alt="{{ collection.title | escape }}" />
+            </div>
+          {% else %}
+            <!-- no collection image -->
+          {% endif %}
+
+          <h1 class="l-page__heading--collection-bundle" >
+            <span class="l-page__title">{{ collection.title }}</span>
+          </h1>
+
+          <div class="l-page__tag-list">
+            {% include 'ac-tag-list' %}
+          </div>
+
+        </header>
+
+        <div class="l-page__content">
+          {% if collection.description != blank %}
+            <div class="rte">
+              {{ collection.description }}
+            </div>
+          {% endif %}
+        <div class="l-bundle-notes">
+          <div class="l-bundle-notes__header">
+            <h2 class="l-bundle-notes__heading">How to create your bundle</h2>
+          </div>
+          <div class="l-bundle-notes__content">
+            <div class="c-instruction-list">
+              <ol class="c-instruction-list__list">
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Select your items and add them to your bundle</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Click the "Buy My Bundle" button</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text"> Use your bundle discount code at checkout</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="l-page__product-list">
+          <div class="l-product-list">
+
+            <div class="l-product-list__list">
+              {% for product in collection.products %}
+                <div class="l-product-list__item">
+                  <div class="l-product-list__product-thumb">
+                    {% include 'ac-product-thumb-bundle' %}
+                  </div>
+                </div>
+                {% if forloop.index == 2 %}
+                  {% include 'ac-forloop-2' %}
+                {% endif %}
+                {% if forloop.index == 4 %}
+                  <!-- forloop.index {{ forloop.index }} -->
+                  <div class="l-product-list__item">
+                    {% include 'ac-forloop-4' %}
+                  </div>
+                {% else %}
+                  <!-- forloop.index {{ forloop.index }} -->
+                {% endif %}
+
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+
+        <div class="l-site-section--collection-bundle">
+          <div class="grid grid--uniform">
+            {% for product in collection.products %}
+              <div id="gridProductId{{ product.id }}" data-product-id="{{ product.id }}" class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+                {% include 'product-card-bundle', max_height: max_height %}
+
+                {% include 'add-form-bundle'%}
+
+              </div>
+              <div class="c-product-card__remodal" >
+                <div class="remodal" data-remodal-id="modal{{ product.id }}">
+                  <button data-remodal-action="close" class="remodal-close"></button>
+                  {% include 'ac-product-card-remodal' %}
+
+                </div>
+              </div>
+
+
+            {% endfor %}
+          </div>
+        </div>
+        <div class="l-site-section--collection-bundle">
+          <div class="grid grid--uniform grid--view-items ">
+            <div class="grid__item grid__item 'medium-up--one-whole'">
+
+              <div class="c-bundle-cart">
+                <header class="c-bundle-cart__header">
+                  <button name="add" id="AddBundleToCartHeader"  disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Buy Your Bundle
+                </span>
+                  </button>
+                </header>
+
+
+                <div id="bundleProductList" class="bundle-cart__product-list">
+
+                </div>
+
+                <footer class="c-bundle-cart__footer">
+                  <button name="add" id="AddBundleToCartFooter" disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Buy Your Bundle
+                </span>
+                  </button>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% include 'ac-bundels-off-page-notice' %}
+
+
+
+
+
+      {% if is_empty_collection %}
+        <div class="grid__item small--text-center">
+          <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+      {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+  "name": "Collection pages",
+  "settings": [
+  {
+  "type": "select",
+  "id": "layout",
+  "label": "Layout",
+  "default": "grid",
+  "options": [
+  {
+  "value": "grid",
+  "label": "Grid"
+  },
+  {
+  "value": "list",
+  "label": "List"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "grid",
+  "label": "Products per row (grid only)",
+  "default": "4",
+  "options": [
+  {
+  "value": "2",
+  "label": "2"
+  },
+  {
+  "value": "3",
+  "label": "3"
+  },
+  {
+  "value": "4",
+  "label": "4"
+  },
+  {
+  "value": "5",
+  "label": "5"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "rows",
+  "label": "Rows per page (grid only)",
+  "default": "2",
+  "options": [
+  {
+  "value": "2",
+  "label": "2"
+  },
+  {
+  "value": "3",
+  "label": "3"
+  },
+  {
+  "value": "4",
+  "label": "4"
+  },
+  {
+  "value": "5",
+  "label": "5"
+  },
+  {
+  "value": "6",
+  "label": "6"
+  },
+  {
+  "value": "7",
+  "label": "7"
+  },
+  {
+  "value": "8",
+  "label": "8"
+  }
+  ]
+  },
+  {
+  "type": "checkbox",
+  "id": "show_collection_image",
+  "label": "Show collection image",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "show_vendor",
+  "label": "Show product vendors",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "sort_enable",
+  "label": "Enable sorting",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "tags_enable",
+  "label": "Enable tag filtering",
+  "default": true
+  }
+  ]
+  }
+{% endschema %}
