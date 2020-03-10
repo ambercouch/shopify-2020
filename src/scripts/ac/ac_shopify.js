@@ -2,7 +2,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY ajax cart reviews ');
+console.log('ACSHOPIFY Product ');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -180,10 +180,12 @@ const ACSHOPIFY = {
       // console.log('pages');
     }
   },
-  post: {
+  product: {
     init: function() {
       // uncomment to debug
-      // console.log('posts');
+
+      // add the is-last-block to element for styling
+      $('.l-page__content-block--product').last().addClass('is-last-block');
     }
   },
   fn:{actStateToggleGroup : function (control, stateGroupId, state){
