@@ -98,13 +98,13 @@
     @extend .c-btn--content-block;
     @extend .o-btn--full;
     @extend .o-btn--transparent;
-    color: $brand-col-2;
+    color: $brand-col-3;
     @include act-font-size($act-fs-5,1);
     border-radius: $act-unit-t;
-    border: solid 3px $brand-col-2;
+    border: solid 3px $brand-col-3;
     &:hover,&:focus{
 
-      color: $brand-col-2;
+      color: $brand-col-3;
     }
   }
   &buy-bundle{

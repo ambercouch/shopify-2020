@@ -75,12 +75,23 @@
 .ajaxcart__qty {
   margin: 0;
 }
-.js-qty, .ajaxcart__qty {
+ .ajaxcart__qty {
   position: relative;
-  margin-bottom: 1em;
-  max-width: 100px;
-  min-width: 75px;
+  margin-bottom: 0;
   overflow: visible;
+  display: block;
+}
+.js-qty{
+  position: relative;
+  margin-bottom: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: space-around;
+}
+.js-qty__num{
+  width: 30%;
+  display: none;
+  border-radius: $act-unit-t;
 }
 .ajaxcart__qty--minus {
   border-color: #f2f2f2;
@@ -93,9 +104,8 @@
   border-right: 1px solid #e5e5e5;
 }
 
-.js-qty__adjust, .ajaxcart__qty-adjust {
+.ajaxcart__qty-adjust {
   cursor: pointer;
-  position: absolute;
   display: block;
   top: 0;
   bottom: 0;
@@ -104,10 +114,26 @@
   background: none;
   text-align: center;
   overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
+
+}
+.js-qty__adjust{
+  cursor: pointer;
+  display: block;
+  border: 0 none;
+  padding: $act-unit-t;
+  background: none;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+  color:white;
+  background: $brand-col-2;
+  @include size($act-unit * 1.5);
+  display: flex;
+  justify-content: center ;
+  align-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
 .js-qty input, .ajaxcart__qty input, .ajaxcart__qty input {
@@ -118,9 +144,9 @@
   display: block;
   background: none;
   text-align: center;
-  width: 100%;
-  padding: 5px 25px;
+  padding: 0;
   margin: 0;
+  border: solid 3px $brand-col-2;
 }
 
 .drawer input, .drawer textarea {

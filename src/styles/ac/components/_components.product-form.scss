@@ -83,7 +83,12 @@
     /* icon size, then gradient */
     background-size: .65em auto, 100%;
     padding-left: $act-unit-s;
-    @include act-font-size($inuit-font-size-h5,1)
+    @include act-font-size($inuit-font-size-h5,1);
+    padding: $act-unit-s;
+  }
+  &add-to-bundle{
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
 }
@@ -109,6 +114,11 @@
 .c-product-form__input-wrapper--{
   &qty{
     display: none;
+    .c-product-form--bundle &{
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+    }
   }
   &select{
     @include size(100%);
@@ -133,6 +143,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     column-gap: $act-unit-s;
+    row-gap: $act-unit-s;
   }
 }
 
