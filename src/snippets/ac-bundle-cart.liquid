@@ -1,0 +1,27 @@
+<div class="c-bundle-cart">
+  <header class="c-bundle-cart__header">
+    <button name="add" id="AddBundleToCartHeader"  disabled  class="c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Buy Your Bundle
+                </span>
+    </button>
+    <h2 class="c-bundle-cart__heading">
+      <span class="bundle-cart-title">
+        Bundle Summery
+      </span>
+    </h2>
+  </header>
+
+
+  <div id="bundleProductList" class="bundle-cart__product-list">
+
+  </div>
+
+  <footer class="c-bundle-cart__footer">
+    <button name="add" id="AddBundleToCartFooter" disabled  class="c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Buy Your Bundle
+                </span>
+    </button>
+  </footer>
+</div>

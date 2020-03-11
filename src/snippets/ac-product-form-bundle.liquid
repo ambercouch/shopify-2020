@@ -1,0 +1,77 @@
+<div class="c-product-form--bundle">
+{% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+
+  <input type="hidden" name="productId" value="{{ product.id }}" >
+  <input type="hidden" name="productTitle" value="{{ product.title }}" >
+  <input type="hidden" name="productShortName" value="{{ shortName }}" >
+
+
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      <div class="js c-product-form__options">
+
+        {% if forloop.index0 > 0 %}
+
+          {% for value in option.values %}
+            <div class="c-product-form__input-wrapper">
+            <input class="c-product-form__input--{{ option.name }}" type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+            <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
+            </div>
+          {% endfor %}
+
+        {% else %}
+        <div class="c-product-form__input-wrapper--select">
+          <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}">
+            {{ option.name }}
+          </label>
+
+          <select
+              class="c-product-form__select--{{ option.name }}"
+              id="Option{{ option.position }}"
+              name="options[{{ option.name | escape }}]">
+            {% for value in option.values %}
+              <option
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+                {{ value }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endunless %}
+
+  <noscript>
+    <select name="id">
+      {% for variant in product.variants %}
+        {% if variant.available %}
+        <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}">
+          {{ variant.title }}
+        </option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </noscript>
+  <div class="c-product-form__input-wrapper--qty">
+  <label class="c-product-form__label--qty" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+  <input class="c-product-form__input--qty" type="number" id="Quantity" name="quantity" value="1" min="1">
+  </div>
+
+
+  <div class="c-product-form__submit">
+  <button
+      class="c-btn--add-to-bundle"
+      type="submit"
+      name="add"
+      data-submit-button
+     >
+        <span data-submit-button-text>Add to bundle</span></button>
+  </div>
+{% endform %}
+</div>

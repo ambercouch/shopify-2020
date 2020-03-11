@@ -1,4 +1,4 @@
-{% paginate collection.products by limit %}
+{% paginate collection.products by 12 %}
   {% if collection.image.src %}
   {% assign classHasFeatureImage = 'has-feature-image' %}
   {% endif %}
@@ -57,82 +57,24 @@
               {% for product in collection.products %}
                 <div class="l-product-list__item">
                   <div class="l-product-list__product-thumb">
+
                     {% include 'ac-product-thumb-bundle' %}
+                    {% include 'ac-product-form-bundle'%}
+
                   </div>
                 </div>
-                {% if forloop.index == 2 %}
-                  {% include 'ac-forloop-2' %}
-                {% endif %}
-                {% if forloop.index == 4 %}
-                  <!-- forloop.index {{ forloop.index }} -->
-                  <div class="l-product-list__item">
-                    {% include 'ac-forloop-4' %}
-                  </div>
-                {% else %}
-                  <!-- forloop.index {{ forloop.index }} -->
-                {% endif %}
-
               {% endfor %}
             </div>
           </div>
         </div>
 
-
-        <div class="l-site-section--collection-bundle">
-          <div class="grid grid--uniform">
-            {% for product in collection.products %}
-              <div id="gridProductId{{ product.id }}" data-product-id="{{ product.id }}" class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
-                {% include 'product-card-bundle', max_height: max_height %}
-
-                {% include 'add-form-bundle'%}
-
-              </div>
-              <div class="c-product-card__remodal" >
-                <div class="remodal" data-remodal-id="modal{{ product.id }}">
-                  <button data-remodal-action="close" class="remodal-close"></button>
-                  {% include 'ac-product-card-remodal' %}
-
-                </div>
-              </div>
-
-
-            {% endfor %}
+        <footer class="l-page__footer--collection-bundle">
+          <div class="l-page__bundle-cart">
+            {% include 'ac-bundle-cart' %}
           </div>
-        </div>
-        <div class="l-site-section--collection-bundle">
-          <div class="grid grid--uniform grid--view-items ">
-            <div class="grid__item grid__item 'medium-up--one-whole'">
+        </footer>
 
-              <div class="c-bundle-cart">
-                <header class="c-bundle-cart__header">
-                  <button name="add" id="AddBundleToCartHeader"  disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
-                <span id="AddToCartText-{{ section.id }}">
-                 Buy Your Bundle
-                </span>
-                  </button>
-                </header>
-
-
-                <div id="bundleProductList" class="bundle-cart__product-list">
-
-                </div>
-
-                <footer class="c-bundle-cart__footer">
-                  <button name="add" id="AddBundleToCartFooter" disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
-                <span id="AddToCartText-{{ section.id }}">
-                 Buy Your Bundle
-                </span>
-                  </button>
-                </footer>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% include 'ac-bundels-off-page-notice' %}
-
-
-
-
+        {% include 'ac-off-page-notice' %}
 
       {% if is_empty_collection %}
         <div class="grid__item small--text-center">

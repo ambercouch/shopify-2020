@@ -128,6 +128,10 @@
     margin-bottom: $act-unit-l;
 
   }
+  &bundle-cart{
+    background: $brand-col-4;
+    color: $brand-col-2;
+  }
 
 }
 
@@ -268,6 +272,9 @@
 .l-page__footer--{
   &product{
     //margin-bottom: $act-unit-s;
+  }
+  &collection-bundle{
+    background: $brand-col-4;
   }
 }
 

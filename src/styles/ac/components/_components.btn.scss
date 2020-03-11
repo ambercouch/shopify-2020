@@ -93,6 +93,23 @@
       color: white;
     }
   }
+  &add-to-bundle{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    @extend .o-btn--full;
+    @extend .o-btn--transparent;
+    color: $brand-col-2;
+    @include act-font-size($act-fs-5,1);
+    border-radius: $act-unit-t;
+    border: solid 3px $brand-col-2;
+    &:hover,&:focus{
+
+      color: $brand-col-2;
+    }
+  }
+  &buy-bundle{
+    @extend .c-btn--product-form-submit;
+  }
   &product-bundle-link{
     @extend .c-btn;
     @extend .c-btn--content-block;

@@ -14,8 +14,12 @@
  */
 
 .c-product-form-- {
-  &type {
-    display: block
+  &bundle {
+    display: block;
+    @extend .o-box;
+    padding-bottom: $act-unit;
+    background: #fff;
+    margin-bottom: 0;
   }
 }
 
