@@ -15,7 +15,11 @@
 
 [data-container][data-state=off]{
   pointer-events: none !important;
+  [data-control]{
+    pointer-events: all !important;
+  }
 }
+
 
 // AJAX CART
 

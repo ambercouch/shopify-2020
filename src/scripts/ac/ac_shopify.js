@@ -10,7 +10,7 @@ const ACSHOPIFY = {
       'use strict';
       //uncomment to debug
 
-
+      // Facebook reviews script
         setTimeout(function(){
           if ($(window).width() > 899){
             $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
@@ -20,9 +20,9 @@ const ACSHOPIFY = {
 
         }, 3000);
 
-
-
+        // Quote flickity script
       let elemQuote = document.querySelector('.c-quote-list__list');
+
       if(elemQuote){
         let flktyQuote = new Flickity( elemQuote, {
           // options
@@ -34,7 +34,7 @@ const ACSHOPIFY = {
         console.log('No .c-quote-list__list');
       }
 
-
+      // Product gallery flickity script for thumbs
       let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
       if(elemProductThumb){
         let flktyProductThumb = new Flickity( elemProductThumb, {
@@ -51,9 +51,13 @@ const ACSHOPIFY = {
       $('[data-control-radio]').each(function(){
           console.log('radio-control');
       });
-      $('[data-control]').each(function() {
 
+      $('[data-control]').each(function() {
+        console.log('data-control found');
         const containerId = $(this).attr('data-control');
+
+        console.log('containerId');
+        console.log(containerId);
 
         const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
 
@@ -62,22 +66,25 @@ const ACSHOPIFY = {
         const controlGroupId = control.attr('data-state-group');
 
         const containerSelector = (containerId != '' )? '[data-container='+ containerId + ']' : '[data-container]';
-        const container = $(containerSelector);
-        control.off('click');
-        control.on('click',  function (e) {
 
+        const container = $(containerSelector);
+
+        control.off('click');
+
+        control.on('click',  function (e) {
+          console.log('clickered');
           const state = control.attr('data-state');
           e.preventDefault();
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
 
           if (controlGroupId){
-
+            console.log('clickered group');
             ACSHOPIFY.fn.actStateToggleGroup(control, controlGroupId, state);
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
             //ACSHOPIFY.fn.actStateToggleGroup(container, controlGroupId);
 
           }else{
-
+            console.log('clickered not group');
             // ACTIMBER.fn.actStateToggle(container, control);
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
           }
@@ -188,7 +195,8 @@ const ACSHOPIFY = {
       $('.l-page__content-block--product').last().addClass('is-last-block');
     }
   },
-  fn:{actStateToggleGroup : function (control, stateGroupId, state){
+  fn: {
+    actStateToggleGroup : function (control, stateGroupId, state){
         $('[data-state-group='+stateGroupId+']').not(control).each(function(){
           if ('off' === $(this).attr('data-state') ) {
             $(this).attr('data-state', 'on');
@@ -202,6 +210,8 @@ const ACSHOPIFY = {
 
     },
     actStateToggleSelect : function (element, state) {
+    console.log('element');
+    console.log(element);
       if('off' === state ){
         element.attr('data-state', 'on');
       }
