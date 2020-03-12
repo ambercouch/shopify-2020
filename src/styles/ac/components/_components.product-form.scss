@@ -90,6 +90,13 @@
     grid-column-start: 1;
     grid-column-end: 3;
   }
+  &form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: $act-unit-s;
+    row-gap: $act-unit-s;
+  }
 
 }
 
@@ -139,11 +146,7 @@
 
 .shopify-product-form{
   .c-product-form &{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    column-gap: $act-unit-s;
-    row-gap: $act-unit-s;
+    @extend .c-product-form__form;
   }
 }
 
