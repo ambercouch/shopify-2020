@@ -64,7 +64,7 @@
 
 </head>
 
-<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template | handle }}" data-template-type="{{ template.suffix | replace : ' ', '_'}}">
+<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-template-type="{{ template.suffix | replace : ' ', '_'}}">
 {% include "ac-cart-drawer" %}
 <div id="page" class="l-site">
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>

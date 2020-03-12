@@ -292,8 +292,8 @@ UTIL = {
   },
   init: function() {
     const body = document.body;
-    const  template = body.getAttribute('data-post-type');
-    const  handle = body.getAttribute('data-post-slug');
+    const  template = body.getAttribute('data-template');
+    const  handle = body.getAttribute('data-template-type');
 
     UTIL.exec('common');
     UTIL.exec(template);
