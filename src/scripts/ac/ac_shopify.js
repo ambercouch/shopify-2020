@@ -449,9 +449,9 @@ const ACSHOPIFY = {
         bundledProducts[variantId].variantPrice  = variantPrice;
         bundledProducts[variantId].productShortName  = productShortName;
         if (bundledProducts[variantId].hasOwnProperty('qty')){
-          bundledProducts[variantId].qty  = bundledProducts[variantId].qty + qty;
+          bundledProducts[variantId].qty  = bundledProducts[variantId].qty + parseInt(qty);
         }else{
-          bundledProducts[variantId].qty  = qty;
+          bundledProducts[variantId].qty  = parseInt(qty);
         }
 
         //return bundledProducts
@@ -551,11 +551,14 @@ const ACSHOPIFY = {
         let variantTitle = $('option:selected',this).text().trim();
         let variantPrice = $('option:selected', this).attr('data-variant-price');
         let productShortName = $('input[name=productShortName]',this).val();
+        let qty = $('[name="quantity"]', this).val();
 
         console.log('variantPrice');
         console.log(variantPrice);
+        console.log('qty');
+        console.log(qty);
 
-        bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName );
+        bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName, qty );
 
         const entries = Object.entries(bundledProducts);
 
@@ -589,6 +592,7 @@ const ACSHOPIFY = {
       $(document).on('click', '#AddBundleToCartHeader, #AddBundleToCartFooter, #AddBundleToCartOffPage', function () {
         let entries = Object.entries(bundledProducts);
         let values = {};
+        let $body = $(document.body);
 
         window.onbeforeunload = true;
 
@@ -604,10 +608,16 @@ const ACSHOPIFY = {
           data: {updates: values},
           dataType: 'json',
           success: function () {
-            window.location.href = "https://bibado.co.uk/cart";
+            //window.location.href = "/cart";
+            console.log('we have success so open up and load');
+            timber.RightDrawer.open();
+            ajaxCart.load();
           },
           error: function () {
             console.log('we have and error');
+          },
+          complete: function(jqxhr, text) {
+            $body.trigger('completeAddItem.ajaxCart', [this, jqxhr, text]);
           }
         });
 
