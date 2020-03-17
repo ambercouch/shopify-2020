@@ -1,3 +1,9 @@
+{% if product.metafields.nsac.short_name == null %}
+  {% assign shortName =  product.title %}
+{% else %}
+  {% assign shortName =  product.metafields.nsac.short_name  %}
+{% endif %}
+
 <div class="c-product-form--bundle">
 <form class="c-product-form__form">
 
@@ -23,7 +29,8 @@
                     {% if variant == current_variant %}selected="selected"{% endif %}
                     {% unless variant.available %}disabled="disabled"{% endunless %}
                     value="{{ variant.id }}"
-                    data-variant-price="{{ variant.price }}">
+                    data-variant-price="{{ variant.price }}"
+                    data-variant-image="{{ variant.image | img_url: '300x300' }}">
                   {{ variant.title }}
                 </option>
               {% endif %}

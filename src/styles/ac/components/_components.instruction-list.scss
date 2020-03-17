@@ -50,6 +50,9 @@
   &footer {
     display: block
   }
+  &text-line{
+    display: block;
+  }
   &list{
     @extend .o-list-bare;
     counter-reset: my-awesome-counter;
@@ -105,5 +108,24 @@
 .c-instruction-list__item--{
   &type{
 
+  }
+  &no-bul{
+    padding-left: 0;
+    &:before{
+      display: none;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__list--
+
+[class*=c-instruction-list__list--] {
+  @extend .c-instruction-list__list;
+}
+
+
+.c-instruction-list__list--{
+  &no-bul{
+    padding-left: 0;
   }
 }

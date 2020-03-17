@@ -195,14 +195,9 @@ const ACSHOPIFY = {
     bundles: function() {
       // uncomment to debug
       console.log('collection bundles');
-
       console.log('collection bundles timer confirm exit');
 
-
-
       const bundledProducts = {};
-
-
       let elBundlenNoticeCurrentDiscount = document.getElementById('bundleNoticeTextCurrentDiscount');
       let elBundlenNoticeNextDiscount = document.getElementById('bundleNoticeTextNextDiscount');
       let elBundlenNoticeNextDiscountItem = document.getElementById('bundleNoticeTextNextDiscountItem');
@@ -393,9 +388,51 @@ const ACSHOPIFY = {
 
         for (const [product, obj] of entries) {
 
-          elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+          const elTemp = `
+                <div class="l-cart-list__item"  >
+                <div class="l-cart-list__product-thumb">
+                <div class="c-product-thumb--cart" id="bundleItem${obj.variantId}">
+                
+                <div class="c-product-thumb__feature-image--cart">
+                   <img class="c-product-thumb__img--cart" src="${obj.variantImg}" alt="${obj.productTitle}">
+                 </div>
+                
+                <div class="c-product-thumb__content--cart">
+                
+                   <div class="c-product-thumb__cart-remove">
+                     <div class="c-cart-remove cart-remove">
+                      <button data-id="${obj.variantId}" class="c-btn--cart-remove">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="c-icon--close" viewBox="0 0 20 20"><path d="M15.89 14.696l-4.734-4.734 4.717-4.717c.4-.4.37-1.085-.03-1.485s-1.085-.43-1.485-.03L9.641 8.447 4.97 3.776c-.4-.4-1.085-.37-1.485.03s-.43 1.085-.03 1.485l4.671 4.671-4.688 4.688c-.4.4-.37 1.085.03 1.485s1.085.43 1.485.03l4.688-4.687 4.734 4.734c.4.4 1.085.37 1.485-.03s.43-1.085.03-1.485z"/></svg>
+                       </button>
+                     </div>
+                   </div>
+                 <h4 class="c-product-thumb__heading--cart">
+                     <span class="c-product-thumb__title">${obj.productShortName}</span>
+                 </h4>
+                 
+                  <div class="c-product-thumb__wrapper--cart-qty">
+                   <div class="c-product-thumb__variant">
+                   <span class="c-product-thumb__variant-title">${obj.variantTitle}</span>
+                   </div>
+                
+                  
+                   <div class="c-product-thumb__qty-sep">
+                       X
+                     </div>
+                      <div class="c-product-thumb__qty" id="qty${obj.variantId}"></div>
+                        </div>
+                  
+                      
+                
+                </div>
+                </div>
+                </div>
+          `;
 
-          $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number min="0" value=' + obj.qty + '>')
+          elBundleList.append(elTemp);
+         // elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+
+          $('#qty' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty c-product-thumb__input--qty " type=text min="0" value=' + obj.qty + '>')
 
 
         }
@@ -440,7 +477,7 @@ const ACSHOPIFY = {
         bundleTotal = parseInt(bundleTotal) + parseInt(price);
       }
       //add item to bundle
-      function bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName, qty){
+      function bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName, qty, variantImg){
         qty = (typeof qty == 'undefined') ? 1 : qty;
         bundledProducts[variantId] =  bundledProducts[variantId] || {};
         bundledProducts[variantId].variantTitle = variantTitle;
@@ -448,6 +485,7 @@ const ACSHOPIFY = {
         bundledProducts[variantId].productTitle  = productTitle;
         bundledProducts[variantId].variantPrice  = variantPrice;
         bundledProducts[variantId].productShortName  = productShortName;
+        bundledProducts[variantId].variantImg  = variantImg;
         if (bundledProducts[variantId].hasOwnProperty('qty')){
           bundledProducts[variantId].qty  = bundledProducts[variantId].qty + parseInt(qty);
         }else{
@@ -550,6 +588,7 @@ const ACSHOPIFY = {
         let variantId = $('option:selected',this).val();
         let variantTitle = $('option:selected',this).text().trim();
         let variantPrice = $('option:selected', this).attr('data-variant-price');
+        let variantImg = $('option:selected', this).attr('data-variant-image');
         let productShortName = $('input[name=productShortName]',this).val();
         let qty = $('[name="quantity"]', this).val();
 
@@ -558,7 +597,7 @@ const ACSHOPIFY = {
         console.log('qty');
         console.log(qty);
 
-        bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName, qty );
+        bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName, qty, variantImg );
 
         const entries = Object.entries(bundledProducts);
 
