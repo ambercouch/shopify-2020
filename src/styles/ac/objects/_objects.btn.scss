@@ -9,6 +9,11 @@
   background: $brand-col-1;
   color: #fff;
   text-decoration: none;
+  &[disabled]{
+    opacity: 0.5;
+    cursor: default;
+    filter: saturate(0.1);
+  }
 }
 
 .o-btn{

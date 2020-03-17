@@ -16,10 +16,10 @@
     background: white;
   }
   &product{
-    color: $brand-col-2;
-    background: white;
-    padding-bottom: $act-unit-s;
-  }
+     color: $brand-col-2;
+     background: white;
+     padding-bottom: $act-unit-s;
+   }
   &reviews{
     color: $brand-col-2;
     background: white;
@@ -34,6 +34,10 @@
     background: white;
     text-align: left;
   }
+  &collection-bundle{
+    padding-top: $act-unit-s;
+  }
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-page--
@@ -78,6 +82,10 @@
     margin-bottom: $act-unit-l;
   }
 
+  &content-block{
+    display: block;
+  }
+
   &feature-image{
     margin-bottom: $act-unit;
   }
@@ -119,6 +127,10 @@
     text-align: left;
     margin-bottom: $act-unit-l;
 
+  }
+  &bundle-cart{
+    background: $brand-col-4;
+    color: $brand-col-2;
   }
 
 }
@@ -183,6 +195,9 @@
   &static-page{
     padding-top: $act-unit;
     color: $brand-col-2 !important;
+  }
+  &collection-bundle{
+    color: $brand-col-5;
   }
 
 }
@@ -258,6 +273,9 @@
   &product{
     //margin-bottom: $act-unit-s;
   }
+  &collection-bundle{
+    background: $brand-col-4;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__flex-item--
@@ -274,6 +292,39 @@
     &:last-child{
       margin-bottom: 0;
     }
+  }
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__content-block--
+
+[class*=l-page__content-block--] {
+  @extend .l-page__content-block;
+}
+
+.l-page__content-block--{
+  &product{
+    padding: 0 $act-unit;
+    &:after{
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      border-bottom: solid 3px $brand-col-6;
+    }
+    &.has-bgc:after{
+      display: none !important;
+    }
+    &.has-next-bgc:after{
+      display: none !important;
+    }
+    &:last-child:after{
+      display: none !important;
+    }
+    &.is-last-block:after{
+      display: none !important;
+    }
+
   }
 
 }
@@ -322,3 +373,5 @@
   text-align: center !important;
 
 }
+
+

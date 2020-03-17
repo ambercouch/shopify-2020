@@ -60,6 +60,9 @@
   }
   &cart-list{
     padding-top: $act-unit-s;
+    position: relative;
+    overflow: auto;
+    height: 100vh;
   }
   &checkout{
     @extend .o-box--small;

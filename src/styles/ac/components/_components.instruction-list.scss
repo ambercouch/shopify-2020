@@ -1,0 +1,131 @@
+/*
+  BEM BLOCK .c-instruction-list
+ */
+
+.c-instruction-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-instruction-list--
+ */
+
+.c-instruction-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-instruction-list--
+
+[class*=c-instruction-list--] {
+  @extend .c-instruction-list;
+}
+
+/*
+  BEM ELEMENTS .c-instruction-list__
+ */
+
+.c-instruction-list__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &text-line{
+    display: block;
+  }
+  &list{
+    @extend .o-list-bare;
+    counter-reset: my-awesome-counter;
+    list-style: none;
+    padding-left: $act-unit;
+  }
+  &item{
+    counter-increment: my-awesome-counter;
+    position: relative;
+    padding-left: $act-unit-s;
+    margin-bottom: $act-unit-s;
+    color: $brand-col-1;
+    &:before{
+      content: counter(my-awesome-counter);
+      position: absolute;
+      left: - $act-unit;
+      top: 4px;
+      background: $brand-col-3;
+      color: $brand-col-1;
+      font-weight: 700;
+      font-family: $act-font-family-headings;
+      @include size($act-unit);
+      display: flex;
+      text-align: center;
+      border-radius: 50%;
+      line-height: 1;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__header--
+
+[class*=c-instruction-list__header--] {
+  @extend .c-instruction-list__header;
+}
+
+
+.c-instruction-list__header--{
+  &type{
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__item--
+
+[class*=c-instruction-list__item--] {
+  @extend .c-instruction-list__item;
+}
+
+
+.c-instruction-list__item--{
+  &type{
+
+  }
+  &no-bul{
+    padding-left: 0;
+    &:before{
+      display: none;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__list--
+
+[class*=c-instruction-list__list--] {
+  @extend .c-instruction-list__list;
+}
+
+
+.c-instruction-list__list--{
+  &no-bul{
+    padding-left: 0;
+  }
+}

@@ -4,7 +4,8 @@
 
 .l-cart-list {
   display: block;
-  padding-bottom: $act-unit;
+  padding-bottom: $act-unit-h * 3;
+  position:absolute;
 }
 
 /*

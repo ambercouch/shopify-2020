@@ -90,6 +90,8 @@
   }
   &btn{
     background: #000;
+    margin-bottom: $act-unit !important;
+    display: none !important;
   }
 }
 
@@ -150,30 +152,46 @@
   &link{
    display: inline;
   }
+
   &link-thumb{
     text-decoration: none;
     color: white;
   }
+
   &sub-heading{
     font-weight: 300;
     font-family: $act-font-family-sans;
   }
+
   &logo{
     margin-bottom: 0;
     max-width: 280px;
     margin: 0 auto $act-unit;
   }
+
   &block-image{
     position: absolute;
     left: -24px;
     bottom: 0;
     width: 200px;
   }
+
   &img{
     max-width: none;
   }
+
   &btn{
     display: block;
+    //margin-bottom: $act-unit;
+  }
+  &body{
+    margin-bottom: $act-unit;
+    *:last-child{
+      margin-bottom: 0;
+    }
+    .c-content-block__btn:first-child{
+      margin-top: $act-unit;
+    }
   }
 
 }

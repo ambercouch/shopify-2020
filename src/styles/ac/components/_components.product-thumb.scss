@@ -145,7 +145,8 @@
   &cart{
     color: $brand-col-2;
     margin-bottom: $act-unit-t;
-    @include act-font-size($act-fs-5,1)
+    @include act-font-size($act-fs-5,1);
+    text-align: left;
   }
 }
 

@@ -21,17 +21,146 @@
     <a class="c-btn--product-bundle-link" href="/collections/bibado-bundle">Build your own bundle and save up to 30%!</a>
   </div>
 
+
+  {% assign productType = product.type | handle %}
   <div class="l-page__content--product">
-    <div class="l-page__content-block--product">
+
+  {% for i in (1..10) %}
+    {% assign nextI = i | plus:  1 %}
+    {% assign blockimageId = 'block_image_'  | append : i %}
+    {% assign blockTitleId = 'block_title_'  | append : i %}
+    {% assign blockContentId = 'block_content_'  | append : i %}
+    {% assign blockUrlId = 'block_url_'  | append : i %}
+    {% assign blockLinkTextId = 'block_link_text_'  | append : i %}
+    {% assign blockBgColId = 'block_background_color_'  | append : i %}
+    {% assign blockNextBgColId = 'block_background_color_'  | append : nextI %}
+    {% assign blockTextColid = 'block_text_color_'  | append : i %}
+
+
+    {% if product.metafields.blocks[blockTitleId] != nill %}
+
+      <!-- Title from the product meta -->
+      {% assign blockTitle = product.metafields.blocks[blockTitleId] %}
+
+    {% elsif shop.metafields[productType][blockTitleId]  != nill %}
+
+      <!-- Title from the shop meta -->
+    {% assign blockTitle = shop.metafields[productType][blockTitleId] %}
+
+      {% else %}
+        <!-- no Title -->
+        {% assign blockTitle = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockContentId] != nill %}
+
+      <!-- Content from the product meta -->
+      {% assign blockContent = product.metafields.blocks[blockContentId] %}
+
+      {% elsif shop.metafields[productType][blockContentId]  != nill %}
+
+      <!-- Content from the shop meta -->
+      {% assign blockContent = shop.metafields[productType][blockContentId] %}
+
+    {% else %}
+      <!-- no Content -->
+      {% assign blockContent = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockUrlId] != nill %}
+
+    <!-- Url from the product meta -->
+    {% assign blockUrl = product.metafields.blocks[blockUrlId] %}
+
+    {% elsif shop.metafields[productType][blockUrlId]  != nill %}
+
+    <!-- Url from the shop meta -->
+    {% assign blockUrl = shop.metafields[productType][blockUrlId] %}
+
+  {% else %}
+    <!-- no Url -->
+    {% assign blockUrl = nil %}
+  {% endif %}
+
+    {% if product.metafields.blocks[blockLinkTextId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockLinkText = product.metafields.blocks[blockLinkTextId] %}
+
+      {% elsif shop.metafields[productType][blockLinkTextId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockLinkText = shop.metafields[productType][blockLinkTextId] %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockLinkText = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockBgColId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockBgCol = product.metafields.blocks[blockBgColId] %}
+      {% assign classHasBgc = 'has-bgc' %}
+
+      {% elsif shop.metafields[productType][blockBgColId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockBgCol = shop.metafields[productType][blockBgColId] %}
+      {% assign classHasBgc = 'has-bgc' %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockBgCol = nil %}
+      {% assign classHasBgc = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockNextBgColId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockNextBdCol = product.metafields.blocks[blockNextBgColId] %}
+      {% assign classHasNextBgc = 'has-next-bgc' %}
+
+      {% elsif shop.metafields[productType][blockNextBgColId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockNextBdCol = shop.metafields[productType][blockNextBgColId] %}
+      {% assign classHasNextBgc = 'has-next-bgc' %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockNextBdCol = nil %}
+      {% assign classHasNextBgc = nil %}
+    {% endif %}
+
+
+    {% if blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil %}
+
+    <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }}">
       <div class="c-content-block--product">
+    {% if blockTitle != nil %}
         <h2 class="c-content-block__heading--product">
-          <span class="c-content-block__title" >Product Description</span>
+          <span class="c-content-block__title" >{{ blockTitle  }}</span>
         </h2>
+    {% endif %}
         <div class="c-content-block__body">
-          {{ product.description }}
+          {% if blockContent != nil %}
+          {{ blockContent }}
+            {% endif %}
+          {% if blockLinkText != nil %}
+          <div class="c-content-block__btn--{{ i }}">
+            <a href="{{ blockUrl }}" class="c-btn--block" >{{ blockLinkText }}</a>
+          </div>
+          {% endif %}
+
         </div>
       </div>
     </div>
+
+    {% endif %}
+
+  {% endfor %}
+
 
     <div class="l-page__content-block--charity">
       <div class="c-content-block--charity">
@@ -41,86 +170,6 @@
         <div class="c-content-block__body--charity">
           <p>£1 from every order is donated to charitable causes in the UK and overseas, including Noah's Ark Children's Hospital Charity.</p>
           <img class="c-content-block__img--charity" src="{{ 'logo-noahs-ark.svg' | asset_url }}" />
-        </div>
-      </div>
-    </div>
-
-    <div class="l-page__content-block--features">
-      <div class="c-content-block--features">
-        <h2 class="c-content-block__heading--features">
-          <span class="c-content-block__title" >Features</span>
-        </h2>
-        <div class="c-content-block__body--features">
-          <ul>
-            <li>Baby soft Velcro with fully adjustable neck so ﬁts well from the start of weaning till the end</li>
-            <li>Suitable from six months old</li>
-            <li>Hard wearing, waterproof material</li>
-            <li>Long sleeves with unique length adjustability</li>
-            <li>Adjustable Velcro highchair attachment</li>
-            <li>Elasticated close ﬁtting cuﬀs</li>
-            <li>Folds into internal pocket for use out and about</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="l-page__content-block--care">
-      <div class="c-content-block--care">
-        <h2 class="c-content-block__heading--care">
-          <span class="c-content-block__title" >Composition and Care</span>
-        </h2>
-        <div class="c-content-block__body--care">
-          <ul>
-            <li>Machine wash at 30</li>
-            <li>Do not tumble dry</li>
-            <li>PU coated Polyester</li>
-            <li>Colours: Navy or Yellow stripes, with Watermelon print</li>
-          </ul>
-          <div class="c-content-block__btn--care">
-            <a href="/" class="c-btn--block-care">How do I keep my BIBaDO Clean?</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="l-page__content-block--how-it-works">
-      <div class="c-content-block--how-it-works">
-        <h2 class="c-content-block__heading--how-it-works">
-          <span class="c-content-block__title" >How Your Coverall Bib Works</span>
-        </h2>
-        <div class="c-content-block__body">
-         <p>It really couldn’t be simpler. Drape your weaning bib over the shoulders, arms and the part of the tray nearest the baby, then run the Velcro straps underneath the tray to meet in the middle. When it’s time to feed your little one, simply push the bib away from the chair and towards the tray. Place your baby safely in the highchair and ease each of the baby’s arms into the sleeves. Fasten the bib around your child’s neck and ensure the sides of the bib are securely stretched over the sides of the highchair. The ‘well’ the bib creates between baby and highchair tray means much less mess – and much less food wasted!</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="l-page__content-block--benefits">
-      <div class="c-content-block--benefits">
-        <h2 class="c-content-block__heading--benefits">
-          <span class="c-content-block__title" >Benefits of Highchair Coverall Bibs</span>
-        </h2>
-        <div class="c-content-block__body">
-          <p>
-            Our customers tell us they save up to 30 minutes a day on cleaning up spilt food. And that’s just with one baby; if you’re lucky enough to have twins, triplets or even more, you’ll save even more time. It isn’t just time-saving on cleaning up mess, either; you’ll keep your baby’s clothes clean, so that’s fewer washing machine runs and less electricity used, and much less time, effort and wipes used on cleaning the highchair.
-          </p>
-          <div class="c-content-block__btn--benefits">
-            <a href="/" class="c-btn--block-benefits">When will my order arrive?</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="l-page__content-block--safety">
-      <div class="c-content-block--safety">
-        <h2 class="c-content-block__heading--safety">
-          <span class="c-content-block__title" >Coverall Bib Safety</span>
-        </h2>
-        <div class="c-content-block__body">
-          <p>
-            Remember: children should never be left unattended in their highchair, regardless of weaning method. They must always be harnessed correctly according to the safety instructions of your highchair. BIBaDO is a smock, not a restraint – it catches food, not babies!
-          </p>
-          <p>
-            As parents ourselves, we understand the importance of making sure that the products our children use are baby-safe. We have made sure from day one that BIBaDO complies with the most stringent international safety standards for baby weaning products. BIBaDO has passed international safety testing for the EU, USA, Canada, Australia and New Zealand, and is free from BPA, phthalates and azo-dyes. If you have any questions about the safety testing BIBaDO has been through, please get in touch.          </p>
         </div>
       </div>
     </div>

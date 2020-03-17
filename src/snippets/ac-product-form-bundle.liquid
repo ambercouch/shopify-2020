@@ -1,0 +1,61 @@
+{% if product.metafields.nsac.short_name == null %}
+  {% assign shortName =  product.title %}
+{% else %}
+  {% assign shortName =  product.metafields.nsac.short_name  %}
+{% endif %}
+
+<div class="c-product-form--bundle">
+<form class="c-product-form__form">
+
+  <input type="hidden" name="productId" value="{{ product.id }}" >
+  <input type="hidden" name="productTitle" value="{{ product.title }}" >
+  <input type="hidden" name="productShortName" value="{{ shortName }}" >
+
+
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      <div class="js c-product-form__options">
+
+        <div class="c-product-form__input-wrapper--select">
+
+          <select
+              class="c-product-form__select--{{ option.name }}"
+              id="Option{{ option.position }}"
+              name="options[{{ option.name | escape }}]">
+
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option
+                    {% if variant == current_variant %}selected="selected"{% endif %}
+                    {% unless variant.available %}disabled="disabled"{% endunless %}
+                    value="{{ variant.id }}"
+                    data-variant-price="{{ variant.price }}"
+                    data-variant-image="{{ variant.image | img_url: '300x300' }}">
+                  {{ variant.title }}
+                </option>
+              {% endif %}
+            {% endfor %}
+
+          </select>
+        </div>
+
+      </div>
+    {% endfor %}
+  {% endunless %}
+
+  <div class="c-product-form__input-wrapper--qty qty-block">
+  <label class="c-product-form__label--qty" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+  <input class="c-product-form__input--qty" type="number" id="Quantity" name="quantity" value="1" min="1">
+  </div>
+
+
+  <div class="c-product-form__add-to-bundle">
+  <button
+      class="c-btn--add-to-bundle"
+      type="submit"
+      name="add-to-bundle"
+     >
+        <span data-submit-button-text>Add to bundle</span></button>
+  </div>
+</form>
+</div>
