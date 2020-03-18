@@ -57,12 +57,17 @@
               {% for product in collection.products %}
                 <div class="l-product-list__item">
                   <div class="l-product-list__product-thumb">
-
-                    {% include 'ac-product-thumb-bundle' %}
+                    {% include 'ac-product-thumb-bundle' with {{ modClass : '--bundle' }}%}
                     {% include 'ac-product-form-bundle'%}
-
+                  </div>
+                  <div class="l-product-list__remodal" >
+                    <div class="c-remodal remodal" data-remodal-id="modal{{ product.id }}">
+                      <button data-remodal-action="close" class="remodal-close c-remodal__btn--close"></button>
+                      {% include 'ac-product-thumb-modal' with {{ modClass : '--modal' }} %}
+                    </div>
                   </div>
                 </div>
+
               {% endfor %}
             </div>
           </div>

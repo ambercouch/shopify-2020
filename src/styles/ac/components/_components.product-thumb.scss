@@ -75,7 +75,8 @@
   }
 
   &content {
-    display: block
+    display: block;
+    text-align: left;
   }
 
   &footer {
@@ -132,6 +133,10 @@
 }
 
 .c-product-thumb__header--{
+  &modal{
+    text-align: left;
+    margin-bottom: $act-unit;
+  }
 
 }
 
@@ -146,6 +151,9 @@
     color: $brand-col-2;
     margin-bottom: $act-unit-t;
     @include act-font-size($act-fs-5,1);
+    text-align: left;
+  }
+  &modal{
     text-align: left;
   }
 }

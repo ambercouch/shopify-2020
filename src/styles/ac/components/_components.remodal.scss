@@ -1,0 +1,68 @@
+/*
+  BEM BLOCK .c-remodal
+ */
+
+.c-remodal {
+  display: block;
+  padding: 0 !important;
+  border: solid 1px white;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-remodal--
+ */
+
+.c-remodal-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-remodal--
+
+[class*=c-remodal--] {
+  @extend .c-remodal;
+}
+
+/*
+  BEM ELEMENTS .c-remodal__
+ */
+
+.c-remodal__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &btn--close{
+    z-index: 999;
+    background: rgba(#fff, 0.9) !important;
+    left: auto !important;
+    right: 2px;
+    top: 2px !important;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-remodal--
+
+[class*=c-remodal__header--] {
+  @extend .c-remodal__header;
+}

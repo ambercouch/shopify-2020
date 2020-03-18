@@ -1,0 +1,61 @@
+<div class="c-product-thumb{{ modClass }}">
+  <!-- modclass {{ modClass }} ac-product-thumb.liquid -->
+  {% if product.featured_image != blank %}
+    <div class="c-product-thumb__feature-image{{ modClass }}">
+
+      {% include 'responsive-image' with
+        image: product.featured_image,
+        max_width: 700,
+        max_height: 800
+      %}
+
+    </div>
+  {% endif %}
+  <div class="c-product-thumb__info{{ modClass }}">
+    <header class="c-product-thumb__header{{ modClass }}">
+      <h4 class="c-product-thumb__heading{{ modClass }}">
+        <span class="c-product-thumb__title">
+          {{ product.title }}
+        </span>
+      </h4>
+      <div class="c-product-thumb__meta">
+        {% if product.compare_at_price > product.price %}
+
+          {% if product.price_varies %}
+            {%- assign sale_price = product.price | money -%}
+            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+          {% else %}
+            {{ 'products.product.on_sale' | t }}
+            {{ product.price | money }}
+          {% endif %}
+
+        {% else %}
+
+          {% if product.price_varies %}
+            {%- assign price = product.price | money -%}
+            {{ 'products.product.from_text_html' | t: price: price }}
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}
+
+        {% endif %}
+
+        {% if product.compare_at_price > product.price %}
+          <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+          <s>{{ product.compare_at_price | money }}</s>
+        {% endif %}
+
+        {% unless product.available %}
+          {{ 'products.product.sold_out' | t }}
+        {% endunless %}
+      </div>
+    </header>
+
+    <div class="c-product-thumb__content">
+      {{ product.content }}
+    </div>
+
+
+
+  </div>
+</div>

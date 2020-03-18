@@ -124,12 +124,12 @@
 .l-off-page__tab-text--{
   &open{
     display: inline-block;
-    .is-open &{
+    .is-open &, [data-state=on] &{
       display: none;
     }
   }
   &close{
-    .is-open &{
+    .is-open &, [data-state=on] &{
       display: inline-block;
     }
   }

@@ -206,8 +206,10 @@ const ACSHOPIFY = {
       let elBundleDiscountCode = document.getElementById('bundleDiscountCode');
       let elFullPrice =  document.getElementById('fullPrice');
       let elBundlePrice =  document.getElementById('bundlePrice');
-      let elOffPageBundleNoticeb = document.getElementById('offPageBundleNotice');
-      let elCartBtn =$('.c-btn--buy-bundle');
+      let elOffPageBundleNotice = document.getElementById('offPageBundleNotice');
+      let elCartBtn = $('.c-btn--buy-bundle');
+      //let elBundleLinkImage =  document.getElementById('linkBundleImage');
+      //let elBundleLinkTitle =  document.getElementById('linkBundleTitle');
 
       let bundleNoticeTextCurrentDiscount = elBundlenNoticeCurrentDiscount.textContent;
       let bundleNoticeTextNextDiscount = elBundlenNoticeNextDiscount.textContent;
@@ -247,6 +249,39 @@ const ACSHOPIFY = {
       let bundleDiscountPercent = 0;
       let bundleSaving = 0;
       let bundleSavingMoney = 0;
+
+      let remodArray = {};
+
+      $('[data-remodal-id]').each(function(i){
+        let dataRemodalId = $(this).attr('data-remodal-id');
+        let inst = $(this).remodal();
+        remodArray[dataRemodalId] = inst;
+        console.log('remod found');
+        console.log(dataRemodalId);
+      });
+
+
+
+      console.log('remodArray');
+      console.log(remodArray);
+
+      $(document).on('click', '#linkBundleImage', function(e) {
+        let productId = $(this).attr('data-product-id');
+        let remodalId = 'modal' + productId;
+        console.log('image click');
+        e.preventDefault();
+        remodArray[remodalId].open();
+      });
+
+      $(document).on('click', '#linkBundleTitle', function(e) {
+        console.log('title click');
+        e.preventDefault();
+      });
+
+      // $(document).on('click', elBundleLinkTitle, function(e) {
+      //   console.log('title click');
+      //   e.preventDefault();
+      // });
 
       window.onbeforeunload = confirmExit;
 
@@ -509,7 +544,8 @@ const ACSHOPIFY = {
 
         clearTimeout(window.acTimer);
         window.acTimer = setTimeout(function () {
-          elOffPageBundleNoticeb.classList.remove('is-open');
+          elOffPageBundleNotice.classList.remove('is-open');
+          elOffPageBundleNotice.setAttribute('data-state', 'off');
         }, timer);
       }
 
@@ -545,26 +581,26 @@ const ACSHOPIFY = {
 
 
 
-      $(document).on('click', '.l-off-page__tab', function(){
-        console.log('tab clicked class added')
-        elOffPageBundleNoticeb.classList.add('is-open');
-      });
-
-      $(document).on('click', '.is-open .l-off-page__tab', function(){
-        console.log('tab clicked class added')
-        elOffPageBundleNoticeb.classList.remove('is-open');
-      });
-
-      $(document).on('click', '.l-off-page__close', function(){
-        console.log('tab clicked class added')
-        elOffPageBundleNoticeb.classList.remove('is-open');
-        //elOffPageBundleNoticeb.classList.add('is-close-quick');
-      });
+      // $(document).on('click', '.l-off-page__tab', function(){
+      //   console.log('tab clicked class added');
+      //   elOffPageBundleNotice.classList.add('is-open');
+      // });
+      //
+      // $(document).on('click', '.is-open .l-off-page__tab', function(){
+      //   console.log('tab clicked class added')
+      //   elOffPageBundleNotice.classList.remove('is-open');
+      // });
+      //
+      // $(document).on('click', '.l-off-page__close', function(){
+      //   console.log('tab clicked class added');
+      //   elOffPageBundleNotice.classList.remove('is-open');
+      //   elOffPageBundleNotice.classList.add('is-close-quick');
+      // });
 
       // $(document).on('mouseover', '.l-off-page__tab', function(){
       //     console.log('tab hovered')
-      //     elOffPageBundleNoticeb.classList.add('is-open');
-      //     //elOffPageBundleNoticeb.classList.remove('is-close-quick');
+      //     elOffPageBundleNotice.classList.add('is-open');
+      //     //elOffPageBundleNotice.classList.remove('is-close-quick');
       // });
 
 
@@ -574,8 +610,9 @@ const ACSHOPIFY = {
       // Add a new item to the bundle
       $('.c-product-form__form').submit(function (e) {
         e.preventDefault();
-        elOffPageBundleNoticeb.classList.remove('is-close-quick');
-        elOffPageBundleNoticeb.classList.add('is-open');
+        elOffPageBundleNotice.classList.remove('is-close-quick');
+        elOffPageBundleNotice.classList.add('is-open');
+        elOffPageBundleNotice.setAttribute('data-state', 'on');
         closeDrawer(4000);
         $('[data-remodal-action=close]').trigger("click");
 
@@ -608,18 +645,18 @@ const ACSHOPIFY = {
 
         setBundleDiscountPercent();
 
-        updateBundleSaving()
+        updateBundleSaving();
 
         bundleFormatSaving();
 
         updateBundleNotice();
-        updateBundleNoticeNext()
+        updateBundleNoticeNext();
         updateBundleNoticeSavingDisplay();
         updateElBundleSaving();
         updateElBundleDiscountCode();
         setBundleDiscount();
-        updateElBundlePrice()
-        updateElFullPrice()
+        updateElBundlePrice();
+        updateElFullPrice();
 
         updateElCartBtn();
 
@@ -665,8 +702,9 @@ const ACSHOPIFY = {
       //on update bundle item quantity
       $(document).on('change', '.bundle-item-qty', function(e){
         e.preventDefault();
-        elOffPageBundleNoticeb.classList.remove('is-close-quick');
-        elOffPageBundleNoticeb.classList.add('is-open');
+        elOffPageBundleNotice.classList.remove('is-close-quick');
+        elOffPageBundleNotice.classList.add('is-open');
+        elOffPageBundleNotice.setAttribute('data-state', 'on');
         closeDrawer(4000);
         $('[data-remodal-action=close]').trigger("click");
 

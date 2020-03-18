@@ -4,7 +4,7 @@
 
 .c-discount-code {
   display: block;
-  @extend .o-box-tiny;
+  @extend .o-box--tiny;
   background: $brand-col-4;
   color: $brand-col-2;
   font-weight: 700;
