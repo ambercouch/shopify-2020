@@ -22,14 +22,13 @@
     </div>
 
   </header>
-
+      {% if collection.description != blank %}
       <div class="l-page__content">
-        {% if collection.description != blank %}
           <div class="rte">
             {{ collection.description }}
           </div>
-        {% endif %}
       </div>
+      {% endif %}
   <div class="l-page__product-list">
     <div class="l-product-list">
 

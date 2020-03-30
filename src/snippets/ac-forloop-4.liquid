@@ -1,10 +1,14 @@
 {% assign blockLink =  collection.metafields.content-block.url2 %}
 {% assign logoImage = images[collection.metafields.content-block.logo2] %}
 {% assign blockImage = images[collection.metafields.content-block.image2] %}
+{% assign blockTitle = images[collection.metafields.content-block.title2] %}
+{% assign blockSubTitle = images[collection.metafields.content-block.subtitle2] %}
+{% assign blockText = images[collection.metafields.content-block.text] %}
 {% if  images[collection.metafields.content-block.image2] %}
 {% assign hasImageClass = 'has-footer-image' %}
 {% endif %}
 <!-- forloop.index {{ forloop.index }} -->
+{% if logoImage != blank or blockImage != blank or blockImage != blank %}
 <div class="l-product-list__item">
   <div class="l-product-list__content-block--{{ collection.metafields.content-block.title2 | handle  }} ">
     <div class="c-content-block--collection-list-2 c-content-block--{{  collection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
@@ -12,7 +16,7 @@
       <a href="{{blockLink}}" class="c-content-block__link-thumb">
         {% endif %}
       <header class="c-content-block__header ">
-
+        {%  if logoImage != blank %}
         {% if logoImage != blank %}
           <h3 class="c-content-block__logo">
             {% include 'responsive-image' with
@@ -22,20 +26,25 @@
             %}
           </h3>
         {% endif %}
-
+        {% endif %}
+        {%  if blockTitle != blank %}
         <h3 class="c-content-block__heading">
                 <span class="c-content-block__title">
-                  {{ collection.metafields.content-block.title2 }}
+                  {{ blockTitle }}
                 </span>
         </h3>
+        {% endif %}
+        {%  if blockSubTitle != blank %}
         <h4 class="c-content-block__sub-heading--collection-list-2">
-          {{ collection.metafields.content-block.subtitle2 }}
+          {{ blockSubTitle }}
         </h4>
+        {% endif %}
       </header>
-       
+        {%  if blockText != blank %}
       <div class="c-content-block__body">
-        <p>{{ collection.metafields.content-block.text2 }}</p>
+        <p>{{ blockText }}</p>
       </div>
+        {% endif %}
         {%  if blockLink != blank %}
       </a>
       {% endif %}
@@ -52,3 +61,4 @@
     </div>
   </div>
 </div>
+{% endif %}

@@ -5,7 +5,7 @@
 .c-product-thumb {
   display: block;
   padding: $act-unit-s;
-    background: $brand-col-4;
+  background: $brand-col-4;
 }
 
 /*
@@ -26,6 +26,9 @@
     color: $brand-col-2;
     display: grid;
     grid-template-columns: 135px 1fr;
+  }
+  &modal{
+    background: $brand-col-5;
   }
 }
 

@@ -174,7 +174,7 @@
 .l-page__heading--{
   &shop-collections{
     color: $brand-col-2;
-    margin-bottom: 0;
+    margin-bottom: $act-unit-t;
     font-weight: 700;
   }
   &search{
@@ -183,7 +183,7 @@
   }
   &product{
     color: $brand-col-2;
-    @include act-font-size($act-fs-2);
+    @include act-font-size($act-fs-3,1.1);
     font-weight: 700;
     text-align: left;
     margin-bottom: 0;

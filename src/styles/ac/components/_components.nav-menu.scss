@@ -104,8 +104,9 @@
       @include size($act-unit-l);
   }
   &mobile{
-    padding: $act-unit-t;
+    padding: 0;
     margin-bottom: $act-unit-t;
+    font-family: $act-font-family-headings;
   }
 }
 
@@ -121,6 +122,8 @@
   }
   &mobile{
     @include a($col : $brand-col-2);
+    padding: $act-unit-t;
+    display: block;
     &:hover, &:focus{
       color: $brand-col-2;
     }

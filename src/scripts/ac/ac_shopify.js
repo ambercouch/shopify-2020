@@ -42,7 +42,8 @@ const ACSHOPIFY = {
           cellAlign: 'left',
           contain: true,
           prevNextButtons: false,
-          imagesLoaded: true
+          imagesLoaded: true,
+          pageDots: false,
         });
       }else{
         console.log('No .c-quote-list__list');
