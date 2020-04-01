@@ -182,6 +182,47 @@ const ACSHOPIFY = {
       });
     },
   },
+  index: {
+    init: function() {
+      //console.log('index');
+
+      let browserHeight = $(window).height();
+      let mastheadHeight = $('#masthead').outerHeight();
+      let heroHeight = browserHeight -  mastheadHeight;
+      $('#MainContent .l-main > :first-child [class*=c-content-block--]').css('height', heroHeight);
+
+      $(function () {
+        $('a[href*="#"]:not([href="#"])').click(function () {
+          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            let target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: target.offset().top,
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+
+      $(document).on('click', '.c-content-block__icon--scroll', function() {
+
+
+        let target = $(this).parent();
+        console.log('target.offset().top');
+        console.log(target.offset().top);
+        console.log('target.outerHeight()');
+        console.log(target.outerHeight());
+        console.log(target);
+        $('html, body').animate({
+          scrollTop: target.offset().top + target.outerHeight(),
+        }, 1000);
+      });
+
+
+    },
+  },
   page: {
     init: function() {
       // uncomment to debug

@@ -48,6 +48,9 @@
     @include size(25px);
     color: $brand-col-5;
   }
+  &scroll{
+    @include size(40px);
+  }
 
 }
 

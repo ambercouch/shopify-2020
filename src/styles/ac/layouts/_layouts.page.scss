@@ -153,6 +153,11 @@
     color: $brand-col-2;
     padding: $act-unit-l 0;
   }
+  &blog{
+    background: $brand-col-3;
+    color: $brand-col-1;
+    padding: $act-unit-l 0;
+  }
   &product{
     padding: 0 $act-unit;
   }
@@ -178,6 +183,10 @@
     font-weight: 700;
   }
   &search{
+    margin-bottom: 0;
+    color: $brand-col-2;
+  }
+  &blog{
     margin-bottom: 0;
     color: $brand-col-2;
   }

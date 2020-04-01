@@ -1,17 +1,26 @@
 {% paginate blog.articles by 5 %}
-{%- assign blog_title = blog.title -%}
+  {% if blog.handle == 'everything-weaning' %}
+    {%- assign blog_title = blog.title -%}
+    {%- assign blog_menu = false -%}
+    {% else %}
+      {%- assign blog_title = 'Blog'-%}
+      {%- assign blog_menu = true -%}
+  {% endif %}
 <div class="l-main__page--blog">
   <div class="l-page--blog">
-    <header class="l-page__header" role="banner">
-      <h1 class="l-page__heading" >
-        <span class="l-page__title">Blog</span>
+    <header class="l-page__header--blog" role="banner">
+      <h1 class="l-page__heading--blog" >
+        <span class="l-page__title">{{ blog_title }}</span>
       </h1>
     </header>
+
   {% if blog.all_tags.size > 0 %}
     <h2>Tags</h2>
     {% include 'ac-tag-list-blog' %}
   {% endif %}
-
+    {% if blog_menu == true %}
+      {% include 'ac-nav-menu-blog' %}
+    {% endif %}
 
   {% comment %}
 

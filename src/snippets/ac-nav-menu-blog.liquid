@@ -1,0 +1,29 @@
+<nav class="c-nav-menu--blog" role="navigation" >
+  <ul  class="c-nav-menu__list--blog">
+    {% for link in linklists.blog.links %}
+      {% if link.links != blank %}
+        <li  class="c-nav-menu__item--blog">
+          <a  class="c-nav-menu__link--blog" href="{{ link.url }}">
+            <span  class="c-nav-menu__label--blog">{{ link.title }}</span>
+            {% include 'icon-arrow-down' %}
+          </a>
+          <ul>
+            {% for childlink in link.links %}
+              <li>
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li class="c-nav-menu__item--blog {% if link.active %}is-current{% endif %}">
+          <a  class="c-nav-menu__link--blog {% if link.active %}is-current{% endif %}" href="{{ link.url }}">
+            <span  class="c-nav-menu__label--blog">{{ link.title }} </span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

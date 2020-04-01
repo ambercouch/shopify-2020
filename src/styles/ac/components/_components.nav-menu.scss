@@ -91,6 +91,10 @@
   &footer{
     flex-direction: column;
   }
+  &blog{
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__item--
@@ -108,9 +112,20 @@
     margin-bottom: $act-unit-t;
     font-family: $act-font-family-headings;
   }
+  &blog{
+    transition: background 0.3s ease-in-out;
+    width: 50%;
+    text-align: center;
+    &.is-current{
+      background: $brand-col-1;
+    }
+    &:hover, &:focus{
+      background: $brand-col-1;
+    }
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__item--
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__link--
 
 [class*=c-nav-menu__link--] {
   @extend .c-nav-menu__link;
@@ -125,6 +140,16 @@
     padding: $act-unit-t;
     display: block;
     &:hover, &:focus{
+      color: $brand-col-2;
+    }
+  }
+  &blog{
+    transition: color 0.3s ease-in-out;
+    &.is-current{
+      color: $brand-col-2;
+      font-weight: 700;
+    }
+    &:hover{
       color: $brand-col-2;
     }
   }

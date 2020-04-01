@@ -34,17 +34,22 @@
 
       <div class="l-product-list__list">
     {% for product in collection.products %}
-      <div class="l-product-list__item">
+      {% if forloop.first == true %}
+        <!-- forloop.index {{ forloop.index }} - forloop.first -->
+        <div class="l-product-list__item--first">
+          {% include 'ac-forloop-2' %}
+        </div>
+      {% else %}
+        <!-- forloop.index {{ forloop.index }} -->
+      {% endif %}
+      <div class="l-product-list__item testforloop">
         <div class="l-product-list__product-thumb">
         {% include 'ac-product-thumb' %}
         </div>
       </div>
-      {% if forloop.index == 2 %}
-        {% include 'ac-forloop-2' %}
-    {% endif %}
-      {% if forloop.index == 4 %}
-        <!-- forloop.index {{ forloop.index }} -->
-        <div class="l-product-list__item">
+      {% if forloop.last == true %}
+        <!-- forloop.index {{ forloop.index }} - forloop.last -->
+        <div class="l-product-list__item--last">
           {% include 'ac-forloop-4' %}
         </div>
         {% else %}

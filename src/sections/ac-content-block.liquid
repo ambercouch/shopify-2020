@@ -46,7 +46,7 @@
 {% endif %}
 
 
-<section class="l-main__content-block--{{ section.id }} test-and u-bgc-{{ cb_background_colour_class  }} ">
+<section id="{{ section.settings.title | handle }}" class="l-main__content-block--{{ section.id }} test-and u-bgc-{{ cb_background_colour_class  }} ">
   <div class="c-content-block--{{ section.settings.title | handle }} is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
@@ -95,7 +95,17 @@
       </div>
     {% endif %}
   </div>
+
+    {% if section.settings.cb_scroll_arrow %}
+    <div class="c-content-block__icon--scroll">
+      {% include 'icon-bbd-scroll' %}
+    </div>
+      {% else %}
+      <!-- no scroll arrow -->
+    {% endif %}
+
     {{ cb_anchor_markup_close }}
+
   </div>
 </section>
 
@@ -368,9 +378,15 @@
   ]
   },
   {
+    "type": "checkbox",
+    "id": "cb_min_height",
+    "label": "Block min height 75%",
+    "default": false
+  },
+  {
   "type": "checkbox",
-  "id": "cb_min_height",
-  "label": "Block min height 75%",
+  "id": "cb_scroll_arrow",
+  "label": "Include scroll down arrow",
   "default": false
   }
     ],

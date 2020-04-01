@@ -164,8 +164,8 @@
   }
 
   &logo{
-    margin-bottom: 0;
-    max-width: 280px;
+    margin-bottom: 0 !important;
+    max-width: 200px;
     margin: 0 auto $act-unit;
   }
 
@@ -184,6 +184,7 @@
     display: block;
     //margin-bottom: $act-unit;
   }
+
   &body{
     margin-bottom: $act-unit;
     *:last-child{
@@ -192,6 +193,10 @@
     .c-content-block__btn:first-child{
       margin-top: $act-unit;
     }
+  }
+
+  &icon{
+    text-align: center;
   }
 
 }
@@ -304,6 +309,23 @@
   }
   &benefits{
     @include breakout-band($bgc : $brand-col-1);
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__icon--
+
+[class*=c-content-block__icon--] {
+  @extend .c-content-block__icon;
+
+}
+
+.c-content-block__icon--{
+  &scroll{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 50px;
+    cursor: pointer;
   }
 }
 

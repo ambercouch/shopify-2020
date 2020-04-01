@@ -1,14 +1,15 @@
 {% assign blockLink =  collection.metafields.content-block.url2 %}
+{% assign blockLinkText =  collection.metafields.content-block.linkText2 %}
 {% assign logoImage = images[collection.metafields.content-block.logo2] %}
 {% assign blockImage = images[collection.metafields.content-block.image2] %}
-{% assign blockTitle = images[collection.metafields.content-block.title2] %}
-{% assign blockSubTitle = images[collection.metafields.content-block.subtitle2] %}
-{% assign blockText = images[collection.metafields.content-block.text] %}
+{% assign blockTitle = collection.metafields.content-block.title2 %}
+{% assign blockSubTitle = collection.metafields.content-block.subtitle2 %}
+{% assign blockText = collection.metafields.content-block.text2 %}
 {% if  images[collection.metafields.content-block.image2] %}
 {% assign hasImageClass = 'has-footer-image' %}
 {% endif %}
 <!-- forloop.index {{ forloop.index }} -->
-{% if logoImage != blank or blockImage != blank or blockImage != blank %}
+{% if logoImage != blank or blockImage != blank or blockTitle != blank %}
 <div class="l-product-list__item">
   <div class="l-product-list__content-block--{{ collection.metafields.content-block.title2 | handle  }} ">
     <div class="c-content-block--collection-list-2 c-content-block--{{  collection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
@@ -21,7 +22,7 @@
           <h3 class="c-content-block__logo">
             {% include 'responsive-image' with
               image: logoImage,
-              max_width: 700,
+              max_width: 200,
               max_height: 700
             %}
           </h3>
