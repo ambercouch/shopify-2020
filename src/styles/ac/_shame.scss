@@ -15,11 +15,14 @@
 
 [data-container][data-state=off]{
   pointer-events: none !important;
+  *{
+    pointer-events: none !important;
+  }
 
 }
 [data-control]{
   &[data-state=off]{
-    pointer-events: none !important;
+   // pointer-events: none !important;
   }
 }
 
