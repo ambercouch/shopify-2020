@@ -204,6 +204,7 @@
   &static-page{
     padding-top: $act-unit;
     color: $brand-col-2 !important;
+    font-weight: 700;
   }
   &collection-bundle{
     color: $brand-col-5;
@@ -235,6 +236,9 @@
 
 .l-page__feature-image--{
   &shop-collections{
+    margin-bottom: 0;
+  }
+  &static-page{
     margin-bottom: 0;
   }
 }

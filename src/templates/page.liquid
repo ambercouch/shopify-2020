@@ -1,11 +1,12 @@
+{% assign pageImage = page.metafields.global.feature_image %}
 <div class="l-main__page--static-page">
   <div class="l-page--static-page">
 
     <header class="l-page__header" role="banner">
 
-      {% if page.image.src %}
+      {% if pageImage %}
         <div class="l-page__feature-image">
-          <img class="l-page__img" src="{{ page.image.src | page_img_url: 'large' }}"  alt="{{ page.title | escape }}" />
+          <img class="l-page__img" src="{{ pageImage | file_img_url: 'original' }}"  alt="{{ page.title | escape }}" />
         </div>
       {% else %}
         <!-- no page image -->

@@ -1,0 +1,86 @@
+/*
+  BEM BLOCK .c-qanda-list
+ */
+
+.c-qanda-list {
+  display: block;
+  margin-top: $act-unit;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-qanda-list--
+ */
+
+.c-qanda-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-qanda-list--
+
+[class*=c-qanda-list--] {
+  @extend .c-qanda-list;
+}
+
+/*
+  BEM ELEMENTS .c-qanda-list__
+ */
+
+.c-qanda-list__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-bare;
+    border-top: solid 2px $brand-col-6;
+  }
+  &item{
+    border-bottom: solid 2px $brand-col-6;
+    padding: $act-unit-s 0;
+  }
+  &question{
+    padding: 0 $act-unit-s;
+    font-family: $act-font-family-headings;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+  }
+  &question-control{
+    @include size(20px);
+  }
+  &answer{
+    max-height: 0;
+    height: auto;
+    overflow: hidden;
+    &[data-state=on]{
+      max-height: 0;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-qanda-list--
+
+[class*=c-qanda-list__header--] {
+  @extend .c-qanda-list__header;
+}

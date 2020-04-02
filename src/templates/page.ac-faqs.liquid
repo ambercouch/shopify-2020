@@ -1,0 +1,48 @@
+{% assign pageImage = page.metafields.global.feature_image %}
+<div class="l-main__page--static-page">
+  <div class="l-page--static-page">
+
+    <header class="l-page__header" role="banner">
+
+      {% if pageImage %}
+        <div class="l-page__feature-image--static-page">
+          <img class="l-page__img" src="{{ pageImage | file_img_url: 'original' }}"  alt="{{ page.title | escape }}" />
+        </div>
+      {% else %}
+        <!-- no page image -->
+      {% endif %}
+
+      <h1 class="l-page__heading--static-page" >
+        <span class="l-page__title">{{ page.title }}</span>
+      </h1>
+
+    </header>
+
+    <div class="l-page__content--static-page">
+      {% if page.content != blank %}
+        <div class="rte">
+          {{ page.content }}
+        </div>
+      {% endif %}
+<div class="l-page__qanda-list">
+  <div class="c-qanda-list">
+    <ul class="c-qanda-list__list">
+      {%  for i in (1..50) %}
+        {% assign questionId = 'question' | append : i %}
+        {% assign question = page.metafields.faq[questionId] %}
+        {% assign answerId = 'answer' | append : i %}
+        {% assign answer = page.metafields.faq[answerId] %}
+        {% if question != null %}
+          <li class="c-qanda-list__item">
+            <div class="c-qanda-list__question"> <div class="c-qanda-list__question-text">{{ question }}</div><div class="c-qanda-list__question-control" data-control="{{ questionId }}" data-state="off">{% include 'icon-bbd-open-arrow' %}</div></div>
+            <div  class="c-qanda-list__answer" data-container="{{ questionId }}" data-state="off" >{{ answer }}</div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
