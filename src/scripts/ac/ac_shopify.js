@@ -191,20 +191,20 @@ const ACSHOPIFY = {
       let heroHeight = browserHeight -  mastheadHeight;
       $('#MainContent .l-main > :first-child [class*=c-content-block--]').css('height', heroHeight);
 
-      $(function () {
-        $('a[href*="#"]:not([href="#"])').click(function () {
-          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            let target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-              $('html, body').animate({
-                scrollTop: target.offset().top,
-              }, 1000);
-              return false;
-            }
-          }
-        });
-      });
+        // $(function () {
+        //   $('a[href*="#"]:not([href="#"])').click(function () {
+        //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        //       let target = $(this.hash);
+        //       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        //       if (target.length) {
+        //         $('html, body').animate({
+        //           scrollTop: target.offset().top,
+        //         }, 1000);
+        //         return false;
+        //       }
+        //     }
+        //   });
+        // });
 
       $(document).on('click', '.c-content-block__icon--scroll', function() {
 
