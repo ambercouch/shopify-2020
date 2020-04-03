@@ -132,6 +132,22 @@
     background: $brand-col-4;
     color: $brand-col-2;
   }
+  &hero{
+    padding: $act-unit;
+    background: $brand-col-2;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &hero-text{
+
+    font-family: $act-font-family-headings;
+    font-weight: 500;
+    color: $brand-col-1;
+
+
+  }
 
 }
 
@@ -203,6 +219,8 @@
   }
   &static-page{
     padding-top: $act-unit;
+    padding-bottom: $act-unit;
+    margin-bottom: 0;
     color: $brand-col-2 !important;
     font-weight: 700;
   }
@@ -273,6 +291,7 @@
   }
   &static-page{
     text-align: left;
+    margin-bottom: 0;
   }
 }
 

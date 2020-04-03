@@ -68,13 +68,20 @@
   }
   &question-control{
     @include size(20px);
+    &[data-state=on]{
+      transform: rotateX(180deg);
+      transform-origin: 0% 80%;
+    }
   }
   &answer{
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
     max-height: 0;
     height: auto;
     overflow: hidden;
+    padding-top: 0;
     &[data-state=on]{
-      max-height: 0;
+      max-height: 500px;
+      padding-top: $act-unit-s;
     }
   }
 }

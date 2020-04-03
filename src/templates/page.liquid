@@ -1,4 +1,5 @@
 {% assign pageImage = page.metafields.global.feature_image %}
+{% assign pageHeroText = page.metafields.global.hero_text %}
 <div class="l-main__page--static-page">
   <div class="l-page--static-page">
 
@@ -12,9 +13,20 @@
         <!-- no page image -->
       {% endif %}
 
+
       <h1 class="l-page__heading--static-page" >
         <span class="l-page__title">{{ page.title }}</span>
       </h1>
+
+      {% if pageHeroText %}
+      <div class="l-page__hero">
+        <div class="l-page__hero-text">
+          {{ pageHeroText }}
+        </div>
+      </div>
+      {% else %}
+        <!-- no page hero text {{ pageHeroText }} ! -->
+      {% endif %}
 
     </header>
 
