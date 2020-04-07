@@ -1,0 +1,83 @@
+/*
+  BEM BLOCK .c-feature-list
+ */
+
+.c-feature-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-feature-list--
+ */
+
+.c-feature-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-feature-list--
+
+[class*=c-feature-list--] {
+  @extend .c-feature-list;
+}
+
+/*
+  BEM ELEMENTS .c-feature-list__
+ */
+
+.c-feature-list__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-bare;
+    counter-reset: ac-count;
+  }
+  &item{
+    margin-bottom: $act-unit-l;
+    counter-increment: ac-count;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:before{
+      content: counter(ac-count);
+      background: $brand-col-2;
+      color: $brand-col-3;
+      font-weight: 700;
+      @include size($act-unit-l * 1.25);
+      border-radius: 50%;
+      text-align: center;
+      @include act-font-size($inuit-font-size-mega, $act-unit-l * 1.25);
+      font-family: $act-font-family-headings;
+      margin-bottom: $act-unit-s;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-feature-list--
+
+[class*=c-feature-list__header--] {
+  @extend .c-feature-list__header;
+}

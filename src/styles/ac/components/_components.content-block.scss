@@ -246,6 +246,10 @@
     color: $brand-col-2;
     margin-bottom: $act-unit;
   }
+  &static-page{
+    color: $brand-col-2;
+    text-align: center;
+  }
 }
 
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__link--

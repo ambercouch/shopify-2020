@@ -89,7 +89,7 @@
   }
 }
 
-.u-col-w{
+.u-col-w, .u-col-white{
   color: white !important;
   &:hover{
     color: white;
@@ -98,7 +98,7 @@
     color: white !important;
   }
 }
-.u-col-blacks{
+.u-col-b, .u-col-black{
   color: black !important;
   &:hover{
     color: black

@@ -1,7 +1,18 @@
+<!-- ac-block-loop -->
+{% if sObj == null %}
+  <!-- sObj == null -->
+  {% assign sObj = article %}
+  {% else %}
+    <!-- sObj != null -->
+    {% assign sObj = sObj %}
+{% endif %}
+
 {% for i in (1..10) %}
    {% capture namespace %}block{{ i }}{% endcapture %}
 
-   {% case article.metafields[namespace]['layout_image']  %}
+
+
+   {% case sObj.metafields[namespace]['layout_image']  %}
    {% when 'center' %}
    {% assign classImagePos = "is-image-center" %}
    {% when 'right' %}
@@ -14,7 +25,7 @@
    {% assign classImagePos = '' %}
    {% endcase %}
 
-   {% case article.metafields[namespace]['size_image']  %}
+   {% case sObj.metafields[namespace]['size_image']  %}
    {% when '50' %}
    {% assign classImageSize = "is-image-size-50" %}
    {% when '30' %}
@@ -24,33 +35,82 @@
    {% assign classImageSize = "is-image-size-none" %}
    {% endcase %}
 
-   {% if  article.metafields[namespace]['text'] %}
-     {% assign blockText = article.metafields[namespace]['text'] %}
+   {% if  sObj.metafields[namespace]['text'] %}
+     {% assign blockText = sObj.metafields[namespace]['text'] %}
    {% else %}
      {% assign blockText = null %}
    {% endif %}
-   {% if  article.metafields[namespace]['image'] %}
-     {% assign blockImage = article.metafields[namespace]['image'] %}
+
+{% if  sObj.metafields[namespace]['title'] %}
+  {% assign blockTitle = sObj.metafields[namespace]['title'] %}
+{% else %}
+  {% assign blockTitle = null %}
+{% endif %}
+
+{% if sObj.metafields[namespace]['block_colour'] %}
+{% assign classBgColor = sObj.metafields[namespace]['block_colour']  %}
+{% else %}
+  {% assign classBgColor = null  %}
+{% endif %}
+
+{% if sObj.metafields[namespace]['text_colour'] %}
+  {% assign classTextColor = sObj.metafields[namespace]['text_colour']  %}
+{% else %}
+  {% assign classTextColor = null  %}
+{% endif %}
+
+
+    {% if sObj.metafields[namespace]['heading_colour'] %}
+    {% assign classHeadingColor = sObj.metafields[namespace]['heading_colour']  %}
+{% else %}
+  {% assign classHeadingColor = null  %}
+{% endif %}
+
+   {% if  sObj.metafields[namespace]['image'] %}
+     {% assign blockImage = sObj.metafields[namespace]['image'] %}
      {% assign blockImageUrl = blockImage | file_img_url: '500x' %}
    {% else %}
      {% assign blockImage = null %}
      {% assign blockImageUrl = null %}
    {% endif %}
 
-   {% if article.metafields[namespace]['image'] or article.metafields[namespace]['text'] %}
-<div class="l-page__flex-block {{ classImagePos }} {{  classImageSize }}">
+{% if  sObj.metafields[namespace]['block_type'] %}
+  {% assign blockType = sObj.metafields[namespace]['block_type'] %}
+{% else %}
+  {% assign blockType = 'text' %}
+{% endif %}
+
+{% if sObj.metafields[namespace]['image'] or sObj.metafields[namespace]['text'] or sObj.metafields[namespace]['block_type'] %}
+
+<!-- block - {{ namespace }} -->
+<div class="l-page__flex-block {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
   <div class="l-flex-block {{ classImagePos }} {{  classImageSize }}">
+
     {% if blockImage %}
       <div class="l-flex-block__item--image">
         <img src="{{ blockImageUrl }}" alt="{{ blockImage }}" class="l-page__img">
       </div>
     {% endif %}
-    {% if blockText %}
-      <div class="l-flex-block__item--text">
-        {{blockText }}
-      </div>
+
+    {% if blockType == 'text' %}
+      <!-- type text blockType = {{ blockType }} -->
+    {% if blockText or blockTitle  %}
+      {% include 'ac-flex-block-item-text' %}
+    {% endif %}
+
+      {% elsif blockType contains 'list' %}
+
+      <!-- contains list blockType = {{ blockType }} -->
+
+      {% include 'ac-flex-block-item-list' %}
+
+      {% else %}
+
+        <!-- else blockType = {{ blockType }} -->
+
     {% endif %}
   </div>
+</div>
   {% endif %}
 
   {% endfor %}
