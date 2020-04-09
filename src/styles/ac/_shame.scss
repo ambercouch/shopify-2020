@@ -22,8 +22,19 @@
 [data-control]{
   &[data-state=off]{
    // pointer-events: none !important;
+    [data-lable=off]{
+      display: none;
+    }
+  }
+  &[data-state=on]{
+    // pointer-events: none !important;
+    [data-lable=on]{
+      display: none;
+    }
   }
 }
+
+
 
 
 // AJAX CART

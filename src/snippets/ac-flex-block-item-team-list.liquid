@@ -2,7 +2,7 @@
   {% include 'ac-block-title' %}
   <div class="l-thumb-list">
     <ul class="l-thumb-list__list">
-      {% for c in (1..10) %}
+      {% for c in (1..3) %}
         {% capture imageId %}image{{ c }}{% endcapture %}
         {% capture nameId %}member_name{{ c }}{% endcapture %}
         {% capture posId %}member_pos{{ c }}{% endcapture %}
@@ -15,19 +15,90 @@
           itemId : {{ itemId }} <br>
           itemText : {{ itemText }}<br>
         {% endcomment %}
-        {% if itemImage %}
-        <li class="l-thumb-list__item">
+        {% if itemImage or itemName or itemPos%}
+
+        <li class="l-thumb-list__item " data-index="{{ forloop.index }}">
           <div class="l-thumb-list__member-thumb">
             <div class="c-member-thumb">
+
+        {% if itemImage %}
               <div class="c-member-thumb__image">
                 <img src="{{ itemImageUrl }}" alt="{{ itemImage }}" class="c-member-thumb__img">
               </div>
+              {% else %}
+          <!-- no itemImage -->
+        {% endif %}
+              {% if itemName %}
               <div class="c-member-thumb__name">{{ itemName }}</div>
+              {% else %}
+                <!-- no itemName -->
+              {% endif %}
+              {% if itemPos %}
               <div class="c-member-thumb__position">{{ itemPos }}</div>
+              {% else %}
+                <!-- no itemPos -->
+              {% endif %}
             </div>
           </div>
         </li>
+          {% else %}
+            <!-- no itemImage or itemName or itemPos -->
         {% endif %}
+
+      {% endfor %}
+    </ul>
+
+    <div class="l-thumb-list__footer">
+      <a class="l-thumb-list__link--btn" href="#" data-control="teamlist" data-state="off">
+        <span class="l-thumb-list__link-label" data-lable="on">See more</span>
+        <span class="l-thumb-list__link-label" data-lable="off">See less</span>
+      </a>
+    </div>
+
+    <ul class="l-thumb-list__list--more" data-container="teamlist" data-state="off">
+      {% for c in (1..10)  offset: 3 %}
+        {% capture imageId %}image{{ c }}{% endcapture %}
+        {% capture nameId %}member_name{{ c }}{% endcapture %}
+        {% capture posId %}member_pos{{ c }}{% endcapture %}
+        {% assign itemImage = sObj.metafields[blockType][imageId]  %}
+        {% assign itemImageUrl = itemImage | file_img_url: '500x' %}
+        {% assign itemName = sObj.metafields[blockType][nameId]  %}
+        {% assign itemPos = sObj.metafields[blockType][posId]  %}
+        {% comment %}
+          BlockType : {{ blockType }} <br>
+          itemId : {{ itemId }} <br>
+          itemText : {{ itemText }}<br>
+        {% endcomment %}
+        {% if itemImage or itemName or itemPos%}
+
+          <li class="l-thumb-list__item " data-index="{{ forloop.index }}">
+            <div class="l-thumb-list__member-thumb">
+              <div class="c-member-thumb">
+
+                {% if itemImage %}
+                  <div class="c-member-thumb__image">
+                    <img src="{{ itemImageUrl }}" alt="{{ itemImage }}" class="c-member-thumb__img">
+                  </div>
+                {% else %}
+                  <!-- no itemImage -->
+                {% endif %}
+                {% if itemName %}
+                  <div class="c-member-thumb__name">{{ itemName }}</div>
+                {% else %}
+                  <!-- no itemName -->
+                {% endif %}
+                {% if itemPos %}
+                  <div class="c-member-thumb__position">{{ itemPos }}</div>
+                {% else %}
+                  <!-- no itemPos -->
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% else %}
+          <!-- no itemImage or itemName or itemPos -->
+        {% endif %}
+
       {% endfor %}
     </ul>
   </div>
