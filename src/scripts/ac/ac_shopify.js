@@ -229,6 +229,11 @@ const ACSHOPIFY = {
       console.log('pages');
     }
   },
+  product: {
+    init: function() {
+      console.log('product');
+    }
+  },
   collection: {
     init: function() {
       // uncomment to debug

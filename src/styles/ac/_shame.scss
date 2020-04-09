@@ -16,9 +16,8 @@
 [data-container][data-state=off]{
   pointer-events: none !important;
   *{
-    pointer-events: none !important;
+    pointer-events: none;
   }
-
 }
 [data-control]{
   &[data-state=off]{

@@ -83,7 +83,7 @@
 {% if sObj.metafields[namespace]['image'] or sObj.metafields[namespace]['text'] or sObj.metafields[namespace]['block_type'] %}
 
 <!-- block - {{ namespace }} -->
-<div class="l-page__flex-block {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
+<div data-namespace="{{ namespace }}" class="l-page__flex-block {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
   <div class="l-flex-block {{ classImagePos }} {{  classImageSize }}">
 
     {% if blockImage %}
@@ -98,11 +98,18 @@
       {% include 'ac-flex-block-item-text' %}
     {% endif %}
 
-      {% elsif blockType contains 'list' %}
+      {% elsif blockType contains 'feature_list'%}
 
       <!-- contains list blockType = {{ blockType }} -->
 
+
       {% include 'ac-flex-block-item-list' %}
+
+      {% elsif blockType contains 'team_list' %}
+
+      <!-- contains list blockType = {{ blockType }} -->
+
+      {% include 'ac-flex-block-item-team-list' %}
 
       {% else %}
 

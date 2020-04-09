@@ -1,6 +1,7 @@
 <div class="l-flex-block__item--list">
+  {% include 'ac-block-title' %}
   <div class="c-feature-list">
-    <ol class="c-feature-list__list">
+    <ol class="c-feature-list__list u-col-{{ classTextColor  }}">
       {% for c in (1..10) %}
         {% assign itemId = 'list_item' | append : c %}
         {% assign itemText = sObj.metafields[blockType][itemId]  %}

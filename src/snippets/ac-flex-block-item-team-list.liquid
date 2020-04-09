@@ -1,0 +1,34 @@
+<div class="l-flex-block__item--team-list">
+  {% include 'ac-block-title' %}
+  <div class="l-thumb-list">
+    <ul class="l-thumb-list__list">
+      {% for c in (1..10) %}
+        {% capture imageId %}image{{ c }}{% endcapture %}
+        {% capture nameId %}member_name{{ c }}{% endcapture %}
+        {% capture posId %}member_pos{{ c }}{% endcapture %}
+        {% assign itemImage = sObj.metafields[blockType][imageId]  %}
+        {% assign itemImageUrl = itemImage | file_img_url: '500x' %}
+        {% assign itemName = sObj.metafields[blockType][nameId]  %}
+        {% assign itemPos = sObj.metafields[blockType][posId]  %}
+        {% comment %}
+          BlockType : {{ blockType }} <br>
+          itemId : {{ itemId }} <br>
+          itemText : {{ itemText }}<br>
+        {% endcomment %}
+        {% if itemImage %}
+        <li class="l-thumb-list__item">
+          <div class="l-thumb-list__member-thumb">
+            <div class="c-member-thumb">
+              <div class="c-member-thumb__image">
+                <img src="{{ itemImageUrl }}" alt="{{ itemImage }}" class="c-member-thumb__img">
+              </div>
+              <div class="c-member-thumb__name">{{ itemName }}</div>
+              <div class="c-member-thumb__position">{{ itemPos }}</div>
+            </div>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

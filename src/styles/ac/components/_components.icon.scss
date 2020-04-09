@@ -2,6 +2,7 @@
   BEM BLOCK .c-icon
  */
 
+
 .c-icon {
   @include size(100%);
   min-width: 20px;
@@ -51,8 +52,13 @@
   &scroll{
     @include size(40px);
   }
-
+  &play-circle{
+    color: white;
+    transform: translate(-50%,-50%);
+  }
 }
+
+
 
 //BEM BLOCK MODIFIER FALLBACK .c-icon--
 

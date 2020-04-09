@@ -102,6 +102,10 @@
     line-height: 2em;
     text-align: center;
     cursor: pointer;
+
+  }
+  &tab{
+    pointer-events: all !important;
   }
   &tab-text{
     display: none;
