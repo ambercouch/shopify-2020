@@ -2,13 +2,15 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY test collection');
+console.log('ACSHOPIFY fitvids()');
 const ACSHOPIFY = {
   common: {
     init: function() {
       jQuery('body').addClass('ac-jquery-loaded');
       'use strict';
       //uncomment to debug
+
+      fitvids();
 
       // Facebook reviews script
         setTimeout(function(){
@@ -229,15 +231,10 @@ const ACSHOPIFY = {
       console.log('pages');
     }
   },
-  product: {
-    init: function() {
-      console.log('product');
-    }
-  },
   collection: {
     init: function() {
       // uncomment to debug
-      console.log('collection');
+      console.log('some collection');
     },
     bundles: function() {
       // uncomment to debug
@@ -804,9 +801,36 @@ const ACSHOPIFY = {
   product: {
     init: function() {
       // uncomment to debug
-      console.log('product');
-      // add the is-last-block to element for styling
+      console.log('some product');
+
+      let inst = $('[data-remodal-id="acVideo"]').remodal();
+
+      // // add the is-last-block to element for styling
+      // $('[data-remodal-id]').each(function(i){
+      //   let dataRemodalId = $(this).attr('data-remodal-id');
+      //   let inst = $(this).remodal();
+      //   remodArray[dataRemodalId] = inst;
+      //   console.log('remod found');
+      //   console.log(dataRemodalId);
+      // });
+      //
+      //
+      //
+      // console.log('remodArray');
+      // console.log(remodArray);
+      //
+      // $(document).on('click', '#linkBundleImage', function(e) {
+      //   let productId = $(this).attr('data-product-id');
+      //   let remodalId = 'modal' + productId;
+      //   console.log('image click');
+      //   e.preventDefault();
+      //   remodArray[remodalId].open();
+      // });
       $('.l-page__content-block--product').last().addClass('is-last-block');
+      $(document).on('click', '.c-video-popup__link', function() {
+        console.log('vid click open');
+        inst.open();
+      })
     }
   },
   fn: {

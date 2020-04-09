@@ -182,7 +182,7 @@
     padding: $act-unit 0 !important;
 }
   &static-page{
-
+    background: $brand-col-4;
   }
 }
 
@@ -224,6 +224,9 @@
     margin-bottom: 0;
     color: $brand-col-2 !important;
     font-weight: 700;
+  }
+  &about-us{
+    background: $brand-col-4;
   }
   &collection-bundle{
     color: $brand-col-5;

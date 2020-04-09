@@ -56,7 +56,19 @@
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: $act-unit;
-    border:solid 3px $brand-col-3
+    border:solid 3px;
+    .l-thumb-list__item:first-child &{
+      border-color: $brand-col-1;
+    }
+    .l-thumb-list__item:nth-child(2) &{
+      border-color: $brand-col-3;
+    }
+    .l-thumb-list__item:nth-child(3) &{
+      border-color: $brand-col-4;
+    }
+    .l-thumb-list__item:nth-child(4) &{
+      border-color: $brand-col-5;
+    }
   }
   &img{
     display: block;

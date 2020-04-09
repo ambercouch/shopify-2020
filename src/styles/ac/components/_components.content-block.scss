@@ -187,7 +187,7 @@
 
   &body{
     margin-bottom: $act-unit;
-    *:last-child{
+    > *:last-child{
       margin-bottom: 0;
     }
     .c-content-block__btn:first-child{
