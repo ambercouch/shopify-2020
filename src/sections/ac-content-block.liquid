@@ -29,6 +29,10 @@
   {%- assign cb_hide_title_class =  'is-heading-hidden' -%}
 {% endif %}
 
+{% if section.settings.cb_desk_layout_1col == true %}
+  {%- assign cb_single_col_class =  'is-single-col-desktop' -%}
+{% endif %}
+
 {% if section.settings.cb_sub_title != blank %}
   {%- assign cb_sub_class =  'has-sub-heading' -%}
 {% endif %}
@@ -47,7 +51,7 @@
 
 
 <section id="{{ section.settings.title | handle }}" class="l-main__content-block--{{ section.id }} test-and u-bgc-{{ cb_background_colour_class  }} ">
-  <div class="c-content-block--{{ section.settings.title | handle }} is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }}">
+  <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_single_col_class }} is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
       <header class="c-content-block__header  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
@@ -387,6 +391,18 @@
   "type": "checkbox",
   "id": "cb_scroll_arrow",
   "label": "Include scroll down arrow",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "cb_desk_layout_1col",
+  "label": "Desktop single column",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "cb_desk_width_50",
+  "label": "Desktop block width 50%",
   "default": false
   }
     ],

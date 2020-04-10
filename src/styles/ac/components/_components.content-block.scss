@@ -2,6 +2,8 @@
   BEM BLOCK .c-content-block
  */
 
+$act-block-height : 450px;
+
 .c-content-block {
   padding-top: $act-unit;
   padding-bottom: $act-unit;
@@ -20,7 +22,11 @@
   @include mq($from : desktop){
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-row: 1fr 1fr;
     padding: 0;
+    max-width: $act-wrapper-width;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -32,6 +38,11 @@
   &quote{
     text-align: center;
     padding-bottom: $act-unit-l;
+    @include mq($from: desktop){
+      display: flex;
+      padding-top: $act-unit-h;
+      padding-bottom: $act-unit-h * 1.5;
+    }
   }
   &dribble-bib{
     @include mq($from : desktop){
@@ -103,7 +114,7 @@
     display: none;
   }
   &making-parents-lives-easier{
-    display: flex !important;
+    //display: flex !important;
   }
 }
 
@@ -123,6 +134,8 @@
     margin-bottom: $act-unit;
     @include mq($from:desktop){
       grid-column-start: 2;
+      grid-row-start: 1;
+      align-self:flex-end;
     }
   }
 
@@ -150,7 +163,14 @@
     display: block;
     text-align: center;
   }
-
+  &quote-list{
+    @include mq($from:desktop){
+      width: 600px;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
   &image{
     margin-bottom: $act-unit;
     .is-image-layout-hidden &{
@@ -165,6 +185,24 @@
     }
     @include mq($from:desktop){
       grid-column-start: 1;
+      grid-row-start: 1;
+      grid-row-end: 3;
+      margin-bottom: 0;
+      height: $act-block-height;
+    }
+    .responsive-image__wrapper{
+      @include mq($from:desktop){
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+    img{
+      @include mq($from:desktop){
+        height: $act-block-height;
+        object-fit: cover;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
     }
   }
 
@@ -186,6 +224,9 @@
     margin-bottom: 0 !important;
     max-width: 200px;
     margin: 0 auto $act-unit;
+    @include mq($from: tablet){
+      min-width: 330px;
+    }
   }
 
   &block-image{
@@ -206,11 +247,24 @@
 
   &body{
     margin-bottom: $act-unit;
+    max-width: 100%;
     > *:last-child{
       margin-bottom: 0;
     }
     .c-content-block__btn:first-child{
       margin-top: $act-unit;
+    }
+    @include mq($from : tablet){
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @include mq($from: desktop){
+      grid-column-start: 2;
+      grid-row-start: 2;
+      width: 300px;
+      margin: 0 auto;
+
     }
   }
 
@@ -229,6 +283,7 @@
 .c-content-block__header--{
   &quote{
     margin-bottom: $act-unit;
+    align-self: center !important;
   }
 }
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
@@ -240,6 +295,7 @@
 .c-content-block__heading--{
   &quote{
     color: $brand-col-4;
+
   }
   &product{
     color: $brand-col-2;
@@ -350,6 +406,9 @@
     left: 0;
     bottom: 50px;
     cursor: pointer;
+    @include mq($from: desktop){
+      bottom: 110px;
+    }
   }
 }
 
@@ -370,6 +429,9 @@
 
 .is-text-layout-center{
   text-align: center;
+  @include mq($from: desktop){
+    //align-self: center !important;
+  }
 }
 
 .is-video{
@@ -377,3 +439,15 @@
     padding: 0;
   }
 }
+
+.is-single-col-desktop{
+  display: flex !important;
+  .c-content-block__header{
+     align-self: center;
+   }
+  .c-content-block__body{
+    width: 600px;
+  }
+}
+
+

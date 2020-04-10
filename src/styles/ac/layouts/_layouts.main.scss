@@ -53,6 +53,9 @@
   }
   &content-block{
     padding: 0 $act-unit;
+    @include mq($from:desktop){
+      padding: 0;
+    }
   }
 }
 

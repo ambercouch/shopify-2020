@@ -34,9 +34,15 @@
     justify-content: space-between;
     @extend .o-list-bare;
     margin-bottom: 0;
+    @include mq($from : desktop){
+      justify-content: flex-end;
+    }
   }
   &item{
-
+    display: block;
+    @include mq($from: desktop){
+      margin-left: $act-unit;
+    }
   }
   &header {
     display: block
@@ -48,6 +54,7 @@
 
   &title {
     display: inline;
+
   }
 
   &link {
@@ -69,8 +76,27 @@
   }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-site-control--
+//BEM ELEMENT MODIFIER FALLBACK .c-site-control__header--
 
 [class*=c-site-control__header--] {
   @extend .c-site-control__header;
 }
+
+.c-site-control__header--{
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-site-control__item--
+
+[class*=c-site-control__item--] {
+  @extend .c-site-control__item;
+}
+
+.c-site-control__item--{
+  &menu{
+    @include mq($from: desktop){
+      display: none;
+    }
+  }
+}
+
