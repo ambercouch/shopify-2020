@@ -16,6 +16,12 @@
   &.has-footer-image{
     padding-bottom: 200px;
   }
+
+  @include mq($from : desktop){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
 }
 
 /*
@@ -93,6 +99,12 @@
     margin-bottom: $act-unit !important;
     display: none !important;
   }
+  &image{
+    display: none;
+  }
+  &making-parents-lives-easier{
+    display: flex !important;
+  }
 }
 
 // BEM BLOCK MODIFIER FALLBACK .c-content-block--
@@ -108,7 +120,10 @@
 .c-content-block__ {
   &header {
     display: block;
-    margin-bottom: $act-unit-s;
+    margin-bottom: $act-unit;
+    @include mq($from:desktop){
+      grid-column-start: 2;
+    }
   }
 
   &heading {
@@ -119,6 +134,7 @@
     .is-heading-hidden &{
       @include inuit-hidden-visually;
     }
+
   }
 
   &title {
@@ -146,6 +162,9 @@
     &.is-pos-below-text{
       order: 3;
       margin-bottom: 0;
+    }
+    @include mq($from:desktop){
+      grid-column-start: 1;
     }
   }
 
@@ -333,6 +352,17 @@
     cursor: pointer;
   }
 }
+
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__image--
+
+[class*=c-content-block__image--] {
+  @extend .c-content-block__image;
+}
+
+.c-content-block__image--{
+
+}
+
 
 /*
   BEM ATTRIBUTES
