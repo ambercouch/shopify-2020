@@ -76,6 +76,9 @@
     color: $brand-col-3;
     font-style: italic;
   }
+  &discount-card{
+    padding: 0 $act-unit $act-unit;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-quick-cart--

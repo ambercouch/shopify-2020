@@ -1,0 +1,64 @@
+/*
+  BEM BLOCK .c-discount-card
+ */
+
+.c-discount-card {
+  display: block;
+  background: $brand-col-2;
+  color: white;
+  text-align: center;
+  border-radius: $act-unit;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-discount-card--
+ */
+
+.c-discount-card-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-discount-card--
+
+[class*=c-discount-card--] {
+  @extend .c-discount-card;
+}
+
+/*
+  BEM ELEMENTS .c-discount-card__
+ */
+
+.c-discount-card__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block;
+    padding: $act-unit;
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-discount-card--
+
+[class*=c-discount-card__header--] {
+  @extend .c-discount-card__header;
+}

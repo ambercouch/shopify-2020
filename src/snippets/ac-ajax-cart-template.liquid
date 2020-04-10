@@ -9,8 +9,24 @@
   <script id="CartTemplate" type="text/template">
 
     <form action="/cart" method="post" novalidate class="cart ajaxcart l-quick-cart__form">
+
       {% raw %}<div class="l-quick-cart__total"><span class="l"><span>Subtotal:</span> <b class="carto">{{{totalPrice}}}</b></div>{% endraw %}
+
+      {% include 'ac-cart-discount-logic' %}
+
+
+
       <div class="l-quick-cart__cart-list">
+        {% unless discText == '' %}
+          <div class="l-quick-cart__discount-card">
+            <div class="c-discount-card">
+              <div class="c-discount-card__content">
+                <p>{{  discText }} <br>
+                  {{  discTextExtra }}</p>
+              </div>
+            </div>
+          </div>
+        {% endunless %}
         <div class="l-cart-list">
          <ul class="l-cart-list__list test">
            {% raw %}{{#items}}{% endraw %}
