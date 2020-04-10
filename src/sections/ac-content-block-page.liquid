@@ -25,14 +25,20 @@
 {% if section.settings.cb_hide_title == true %}
   {%- assign cb_hide_title_class =  'is-heading-hidden' -%}
 {% endif %}
+
 {% if section.settings.cb_sub_title != blank %}
   {%- assign cb_sub_class =  'has-sub-heading' -%}
 {% endif %}
-<section class="l-main__content-block u-bgc-{{ cb_background_colour_class  }} ">
-  <div class="c-content-block is-image-layout-{{ cb_image_layout }} ">
+
+{% if section.settings.cb_desk_width_50 == true %}
+  {%- assign cb_desk_width_50_class =  'is-block-width-50' -%}
+{% endif %}
+
+<section class="l-main__content-block--page u-bgc-{{ cb_background_colour_class  }} {{ cb_desk_width_50_class }}">
+  <div class="c-content-block--page is-image-layout-{{ cb_image_layout }} ">
 
     {% if section.settings.title != blank %}
-      <header class="c-content-block__header  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
+      <header class="c-content-block__header--page  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
 
         {% if section.settings.cb_logo_image != blank %}
           <div class="c-content-block__logo">
@@ -66,9 +72,9 @@
     {% endif %}
 
 
-  <div class="c-content-block__body is-text-layout-{{ cb_text_layout }}">
+  <div class="c-content-block__body--page is-text-layout-{{ cb_text_layout }}">
     {% if section.settings.cb_page != blank %}
-      <div class="c-content-block__text u-col-{{ cb_text_colour_class }}" >{{ cb_page.content }}</div>
+      <div class="c-content-block__text--page u-col-{{ cb_text_colour_class }}" >{{ cb_page.content }}</div>
     {% endif %}
     {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
       <div class="c-content-block__footer">
@@ -85,7 +91,9 @@
 {% schema %}
   {
     "name": "Content Block Page",
-    "settings": [
+  "class": "section-block-page",
+
+  "settings": [
   {
   "type": "select",
   "id": "cb_background_colour",
@@ -343,6 +351,12 @@
   "label": "BBD white"
   }
   ]
+  },
+  {
+  "type": "checkbox",
+  "id": "cb_desk_width_50",
+  "label": "Desktop block width 50%",
+  "default": false
   }
     ],
     "presets": [

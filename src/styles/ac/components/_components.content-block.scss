@@ -35,6 +35,13 @@ $act-block-height : 450px;
  */
 
 .c-content-block-- {
+  &page{
+    @include mq($from: desktop){
+      display: block !important;
+      padding: $act-unit-l $act-unit;
+
+    }
+  }
   &quote{
     text-align: center;
     padding-bottom: $act-unit-l;
@@ -271,6 +278,17 @@ $act-block-height : 450px;
   &icon{
     text-align: center;
   }
+  &text{
+    display: block;
+  }
+  &feature-image{
+    @include mq($from: desktop){
+      float: right;
+      margin-right: -100%;
+      width: 100%;
+      padding-left: $act-unit-l;
+    }
+  }
 
 }
 
@@ -285,7 +303,20 @@ $act-block-height : 450px;
     margin-bottom: $act-unit;
     align-self: center !important;
   }
+  &page{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    @include mq($from:tablet, $until : desktop){
+      width: 600px;
+    }
+    @include mq($from:desktop){
+      width: 100%;
+
+    }
+  }
 }
+
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
 
 [class*=c-content-block__heading--] {
@@ -422,6 +453,41 @@ $act-block-height : 450px;
 
 }
 
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__body--
+
+[class*=c-content-block__body--] {
+  @extend .c-content-block__body;
+}
+
+.c-content-block__body--{
+  &page{
+    @include mq($from: desktop){
+      width: 100%;
+    }
+  }
+}
+
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__text--
+
+[class*=c-content-block__text--] {
+  @extend .c-content-block__text;
+}
+
+.c-content-block__text--{
+  &page{
+    @include mq($from: desktop){
+      width: 50%;
+      margin-left: 0;
+    }
+    p:first-child{
+      @include mq($from: desktop) {
+        float: left;
+      }
+    }
+  }
+}
+
+
 
 /*
   BEM ATTRIBUTES
@@ -447,6 +513,12 @@ $act-block-height : 450px;
    }
   .c-content-block__body{
     width: 600px;
+  }
+}
+
+.is-section-width-50{
+  @include mq($from:desktop){
+    width: 50%;
   }
 }
 

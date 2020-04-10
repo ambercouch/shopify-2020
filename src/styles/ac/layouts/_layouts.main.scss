@@ -5,6 +5,10 @@
 .l-main {
   display: block;
   border-bottom: solid $act-unit $bbd-green;
+  @include mq($from: desktop){
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 /*

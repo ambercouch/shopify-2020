@@ -12,6 +12,17 @@ const ACSHOPIFY = {
 
       fitvids();
 
+      //content for index add class to shopify sections
+
+      $('.l-main .shopify-section').each(function() {
+        console.log('section found');
+        let desk50 = $('.is-block-width-50', this).length;
+        console.log('desk50' + desk50);
+        if (desk50){
+          $(this).addClass('is-section-width-50');
+        }
+      });
+
       // Facebook reviews script
         setTimeout(function(){
           if ($(window).width() > 899){
