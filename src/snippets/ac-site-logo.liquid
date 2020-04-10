@@ -9,10 +9,15 @@
         <img src="{{ section.settings.logo | img_url: image_size }}"
              srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
              alt="{{ section.settings.logo.alt | default: shop.name }}"
-             class="c-site-title__img" >
+             class="c-site-title__img--desk" >
+        <img src="{{ section.settings.mobile_logo | img_url: image_size }}"
+             srcset="{{ section.settings.mobile_logo | img_url: image_size }} 1x, {{ section.settings.mobile_logo | img_url: image_size, scale: 2 }} 2x"
+             alt="{{ section.settings.logo.alt | default: shop.name }}"
+             class="c-site-title__img--mob" >
       {% else %}
         {{ shop.name }}
       {% endif %}
+
     </a>
     {% if template.name == 'index' %}
 </h1>

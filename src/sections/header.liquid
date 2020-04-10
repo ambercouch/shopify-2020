@@ -32,11 +32,11 @@
         {% include 'ac-site-control' %}
       </div><!-- .masthead__controls -->
 
-
+      <div class="l-masthead__nav-menu">
+        {% include "ac-nav-menu-main" %}
+      </div>
     </div><!-- .l-masthead -->
-    <div class="l-masthead__nav-menu">
-      {% include "ac-nav-menu-main" %}
-    </div>
+
   </header>
 
   <div id="mobileNavigation" class="site__off-page-container" >
@@ -98,6 +98,11 @@
         "type": "header",
         "content": "Header"
       },
+  {
+  "type": "image_picker",
+  "id": "mobile_logo",
+  "label": "Mobile Logo image"
+  },
       {
         "type": "image_picker",
         "id": "logo",

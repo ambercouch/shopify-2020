@@ -6,7 +6,10 @@
   display: block;
   margin: 0;
   @include size(50px);
-
+  @include mq($from: tablet){
+    width: 130px;
+    height: auto;
+  }
 }
 
 /*
@@ -56,10 +59,37 @@
   &footer {
     display: block
   }
+  &img{
+    display: block;
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-site-title--
+//BEM ELEMENT MODIFIER FALLBACK .c-site-title__header--
 
 [class*=c-site-title__header--] {
   @extend .c-site-title__header;
+}
+
+.c-site-title__header--{
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-site-title__img--
+
+ [class*=c-site-title__img--] {
+   @extend .c-site-title__img;
+ }
+
+.c-site-title__img--{
+  &mob{
+    @include mq($from: tablet){
+      display: none;
+    }
+  }
+  &desk{
+    display: none;
+    @include mq($from: tablet){
+      display: block;
+    }
+  }
 }
