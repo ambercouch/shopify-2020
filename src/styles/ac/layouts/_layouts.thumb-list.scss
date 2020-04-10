@@ -4,13 +4,11 @@
 
 .l-thumb-list {
   display: block;
-  margin-top: $act-unit-l;
 }
 
 /*
   BEM BLOCK MODIFIER .l-thumb-list--
  */
-
 .l-thumb-list-- {
   &type {
     display: block

@@ -47,6 +47,12 @@
   {% assign blockTitle = null %}
 {% endif %}
 
+  {% if  sObj.metafields[namespace]['text_heading'] %}
+    {% assign blockTextTitle = sObj.metafields[namespace]['text_heading'] %}
+  {% else %}
+    {% assign blockTextTitle = null %}
+  {% endif %}
+
 {% if sObj.metafields[namespace]['block_colour'] %}
 {% assign classBgColor = sObj.metafields[namespace]['block_colour']  %}
 {% else %}
@@ -85,6 +91,16 @@
 <!-- block - {{ namespace }} -->
 <div data-namespace="{{ namespace }}" class="l-page__flex-block {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
   <div class="l-flex-block {{ classImagePos }} {{  classImageSize }}">
+
+    {% if blockTitle %}
+      <header class="c-content-block__header">
+        <h3 class="c-content-block__heading--static-page u-col-{{ classHeadingColor }} ">
+          {{ blockTitle }}
+        </h3>
+      </header>
+    {% else %}
+      <!-- no blockTitle -->
+    {% endif %}
 
     {% if blockImage %}
       <div class="l-flex-block__item--image">
