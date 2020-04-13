@@ -51,6 +51,9 @@
   &footer {
     display: block;
     text-align: center;
+    @include mq($from:desktop){
+      text-align: left;
+    }
 
   }
   &site-search-form{

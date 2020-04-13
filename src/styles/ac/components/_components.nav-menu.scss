@@ -81,15 +81,20 @@
 
 .c-nav-menu__list--{
   &social{
-    //min-width: 300px;
-    //max-width: 100%;
-    //display: inline-flex;
+    @include mq($from: desktop){
+      text-align: left;
+      justify-content: flex-start;
+    }
   }
   &mobile{
     flex-direction: column;
   }
   &footer{
     flex-direction: column;
+    @include mq($from:desktop){
+      display: block !important;
+      column-count: 2;
+    }
   }
   &blog{
     margin-bottom: 0;
@@ -106,6 +111,9 @@
 .c-nav-menu__item--{
   &social{
       @include size($act-unit-l);
+   @include mq($from:desktop){
+     margin-right: $act-unit !important;
+   }
   }
   &mobile{
     padding: 0;

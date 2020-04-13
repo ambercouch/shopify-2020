@@ -6,6 +6,14 @@
   display: block;
   padding:  $act-unit $act-unit-s;
   padding-bottom: 0;
+  @include mq($from: desktop){
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    max-width: $act-wrapper-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /*
@@ -56,6 +64,10 @@
     display: flex;
     justify-content: center;
     margin-bottom: $act-unit;
+    @include mq($from:desktop){
+      justify-content: flex-start;
+
+    }
   }
   &site-info{
     background: $brand-col-1;
@@ -67,6 +79,32 @@
     a{
       @include a($col : $brand-col-2);
       text-decoration: none;
+    }
+    @include mq($from: desktop){
+      grid-row-start: 4;
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+  }
+  &nav-menu{
+    @include mq($from: desktop){
+      grid-row-start: 2;
+      grid-column-start: 1;
+    }
+  }
+  &subscribe-form{
+    @include mq($from: desktop){
+      margin-top: $act-unit;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row-start: 3;
+    }
+
+  }
+  &socials{
+    @include mq($from: desktop){
+      grid-column-start: 3;
+      grid-row-start: 2;
     }
   }
 }

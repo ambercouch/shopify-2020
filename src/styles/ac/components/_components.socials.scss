@@ -40,6 +40,9 @@
     @include act-font-size($act-fs-m);
     font-weight: 700;
     color: $brand-col-4;
+    @include mq($from:desktop){
+      @include act-font-size($act-fs-k);
+    }
   }
 
   &title {
