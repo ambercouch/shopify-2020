@@ -22,7 +22,7 @@ $act-block-height : 450px;
   @include mq($from : desktop){
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-row: 1fr 1fr;
+    grid-template-rows: 1fr auto auto 1fr;
     padding: 0;
     max-width: $act-wrapper-width;
     margin-left: auto;
@@ -141,7 +141,7 @@ $act-block-height : 450px;
     margin-bottom: $act-unit;
     @include mq($from:desktop){
       grid-column-start: 2;
-      grid-row-start: 1;
+      grid-row-start: 2;
       align-self:flex-end;
     }
   }
@@ -161,7 +161,6 @@ $act-block-height : 450px;
     display: inline;
   }
 
-
   &content {
     display: block
   }
@@ -170,6 +169,7 @@ $act-block-height : 450px;
     display: block;
     text-align: center;
   }
+
   &quote-list{
     @include mq($from:desktop){
       width: 600px;
@@ -178,6 +178,7 @@ $act-block-height : 450px;
       margin-right: auto;
     }
   }
+
   &image{
     margin-bottom: $act-unit;
     .is-image-layout-hidden &{
@@ -189,11 +190,17 @@ $act-block-height : 450px;
     &.is-pos-below-text{
       order: 3;
       margin-bottom: 0;
+      .responsive-image__wrapper{
+        @include mq($from:desktop){
+          max-height: 100%;
+      }
+
+      }
     }
     @include mq($from:desktop){
       grid-column-start: 1;
       grid-row-start: 1;
-      grid-row-end: 3;
+      grid-row-end: 5;
       margin-bottom: 0;
       height: $act-block-height;
     }
@@ -209,6 +216,7 @@ $act-block-height : 450px;
         object-fit: cover;
         width: 100% !important;
         max-width: 100% !important;
+        //min-height: 100%;
       }
     }
   }
@@ -255,6 +263,8 @@ $act-block-height : 450px;
   &body{
     margin-bottom: $act-unit;
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     > *:last-child{
       margin-bottom: 0;
     }
@@ -268,7 +278,7 @@ $act-block-height : 450px;
     }
     @include mq($from: desktop){
       grid-column-start: 2;
-      grid-row-start: 2;
+      grid-row-start: 3;
       width: 300px;
       margin: 0 auto;
 
@@ -372,6 +382,11 @@ $act-block-height : 450px;
      @extend .c-btn--content-block;
      padding-left: $act-unit-t;
      padding-right: $act-unit-t;
+     @include mq($from:desktop){
+       max-width: 300px;
+
+       margin-left: 0 !important;
+     }
    }
    &block{
      display: flex;
@@ -492,6 +507,15 @@ $act-block-height : 450px;
 /*
   BEM ATTRIBUTES
  */
+.is-pos-below-text{
+  img{
+    @include mq($from: desktop){
+      height: 100% !important;
+      max-height: none !important;
+    }
+  }
+}
+
 
 .is-text-layout-center{
   text-align: center;
@@ -519,6 +543,85 @@ $act-block-height : 450px;
 .is-section-width-50{
   @include mq($from:desktop){
     width: 50%;
+  }
+}
+.is-block-width-50{
+  height: 100%;
+
+  [class*=c-content-block--], &.c-content-block{
+    //display: none !important;
+    @include mq($from: desktop){
+      display:flex !important;
+      justify-content: flex-start;
+      max-width: 50vw ;
+      width: $act-wrapper-width / 2 ;
+      margin-right: 0 !important;
+      padding: $act-unit;
+    }
+  }
+
+  [class*=c-content-block__header--], .c-content-block__header {
+    @include mq($from: desktop) {
+      align-self: flex-start;
+      padding: 0 $act-unit;
+    }
+  }
+
+  [class*=c-content-block__image--], .c-content-block__image{
+    @include mq($from: desktop) {
+      margin-bottom: $act-unit !important;
+      height: 375px;
+      img{
+        height: 375px;
+      }
+    }
+  }
+
+  [class*=c-content-block__body--], .c-content-block__body{
+    @include mq($from: desktop) {
+      width: 100%;
+      margin-bottom: $act-unit;
+      padding: 0 $act-unit;
+    }
+  }
+
+  [class*=c-content-block__text--], .c-content-block__text{
+    @include mq($from: desktop) {
+      margin-bottom: $act-unit;
+      width: 100%;
+    }
+  }
+}
+
+.is-block-layout-width-50{
+  @include mq($from: desktop){
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.is-section-width-50 + .is-section-width-50{
+
+  @include mq($from: desktop){
+    [class*=c-content-block--], &.c-content-block {
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+  }
+}
+
+.is-block-image-right{
+  .c-content-block__image, [class*=c-content-block__image--] {
+    grid-column-start: 2 !important;
+  }
+  .c-content-block__header, [class*=c-content-block__header--] {
+     grid-column-start: 1 !important;
+     grid-column-end: 2 !important;
+   }
+  .c-content-block__body, [class*=c-content-block__header--] {
+    grid-column-start: 1 !important;
+    grid-column-end: 2 !important;
   }
 }
 
