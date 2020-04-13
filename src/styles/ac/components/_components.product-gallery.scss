@@ -7,7 +7,10 @@
   //padding: $act-unit-s $act-unit;
 
   .responsive-image__wrapper:before{
-padding-top: 100vw !important;
+
+    @include mq($until: desktop){
+      padding-top: 100vw !important;
+    }
   }
   .responsive-image__wrapper{
     width: 100vw !important;
@@ -67,6 +70,9 @@ padding-top: 100vw !important;
     width: 18%;
     height: 17vw;
     padding: $act-unit-t;
+    @include mq($from: desktop){
+      height: 85px;
+    }
 
   }
   &img{
@@ -80,7 +86,10 @@ padding-top: 100vw !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   margin: 0 ;
+    margin: 0 ;
+    @include mq($from:desktop){
+      height: auto;
+    }
   }
 }
 
@@ -137,6 +146,9 @@ padding-top: 100vw !important;
     width: 100% !important;
     max-width: 100% !important;
     padding: $act-unit-s;
+    @include mq($from:desktop){
+      height: auto !important;
+    }
   }
 }
 

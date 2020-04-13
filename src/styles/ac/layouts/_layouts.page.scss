@@ -19,7 +19,12 @@
      color: $brand-col-2;
      background: white;
      padding-bottom: $act-unit-s;
-   }
+    @include mq($from: desktop){
+      max-width: $act-wrapper-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
   &reviews{
     color: $brand-col-2;
     background: white;
@@ -37,7 +42,6 @@
   &collection-bundle{
     padding-top: $act-unit-s;
   }
-
 
 }
 
@@ -114,6 +118,10 @@
   }
   &product-form{
     padding: 0 $act-unit;
+    @include mq($from: desktop){
+        grid-row-start: 3;
+        grid-column-start: 2;
+    }
   }
   &product-form-after{
     padding: 0 $act-unit;
@@ -122,6 +130,10 @@
       display: block;
       border-bottom: solid 3px $brand-col-6;
       margin-top: $act-unit * 1.5;
+    }
+    @include mq($from: desktop){
+      grid-row-start: 3;
+      grid-column-start:2
     }
   }
   &flex-block{
@@ -150,8 +162,13 @@
     font-family: $act-font-family-headings;
     font-weight: 500;
     color: $brand-col-1;
-
-
+  }
+  &section{
+    display: block;
+  }
+  &gallery{
+    grid-row-start: 1;
+    grid-row-end: 5
   }
 
 }
@@ -181,6 +198,10 @@
   }
   &product{
     padding: 0 $act-unit;
+    @include mq($from: desktop){
+      grid-row-start: 2;
+      grid-column-start: 2;
+    }
   }
   &reviews{
     padding: $act-unit 0 !important;
@@ -290,6 +311,9 @@
     padding: 0;
     text-align: left;
     margin-bottom: 0;
+    @include mq($from: desktop){
+      grid-row-start: 5;
+    }
   }
   &recipe{
     text-align: left;
@@ -371,6 +395,21 @@
 
   }
 
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__header--
+
+[class*=l-page__section--] {
+  @extend .l-page__section;
+}
+
+.l-page__section--{
+   &product{
+     @include mq($from:desktop){
+       display: grid;
+       grid-template-columns: 40% 60%;
+     }
+   }
 }
 
 #wprev-slider-2656 .wprev_preview_bg1_T1 {

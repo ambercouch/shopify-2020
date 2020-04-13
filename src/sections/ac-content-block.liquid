@@ -49,6 +49,11 @@
   {%- assign cb_sub_class =  'has-sub-heading' -%}
 {% endif %}
 
+{% if section.settings.cb_image_2!= blank %}
+  {%- assign cb_additional_image_class =  'has-additional-image' -%}
+{% endif %}
+
+
 {% if section.settings.cb_button_label == blank and section.settings.cb_button_link != blank %}
   {% capture cb_anchor_markup_open %}
     <a class="c-content-block__link--block" href="{{ section.settings.cb_button_link }}" >
@@ -63,7 +68,7 @@
 
 
 <section id="{{ section.settings.title | handle }}" class="l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }}">
-  <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_50_class }} {{ cb_single_col_class }} is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }}">
+  <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_50_class }} {{ cb_single_col_class }} is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }} {{ cb_additional_image_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
       <header class="c-content-block__header  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
@@ -100,17 +105,27 @@
     {% endif %}
 
   <div class="c-content-block__body is-text-layout-{{ cb_text_layout }}">
-    {% if section.settings.cb_text != blank %}
-      <div class="c-content-block__text u-col-{{ cb_text_colour_class }}" >{{ section.settings.cb_text }}</div>
-    {% endif %}
-    {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
-      <div class="c-content-block__footer">
-      <a class="c-content-block__link--btn u-col-{{ cb_button_colour_class }}" href="{{ section.settings.cb_button_link }}">
-        <span class="c-content-block__link-label">{{ section.settings.cb_button_label | escape }}</span>
-      </a>
+      {% if section.settings.cb_text != blank %}
+        <div class="c-content-block__text u-col-{{ cb_text_colour_class }}" >{{ section.settings.cb_text }}</div>
+      {% endif %}
+      {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
+        <div class="c-content-block__footer">
+          <a class="c-content-block__link--btn u-col-{{ cb_button_colour_class }}" href="{{ section.settings.cb_button_link }}">
+            <span class="c-content-block__link-label">{{ section.settings.cb_button_label | escape }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.cb_image_2 != blank %}
+      <div class="c-content-block__image--additional is-pos-{{ cb_image_pos_class }}">
+        {% include 'responsive-image' with
+          image: section.settings.cb_image_2,
+          max_width: 700,
+          max_height: 700
+        %}
       </div>
     {% endif %}
-  </div>
 
     {% if section.settings.cb_scroll_arrow %}
     <div class="c-content-block__icon--scroll">
@@ -170,6 +185,11 @@
         "type": "image_picker",
         "id": "cb_image",
         "label": "Image"
+      },
+      {
+      "type": "image_picker",
+      "id": "cb_image_2",
+      "label": "Image 2"
       },
       {
         "type": "select",

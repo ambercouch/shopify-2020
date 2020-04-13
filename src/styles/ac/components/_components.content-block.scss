@@ -11,9 +11,7 @@ $act-block-height : 450px;
   flex-direction: column;
 
   justify-content: center;
-  &.has-image-pos-below-text{
-    padding-bottom: 0;
-  }
+
 
   &.has-footer-image{
     padding-bottom: 200px;
@@ -465,7 +463,12 @@ $act-block-height : 450px;
 }
 
 .c-content-block__image--{
-
+  &additional{
+    display: none;
+    @include mq($from:desktop){
+      display: block;
+    }
+  }
 }
 
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__body--
@@ -622,6 +625,43 @@ $act-block-height : 450px;
   .c-content-block__body, [class*=c-content-block__header--] {
     grid-column-start: 1 !important;
     grid-column-end: 2 !important;
+  }
+}
+
+.has-additional-image{
+  &.c-content-block{
+    @include mq($from:desktop){
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+  }
+  .c-content-block__image--additional{
+    @include mq($from: desktop){
+      grid-column-start: 3;
+    }
+  }
+}
+
+.has-image-pos-below-text{
+  &.c-content-block{
+    padding-bottom: 0;
+  }
+  .c-content-block__image, [class*=c-content-block__image--]{
+    @include mq($from: desktop){
+      grid-row-start: 2;
+      grid-row-end: 5;
+      height: 300px;
+    }
+  }
+  .c-content-block__header{
+    @include mq($from:desktop){
+      grid-row-start: 2;
+    }
+  }
+  .c-content-block__body{
+    @include mq($from:desktop){
+      grid-row-start: 3;
+    }
   }
 }
 
