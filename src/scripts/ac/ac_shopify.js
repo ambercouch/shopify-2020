@@ -97,13 +97,9 @@ const ACSHOPIFY = {
             controls.not(control).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
-          })
-        })
-
-      })
-
-      console.log('Radio ids');
-      console.log(aRadioIds);
+          });
+        });
+      });
 
       $('[data-control]:not([data-control-radio])').each(function() {
         const containerId = $(this).attr('data-control');
@@ -237,7 +233,7 @@ const ACSHOPIFY = {
       let browserHeight = $(window).height();
       let mastheadHeight = $('#masthead').outerHeight();
       let heroHeight = browserHeight -  mastheadHeight;
-      $('#MainContent .l-main > :first-child [class*=c-content-block--]').css('height', heroHeight);
+      $('#MainContent .l-main--index > :first-child [class*=c-content-block--]').css('height', heroHeight);
 
         // $(function () {
         //   $('a[href*="#"]:not([href="#"])').click(function () {
