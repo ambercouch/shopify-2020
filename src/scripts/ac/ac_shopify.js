@@ -2,7 +2,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY layout');
+console.log('ACSHOPIFY Radio ids');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -62,16 +62,51 @@ const ACSHOPIFY = {
         console.log('No .c-quote-list__list');
       }
 
+      /*
+      Radio toggle controls
+       */
+      //get all the radio control Ids
+      let aRadioIds = [];
       $('[data-control-radio]').each(function(){
-          console.log('radio-control');
+        let radioId = $(this).attr('data-control-radio');
+        aRadioIds.indexOf(radioId) === -1 ? aRadioIds.push(radioId) : '';
       });
 
-      $('[data-control]').each(function() {
-        console.log('data-control found');
-        const containerId = $(this).attr('data-control');
+      $.each(aRadioIds, function(i) {
+        currentRadioId = aRadioIds[i];
+        let controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
+        let containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
+        $.each(controls, function(i) {
 
-        console.log('containerId');
-        console.log(containerId);
+          const containerId = $(this).attr('data-control');
+          const containerSelector = (containerId != '' )? '[data-container='+ containerId + ']' : '[data-container]';
+          const container = $(containerSelector);
+          const control = $(this);
+          $(this).on('click', function(e) {
+            e.preventDefault();
+            const state = control.attr('data-state');
+            // toggele state of this controller
+            ACSHOPIFY.fn.actStateToggleSelect(control, state);
+            // toggele state of this container
+            ACSHOPIFY.fn.actStateToggleSelect(container, state);
+            // toggle off all other container
+            containers.not(container).each(function() {
+              ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
+            });
+            // toggle off all other controllers
+            controls.not(control).each(function() {
+              ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
+            });
+          })
+        })
+
+      })
+
+      console.log('Radio ids');
+      console.log(aRadioIds);
+
+      $('[data-control]:not([data-control-radio])').each(function() {
+        const containerId = $(this).attr('data-control');
 
         const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
 
