@@ -3,15 +3,16 @@
     {% for link in linklists[section.settings.menu].links %}
       {% if link.links != blank %}
         <li class="c-nav-menu__item">
-          <a  class="c-nav-menu__link" href="{{ link.url }}">
+          <a  class="c-nav-menu__link" href="{{ link.url }}" data-state-group="nav-menu-main" data-state="off" data-control="{{ link.title | handle }}">
             <span  class="c-nav-menu__label">{{ link.title }} </span>
-            {% include 'icon-arrow-down' %}
+            <span  class="c-nav-menu__icon--arrow-down">{% include 'icon-arrow-down' %}</span>
           </a>
-          <ul>
+
+          <ul class="c-nav-menu__list--sub-list" data-state="off" data-container="{{ link.title | handle }}">
             {% for childlink in link.links %}
-              <li>
-                <a href="{{ childlink.url }}">
-                  {{ childlink.title }}
+              <li class="c-nav-menu__item--sub-item">
+                <a class="c-nav-menu__link--sub-link" href="{{ childlink.url }}">
+                  <span  class="c-nav-menu__label-sub-label">{{ childlink.title }}</span>
                 </a>
               </li>
             {% endfor %}

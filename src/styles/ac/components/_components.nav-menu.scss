@@ -12,9 +12,10 @@
 
 .c-nav-menu-- {
   &main {
-      display: none;
+    display: none;
     @include mq($from : desktop){
       display: block;
+      @include act-font-size($act-fs-5);
     }
   }
 }
@@ -43,8 +44,9 @@
   }
 
   &link {
-    display: inline;
+    display: flex;
     text-decoration: none;
+    position: relative;
   }
 
   &list{
@@ -56,13 +58,23 @@
     display: block;
     @extend .o-list-bare__item;
     padding: $act-unit-t;
+    margin-left: $act-unit-s;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+  &label{
+    white-space: nowrap;
   }
   &content {
     display: block
   }
-
   &footer {
     display: block
+  }
+  &icon{
+    margin-left: $act-unit-t;
+    width: $act-unit-s;
   }
 }
 
@@ -99,6 +111,15 @@
   &blog{
     margin-bottom: 0;
     flex-wrap: wrap;
+  }
+  &sub-list{
+    &[data-state=off]{
+      display: none;
+    }
+    flex-direction: column;
+    position: absolute;
+    background: $brand-col-2;
+    padding: $act-unit-s;
   }
 }
 
@@ -161,4 +182,11 @@
       color: $brand-col-2;
     }
   }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__icon--
+
+[class*=c-nav-menu__icon--] {
+  @extend .c-nav-menu__icon;
 }

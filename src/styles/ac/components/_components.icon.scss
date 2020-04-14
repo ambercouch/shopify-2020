@@ -49,6 +49,9 @@
     @include size(25px);
     color: $brand-col-5;
   }
+  &arrow-down{
+    min-width: 0;
+  }
   &scroll{
     @include size(40px);
   }
