@@ -2,7 +2,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY fitvids()');
+console.log('ACSHOPIFY layout');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -14,7 +14,7 @@ const ACSHOPIFY = {
 
       //content for index add class to shopify sections
 
-      $('.l-main .shopify-section').each(function() {
+      $('[class*=l-main--] .shopify-section').each(function() {
         console.log('section found');
         let desk50 = $('.is-block-width-50', this).length;
         console.log('desk50' + desk50);
@@ -657,8 +657,6 @@ const ACSHOPIFY = {
       //     elOffPageBundleNotice.classList.add('is-open');
       //     //elOffPageBundleNotice.classList.remove('is-close-quick');
       // });
-
-
 
 
 

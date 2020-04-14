@@ -65,6 +65,10 @@ $act-block-height : 450px;
   }
   &product{
     padding: $act-unit-t $act-unit 0;
+    @include mq($from:desktop){
+      padding: $act-unit 0;
+      display: block;
+    }
   }
   &charity{
     background: $brand-col-5;
@@ -281,6 +285,7 @@ $act-block-height : 450px;
       margin: 0 auto;
 
     }
+
   }
 
   &icon{
@@ -476,10 +481,14 @@ $act-block-height : 450px;
 [class*=c-content-block__body--] {
   @extend .c-content-block__body;
 }
-
 .c-content-block__body--{
   &page{
     @include mq($from: desktop){
+      width: 100%;
+    }
+  }
+  &product{
+    @include mq($from:desktop){
       width: 100%;
     }
   }

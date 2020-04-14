@@ -132,7 +132,7 @@
       margin-top: $act-unit * 1.5;
     }
     @include mq($from: desktop){
-      grid-row-start: 3;
+      grid-row-start: 4;
       grid-column-start:2
     }
   }
@@ -168,7 +168,7 @@
   }
   &gallery{
     grid-row-start: 1;
-    grid-row-end: 5
+    grid-row-end: 6
   }
 
 }
@@ -312,7 +312,9 @@
     text-align: left;
     margin-bottom: 0;
     @include mq($from: desktop){
-      grid-row-start: 5;
+      grid-row-start: 6;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
   }
   &recipe{
@@ -408,6 +410,16 @@
      @include mq($from:desktop){
        display: grid;
        grid-template-columns: 40% 60%;
+     }
+     &:before{
+       content: "";
+       grid-column-start: 2;
+       grid-row-start: 1;
+     }
+     &:after{
+       content: "";
+       grid-column-start: 2;
+       grid-row-start: 5;
      }
    }
 }
