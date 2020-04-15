@@ -183,6 +183,9 @@
       background: $brand-col-1;
     }
   }
+  &footer{
+    margin-left: 0 !important;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__link--

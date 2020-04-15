@@ -18,6 +18,7 @@
 {%- assign cb_button_colour_class =  section.settings.cb_button_colour -%}
 {%- assign cb_heading_colour_class =  section.settings.cb_heading_colour -%}
 {%- assign cb_heading_size_class =  section.settings.cb_heading_size -%}
+{%- assign cb_heading_layout =  section.settings.cb_heading_layout -%}
 {%- assign cb_text_colour_class =  section.settings.cb_text_colour -%}
 {%- assign cb_image_pos_class =  section.settings.cb_image_position -%}
 
@@ -67,11 +68,11 @@
 {% endif %}
 
 
-<section id="{{ section.settings.title | handle }}" class="l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }}">
+<section id="{{ section.settings.title | handle }}" class="ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }}">
   <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_50_class }} {{ cb_single_col_class }} is-image-layout-{{ cb_image_layout }} has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }} {{ cb_additional_image_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
-      <header class="c-content-block__header  is-text-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
+      <header class="c-content-block__header  is-heading-layout-{{ cb_heading_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
 
         {% if section.settings.cb_logo_image != blank %}
           <div class="c-content-block__logo">
@@ -141,14 +142,15 @@
 </section>
 
 {% schema %}
+
   {
-    "name": "Content Block",
+  "name": "Content Block",
   "class": "section-block",
   "settings": [
   {
   "type": "select",
   "id": "cb_background_colour",
-  "label": "Background colour",
+  "label": "Background colour test schema",
   "default": "t",
   "options": [
   {
@@ -181,44 +183,39 @@
   }
   ]
   },
-      {
-        "type": "image_picker",
-        "id": "cb_image",
-        "label": "Image"
-      },
-      {
-      "type": "image_picker",
-      "id": "cb_image_2",
-      "label": "Image 2"
-      },
-      {
-        "type": "select",
-        "id": "cb_image_layout",
-        "label": "Image alignment",
-        "default": "background",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          },
-          {
-          "value": "center",
-          "label": "Center"
-          },
-          {
-          "value": "background",
-          "label": "Background"
-          },
-          {
-          "value": "hidden",
-          "label": "Hidden"
-          }
-        ]
-      },
+  {
+  "type": "image_picker",
+  "id": "cb_image",
+  "label": "Image"
+  },
+  {
+  "type": "select",
+  "id": "cb_image_layout",
+  "label": "Image alignment",
+  "default": "background",
+  "options": [
+  {
+  "value": "left",
+  "label": "Left"
+  },
+  {
+  "value": "right",
+  "label": "Right"
+  },
+  {
+  "value": "center",
+  "label": "Center"
+  },
+  {
+  "value": "background",
+  "label": "Background"
+  },
+  {
+  "value": "hidden",
+  "label": "Hidden"
+  }
+  ]
+  },
   {
   "type": "select",
   "id": "cb_image_position",
@@ -241,38 +238,19 @@
   },
   {
   "type": "image_picker",
+  "id": "cb_image_2",
+  "label": "Image 2"
+  },
+  {
+  "type": "image_picker",
   "id": "cb_logo_image",
   "label": "Logo"
   },
   {
-  "type": "select",
-  "id": "cb_text_layout",
-  "label": "Text alignment",
-  "default": "center",
-  "options": [
-  {
-  "value": "left",
-  "label": "Left"
-  },
-  {
-  "value": "right",
-  "label": "Right"
-  },
-  {
-  "value": "center",
-  "label": "Center"
-  },
-  {
-  "value": "hidden",
-  "label": "Hidden"
-  }
-  ]
-  },
-  {
-    "type": "text",
-    "id": "title",
-    "label": "Heading",
-    "default": "Block Heading"
+  "type": "text",
+  "id": "title",
+  "label": "Heading",
+  "default": "Block Heading"
   },
   {
   "type": "select",
@@ -293,7 +271,7 @@
   {
   "type": "select",
   "id": "cb_heading_colour",
-  "label": "Heading colour",
+  "label": "Heading Colour",
   "default": "w",
   "options": [
   {
@@ -323,6 +301,30 @@
   ]
   },
   {
+  "type": "select",
+  "id": "cb_heading_layout",
+  "label": "Heading Alignment",
+  "default": "center",
+  "options": [
+  {
+  "value": "left",
+  "label": "Left"
+  },
+  {
+  "value": "right",
+  "label": "Right"
+  },
+  {
+  "value": "center",
+  "label": "Center"
+  },
+  {
+  "value": "hidden",
+  "label": "Hidden"
+  }
+  ]
+  },
+  {
   "type": "checkbox",
   "id": "cb_hide_title",
   "label": "Hide the title",
@@ -334,12 +336,12 @@
   "label": "Sub Heading",
   "default": "Some sub heading strap line"
   },
-      {
-        "type": "richtext",
-        "id": "cb_text",
-        "label": "Text",
-        "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
-      },
+  {
+  "type": "richtext",
+  "id": "cb_text",
+  "label": "Text",
+  "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+  },
   {
   "type": "select",
   "id": "cb_text_colour",
@@ -372,16 +374,40 @@
   }
   ]
   },
-      {
-        "type": "text",
-        "id": "cb_button_label",
-        "label": "Button label"
-      },
-      {
-        "type": "url",
-        "id": "cb_button_link",
-        "label": "Button link"
-      },
+  {
+  "type": "select",
+  "id": "cb_text_layout",
+  "label": "Text alignment",
+  "default": "center",
+  "options": [
+  {
+  "value": "left",
+  "label": "Left"
+  },
+  {
+  "value": "right",
+  "label": "Right"
+  },
+  {
+  "value": "center",
+  "label": "Center"
+  },
+  {
+  "value": "hidden",
+  "label": "Hidden"
+  }
+  ]
+  },
+  {
+  "type": "text",
+  "id": "cb_button_label",
+  "label": "Button label"
+  },
+  {
+  "type": "url",
+  "id": "cb_button_link",
+  "label": "Button link"
+  },
   {
   "type": "select",
   "id": "cb_button_colour",
@@ -415,10 +441,10 @@
   ]
   },
   {
-    "type": "checkbox",
-    "id": "cb_min_height",
-    "label": "Block min height 75%",
-    "default": false
+  "type": "checkbox",
+  "id": "cb_min_height",
+  "label": "Block min height 75%",
+  "default": false
   },
   {
   "type": "checkbox",
@@ -444,13 +470,13 @@
   "label": "Desktop image position right",
   "default": false
   }
-    ],
-    "presets": [
-      {
-        "name": "Content Block",
-        "category": "Content"
-      }
-    ]
+  ],
+  "presets": [
+  {
+  "name": "Content Block",
+  "category": "Content"
+  }
+  ]
   }
 
 {% endschema %}

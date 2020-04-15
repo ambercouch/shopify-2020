@@ -144,6 +144,11 @@ $act-block-height : 450px;
   &header {
     display: block;
     margin-bottom: $act-unit;
+    @include mq($from:tablet, $until : desktop){
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
     @include mq($from:desktop){
       grid-column-start: 2;
       grid-row-start: 2;
@@ -298,6 +303,7 @@ $act-block-height : 450px;
     display: block;
   }
   &feature-image{
+    text-align: center;
     @include mq($from: desktop){
       float: right;
       margin-right: -100%;
@@ -486,6 +492,10 @@ $act-block-height : 450px;
 }
 .c-content-block__body--{
   &page{
+    width: 100%;
+    @include mq($from:tablet, $until : desktop){
+      width: 600px;
+    }
     @include mq($from: desktop){
       width: 100%;
     }
@@ -533,6 +543,13 @@ $act-block-height : 450px;
 
 
 .is-text-layout-center{
+  text-align: center;
+  @include mq($from: desktop){
+    //align-self: center !important;
+  }
+}
+
+.is-heading-layout-center{
   text-align: center;
   @include mq($from: desktop){
     //align-self: center !important;

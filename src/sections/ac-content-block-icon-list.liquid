@@ -39,7 +39,7 @@
   <div class="c-content-block--page is-image-layout-{{ cb_image_layout }} ">
 
     {% if section.settings.title != blank %}
-      <header class="c-content-block__header--page  is-heading-layout-{{ cb_heading_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
+      <header class="c-content-block__header--page  is-heading-layout-{{ cb_text_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
 
         {% if section.settings.cb_logo_image != blank %}
           <div class="c-content-block__logo">
@@ -55,7 +55,7 @@
           <span  class="c-content-block__title">{{ section.settings.title | escape }}</span>
         </h2>
         {% if section.settings.cb_sub_title != blank %}
-          <h4 class="c-content-block__sub-heading">
+          <h4 class="c-content-block__sub-heading u-col-{{ cb_heading_colour_class }}">
             {{  section.settings.cb_sub_title }}
           </h4>
         {% endif %}
@@ -91,8 +91,8 @@
 
 {% schema %}
   {
-  "name": "Content Block Page",
-  "class": "section-block-page",
+  "name": "Content Block Icon List",
+  "class": "section-block-icon-list",
 
   "settings": [
   {
@@ -132,59 +132,6 @@
   ]
   },
   {
-  "type": "image_picker",
-  "id": "cb_image",
-  "label": "Image"
-  },
-  {
-  "type": "select",
-  "id": "cb_image_layout",
-  "label": "Image Alignment",
-  "default": "background",
-  "options": [
-  {
-  "value": "left",
-  "label": "Left"
-  },
-  {
-  "value": "right",
-  "label": "Right"
-  },
-  {
-  "value": "center",
-  "label": "Center"
-  },
-  {
-  "value": "background",
-  "label": "Background"
-  },
-  {
-  "value": "hidden",
-  "label": "Hidden"
-  }
-  ]
-  },
-  {
-  "type": "select",
-  "id": "cb_image_position",
-  "label": "Image position",
-  "default": "below-header",
-  "options": [
-  {
-  "value": "below-header",
-  "label": "Below header"
-  },
-  {
-  "value": "above-header",
-  "label": "Above header"
-  },
-  {
-  "value": "below-text",
-  "label": "Below page"
-  }
-  ]
-  },
-  {
   "type": "text",
   "id": "title",
   "label": "Heading",
@@ -209,7 +156,7 @@
   {
   "type": "select",
   "id": "cb_heading_colour",
-  "label": "Heading Colour",
+  "label": "Heading colour",
   "default": "w",
   "options": [
   {
@@ -275,33 +222,10 @@
   "default": "Some sub heading strap line"
   },
   {
-  "type": "page",
-  "id": "cb_page",
-  "label": "Page 123"
-  },
-  {
-  "type": "select",
-  "id": "cb_text_layout",
-  "label": "Text Alignment",
-  "default": "center",
-  "options": [
-  {
-  "value": "left",
-  "label": "Left"
-  },
-  {
-  "value": "right",
-  "label": "Right"
-  },
-  {
-  "value": "center",
-  "label": "Center"
-  },
-  {
-  "value": "hidden",
-  "label": "Hidden"
-  }
-  ]
+  "type": "richtext",
+  "id": "cb_text",
+  "label": "Text",
+  "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
   },
   {
   "type": "select",
@@ -332,6 +256,30 @@
   {
   "value": "w",
   "label": "BBD white"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "cb_text_layout",
+  "label": "Text alignment",
+  "default": "center",
+  "options": [
+  {
+  "value": "left",
+  "label": "Left"
+  },
+  {
+  "value": "right",
+  "label": "Right"
+  },
+  {
+  "value": "center",
+  "label": "Center"
+  },
+  {
+  "value": "hidden",
+  "label": "Hidden"
   }
   ]
   },
@@ -386,10 +334,11 @@
   ],
   "presets": [
   {
-  "name": "Content Block Page",
+  "name": "Content Block Icon List",
   "category": "Content"
   }
   ]
   }
+
 
 {% endschema %}
