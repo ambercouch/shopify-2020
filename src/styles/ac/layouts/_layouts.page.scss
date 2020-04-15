@@ -383,16 +383,16 @@
       border-bottom: solid 3px $brand-col-6;
     }
     &.has-bgc:after{
-      display: none !important;
+      border-bottom:none;
     }
     &.has-next-bgc:after{
-      display: none !important;
+      border-bottom:none;
     }
     &:last-child:after{
-      display: none !important;
+      border-bottom:none;
     }
     &.is-last-block:after{
-      display: none !important;
+      border-bottom:none;
     }
 
   }
@@ -469,4 +469,21 @@
 
 }
 
+.has-bgc{
+  &.l-page__content-block--product{
+    position: relative;
+    z-index: 1;
+      &:after{
+        position: absolute;
+        content: '';
+        width: 100vw;
+        right: 50%;
+        top: 0;
+        height: 100%;
+        display: block !important;
 
+        z-index: -1;
+        transform: translate( 50%, 0 );
+    }
+  }
+}

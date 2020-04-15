@@ -104,11 +104,30 @@
       {% assign blockBgCol = product.metafields.blocks[blockBgColId] %}
       {% assign classHasBgc = 'has-bgc' %}
 
+      <style>
+        #blockId{{ i }}:after{
+        {% case blockBgCol %}
+        {% when '1' %}
+          background-color: #fcec47
+        {% endcase %}
+        }
+      </style>
+
       {% elsif shop.metafields[productType][blockBgColId]  != nill %}
 
       <!-- LinkText from the shop meta -->
       {% assign blockBgCol = shop.metafields[productType][blockBgColId] %}
       {% assign classHasBgc = 'has-bgc' %}
+
+      <style>
+        #blockId{{ i }}:after{
+        {% case blockBgCol %}
+        {% when '1' %}
+          background-color: #fcec47
+        {% endcase %}
+        }
+        }
+      </style>
 
     {% else %}
       <!-- no LinkText -->
