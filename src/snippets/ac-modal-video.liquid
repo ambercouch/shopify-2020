@@ -1,0 +1,21 @@
+{% comment %}
+        <div class="c-video-popup">
+          <div class="c-video-popup__cover">
+            <div  class="c-video-popup__link">
+            <div class="c-video-popup__cover-image">
+              <img class="c-video-popup__img" src="https://img.youtube.com/vi/{{ blockVideo }}/hqdefault.jpg" >
+            </div>
+            <div class="c-video-popup__icon">
+              {% include "icon-bbd-play-circle" %}
+            </div>
+            </div>
+          </div>
+          {% endcomment %}
+{% comment %}
+          <div class="remodal" data-remodal-id="acVideo" >
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <div class="c-video-embed">
+              <iframe class="c-video-embed__iframe--youtube" width="560" height="315" src="https://www.youtube.com/embed/{{ blockVideo }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+{% endcomment %}

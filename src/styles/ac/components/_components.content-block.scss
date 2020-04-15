@@ -74,6 +74,9 @@ $act-block-height : 450px;
     background: $brand-col-5;
     padding: $act-unit $act-unit;
     margin-bottom: $act-unit;
+    @include mq($from : desktop){
+      @include breakout-band($bgc : $brand-col-5);
+    }
   }
   &features{
     padding: $act-unit-t $act-unit 0;
@@ -538,7 +541,10 @@ $act-block-height : 450px;
 
 .is-video{
   &.c-content-block--product{
-    padding: 0;
+    padding: $act-unit 0;
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -673,5 +679,7 @@ $act-block-height : 450px;
     }
   }
 }
+
+
 
 
