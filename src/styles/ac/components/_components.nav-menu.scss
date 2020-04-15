@@ -175,6 +175,7 @@
     transition: background 0.3s ease-in-out;
     width: 50%;
     text-align: center;
+    margin-left: 0 !important;
     &.is-current{
       background: $brand-col-1;
     }
