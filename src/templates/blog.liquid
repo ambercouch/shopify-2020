@@ -1,11 +1,15 @@
 {% paginate blog.articles by 5 %}
-  {% if blog.handle == 'everything-weaning' %}
-    {%- assign blog_title = blog.title -%}
-    {%- assign blog_menu = false -%}
-    {% else %}
-      {%- assign blog_title = 'Blog'-%}
-      {%- assign blog_menu = true -%}
-  {% endif %}
+  {% if blog.handle == 'breakfast' or
+    blog.handle == 'lunch'% or
+    blog.handle == 'dinner' or
+    blog.handle == 'cook-book'
+    %}
+    {%- assign blog_title = 'Recipes' -%}
+    {%- assign blog_menu = true -%}
+    {%- else -%}
+  {%- assign blog_title = blog.title -%}
+      {%- assign blog_menu = false -%}
+  {%- endif -%}
 <div class="l-main__page--blog">
   <div class="l-page--blog">
     <header class="l-page__header--blog" role="banner">
