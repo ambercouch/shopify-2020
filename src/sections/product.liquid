@@ -36,6 +36,7 @@
     {% assign blockNextBgColId = 'block_background_color_'  | append : nextI %}
     {% assign blockTextColId = 'block_text_color_'  | append : i %}
     {% assign blockVideoId = 'block_youtube_id_'  | append : i %}
+    {% assign blockTypeId = 'block_type_' | append : i %}
 
 
     {% if product.metafields.blocks[blockTitleId] != nill %}
@@ -168,6 +169,21 @@
       {% assign blockVideo = nil %}
     {% endif %}
 
+    {% if product.metafields.blocks[blockTypeId] != nill %}
+
+      <!-- vidioId from the product meta -->
+      {% assign blockType = product.metafields.blocks[blockTypeId] %}
+
+      {% elsif shop.metafields[productType][blockTypeId]  != nill %}
+
+      <!-- vidioId from the shop meta -->
+      {% assign blockType = shop.metafields[productType][blockTypeId] %}
+
+    {% else %}
+      <!-- no vidioId  -->
+      {% assign blockType = nil %}
+    {% endif %}
+
     {% if blockVideo != nil %}
     <div id="blockId{{ i }}" class="l-page__content-block--product is-video">
       <div class="c-content-block--product is-video">
@@ -197,11 +213,20 @@
           </div>
           {% endif %}
 
+          {% if blockType contains "icon-list" %}
+          <div class="c-content-block__icon-list">
+           {% include 'ac-icon-list-loop' %}
+          </div>
+          {% endif %}
+
         </div>
       </div>
     </div>
-
     {% endif %}
+
+
+
+
 
   {% endfor %}
 

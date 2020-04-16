@@ -1,0 +1,41 @@
+
+{% assign productTypeArray =  productType | split : '-' %}
+{% assign listNameSpace = '' %}
+{% for word in productTypeArray %}
+  {% assign initial = word | slice: 0 %}
+  {% unless forloop.first %}
+    {% assign initial = initial | prepend: "-" %}
+  {% endunless %}
+  {% assign listNameSpace = listNameSpace | append: initial  %}
+{% endfor %}
+
+{% assign listNameSpace = listNameSpace | append: '-' | append: blockType %}
+
+
+
+<div class="l-icon-list">
+    <ul class="l-icon-list__list">
+      {% for c in (1..10) %}
+        {% assign itemId = 'list_item' | append : c %}
+        <li class="l-icon-list__item">
+          <div class="l-icon-list__icon-thumb">
+            <div class="c-icon-thumb">
+              <div class="c-icon-thumb__icon">
+                {% include 'responsive-image' with
+                  image: shop.metafields[listNameSpace][blockType],
+                  max_width: 500,
+                  max_height: 500
+                %}
+              </div>
+              {% unless icon.settings.cb_icon_hide_title %}
+                <div class="c-icon-thumb__title">
+                  {{ icon.settings.title }}
+                </div>
+              {% endunless %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
