@@ -3,6 +3,7 @@
   "class": "section-block-icon-list",
 
   "settings": [
+
     {
       "type": "select",
       "id": "cb_background_colour",
@@ -127,13 +128,13 @@
       "type": "text",
       "id": "cb_sub_title",
       "label": "Sub Heading",
-      "default": "Some sub heading strap line"
+      "default": "An optional Subheading or strapline"
     },
     {
       "type": "richtext",
       "id": "cb_text",
       "label": "Text",
-      "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+      "default": "<p>An optional intro paragraph for the icon list.</p>"
     },
     {
       "type": "select",
@@ -238,6 +239,30 @@
       "id": "cb_desk_width_50",
       "label": "Desktop block width 50%",
       "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Icon Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "cb_icon_image",
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "cb_icon_hide_title",
+          "label": "Hide the title",
+          "default": true
+        }
+      ]
     }
   ],
   "presets": [
