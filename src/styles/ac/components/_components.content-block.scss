@@ -189,6 +189,19 @@ $act-block-height : 450px;
     }
   }
 
+  &icon-list{
+    width: 550px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    @include mq($from:tablet){
+      width: 700px;
+    }
+    @include mq($from:desktop){
+      width: 1000px;
+    }
+  }
+
   &image{
     margin-bottom: $act-unit;
     .is-image-layout-hidden &{
@@ -229,6 +242,7 @@ $act-block-height : 450px;
         //min-height: 100%;
       }
     }
+
   }
 
   &link{

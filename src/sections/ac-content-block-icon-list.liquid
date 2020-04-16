@@ -97,10 +97,11 @@
                         max_width: 500,
                         max_height: 500
                       %}
-
                     </div>
                     {% unless icon.settings.cb_icon_hide_title %}
-                    {{ icon.settings.title }}
+                      <div class="c-icon-thumb__title">
+                        {{ icon.settings.title }}
+                      </div>
                     {% endunless %}
                   </div>
                 </div>

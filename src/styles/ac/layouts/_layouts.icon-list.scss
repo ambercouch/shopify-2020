@@ -54,14 +54,28 @@
     @extend .o-list-bare;
     display: flex;
     justify-content: space-around;
-    padding: $act-unit-l 0;
-    align-items: flex-end;
+    padding: $act-unit 0;
+    //align-items: flex-end;
+    flex-wrap: wrap;
+    @include mq($from: desktop){
+      padding: $act-unit-l 0;
+    }
 
   }
   &item{
+    min-width: 50%;
     @extend .o-list-bare__item;
-    width: 12%;
+    flex:1;
+    padding: 0 3%;
+    margin-bottom: $act-unit-l;
+    @include mq($from:desktop){
+      min-width: 0;
+      padding: 0 2%;
+    }
 
+  }
+  &icon-thumb{
+    height: 100%;
   }
 }
 
