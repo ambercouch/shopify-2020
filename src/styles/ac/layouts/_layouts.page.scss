@@ -342,6 +342,8 @@
 .l-page__footer--{
   &product{
     //margin-bottom: $act-unit-s;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
   &collection-bundle{
     background: $brand-col-4;
@@ -394,7 +396,9 @@
     &.is-last-block:after{
       border-bottom:none;
     }
-
+    @include mq($from:desktop){
+      margin-bottom: $act-unit-l !important;
+    }
   }
 
 }
