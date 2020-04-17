@@ -27,6 +27,7 @@
   {%- assign cb_hide_title_class =  'is-heading-hidden' -%}
 {% endif %}
 
+
 {% if section.settings.cb_sub_title != blank %}
   {%- assign cb_sub_class =  'has-sub-heading' -%}
 {% endif %}
@@ -100,7 +101,7 @@
                     </div>
                     {% unless icon.settings.cb_icon_hide_title %}
                       <div class="c-icon-thumb__title">
-                        {{ icon.settings.title }}
+                        {{ icon.settings.title }}<br>
                       </div>
                     {% endunless %}
                   </div>
