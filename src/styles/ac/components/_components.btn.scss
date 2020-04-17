@@ -257,6 +257,9 @@
   &label{
     display: inline;
   }
+  &icon{
+    display: block;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-btn__header--
@@ -276,3 +279,18 @@
     display: none;
   }
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .c-btn__icon--
+
+[class*=c-btn__icon--] {
+  @extend .c-btn__icon;
+}
+
+.c-btn__icon--{
+  &mobile-nav-close{
+    &:hover, &:focus{
+      color: $brand-col-3;
+    }
+  }
+}
+

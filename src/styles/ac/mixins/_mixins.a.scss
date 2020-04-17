@@ -5,15 +5,12 @@
   &:focus{
     @extend a;
   }
-  &:hover {
+  &:hover, &:focus {
     @if $col-hov {
       color: $col-hov;
     } @else {
     color: call($hov-effect, $color: $col, $amount: $hov-effect-amount);
 
   }
-  }
-  &:focus{
-    @extend a:hover;
   }
 }

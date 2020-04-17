@@ -186,6 +186,9 @@
   &footer{
     margin-left: 0 !important;
   }
+  &sub-item{
+    margin-left: 0;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-nav-menu__link--
@@ -199,12 +202,9 @@
     @include a($col : $brand-col-3);
   }
   &mobile{
+    @include a($col: $brand-col-2, $col-hov: $brand-col-3);
     display: inline-flex;
-    @include a($col : $brand-col-2);
     padding: $act-unit-t;
-    &:hover, &:focus{
-      color: $brand-col-2;
-    }
     &[data-state=on]{
       background: rgba(white, 0.5);
     }
@@ -227,6 +227,7 @@
     }
   }
   &main{
+    @include a($col: $brand-col-1, $col-hov: $brand-col-3);
     &[data-state=on]{
       border: solid 1px rgba(white, 0.2);
       border-bottom: none;
@@ -235,6 +236,9 @@
       background: $brand-col-2;
       z-index: 9;
     }
+  }
+  &sub-link{
+    @include a($col: $brand-col-1, $col-hov: $brand-col-3);
   }
 }
 
