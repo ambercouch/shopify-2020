@@ -58,7 +58,8 @@
     //align-items: flex-end;
     flex-wrap: wrap;
     @include mq($from: desktop){
-      padding: $act-unit-l 0;
+      padding: $act-unit-l 0 0;
+      margin-bottom: 0;
     }
 
   }
@@ -68,9 +69,16 @@
     flex:1;
     padding: 0 3%;
     margin-bottom: $act-unit-l;
+    &:last-child{
+       margin-bottom: 0;
+     }
+    &:nth-last-child(2){
+      margin-bottom: 0;
+    }
     @include mq($from:desktop){
       min-width: 0;
       padding: 0 2%;
+      margin-bottom: 0;
     }
 
   }

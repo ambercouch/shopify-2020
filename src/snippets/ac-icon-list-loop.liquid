@@ -11,12 +11,11 @@
 
 {% assign listNameSpace = listNameSpace | append: '-' | append: blockType %}
 
-
-
 <div class="l-icon-list">
     <ul class="l-icon-list__list">
       {% for c in (1..10) %}
         {% assign itemId = 'icon_' | append : c %}
+        {% assign titleId = 'title_' | append : c %}
         {% if shop.metafields[listNameSpace][itemId] %}
         <li class="l-icon-list__item">
           <div class="l-icon-list__icon-thumb">
@@ -24,11 +23,11 @@
               <div class="c-icon-thumb__icon">
                <img src="{{ shop.metafields[listNameSpace][itemId] | file_img_url: '500x' }}" alt="icon" />
               </div>
-              {% unless icon.settings.cb_icon_hide_title %}
+              {% if shop.metafields[listNameSpace][titleId] %}
                 <div class="c-icon-thumb__title">
-                  {{ icon.settings.title }}
+                  {{ shop.metafields[listNameSpace][titleId] }}
                 </div>
-              {% endunless %}
+              {% endif %}
             </div>
           </div>
         </li>
