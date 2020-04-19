@@ -69,6 +69,7 @@
     text-align: center;
     @include act-font-size($act-fs-6, 1.3);
     align-self: flex-end;
+    color: $brand-col-2;
   }
 }
 

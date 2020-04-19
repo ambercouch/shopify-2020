@@ -12,6 +12,20 @@ const ACSHOPIFY = {
 
       fitvids();
 
+      $(document).on('click', '.c-content-block__icon--scroll, [data-js-scroll-down]', function() {
+
+
+        let target = $(this).parent();
+        console.log('target.offset().top');
+        console.log(target.offset().top);
+        console.log('target.outerHeight()');
+        console.log(target.outerHeight());
+        console.log(target);
+        $('html, body').animate({
+          scrollTop: target.offset().top + target.outerHeight(),
+        }, 1000);
+      });
+
       //content for index add class to shopify sections
 
       $('[class*=l-main--] .shopify-section').each(function() {
@@ -250,19 +264,7 @@ const ACSHOPIFY = {
         //   });
         // });
 
-      $(document).on('click', '.c-content-block__icon--scroll', function() {
 
-
-        let target = $(this).parent();
-        console.log('target.offset().top');
-        console.log(target.offset().top);
-        console.log('target.outerHeight()');
-        console.log(target.outerHeight());
-        console.log(target);
-        $('html, body').animate({
-          scrollTop: target.offset().top + target.outerHeight(),
-        }, 1000);
-      });
 
 
     },

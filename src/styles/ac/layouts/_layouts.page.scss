@@ -94,6 +94,8 @@
 
   &feature-image{
     margin-bottom: $act-unit;
+    background: #fff;
+    position: relative;
   }
   &tag-list{
     display: none;
@@ -169,6 +171,12 @@
   &gallery{
     grid-row-start: 1;
     grid-row-end: 6
+  }
+  &icon{
+    display: block;
+  }
+  &icon-list{
+    background: #fff;
   }
 
 }
@@ -426,6 +434,35 @@
        grid-row-start: 5;
      }
    }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__icon-list--
+
+[class*=l-page__icon-list--] {
+  @extend .l-page__icon-list;
+}
+
+.l-page__icon-list--{
+  &collection{
+    padding: $act-unit 0;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__icon--
+
+[class*=l-page__icon--] {
+  @extend .l-page__icon;
+}
+
+.l-page__icon--{
+  &scroll-collection{
+    color: $brand-col-2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: $act-unit;
+    cursor: pointer;
+  }
 }
 
 #wprev-slider-2656 .wprev_preview_bg1_T1 {
