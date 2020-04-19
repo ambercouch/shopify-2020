@@ -48,13 +48,6 @@
       {% endfor %}
     </ul>
 
-    <div class="l-thumb-list__footer">
-      <a class="l-thumb-list__link--btn" href="#" data-control="teamlist" data-state="off">
-        <span class="l-thumb-list__link-label" data-lable="on">See more</span>
-        <span class="l-thumb-list__link-label" data-lable="off">See less</span>
-      </a>
-    </div>
-
     <ul class="l-thumb-list__list--more" data-container="teamlist" data-state="off">
       {% for c in (1..10)  offset: 3 %}
         {% capture imageId %}image{{ c }}{% endcapture %}
@@ -101,5 +94,13 @@
 
       {% endfor %}
     </ul>
+
+    <div class="l-thumb-list__footer">
+      <a class="l-thumb-list__link--btn" href="#" data-control="teamlist" data-state="off">
+        <span class="l-thumb-list__link-label" data-lable="on">See more</span>
+        <span class="l-thumb-list__link-label" data-lable="off">See less</span>
+      </a>
+    </div>
+
   </div>
 </div>
