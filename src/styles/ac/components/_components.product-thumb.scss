@@ -60,7 +60,7 @@
   }
 
   &link-title{
-    color: $brand-col-2;
+    @include a($col : $brand-col-2, $col-hov : $brand-col-2)
     text-decoration: none;
   }
 
@@ -269,6 +269,19 @@
 .c-product-thumb__img--{
   &cart{
     border-radius: $act-unit-s;
+  }
+}
+
+.c-product-thumb__feature-image{
+  .responsive-image__wrapper{
+    max-width: 100% !important;
+    width: 100% !important;
+    img{
+      width: 100%;
+      height: 100%;
+      max-width: 100% !important;
+      max-height: 100% !important;
+    }
   }
 }
 
