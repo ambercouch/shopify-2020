@@ -50,6 +50,7 @@
     }
   }
 
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-page--
@@ -185,6 +186,18 @@
   &icon-list{
     background: #fff;
   }
+  &collection-intro{
+    @include mq($from:desktop){
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: flex;
+    }
+
+  }
+  &product-list{
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 
 }
 
@@ -302,6 +315,12 @@
   }
   &static-page{
     margin-bottom: 0;
+  }
+  &collection{
+    @include mq($from:desktop){
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
   }
 }
 
@@ -452,6 +471,9 @@
 .l-page__icon-list--{
   &collection{
     padding: $act-unit 0;
+    @include mq($from:desktop){}
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 }
 

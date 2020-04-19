@@ -4,6 +4,7 @@
 
 .l-product-list {
   display: block;
+
 }
 
 /*
@@ -40,6 +41,10 @@
   }
   &list{
     @extend .o-list-bare;
+    @include mq($from:desktop){
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   &link {
@@ -58,6 +63,9 @@
   }
   &item{
     position: relative;
+    @include mq($from:desktop){
+      width: 50%;
+    }
   }
 
 }

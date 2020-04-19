@@ -2,7 +2,7 @@
   <div class="l-main__page--collection">
     <div class="l-page--collection">
       {% if collection.image.src %}
-        <div class="l-page__feature-image">
+        <div class="l-page__feature-image--collection">
           {% include 'responsive-image' with
             image: collection.image,
             max_width: 800,
@@ -17,8 +17,8 @@
       {% else %}
         <!-- no collection image -->
       {% endif %}
-
-  <header class="l-page__header" role="banner">
+      <div class="l-page__collection-intro">
+      <header class="l-page__header" role="banner">
 
 
 
@@ -31,6 +31,7 @@
     </div>
 
   </header>
+
       {% if collection.description != blank %}
       <div class="l-page__content">
           <div class="rte">
@@ -38,6 +39,8 @@
           </div>
       </div>
       {% endif %}
+      </div>
+
       <div class="l-page__icon-list--collection">
         {% include 'ac-icon-list-loop-collection' %}
       </div>
