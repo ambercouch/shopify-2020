@@ -1,0 +1,25 @@
+<div class="l-icon-list">
+    <ul class="l-icon-list__list">
+      {% for c in (1..10) %}
+        {% assign itemId = 'icon_' | append : c %}
+        {% assign titleId = 'title_' | append : c %}
+        {% if collection.metafields['icon-list'][itemId] %}
+        <li class="l-icon-list__item">
+          <div class="l-icon-list__icon-thumb">
+            <div class="c-icon-thumb">
+              <div class="c-icon-thumb__icon">
+               <img src="{{ collection.metafields['icon-list'][itemId] | file_img_url: '500x' }}" alt="icon" />
+              </div>
+              {% if collection.metafields['icon-list'][titleId] %}
+                <div class="c-icon-thumb__title">
+                  {{ collection.metafields['icon-list'][titleId] }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+

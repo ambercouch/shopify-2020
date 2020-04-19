@@ -38,11 +38,15 @@
           </div>
       </div>
       {% endif %}
+      <div class="l-page__icon-list--collection">
+        {% include 'ac-icon-list-loop-collection' %}
+      </div>
   <div class="l-page__product-list">
     <div class="l-product-list">
 
       <div class="l-product-list__list">
     {% for product in collection.products %}
+      {% comment %}
       {% if forloop.first == true %}
         <!-- forloop.index {{ forloop.index }} - forloop.first -->
         <div class="l-product-list__item--first">
@@ -51,6 +55,7 @@
       {% else %}
         <!-- forloop.index {{ forloop.index }} -->
       {% endif %}
+      {% endcomment %}
       <div class="l-product-list__item testforloop">
         <div class="l-product-list__product-thumb">
         {% include 'ac-product-thumb' %}
