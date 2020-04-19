@@ -4,6 +4,7 @@
 
 .l-page {
   display: block;
+
 }
 
 /*
@@ -41,6 +42,12 @@
   }
   &collection-bundle{
     padding-top: $act-unit-s;
+  }
+  &collection{
+    @include mq($from:desktop){
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
   }
 
 }

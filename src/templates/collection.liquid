@@ -1,26 +1,26 @@
 {% paginate collection.products by 12 %}
   <div class="l-main__page--collection">
     <div class="l-page--collection">
+      {% if collection.image.src %}
+        <div class="l-page__feature-image">
+          {% include 'responsive-image' with
+            image: collection.image,
+            max_width: 800,
+            max_height: 1000
+          %}
 
+
+          <div class="l-page__icon--scroll-collection" data-js-scroll-down >
+            {% include 'icon-bbd-scroll' %}
+          </div>
+        </div>
+      {% else %}
+        <!-- no collection image -->
+      {% endif %}
 
   <header class="l-page__header" role="banner">
 
-   {% if collection.image.src %}
-     <div class="l-page__feature-image">
-         {% include 'responsive-image' with
-           image: collection.image,
-           max_width: 800,
-           max_height: 1000
-         %}
 
-
-       <div class="l-page__icon--scroll-collection" data-js-scroll-down >
-         {% include 'icon-bbd-scroll' %}
-       </div>
-     </div>
-    {% else %}
-      <!-- no collection image -->
-    {% endif %}
 
     <h1 class="l-page__heading" >
       <span class="l-page__title">{{ collection.title }}</span>
