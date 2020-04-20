@@ -18,7 +18,7 @@
         <!-- no collection image -->
       {% endif %}
       <div class="l-page__collection-intro">
-      <header class="l-page__header" role="banner">
+      <header class="l-page__header--collection" role="banner">
 
 
 
@@ -33,7 +33,7 @@
   </header>
 
       {% if collection.description != blank %}
-      <div class="l-page__content">
+      <div class="l-page__content--collection">
           <div class="rte">
             {{ collection.description }}
           </div>
@@ -59,7 +59,7 @@
         <!-- forloop.index {{ forloop.index }} -->
       {% endif %}
       {% endcomment %}
-      <div class="l-product-list__item testforloop">
+      <div class="l-product-list__item is-product-id-{{ product.id }} u-bgc-{{ product.metafields.global.background }}">
         <div class="l-product-list__product-thumb">
         {% include 'ac-product-thumb' %}
         </div>

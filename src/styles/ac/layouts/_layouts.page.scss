@@ -191,6 +191,9 @@
       grid-column-start: 1;
       grid-column-end: 3;
       display: flex;
+      max-width: $act-wrapper-width;
+      margin-left: auto;
+      margin-right: auto;
     }
 
   }
@@ -351,6 +354,11 @@
       grid-column-end: 3;
     }
   }
+  &collection{
+    @include mq($from:desktop){
+      width: 50%;
+    }
+  }
   &recipe{
     text-align: left;
   }
@@ -460,6 +468,11 @@
        grid-row-start: 5;
      }
    }
+  &collection{
+    @include mq($from:desktop){
+      width: 50%;
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__icon-list--

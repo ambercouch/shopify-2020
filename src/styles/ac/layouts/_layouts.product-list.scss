@@ -65,7 +65,17 @@
     position: relative;
     @include mq($from:desktop){
       width: 50%;
+      display: flex;
+      justify-content: flex-end;
+      &:nth-child(even){
+        justify-content: flex-start;
+      }
     }
+  }
+  &product-thumb{
+    height: 100%;
+    width: 700px;
+    max-width: 50vw;
   }
 
 }
@@ -80,4 +90,20 @@
 
 [class*=l-product-list__content-block--] {
   @extend .l-product-list__content-block;
+}
+
+.is-product-id-{
+  &1859934158891{
+    background: $brand-col-5;
+  }
+  &4383271583787{
+    background: $brand-col-4;
+  }
+  &1859836051499 {
+    background: $brand-col-1;
+  }
+  &1859837722667{
+    background: $brand-col-7;
+  }
+
 }
