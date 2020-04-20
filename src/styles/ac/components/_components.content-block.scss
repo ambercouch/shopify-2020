@@ -588,6 +588,17 @@ $act-block-height : 450px;
     }
   }
 }
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__text--
+
+    [class*=c-content-block__link-thumb--] {
+      @extend .c-content-block__link-thumb;
+    }
+
+.c-content-block__link-thumb--{
+  &collection-list-2{
+
+  }
+}
 
 
 

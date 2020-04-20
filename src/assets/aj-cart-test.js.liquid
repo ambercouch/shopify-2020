@@ -16,3 +16,11 @@ jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
   timber.RightDrawer.open();
   //freeshipping();
 });
+
+jQuery(document.body).on('completeAddItem.ajaxCart', function(evt, cart, text) {
+  // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
+  let acCart = timb.getCart();
+  console.log('acCart');
+  console.log(acCart);
+  //freeshipping();
+});
