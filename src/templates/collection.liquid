@@ -17,6 +17,12 @@
       {% else %}
         <!-- no collection image -->
       {% endif %}
+      <div class="l-page__feature-image--collection-desktop">
+
+        <img src="{{ collection.metafields.global.feature-image | file_img_url : '1200x' }}" alt="" class="l-page__feature-img">
+
+      </div>
+
       <div class="l-page__collection-intro">
       <header class="l-page__header--collection" role="banner">
 
