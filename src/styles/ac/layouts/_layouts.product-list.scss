@@ -86,7 +86,24 @@
   @extend .l-product-list__header;
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .l-product-list_block-content--
+
+//BEM ELEMENT MODIFIER FALLBACK .l-product-list__item--
+
+[class*=l-product-list__item--] {
+  @extend .l-product-list__item;
+}
+
+.l-product-list__item--{
+  &last{
+    @include mq($from: desktop){
+      width: 100%;
+      display: block;
+    }
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-product-list__block-content--
 
 [class*=l-product-list__content-block--] {
   @extend .l-product-list__content-block;

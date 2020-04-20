@@ -10,11 +10,10 @@
 {% endif %}
 <!-- forloop.index {{ forloop.index }} -->
 {% if logoImage != blank or blockImage != blank or blockTitle != blank %}
-<div class="l-product-list__item">
   <div class="l-product-list__content-block--{{ collection.metafields.content-block.title2 | handle  }} ">
     <div class="c-content-block--collection-list-2 c-content-block--{{  collection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
       {%  if blockLink != blank %}
-      <a href="{{blockLink}}" class="c-content-block__link-thumb">
+      <a href="{{blockLink}}" class="c-content-block__link-thumb--collection-list-2">
         {% endif %}
       <header class="c-content-block__header ">
         {%  if logoImage != blank %}
@@ -50,7 +49,7 @@
       </a>
       {% endif %}
       {% if collection.metafields.content-block.image2 %}
-        <div class="c-content-block__block-image">
+        <div class="c-content-block__block-image--collection-list-2">
           {% include 'responsive-image' with
             image: blockImage,
             max_width: 700,
@@ -61,5 +60,4 @@
 
     </div>
   </div>
-</div>
 {% endif %}

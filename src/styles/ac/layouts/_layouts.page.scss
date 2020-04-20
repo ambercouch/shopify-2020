@@ -240,6 +240,9 @@
   &static-page{
     background: $brand-col-4;
   }
+  &collection{
+    width: 50%;
+  }
 }
 
 
@@ -357,6 +360,12 @@
   &collection{
     @include mq($from:desktop){
       width: 50%;
+      text-align: left;
+      padding-top: $act-unit;
+      padding-bottom: $act-unit;
+      .rte *:last-child{
+        margin-bottom: 0;
+      }
     }
   }
   &recipe{

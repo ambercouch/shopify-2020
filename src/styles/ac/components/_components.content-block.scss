@@ -62,6 +62,10 @@ $act-block-height : 450px;
     text-align: center;
     padding-bottom: $act-unit-l;
     margin-bottom: 0;
+    @include mq($from: desktop){
+      display: flex;
+    }
+
   }
   &product{
     padding: $act-unit-t $act-unit 0;
