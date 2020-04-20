@@ -64,6 +64,9 @@ $act-block-height : 450px;
     margin-bottom: 0;
     @include mq($from: desktop){
       display: flex;
+      flex-direction: row-reverse;
+      padding-bottom: 0 !important;
+      padding-top: $act-unit;
     }
 
   }
@@ -160,6 +163,7 @@ $act-block-height : 450px;
       width: 600px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 0;
     }
     @include mq($from:desktop){
       grid-column-start: 2;
@@ -364,8 +368,11 @@ $act-block-height : 450px;
     }
     @include mq($from:desktop){
       width: 100%;
-
     }
+  }
+  &collection-list-2{
+    width: 100%;
+    text-align: left;
   }
 }
 
@@ -492,6 +499,26 @@ $act-block-height : 450px;
   }
 }
 
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__logo--
+
+[class*=c-content-block__logo--] {
+  @extend .c-content-block__logo;
+
+}
+
+.c-content-block__logo--{
+  &collection-list-2{
+
+    @include mq($from:desktop){
+      margin-left: 0;
+      .responsive-image__wrapper{
+        margin-left: 0 !important;
+      }
+    }
+  }
+}
+
+
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__icon--
 
 [class*=c-content-block__icon--] {
@@ -562,6 +589,12 @@ $act-block-height : 450px;
       flex-direction: row-reverse;
     }
   }
+  &collection-list-2{
+    @include mq($from:desktop){
+      width: 100%;
+      text-align: left;
+  }
+  }
 }
 
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__text--
@@ -588,15 +621,43 @@ $act-block-height : 450px;
     }
   }
 }
-// BEM ELEMENT MODIFIER FALLBACK .c-content-block__text--
 
-    [class*=c-content-block__link-thumb--] {
-      @extend .c-content-block__link-thumb;
-    }
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__text--
+[class*=c-content-block__link-thumb--] {
+  @extend .c-content-block__link-thumb;
+}
 
 .c-content-block__link-thumb--{
   &collection-list-2{
+    @include mq($from: desktop){
+      width: 50%;
+      @include a($col:white, $col-hov: white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: $act-unit-l;
+    }
+  }
+}
 
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__block-image--
+[class*=c-content-block__block-image--] {
+  @extend .c-content-block__block-image;
+}
+
+.c-content-block__block-image--{
+  &collection-list-2{
+    @include mq($from: desktop){
+      width: 50%;
+      position: relative;
+      left:auto;
+      right: auto;
+      top: auto;
+      .responsive-image__wrapper{
+        max-width: 400px !important;
+        margin-left: 0;
+      }
+    }
   }
 }
 

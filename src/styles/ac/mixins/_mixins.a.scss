@@ -5,9 +5,9 @@
   &:focus{
     @extend a;
   }
-  &:hover, &:focus {
+  &:hover, &:focus, &active {
     @if $col-hov {
-      color: $col-hov;
+      color: $col-hov !important;
     } @else {
     color: call($hov-effect, $color: $col, $amount: $hov-effect-amount);
 
