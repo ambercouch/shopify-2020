@@ -26,8 +26,21 @@ const ACSHOPIFY = {
         }, 1000);
       });
 
-      //content for index add class to shopify sections
+      // $(document).on('click', '[data-js-scroll-top]', function() {
+      //
+      //   $('html, body').animate({
+      //     scrollTop: 0
+      //   }, 1000);
+      //   return false;
+      // });
 
+      $("a[href='#top']").click(function() {
+        console.log("scroll top");
+        $('html, body').animate({ scrollTop: 0 }, 1000 );
+        return false;
+      });
+
+      //content for index add class to shopify sections
       $('[class*=l-main--] .shopify-section').each(function() {
         console.log('section found');
         let desk50 = $('.is-block-width-50', this).length;
