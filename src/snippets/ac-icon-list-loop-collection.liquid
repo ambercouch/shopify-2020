@@ -1,4 +1,32 @@
+{% assign blockTitle = collection.metafields['icon-list']['title'] %}
 <div class="l-icon-list">
+
+  <header class="l-icon-list__header ">
+    {%  if logoImage != blank %}
+      {% if logoImage != blank %}
+        <h3 class="l-icon-list__logo">
+          {% include 'responsive-image' with
+            image: logoImage,
+            max_width: 400,
+            max_height: 700
+          %}
+        </h3>
+      {% endif %}
+    {% endif %}
+    {%  if blockTitle != blank %}
+      <h3 class="l-icon-list__heading">
+                <span class="l-icon-list__title">
+                  {{ blockTitle }}
+                </span>
+      </h3>
+    {% endif %}
+    {%  if blockSubTitle != blank %}
+      <h4 class="l-icon-list__sub-heading">
+        {{ blockSubTitle }}
+      </h4>
+    {% endif %}
+  </header>
+
     <ul class="l-icon-list__list">
       {% for c in (1..10) %}
         {% assign itemId = 'icon_' | append : c %}

@@ -107,6 +107,17 @@
       color: $brand-col-3;
     }
   }
+  &collection-list-2{
+    @extend .c-btn;
+    @extend .c-btn--content-block;
+    color: $brand-col-3;
+    min-width: 200px;
+    padding-top: $act-unit-s;
+    padding-bottom: $act-unit-s;
+    &:hover{
+      color: $brand-col-3;
+    }
+  }
   &buy-bundle{
     @extend .c-btn--product-form-submit;
   }
@@ -160,6 +171,9 @@
       color: darken($brand-col-5, 10%);
       @extend .o-btn--icon-left;
       @extend .o-btn--transparent;
+    }
+    & > :first-child{
+      transform: rotateZ(90deg);
     }
   }
   &cart-update{

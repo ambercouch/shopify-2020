@@ -4,6 +4,12 @@
 
 .l-icon-list {
   display: block;
+  color: $brand-col-2;
+  text-align: center;
+  @include mq($from: desktop){
+    max-width: $act-wrapper-width;
+    margin: 0 auto;
+  }
 }
 
 /*
@@ -32,7 +38,9 @@
   }
 
   &heading {
-    display: block
+    display: block;
+    color: $brand-col-2;
+    text-align: center;
   }
 
   &title {

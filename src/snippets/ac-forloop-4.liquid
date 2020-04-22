@@ -1,5 +1,5 @@
 {% assign blockLink =  collection.metafields.content-block.url2 %}
-{% assign blockLinkText =  collection.metafields.content-block.linkText2 %}
+{% assign blockLinkText =  collection.metafields.content-block.link_text2 %}
 {% assign logoImage = images[collection.metafields.content-block.logo2] %}
 {% assign blockImage = images[collection.metafields.content-block.image2] %}
 {% assign blockTitle = collection.metafields.content-block.title2 %}
@@ -21,7 +21,7 @@
           <h3 class="c-content-block__logo--collection-list-2">
             {% include 'responsive-image' with
               image: logoImage,
-              max_width: 200,
+              max_width: 400,
               max_height: 700
             %}
           </h3>
@@ -47,6 +47,13 @@
         {% endif %}
         {%  if blockLink != blank %}
       </a>
+      {% endif %}
+      {% if blockLinkText %}
+      <div class="c-content-block__footer--collection-list-2">
+        <div class="c-content-block__btn--collection-list-2">
+          <a class="c-btn--collection-list-2" href="{{blockLink}}">{{ blockLinkText }}</a>
+        </div>
+      </div>
       {% endif %}
       {% if collection.metafields.content-block.image2 %}
         <div class="c-content-block__block-image--collection-list-2">

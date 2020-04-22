@@ -23,9 +23,9 @@
               <div class="c-icon-thumb__icon">
                <img src="{{ shop.metafields[listNameSpace][itemId] | file_img_url: '500x' }}" alt="icon" />
               </div>
-              {% if shop.metafields[listNameSpace][titleId] %}
+              {% if shop.metafields[listNameSpace][titleId]  %}
                 <div class="c-icon-thumb__title">
-                  {{ shop.metafields[listNameSpace][titleId] }}
+                  {{ shop.metafields[listNameSpace][titleId]  }}
                 </div>
               {% endif %}
             </div>
