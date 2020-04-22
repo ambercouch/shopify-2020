@@ -1,3 +1,6 @@
+{% assign hideTitle = collection.metafields.global.hide_title %}
+{% assign collectionLogo = images[collection.metafields.global.logo] %}
+{% assign featureImage = images[collection.metafields.global.feature_image_desktop] %}
 {% paginate collection.products by 12 %}
   <div class="l-main__page--collection">
     <div class="l-page--collection">
@@ -19,7 +22,14 @@
       {% endif %}
       <div class="l-page__feature-image--collection-desktop">
 
-        <img src="{{ collection.metafields.global.feature-image | file_img_url : '1200x' }}" alt="" class="l-page__feature-img">
+        {% include 'responsive-image' with
+          image: featureImage,
+          max_width: 1200,
+          max_height: 1000
+        %}
+        <div class="l-page__icon--scroll-collection" data-js-scroll-down >
+          {% include 'icon-bbd-scroll' %}
+        </div>
 
       </div>
 
@@ -27,10 +37,21 @@
       <header class="l-page__header--collection" role="banner">
 
 
+        {% unless hideTitle %}
+      <h1 class="l-page__heading" >
+        <span class="l-page__title">{{ collection.title }}</span>
+      </h1>
+        {% endunless %}
 
-    <h1 class="l-page__heading" >
-      <span class="l-page__title">{{ collection.title }}</span>
-    </h1>
+        {% if collection.metafields.global.logo %}
+          <div class="l-page__logo--collection">
+            {% include 'responsive-image' with
+              image: collectionLogo,
+              max_width: 400,
+              max_height:400
+            %}
+          </div>
+        {% endif %}
 
     <div class="l-page__tag-list">
     {% include 'ac-tag-list' %}

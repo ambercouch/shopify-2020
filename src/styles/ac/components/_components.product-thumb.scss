@@ -76,7 +76,7 @@
   &feature-image{
     margin-bottom: $act-unit;
     @include mq($from:desktop){
-      max-height: 600px;
+      max-height: 400px;
       overflow: hidden;
     }
   }

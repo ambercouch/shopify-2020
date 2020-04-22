@@ -85,6 +85,10 @@
     color: $brand-col-2;
   }
 
+  &logo{
+    display: block;
+  }
+
   &link {
     display: inline
   }
@@ -302,6 +306,18 @@
     color: $brand-col-5;
   }
 
+}
+//BEM ELEMENT MODIFIER FALLBACK .l-page__logo--
+
+[class*=l-page__logo--] {
+  @extend .l-page__logo;
+}
+
+.l-page__logo--{
+  &collection{
+    padding: 0 $act-unit;
+    margin-bottom: $act-unit;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__sub-heading--
@@ -532,6 +548,7 @@
     left: 0;
     bottom: $act-unit;
     cursor: pointer;
+    text-align: center;
   }
 }
 
