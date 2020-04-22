@@ -179,6 +179,10 @@
       <!-- vidioId from the shop meta -->
       {% assign blockType = shop.metafields[productType][blockTypeId] %}
 
+      {% if blockType contains "icon-list" %}
+      {% assign blockTypeClass = "is-icon-list"%}
+        {% endif %}
+
     {% else %}
       <!-- no vidioId  -->
       {% assign blockType = nil %}
@@ -196,7 +200,7 @@
 
     {% elsif blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil %}
 
-    <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }}">
+    <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }} {{ blockTypeClass }}">
       <div class="c-content-block--product">
     {% if blockTitle != nil %}
         <h2 class="c-content-block__heading--product">
@@ -224,10 +228,6 @@
     </div>
     {% endif %}
 
-
-
-
-
   {% endfor %}
 
 
@@ -248,9 +248,9 @@
   </div>
   <div class="l-page__footer--product">
     <div class="l-page__btn--footer">
-      <a href="/collections/all" class="c-btn--product-back">
+      <a class="c-btn--product-back" href="#top">
         <span class="o-btn__icon--left">{% include 'icon-arrow-left' %}</span>
-        <span class="o-btn__label">Back to all products</span>
+        <span class="o-btn__label">Back to top</span>
       </a>
     </div>
   </div>
