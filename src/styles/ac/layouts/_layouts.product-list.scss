@@ -73,9 +73,12 @@
     }
   }
   &product-thumb{
-    height: 100%;
-    width: 700px;
-    max-width: 50vw;
+    @include mq($from:desktop){
+      height: 100%;
+      width: 700px;
+      max-width: 50vw;
+    }
+
   }
 
 }
@@ -121,6 +124,19 @@
   }
   &1859837722667{
     background: $brand-col-7;
+    color: #fff;
+    .c-product-thumb__link-title{
+      color:#fff;
+      &:hover, &:focus, &:active{
+        color:#fff !important;
+      }
+    }
+    .c-product-thumb__meta{
+      color:#fff;
+    }
+    .c-btn--product-thumb{
+      color: white;
+    }
   }
 
 }
