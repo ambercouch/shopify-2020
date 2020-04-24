@@ -1,6 +1,15 @@
 <div class="l-flex-block__item--team-list">
 
   <div class="l-thumb-list">
+    {% if blockTitle %}
+      <header class="l-thumb-list__header">
+        <h3 class="l-thumb-list__heading u-col-{{ classHeadingColor }} ">
+          {{ blockTitle }}
+        </h3>
+      </header>
+    {% else %}
+      <!-- no blockTitle -->
+    {% endif %}
     <ul class="l-thumb-list__list">
       {% for c in (1..3) %}
         {% capture imageId %}image{{ c }}{% endcapture %}

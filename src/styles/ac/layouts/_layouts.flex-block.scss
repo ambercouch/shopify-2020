@@ -4,6 +4,13 @@
 
 .l-flex-block {
   display: block;
+  @include mq($from: desktop){
+    max-width: $act-wrapper-width;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+
+  }
 }
 
 /*
@@ -28,11 +35,13 @@
 
 .l-flex-block__ {
   &header {
-    display: block
+    display: block;
+    text-align: center;
   }
 
   &heading {
-    display: block
+    display: block;
+    @include act-font-size($act-fs-1);
   }
 
   &title {
@@ -84,5 +93,72 @@
   }
   &image{
     padding: 0 !important;
+  }
+  &text{
+    @include mq($from : desktop){
+      width: 1000px;
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+  }
+}
+
+.is-image-size-none{
+  @include mq($from:desktop){
+    flex-direction: column;
+  }
+}
+.is-image-right{
+  @include mq($from:desktop){
+    flex-direction: row-reverse;
+  }
+}
+
+.is-image-size-50{
+  .l-flex-block__item--image{
+    @include mq($from: desktop){
+      width: 50%;
+    }
+
+  }
+  .l-flex-block__item--text{
+    @include mq($from: desktop){
+      width: 50%;
+    }
+  }
+}
+
+.is-layout-grid {
+  @include mq($from: desktop){
+    padding-top: 0 !important;
+  }
+  .l-flex-block{
+      @include mq($from: desktop) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr auto auto 1fr;
+      }
+  }
+  .l-flex-block__header{
+    @include mq($from:desktop){
+      grid-row-start: 2;
+      grid-column-start: 1;
+    }
+  }
+  .l-flex-block__item--image{
+    @include mq($from:desktop){
+      grid-row-start: 1;
+      grid-row-end: 5;
+      grid-column-start: 2;
+      width: 100% !important;
+    }
+  }
+  .l-flex-block__item--text{
+    @include mq($from:desktop){
+      grid-row-start: 3;
+      grid-column-start: 1;
+    }
   }
 }

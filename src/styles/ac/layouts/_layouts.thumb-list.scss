@@ -4,6 +4,7 @@
 
 .l-thumb-list {
   display: block;
+  color: $brand-col-2;
 }
 
 /*
@@ -31,7 +32,9 @@
   }
 
   &heading {
-    display: block
+    display: block;
+    text-align: center;
+    @include act-font-size($act-fs-1);
   }
 
   &title {
@@ -50,10 +53,17 @@
     display: block
   }
   &list{
-    @extend .o-list-bare
+    @extend .o-list-bare;
+    @include mq($from:desktop){
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
   &item{
     margin-bottom: $act-unit-l;
+    @include mq($from:desktop){
+      width: 33.33%;
+    }
   }
   &footer{
     margin-bottom: $act-unit;
@@ -102,6 +112,8 @@
     padding-left: $act-unit-t;
     padding-right: $act-unit-t;
     color: $brand-col-3;
+    width: 300px;
+    max-width: 100%;
     &:focus{
       color: $brand-col-3 !important;
     }

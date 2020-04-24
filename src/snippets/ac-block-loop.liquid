@@ -41,8 +41,20 @@
      {% assign blockText = null %}
    {% endif %}
 
-{% if  sObj.metafields[namespace]['title'] %}
-  {% assign blockTitle = sObj.metafields[namespace]['title'] %}
+  {% if  sObj.metafields[namespace]['block_layout'] %}
+    {% assign blockLayout = sObj.metafields[namespace]['block_layout'] %}
+  {% else %}
+    {% assign blockLayout = null %}
+  {% endif %}
+
+  {% if  sObj.metafields[namespace]['title'] %}
+    {% assign blockHeading = sObj.metafields[namespace]['title'] %}
+  {% else %}
+    {% assign blockHeading = null %}
+  {% endif %}
+
+{% if  sObj.metafields[namespace]['text_heading'] %}
+  {% assign blockTitle = sObj.metafields[namespace]['text_heading'] %}
 {% else %}
   {% assign blockTitle = null %}
 {% endif %}
@@ -74,7 +86,7 @@
 
    {% if  sObj.metafields[namespace]['image'] %}
      {% assign blockImage = sObj.metafields[namespace]['image'] %}
-     {% assign blockImageUrl = blockImage | file_img_url: '500x' %}
+     {% assign blockImageUrl = blockImage | file_img_url: '800x' %}
    {% else %}
      {% assign blockImage = null %}
      {% assign blockImageUrl = null %}
@@ -89,13 +101,13 @@
 {% if sObj.metafields[namespace]['image'] or sObj.metafields[namespace]['text'] or sObj.metafields[namespace]['block_type'] %}
 
 <!-- block - {{ namespace }} -->
-<div data-namespace="{{ namespace }}" class="l-page__flex-block {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
-  <div class="l-flex-block {{ classImagePos }} {{  classImageSize }}">
+<div data-namespace="{{ namespace }}" class="l-page__flex-block  is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
+  <div class="l-flex-block {{ classImagePos }} {{  classImageSize }} ">
 
-    {% if blockTitle %}
-      <header class="c-content-block__header">
-        <h3 class="c-content-block__heading--static-page u-col-{{ classHeadingColor }} ">
-          {{ blockTitle }}
+    {% if blockHeading %}
+      <header class="l-flex-block__header">
+        <h3 class="l-flex-block__heading u-col-{{ classHeadingColor }} ">
+          {{ blockHeading }}
         </h3>
       </header>
     {% else %}
@@ -104,7 +116,11 @@
 
     {% if blockImage %}
       <div class="l-flex-block__item--image">
-        <img src="{{ blockImageUrl }}" alt="{{ blockImage }}" class="l-page__img">
+        {% include 'responsive-image' with
+          image: images[blockImage],
+          max_width: 700,
+          max_height: 700
+        %}
       </div>
     {% endif %}
 

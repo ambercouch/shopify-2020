@@ -157,6 +157,9 @@
   }
   &flex-block{
     padding-top: $act-unit;
+    @include mq($from: desktop){
+
+    }
   }
   &flex-item{
     padding: 0 $act-unit $act-unit;
@@ -181,6 +184,15 @@
     font-family: $act-font-family-headings;
     font-weight: 500;
     color: $brand-col-1;
+  }
+  &hero-image{
+    display: none;
+    @include mq($from:desktop){
+      display: block;
+      grid-column-start: 2;
+      grid-row-start: 1;
+      grid-row-end: 5;
+    }
   }
   &section{
     display: block;
@@ -258,6 +270,17 @@
       justify-content: center;
     }
   }
+  &about-us{
+    @include mq($from:desktop){
+      max-width: $act-wrapper-width;
+      margin-left: auto;
+      margin-right: auto;
+      @include breakout-band($bgc: $brand-col-2);
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 1fr auto auto 1fr;
+    }
+  }
 }
 
 
@@ -301,6 +324,14 @@
   }
   &about-us{
     background: $brand-col-4;
+    color: $brand-col-3 !important;
+    @include mq($from:desktop){
+      background: transparent;
+      grid-column-start: 1;
+      grid-row-start: 2;
+      text-align: left;
+    padding-left: $act-unit;
+    }
   }
   &collection-bundle{
     color: $brand-col-5;
@@ -494,7 +525,7 @@
 
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .l-page__header--
+//BEM ELEMENT MODIFIER FALLBACK .l-page__section--
 
 [class*=l-page__section--] {
   @extend .l-page__section;
@@ -517,6 +548,24 @@
        grid-row-start: 5;
      }
    }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__hero--
+
+[class*=l-page__hero--] {
+  @extend .l-page__hero;
+}
+
+.l-page__hero--{
+  &static-page{
+    @include mq($from:desktop){
+      grid-row-start: 3;
+      grid-column-start: 1;
+      height: auto;
+      padding-top: 0 !important;
+      text-align: left;
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__icon-list--

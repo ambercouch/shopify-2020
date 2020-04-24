@@ -4,7 +4,7 @@
 
 .l-masthead {
   display: grid;
-  max-width: 1200px;
+  max-width: $act-wrapper-width;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
   @include mq($from : desktop){
@@ -48,6 +48,8 @@
       grid-column-start:2;
       grid-column-end: 4;
       margin-top: $act-unit;
+      z-index: 9
+    ;
     }
   }
 }
