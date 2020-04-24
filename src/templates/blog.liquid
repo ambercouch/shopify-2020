@@ -32,67 +32,17 @@
   ====================
   {% endcomment %}
     <div class="l-page__thumb-list">
-
-
-  {% for item in blog.articles %}
-    {% include 'ac-thumbnail' with modClass : '--blog' %}
-    {% comment %}
-
-    <h3>
-      <a href="{{ article.url }}">{{ article.title }}</a>
-    </h3>
-
-
-    <p>
-      {{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}
-    </p>
-
-    {% if article.image %}
-      <a href="{{ article.url }}">
-        {% include 'responsive-image' with
-          image: article.image,
-          max_width: 1024,
-          max_height: 1024
-        %}
-      </a>
-    {% endif %}
-
-    <div class="rte">
-      {% if article.excerpt.size > 0 %}
-        {{ article.excerpt }}
-      {% else %}
-        <p>
-          {{ article.content | strip_html | truncatewords: 100 }}
-        </p>
-      {% endif %}
-    </div>
-
-    {% if blog.comments_enabled? or article.tags.size > 0 %}
-      <ul>
-        {% if blog.comments_enabled? %}
-          <li>
-            <a href="{{ article.url }}#comments">
-              {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
-            </a>
-          </li>
-        {% endif %}
-
-        {% if article.tags.size > 0 %}
-          {% for tag in article.tags %}
-            <li>
-              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-              {% unless forloop.last %}, {% endunless %}
+      <div class="l-thumb-list--blog">
+        <ul class="l-thumb-list__list--blog">
+          {% for item in blog.articles %}
+            <li class="l-thumb-list__item--blog">
+              <div class="l-thumb-list__thumb">
+                {% include 'ac-thumbnail' with modClass : '--blog' %}
+              </div>
             </li>
           {% endfor %}
-        {% endif %}
-      </ul>
-    {% endif %}
-
-    <p>
-      <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
-    </p>
-{% endcomment %}
-  {% endfor %}
+        </ul>
+      </div>
     </div>
 
   {% if paginate.pages > 1 %}

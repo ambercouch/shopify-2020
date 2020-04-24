@@ -225,6 +225,9 @@
     &:hover{
       color: $brand-col-2;
     }
+    @include mq($from:desktop){
+      justify-content: center;
+    }
   }
   &main{
     @include a($col: $brand-col-1, $col-hov: $brand-col-3);

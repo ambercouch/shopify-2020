@@ -2,6 +2,8 @@
   BEM BLOCK .c-thumb
  */
 
+$act-item-width : 600px;
+
 .c-thumb {
   display: block;
   padding: $act-unit-s;
@@ -22,6 +24,9 @@
   }
   &blog{
     background: white;
+    @include mq($from:desktop){
+      display: flex;
+    }
   }
 }
 
@@ -37,14 +42,24 @@
 
 .c-thumb__ {
   &header {
-    display: block
+    display: block;
+    @include mq($from:desktop){
+      width: $act-item-width;
+      max-width: 100%;
+    }
   }
 
   &heading {
     display: block;
-    @include act-font-size($inuit-font-size-h3,1);
+    @include act-font-size($act-fs-3,1);
     font-weight: 700;
     margin-bottom: 0;
+    @include mq($from:desktop){
+      width: $act-item-width;
+      max-width: 100%;
+      @include act-font-size($act-fs-k,1);
+      margin-bottom: $act-unit;
+    }
   }
 
   &title {
@@ -52,28 +67,54 @@
   }
 
   &link-title{
-    color: $brand-col-2;
     text-decoration: none;
+    @include a($col:$brand-col-2,$col-hov:$brand-col-2);
   }
 
   &link {
-    display: inline
+    display: inline;
   }
   &link-image{
     margin: 0;
+    @include mq($from:desktop){
+      width: $act-item-width;
+      max-height: $act-item-width;
+      height: calc(50vw - $act-unit-l);
+      max-width: 100%;
+      display: block;
+      overflow: hidden;
+    }
   }
   &link-read-more{
     @include a($col : $brand-col-2);
   }
   &feature-image{
     margin-bottom: $act-unit;
+    @include mq($from:desktop){
+      width: 50%;
+      padding-right: $act-unit;
+    }
   }
   &meta{
     color: $brand-col-2;
+    @include mq($from:desktop){
+      width: $act-item-width;
+      max-width: 100%;
+      margin-bottom: $act-unit;
+    }
   }
 
   &content {
-    display: block
+    display: block;
+    @include mq($from:desktop){
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-content: flex-end;
+      align-items: flex-end;
+      justify-content: center;
+      padding-left: $act-unit;
+    }
   }
 
   &footer {
@@ -81,6 +122,10 @@
   }
   &info{
   display: block;
+    @include mq($from:desktop){
+      width: $act-item-width;
+      max-width: 100%;
+    }
 }
   &excerpt{
     color: $brand-col-2;
@@ -118,6 +163,8 @@
   &search-result{
     background: #fff;
     padding: $act-unit-s;
+  }
+  &blog{
 
   }
 }
@@ -133,6 +180,24 @@
   &search-result{
     margin-bottom: 0;
     padding: $act-unit-s;
+  }
+  &blog{
+    @include mq($from:desktop){
+      width: 50%;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-thumb__content--
+
+[class*=c-thumb__content--] {
+  @extend .c-thumb__content;
+}
+
+
+.c-thumb__content--{
+  &blog{
+
   }
 }
 
