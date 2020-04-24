@@ -101,12 +101,12 @@
 {% if sObj.metafields[namespace]['image'] or sObj.metafields[namespace]['text'] or sObj.metafields[namespace]['block_type'] %}
 
 <!-- block - {{ namespace }} -->
-<div data-namespace="{{ namespace }}" class="l-page__flex-block  is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
+<div data-namespace="{{ namespace }}" class="l-page__flex-block{{ modClass }}  is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
   <div class="l-flex-block {{ classImagePos }} {{  classImageSize }} ">
 
     {% if blockHeading %}
-      <header class="l-flex-block__header">
-        <h3 class="l-flex-block__heading u-col-{{ classHeadingColor }} ">
+      <header class="l-flex-block__header{{ modClass }}">
+        <h3 class="l-flex-block__heading{{ modClass }} u-col-{{ classHeadingColor }} ">
           {{ blockHeading }}
         </h3>
       </header>

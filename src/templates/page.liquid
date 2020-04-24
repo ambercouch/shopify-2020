@@ -1,10 +1,18 @@
 {% assign pageImage = page.metafields.global.feature_image %}
 {% assign pageHeroImage = images[page.metafields.global.hero_image] %}
 {% assign pageHeroText = page.metafields.global.hero_text %}
+
+{% if pageHeroImage %}
+  {% assign classHeroImage = 'has-hero-image' %}
+{% endif %}
+{% if pageHeroText %}
+  {% assign classHeroText = 'has-hero-text' %}
+{% endif %}
+
 <div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
   <div class="l-page--static-page l-page--{{ page.title | handle }}">
 
-    <header class="l-page__header l-page__header--{{ page.title | handle }} " role="banner">
+    <header class="l-page__header l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
       {% if pageImage %}
         <div class="l-page__feature-image">
@@ -52,6 +60,7 @@
 
       <!-- include ac-block-loop -->
       {% assign sObj = page  %}
+      {% assign modClass = '--static-page'  %}
       {% include 'ac-block-loop' %}
     </div>
   </div>
