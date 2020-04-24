@@ -155,7 +155,8 @@
     }
     @include mq($from: desktop){
       grid-row-start: 4;
-      grid-column-start:2
+      grid-column-start:2;
+      padding-top: $act-unit * 1.5
     }
   }
   &flex-block{
@@ -263,6 +264,7 @@
   }
   &static-page{
     @include mq($from:desktop){
+      display: none;
       max-width: $act-wrapper-width;
       margin-left: auto;
       margin-right: auto;
@@ -555,6 +557,19 @@
 
 }
 
+//BEM ELEMENT MODIFIER FALLBACK .l-page__flex-block--
+
+ [class*=l-page__flex-block--] {
+   @extend .l-page__flex-block;
+ }
+
+.l-page__flex-block--{
+  &static-page{
+    padding-top: $act-unit;
+  }
+
+}
+
 //BEM ELEMENT MODIFIER FALLBACK .l-page__section--
 
 [class*=l-page__section--] {
@@ -566,6 +581,7 @@
      @include mq($from:desktop){
        display: grid;
        grid-template-columns: 40% 60%;
+       grid-template-rows: 1fr auto auto auto 1fr auto auto auto auto
      }
      &:before{
        content: "";

@@ -174,18 +174,23 @@
       <!-- vidioId from the product meta -->
       {% assign blockType = product.metafields.blocks[blockTypeId] %}
 
+      {% if blockType contains "icon-list" %}
+        {% assign blockTypeClass = "is-icon-list"%}
+      {% endif %}
+
       {% elsif shop.metafields[productType][blockTypeId]  != nill %}
 
       <!-- vidioId from the shop meta -->
       {% assign blockType = shop.metafields[productType][blockTypeId] %}
 
       {% if blockType contains "icon-list" %}
-      {% assign blockTypeClass = "is-icon-list"%}
-        {% endif %}
+        {% assign blockTypeClass = "is-icon-list"%}
+      {% endif %}
 
     {% else %}
       <!-- no vidioId  -->
       {% assign blockType = nil %}
+      {% assign blockTypeClass = nil%}
     {% endif %}
 
     {% if blockVideo != nil %}

@@ -9,6 +9,7 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    flex-wrap: wrap;
 
   }
 }
@@ -78,6 +79,13 @@
   }
   &static-page{
     text-align: left;
+    padding: 0 $act-unit;
+    @include mq($from:desktop){
+      max-width:100%;
+      width: $act-wrapper-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
 }
@@ -96,6 +104,7 @@
   &static-page{
     @include act-font-size($act-fs-4);
     color: $brand-col-2;
+    margin-bottom: 0 !important;
   }
 
 }
@@ -117,10 +126,10 @@
   }
   &text{
     @include mq($from : desktop){
-      width: 1000px;
+      width: $act-wrapper-width;
       max-width: 100%;
       margin: 0 auto;
-      text-align: left;
+      text-align: left !important;
     }
 
   }

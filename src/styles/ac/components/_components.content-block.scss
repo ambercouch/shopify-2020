@@ -177,6 +177,12 @@ $act-block-height : 450px;
     margin-bottom: 0;
     //color: $brand-col-1;
     font-weight: 500;
+    @include mq($from:desktop){
+      width: 500px;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .is-heading-hidden &{
       @include inuit-hidden-visually;
     }
@@ -389,11 +395,14 @@ $act-block-height : 450px;
 .c-content-block__heading--{
   &quote{
     color: $brand-col-4;
-
   }
   &product{
     color: $brand-col-2;
     margin-bottom: $act-unit;
+    text-align: left;
+    @include mq($from:desktop){
+      width: 100% !important;
+    }
   }
   &features{
     color: $brand-col-2;
@@ -577,6 +586,7 @@ $act-block-height : 450px;
     }
   }
   &product{
+    text-align: left;
     @include mq($from:desktop){
       width: 100%;
       .c-btn--block{
@@ -885,6 +895,9 @@ $act-block-height : 450px;
 
 .is-icon-list{
   text-align: center;
+  .c-content-block__heading--product{
+    text-align: center;
+  }
 }
 
 .is-image-layout-background{
