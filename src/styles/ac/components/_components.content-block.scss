@@ -348,6 +348,9 @@ $act-block-height : 450px;
   }
   &feature-image{
     text-align: center;
+
+    //add margin-bottom for the How BIBaDO Began
+    margin-bottom: $act-unit;
     @include mq($from: desktop){
       float: right;
       margin-right: -100%;
