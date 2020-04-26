@@ -1,0 +1,51 @@
+/*
+  BEM BLOCK .c-image-layer
+ */
+
+.c-image-layer {
+  display: block;
+  position: relative;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-image-layer--
+ */
+
+.c-image-layer-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-image-layer--
+
+[class*=c-image-layer--] {
+  @extend .c-image-layer;
+}
+
+/*
+  BEM ELEMENTS .c-image-layer__
+ */
+
+.c-image-layer__ {
+
+
+  &background{
+    position: absolute;
+    @include size(100%);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+  &content{
+    position: relative;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-image-layer__background--
+
+[class*=c-image-layer__background--] {
+  @extend .c-image-layer__background;
+}

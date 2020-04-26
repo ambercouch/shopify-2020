@@ -61,8 +61,15 @@
   &footer {
     display: block
   }
-  &content-block{
+  &content-block-wrapper{
     padding: 0 $act-unit;
+    @include mq($from:desktop){
+      padding: 0;
+    }
+  }
+
+  &content-block{
+    padding: 0 0;
     @include mq($from:desktop){
       padding: 0;
     }

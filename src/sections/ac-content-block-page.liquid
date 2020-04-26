@@ -35,7 +35,13 @@
   {%- assign cb_desk_width_50_class =  'is-block-width-50' -%}
 {% endif %}
 
-<section class="l-main__content-block--page u-bgc-{{ cb_background_colour_class  }} {{ cb_desk_width_50_class }}">
+<section class="l-main__content-block--page u-bgc-{{ cb_background_colour_class  }} {{ cb_desk_width_50_class }}" data-section-id="{{ section.id }}" data-section-type="content-block-page" data-section-handle="{{ section.settings.title | handle }}">
+  <div class="c-image-layer">
+    <div class="c-image-layer__background">
+      {% include 'ac-blobs' %}
+    </div>
+    <div class="c-image-layer__content">
+      <div class="l-main__content-block-wrapper">
   <div class="c-content-block--page is-image-layout-{{ cb_image_layout }} ">
 
     {% if section.settings.title != blank %}
@@ -87,6 +93,9 @@
   </div>
 
   </div>
+      </div><!-- .l-main__content-block-wrapper -->
+    </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer__content -->
 </section>
 
 {% schema %}
