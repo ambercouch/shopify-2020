@@ -31,6 +31,19 @@
       color: white;
     }
   }
+  &contact-submit{
+    border-radius:  $act-unit-t;
+    color: white;
+    background: $brand-col-3;
+    border: solid 3px $brand-col-3 !important;
+    margin: 0 auto;
+    padding-top: $act-unit-s;
+    padding-bottom: $act-unit-s;
+    &:hover,&:focus{
+      background: rgba(white, 0.5);
+      color: white;
+    }
+}
   &mobile-nav-close{
     @extend .o-btn--small;
     @extend .o-btn--transparent;
@@ -121,6 +134,10 @@
   &buy-bundle{
     @extend .c-btn--product-form-submit;
   }
+  &buy-bundle-popout{
+    @extend .c-btn--product-form-submit;
+    border-radius:  0 0 $act-unit-s $act-unit-s;
+  }
   &product-bundle-link{
     @extend .c-btn;
     @extend .c-btn--content-block;
@@ -193,7 +210,9 @@
     color: #ccc;
     border-radius: 50%;
     border: solid 1px;
-    &:hover, &:focus{
+    @include size(30px);
+    &:hover, &:focus, &:active{
+      @include size(30px);
       padding: 3px;
       @extend .o-btn--transparent;
       color: #ccc;
@@ -214,6 +233,20 @@
       background: white;
       color: $brand-col-2;
       border:solid 3px;
+      @include mq($from:desktop){
+        margin-left: auto;
+        margin-right: auto;
+        width: 900px;
+        max-width: 100%;
+        display: block;
+      }
+    }
+    @include mq($from:desktop){
+      width: 900px;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
   }
   &reviews-cta{

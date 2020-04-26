@@ -1,0 +1,83 @@
+<div class="c-contact-form">
+{% form 'contact' %}
+
+  {% if form.posted_successfully? %}
+    <div class="c-contact-form__notice--success">
+    <p class="form-success">
+      {{ 'contact.form.post_success' | t }}
+    </p>
+    </div>
+  {% endif %}
+
+  {{ form.errors | default_errors }}
+  <label for="ContactFormName">
+    <span class="c-contact-form__label-text" >
+      {{ 'contact.form.name' | t }}
+    </span>
+    <span class="c-contact-form__input-wrapper" >
+  <input type="text"
+         name="contact[name]"
+         id="ContactFormName"
+         placeholder="{{ 'contact.form.name' | t }}"
+         value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}"
+         class="c-contact-form__input">
+    </span>
+  </label>
+
+  <label for="ContactFormEmail">
+    <span class="c-contact-form__label-text" >
+      {{ 'contact.form.email' | t }}
+    </span>
+    <span class="c-contact-form__input-wrapper" >
+  <input type="email"
+         name="contact[email]"
+         id="ContactFormEmail"
+         placeholder="{{ 'contact.form.email' | t }}"
+         value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+         spellcheck="false"
+         autocomplete="off"
+         autocapitalize="off"
+         class="c-contact-form__input">
+    </span>
+  </label>
+
+  <label for="ContactFormPhone">
+    <span class="c-contact-form__label-text" >
+      {{ 'contact.form.phone' | t }}
+    </span>
+    <span class="c-contact-form__input-wrapper" >
+  <input type="tel"
+         name="contact[phone]"
+         id="ContactFormPhone"
+         placeholder="{{ 'contact.form.phone' | t }}"
+         value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+         pattern="[0-9\-]*"
+         class="c-contact-form__input">
+    </span>
+  </label>
+
+  <label for="ContactFormMessage">
+    <span class="c-contact-form__label-text" >
+      {{ 'contact.form.message' | t }}
+    </span>
+    <span class="c-contact-form__input-wrapper" >
+  <textarea rows="10"
+            name="contact[body]"
+            id="ContactFormMessage"
+            placeholder="{{ 'contact.form.message' | t }}"
+         class="c-contact-form__input--text-area">
+
+    {%- if form.body -%}
+      {{- form.body -}}
+    {%- endif -%}
+  </textarea>
+         </span>
+  </label>
+  <div class="c-contact-form__input-wrapper--submit">
+    <input type="submit" class="c-btn--contact-submit c-contact-form__input--submit" value="{{ 'contact.form.send' | t }}">
+  </div>
+
+
+{% endform %}
+
+</div>

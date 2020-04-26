@@ -1,0 +1,68 @@
+<div class="page-width c-page--landing is-page-width-1600">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="section-header text-center c-page__header">
+        <h1 class="c-page__heading--landing">{{ page.title }}</h1>
+      </div>
+
+      <div class="rte c-page__section-grid">
+        <div class="c-page__page-content">
+          {{ page.content }}
+        </div>
+        <div class="c-page__section-image sometester">
+          <img src="{{ 'Influencer-Cookbook-2020_Web-Banner_Mobile_1.jpg' | file_img_url : '500x' }}" alt="Recipe book sample page" class="c-page__img" />
+        </div>
+        <div class="c-page__download">
+          <h4 class="c-page__heading--download" >Download Your Tribe & Tested Cookbook</h4>
+          <div class="klaviyo-form-NDxEvc"></div>
+        </div>
+      </div>
+
+      <div class="rte c-page__section-grid">
+        <div class="c-page__page-content">
+          <h2 class="c-page__heading--sub"><span>Mayhem Mealtimes Managed: New ideas for healthy meals</span></h2>
+          <p>As parents of weaning-age children ourselves, we get how hard it is to constantly come up with new ideas for healthy, tasty quick &amp; easy, affordable meals to cook for your family. We also understand the challenge of making one meal that is suitable for the whole family. So we've teamed up with Zoe from Meals For Mini Mouths and Christina from Kai Led Weaning to bring you enough meal ideas to cover breakfast, lunch and dinner for an entire month!</p>
+          <ul class="c-page__feature-list">
+            <li>90+ meal ideas with full recipes and pictures</li>
+            <li>Cooking and prep times included</li>
+            <li>All made by busy parents to make family mealtimes easier!</li>
+          </ul>
+          <div class="c-page__download--tablet">
+            <h4 class="c-page__heading--download" >Download Your Mayhem Mealtimes Managed Cookbook</h4>
+            <div class="klaviyo-form-JFRRcW"></div>
+          </div>
+        </div>
+        <div class="c-page__section-image">
+          <img src="{{ 'BIBaDO_Meal3.jpg' | file_img_url : '500x' }}" alt="Recipe book sample page" class="c-page__img"/>
+        </div>
+        <div class="c-page__download">
+          <h4 class="c-page__heading--download" >Download Your Mayhem Mealtimes Managed Cookbook</h4>
+          <div class="klaviyo-form-JFRRcW"></div>
+        </div>
+      </div>
+
+
+
+      <div id="modal2" class="remodal" data-remodal-id="modal2">
+        <button data-remodal-action="close" class="remodal-close"></button>
+
+      </div>
+
+      <div id="modal1" class="remodal" data-remodal-id="modal1">
+        <button data-remodal-action="close" class="remodal-close"></button>
+
+      </div>
+
+      {%- assign img_url = 'files/revised.png' | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img class="lazyload js"
+           src="{{ 'revised.png' | file_img_url: '300x300' }}"
+           data-src="{{ 'revised.png' | file_img_url: '300x300' }}"
+           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+
+           data-sizes="auto"
+           alt="Bibado"
+           style="max-width: 100%; display: block; margin: 96px auto 0">
+
+    </div>
+  </div>
+</div>

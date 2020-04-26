@@ -53,6 +53,9 @@
   &text-line{
     display: block;
   }
+  &text{
+    display: block;
+  }
   &list{
     @extend .o-list-bare;
     counter-reset: my-awesome-counter;
@@ -63,7 +66,7 @@
     counter-increment: my-awesome-counter;
     position: relative;
     padding-left: $act-unit-s;
-    margin-bottom: $act-unit-s;
+    margin-bottom: 0;
     color: $brand-col-1;
     &:before{
       content: counter(my-awesome-counter);
@@ -111,6 +114,9 @@
   }
   &no-bul{
     padding-left: 0;
+    color: $brand-col-2;
+    @include act-font-size($inuit-font-size-h6);
+    margin-bottom: 0 !important;
     &:before{
       display: none;
     }
@@ -126,6 +132,48 @@
 
 .c-instruction-list__list--{
   &no-bul{
-    padding-left: 0;
+    padding: 0;
+    @extend .o-box;
+    margin-bottom: 0;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-text-line__text-line--
+
+[class*=c-instruction-list__text-line--] {
+  @extend .c-instruction-list__text-line;
+}
+
+
+.c-instruction-list__text-line--{
+  &code{
+    @extend .o-box;
+    background: $brand-col-2;
+    color: $brand-col-4;
+    margin-bottom: $act-unit;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__text--
+
+[class*=c-instruction-list__text--] {
+  @extend .c-instruction-list__text;
+}
+
+
+.c-instruction-list__text--{
+  &next-discount{
+    @extend .o-box;
+  }
+  &full-price{
+    @include act-font-size($act-fs-3);
+    text-decoration: line-through;
+  }
+  &bundle-price{
+    @include act-font-size($act-fs-3)
+  }
+  &save-price{
+    @include act-font-size($act-fs-3);
+    color: $brand-col-3;
   }
 }

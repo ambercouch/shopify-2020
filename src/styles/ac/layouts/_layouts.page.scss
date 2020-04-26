@@ -49,6 +49,9 @@
       grid-template-columns: 50% 50%;
     }
   }
+  &contact-us{
+    padding-bottom: $act-unit;
+  }
 
 
 }
@@ -99,7 +102,12 @@
     text-align: center;
     margin-bottom: $act-unit-l;
   }
-
+  &rte{
+    display: block;
+  }
+  &site-map{
+    padding: 0 $act-unit $act-unit;
+  }
   &content-block{
     display: block;
   }
@@ -281,7 +289,6 @@
     background: $brand-col-4;
   }
   &collection{
-
     @include mq($from:desktop){
       width: 50%;
       display: flex;
@@ -299,6 +306,9 @@
       grid-template-columns: 50% 50%;
       grid-template-rows: 1fr auto auto 1fr;
     }
+  }
+  &site-map{
+    margin-bottom: $act-unit;
   }
 }
 
@@ -471,6 +481,9 @@
       }
     }
   }
+  &collection-bundle{
+    padding-bottom: 0;
+  }
   &recipe{
     text-align: left;
   }
@@ -485,6 +498,20 @@
   &faqs-page{
     padding: $act-unit !important;
   }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__rte--
+
+[class*=l-page__rte--] {
+  @extend .l-page__rte;
+}
+
+.l-page__rte--{
+
+  &static-page{
+    padding: $act-unit;
+  }
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__footer--

@@ -5,8 +5,11 @@
 .c-discount-code {
   display: block;
   @extend .o-box--tiny;
-  background: $brand-col-4;
-  color: $brand-col-2;
+  background: transparent;
+  color: white;
+  font-family: $act-font-family-headings;
+  @include act-font-size($act-fs-1);
+
   font-weight: 700;
 }
 

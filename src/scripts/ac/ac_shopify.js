@@ -1,8 +1,9 @@
+
 /**
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY Radio ids');
+console.log('ACSHOPIFY sticky bottom');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -33,6 +34,8 @@ const ACSHOPIFY = {
       //   }, 1000);
       //   return false;
       // });
+      console.log('[data-js-sticky-bottom');
+      console.log($('[data-js-sticky-bottom'));
 
       $("a[href='#top']").click(function() {
         console.log("scroll top");
@@ -856,9 +859,10 @@ const ACSHOPIFY = {
   product: {
     init: function() {
       // uncomment to debug
-      console.log('some product');
+      console.log('some product data-js-product-form-select');
 
       let inst = $('[data-remodal-id="acVideo"]').remodal();
+
 
       // // add the is-last-block to element for styling
       // $('[data-remodal-id]').each(function(i){
@@ -886,6 +890,13 @@ const ACSHOPIFY = {
         console.log('vid click open');
         inst.open();
       })
+    }
+  },
+  search: {
+    init: function() {
+      // uncomment to debug
+      console.log('search page');
+      $('#searchFormMain').attr('data-state', 'on' );
     }
   },
   fn: {

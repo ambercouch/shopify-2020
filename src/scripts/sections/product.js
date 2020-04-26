@@ -66,6 +66,7 @@ register('product', {
   },
 
   onFormOptionChange(event) {
+    console.log('onFormOptionChange');
     const variant = event.dataset.variant;
 
     this.renderImages(variant);
@@ -202,13 +203,14 @@ register('product', {
     inactiveImage.classList.remove(classes.hide);
   },
 
-  updateBrowserHistory(variant) {
-    const enableHistoryState = this.productForm.element.dataset
+  updateBrowserHistory(variant) {const enableHistoryState = this.productForm.element.dataset
       .enableHistoryState;
 
     if (!variant || enableHistoryState !== 'true') {
       return;
     }
+
+    console.log('some test');
 
     const url = getUrlWithVariant(window.location.href, variant.id);
     window.history.replaceState({path: url}, '', url);

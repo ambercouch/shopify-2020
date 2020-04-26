@@ -45,7 +45,7 @@
 
                    <div class="c-product-thumb__cart-remove">
                      <div class="c-cart-remove cart-remove">
-                       {% raw %}<button data-id="{{key}}" data-line="{{ line }}" class="c-btn--cart-remove">{% endraw %}
+                       {% raw %}<button data-id="{{key}}" data-line="{{ line }}" class="ajaxcart__qty-remove c-btn--cart-remove">{% endraw %}
                          {% include 'icon-close.liquid' %}
                        </button>
                      </div>
@@ -81,7 +81,7 @@
                      </div>
 
                    <div class="c-product-thumb__qty">
-                     {% raw %}<input type="text" name="updates[]" class="c-product-thumb__input--qty" value="{{itemQty}}" min="0" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">{% endraw %}
+                     {% raw %}<input type="text" name="updates[]" class="ajaxcart__qty-num c-product-thumb__input--qty" value="{{itemQty}}" min="0" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">{% endraw %}
                      <div class="c-product-thumb__btn--cart-update">
                      {% raw %}<button type="button" class="c-btn--cart-update" data-id="{{key}}" data-line="{{line}}" data-qty="{{itemAdd}}">{% endraw %}
                        <span>Update</span>
@@ -103,12 +103,12 @@
            </li>
            {% raw %}{{/items}}{% endraw %}
          </ul>
-          <div class="l-quick-cart__footer">
+         <!-- <div class="l-quick-cart__footer">
             <p>Shipping and Taxes calculated at next step</p>
-          </div>
+          </div> -->
       </div>
       </div>
-      <div class="l-quick-cart__checkout">
+      <div class="l-quick-cart__checkout" data-js-sticky-bottom >
         <button type="submit" class="c-btn--cart-submit" name="checkout">
           <i class="fa fa-lock"></i>
          {{ 'cart.general.checkout' | t }}

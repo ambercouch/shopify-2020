@@ -1,0 +1,93 @@
+/*
+  BEM BLOCK .c-site-map
+ */
+
+.c-site-map {
+  display: block;
+  @include mq($from:desktop){
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .c-site-map--
+ */
+
+.c-site-map-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-site-map--
+
+[class*=c-site-map--] {
+  @extend .c-site-map;
+}
+
+/*
+  BEM ELEMENTS .c-site-map__
+ */
+
+.c-site-map__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block;
+    color: $brand-col-2;
+    margin-bottom: $act-unit-s;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline;
+    @include a($col : $brand-col-2, $col-hov : $brand-col-3);
+    text-decoration: none;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-bare;
+  }
+  &section{
+    display: block;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-site-map--
+
+[class*=c-site-map__header--] {
+  @extend .c-site-map__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-site-map__section--
+
+[class*=c-site-map__section--] {
+  @extend .c-site-map__section;
+}
+
+.c-site-map__section--{
+  &collection{
+    @include mq($from:desktop){
+      padding-left: $act-unit;
+    }
+
+  }
+  &product{
+    @include mq($from:desktop){
+      padding-left: $act-unit;
+    }
+  }
+}

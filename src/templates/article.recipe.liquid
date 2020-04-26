@@ -47,7 +47,44 @@
 
 <div class="l-page--recipe">
 <article class="l-page__article" role="article">
+  <header class="l-page__header--static-page l-page__header--{{ article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
+    {% if hImage %}
+      <div class="l-page__feature-image">
+        <img class="l-page__img" src="{{ hImage | file_img_url: 'original' }}"  alt="{{ article.title | escape }}" />
+      </div>
+    {% else %}
+      <!-- no page image -->
+    {% endif %}
+
+
+    <h1 class="l-page__heading--static-page l-page__heading--{{ article.title | handle }}" >
+      <span class="l-page__title">{{ article.title }}</span>
+    </h1>
+
+    {% if pageHeroText %}
+      <div class="l-page__hero--static-page">
+        <div class="l-page__hero-text">
+          {{ pageHeroText }}
+        </div>
+      </div>
+
+    {% else %}
+      <!-- no page hero text {{ pageHeroText }} ! -->
+    {% endif %}
+    {% if pageHeroImage %}
+      <div class="l-page__hero-image">
+        {% include 'responsive-image' with
+          image: pageHeroImage,
+          max_width: 800,
+          max_height: 800
+        %}
+      </div>
+    {% else %}
+      <!-- no page hero image {{ pageHeroImage }} ! -->
+    {% endif %}
+
+  </header>
   {% if hImage != null %}
     <div class="l-page__hero-banner">
      {% include "ac-hero-banner" with modClass : '--stacked'%}

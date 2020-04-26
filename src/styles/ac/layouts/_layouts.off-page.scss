@@ -5,7 +5,7 @@
 .l-off-page {
   position: fixed;
   z-index: 10;
-  background: #eee;
+  background: $brand-col-4;
   padding: 1em;
   top:0;
   right: 0;
@@ -15,7 +15,7 @@
   transform: translate(0);
   transition: transform 0.3s ease-in-out 0s;
   transform: translate(98%,0);
-  border-left: solid $brand-col-5 5px;
+  border-left: solid $brand-col-4 5px;
   &:hover{
     @include mq($from : desktop){
       //transition: transform 0.3s ease-in-out 0s;
@@ -80,15 +80,15 @@
     display: block
   }
   &tab{
-    @include size(30px, 60px);
-    background: $brand-col-5;
+    @include size(30px, 30px);
+    background: $brand-col-4;
     display: block;
     position: absolute;
     left: -30px;
-    border-radius: 8px 0 0 8px;
+    border-radius: 50% 0 0 50%;
     text-align: center;
-    line-height: 55px;
-    color: white;
+    line-height: 30px;
+    color: $brand-col-2;
     font-weight: bold;
     cursor: pointer;
   }

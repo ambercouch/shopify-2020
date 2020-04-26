@@ -1,5 +1,8 @@
+{% assign currentVariant = product.selected_or_first_available_variant %}
 <div class="c-product-form">
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+
+  <input type="hidden" name="id" value="{{ currentVariant.id }}">
 
   <div class="c-product-form__product-price">
     {% include 'ac-product-form-price' %}
@@ -26,9 +29,11 @@
           </label>
 
           <select
-              class="c-product-form__select--{{ option.name }}"
+              class="c-product-form__select--{{ option.name | handle}}"
               id="Option{{ option.position }}"
-              name="options[{{ option.name | escape }}]">
+              name="options[{{ option.name | escape }}]"
+              data-js-product-form-select
+          >
             {% for value in option.values %}
               <option
                   value="{{ value | escape }}"

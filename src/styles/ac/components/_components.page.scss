@@ -1,0 +1,167 @@
+/*
+  BEM BLOCK .c-page
+ */
+
+.c-page {
+  display: block;
+  background: #fff;
+  color: $brand-col-2;
+  padding: $act-unit;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-page--
+ */
+
+.c-page-- {
+  &type {
+    display: block
+  }
+
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-page--
+
+[class*=c-page--] {
+  @extend .c-page;
+}
+
+/*
+  BEM ELEMENTS .c-page__
+ */
+
+.c-page__ {
+  &header {
+    display: block;
+    text-align: center;
+  }
+
+  &heading {
+    display: block;
+    color: $brand-col-2 !important;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &feature-list{
+    margin-bottom: $act-unit-l !important;
+    margin-left: $act-unit-s * 1.5 !important;
+    font-weight: bold;
+  }
+  &download{
+    text-align: center;
+    background: transparent !important;
+    @include mq($from: tablet){
+      width: 50%;
+      margin-left: auto;
+      display: none;
+    }
+  }
+  &section-image{
+    margin-bottom: $act-unit-l;
+    @include mq($from: tablet){
+      width: 50%;
+    }
+  }
+  &input{
+    width: 600px;
+    max-width: 100%;
+    margin-bottom: $act-unit;
+  }
+  &signup-info{
+    text-align: center;
+    margin-bottom: $act-unit;
+  }
+  &form{
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  &field-group{
+    text-align: left;
+  }
+  &img{
+    display: block;
+    margin: 0 auto;
+  }
+  &section-grid{
+    @include mq($from: tablet){
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: $act-unit-l;
+    }
+    @include mq($from: desktop){
+      margin-bottom: $act-unit-h;
+    }
+    &:nth-child(even){
+      flex-direction: row-reverse;
+    }
+  }
+  &page-content{
+    @include mq($from: tablet){
+      width: 50%;
+      padding: 0 $act-unit;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-page__header--
+
+[class*=c-page__header--] {
+  @extend .c-page__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-page__heading--
+
+[class*=c-page__heading--] {
+  @extend .c-page__heading;
+}
+
+.c-page__heading--{
+  &landing{
+    @include act-font-size($act-fs-3);
+    font-weight:700;
+    font-family: "ubuntu";
+  }
+  &sub{
+    @include act-font-size($act-fs-3);
+    font-weight: 500;
+    color: #162950
+  }
+
+}
+
+.c-page__download--{
+  &tablet{
+    display: none;
+    @include mq($from:tablet){
+      display: block;
+      background: transparent !important;
+    }
+    &:after{
+      display: none !important;
+    }
+  }
+}
+
+.c-page{
+  &.is-page-width-1600{
+    max-width: 1600px !important;
+    width: 100%;
+  }
+
+}
+

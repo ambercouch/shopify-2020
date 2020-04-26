@@ -29,7 +29,10 @@
 
 .c-bundle-cart__ {
   &header {
-    display: block
+    display: block;
+    .c-btn--buy-bundle{
+      display: none;
+    }
   }
 
   &heading {

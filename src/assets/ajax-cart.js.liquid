@@ -81,6 +81,9 @@ ShopifyAPI.onError = function(XMLHttpRequest, textStatus) {
     - Allow custom error callback
 ==============================================================================*/
 ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
+  console.log('ShopifyAPI.addItemFromForm')
+  console.log(jQuery(form).serialize());
+
   var $body = $(document.body),
       params = {
         type: 'POST',
@@ -210,7 +213,7 @@ console.log('ajaxCart init')
       cartCostSelector   : null,
       moneyFormat        : '${{amount}}',
       disableAjaxCart    : false,
-      enableQtySelectors : true
+      enableQtySelectors : false
     };
 
     // Override defaults with arguments

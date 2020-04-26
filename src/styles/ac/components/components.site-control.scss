@@ -58,7 +58,8 @@
   }
 
   &link {
-    display: inline
+    display: inline;
+    text-decoration: none;
   }
 
   &content {
@@ -72,7 +73,9 @@
     @include inuit-hidden-visually();
   }
   &cart-count{
-    @include inuit-hidden-visually();
+    position: absolute;
+    left: 15px;
+    top: -14px;
   }
 }
 
@@ -90,6 +93,18 @@
 
 [class*=c-site-control__item--] {
   @extend .c-site-control__item;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-site-control__link--
+
+[class*=c-site-control__link--] {
+  @extend .c-site-control__link;
+}
+
+.c-site-control__link--{
+  &cart{
+    position: relative;
+  }
 }
 
 .c-site-control__item--{

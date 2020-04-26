@@ -893,6 +893,15 @@ $act-block-height : 450px;
 
 }
 
+.is-image-layout-right{
+  .c-content-block__header{
+    @include mq($from:desktop){
+      padding: 0 $act-unit;
+    }
+
+  }
+}
+
 .is-icon-list{
   text-align: center;
   .c-content-block__heading--product{
