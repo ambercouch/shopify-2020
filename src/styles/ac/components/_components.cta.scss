@@ -12,6 +12,10 @@
   font-weight: 700;
   font-family: $act-font-family-headings;
   margin-top: $act-unit;
+  @include mq($from:desktop){
+    float: left;
+    width: 100%;
+  }
 }
 
 /*

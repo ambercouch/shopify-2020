@@ -39,8 +39,9 @@
 
   &heading {
     display: block;
-    color: $brand-col-2;
+    color: $brand-col-3;
     text-align: center;
+    @include act-font-size($act-fs-2);
   }
 
   &title {

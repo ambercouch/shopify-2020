@@ -699,6 +699,8 @@ $act-block-height : 450px;
 .c-content-block__footer--{
   &collection-list-2{
     margin-bottom: $act-unit;
+    position: relative;
+    z-index: 10;
     @include mq($from: desktop){
       grid-column-start:2;
       grid-column-end: 3;

@@ -1,3 +1,9 @@
+{% if product.metafields.global.collection_title == null %}
+  {% assign productTitle = product.title %}
+{% else %}
+  {% assign productTitle = product.metafields.global.collection_title %}
+{% endif %}
+
 <div class="c-product-thumb{{ modClass }}">
   <!-- modclass {{ modClass }} ac-product-thumb.liquid -->
   {% if product.featured_image != blank %}
@@ -14,7 +20,7 @@
   <div class="c-product-thumb__info{{ modClass }}">
   <h4 class="c-product-thumb__heading">
     <span class="c-product-thumb__title">
-      <a class="c-product-thumb__link-title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+      <a class="c-product-thumb__link-title ac-product-title" href="{{ product.url | within: collection }}">{{ productTitle }}</a>
     </span>
   </h4>
   <div class="c-product-thumb__meta">
