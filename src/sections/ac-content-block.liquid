@@ -72,7 +72,14 @@
 {% endif %}
 
 
-<section id="{{ section.settings.title | handle }}" class="ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }}">
+<section id="{{ section.settings.title | handle }}" class="ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }}" data-section-id="{{ section.id }}" data-section-type="content-block" >
+  <div class="c-image-layer">
+    <div class="c-image-layer__background">
+      {% include 'ac-blobs' %}
+    </div>
+    <div class="c-image-layer__content">
+      <div class="l-main__content-block-wrapper">
+
   <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_50_class }} {{ cb_single_col_class }}  has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }} {{ cb_additional_image_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
@@ -153,6 +160,11 @@
     {{ cb_anchor_markup_close }}
 
   </div>
+
+      </div><!-- .l-main__content-block-wrapper -->
+    </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer__content -->
+
 </section>
 
 {% schema %}

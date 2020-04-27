@@ -1,4 +1,10 @@
-<section class="l-main__content-block" data-section-id="{{ section.id }}" data-section-type="quotes">
+<section class="l-main__content-block" data-section-id="{{ section.id }}" data-section-type="quotes" data-section-handle="{{ section.settings.title | handle }}">
+  <div class="c-image-layer">
+  <div class="c-image-layer__background">
+    {% include 'ac-blobs' %}
+  </div>
+  <div class="c-image-layer__content">
+    <div class="l-main__content-block-wrapper">
   <div class="c-content-block--quote ">
     {% if section.settings.title != blank %}
       <header class="c-content-block__header--quote">
@@ -39,6 +45,9 @@
     {% include 'no-blocks' %}
   {% endif %}
   </div>
+    </div><!-- .l-main__content-block-wrapper -->
+  </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer__content -->
 </section>
 
 {% schema %}
