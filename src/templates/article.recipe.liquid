@@ -34,9 +34,12 @@
 
 {% assign hImage = article.metafields.global.hero_image %}
 {% if article.metafields.global.feature_image == null %}
-  {% assign fImage =  article.image.src | img_url: '500x' %}
+  {% assign fImage =  article.image.src | img_url: '700x' %}
 {% else %}
+  {% assign fImage =  article.image.src | img_url: '700x' %}
+  {% comment %}
   {% assign fImage =  article.metafields.global.feature_image | file_img_url: '500x' %}
+  {% endcomment %}
 {% endif %}
 
 {% if article.metafields.global.author != null %}
@@ -49,6 +52,7 @@
 <article class="l-page__article" role="article">
   <header class="l-page__header--static-page l-page__header--{{ article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
+    {% comment %}
     {% if hImage %}
       <div class="l-page__feature-image">
         <img class="l-page__img" src="{{ hImage | file_img_url: 'original' }}"  alt="{{ article.title | escape }}" />
@@ -58,9 +62,11 @@
     {% endif %}
 
 
+
     <h1 class="l-page__heading--static-page l-page__heading--{{ article.title | handle }}" >
       <span class="l-page__title">{{ article.title }}</span>
     </h1>
+    {% endcomment %}
 
     {% if pageHeroText %}
       <div class="l-page__hero--static-page">
