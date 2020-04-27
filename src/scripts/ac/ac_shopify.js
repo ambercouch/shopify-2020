@@ -311,7 +311,7 @@ const ACSHOPIFY = {
       let elFullPrice =  document.getElementById('fullPrice');
       let elBundlePrice =  document.getElementById('bundlePrice');
       let elOffPageBundleNotice = document.getElementById('offPageBundleNotice');
-      let elCartBtn = $('.c-btn--buy-bundle');
+      let elCartBtn = $('.c-btn--buy-bundle, .c-btn--buy-bundle-popout');
       //let elBundleLinkImage =  document.getElementById('linkBundleImage');
       //let elBundleLinkTitle =  document.getElementById('linkBundleTitle');
 
@@ -677,9 +677,9 @@ const ACSHOPIFY = {
 
       function updateElCartBtn(){
         if(bundleCount > 2){
-          $(elCartBtn).prop("disabled", false)
+          $(elCartBtn).prop("disabled", false);
         }else{
-          $(elCartBtn).prop("disabled", true)
+          $(elCartBtn).prop("disabled", true);
         }
       }
 
@@ -774,7 +774,7 @@ const ACSHOPIFY = {
 
         window.onbeforeunload = true;
 
-        console.log('#AddBundleToCartHeader jQuery post updates')
+        console.log('#AddBundleToCartHeader jQuery post updates');
 
         for (const [product, obj] of entries) {
           values[obj.variantId] = obj.qty;

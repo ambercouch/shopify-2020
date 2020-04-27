@@ -178,7 +178,9 @@ $act-block-height : 450px;
     //color: $brand-col-1;
     font-weight: 500;
     @include mq($from:desktop){
-      width: 500px;
+
+      //for half content blocks on desktop
+      width: 100%;
       max-width: 100%;
       margin-left: auto;
       margin-right: auto;
@@ -392,6 +394,7 @@ $act-block-height : 450px;
     width: 100%;
     text-align: left;
   }
+
 }
 
 // BEM ELEMENT MODIFIER FALLBACK .c-content-block__heading--
@@ -704,6 +707,8 @@ $act-block-height : 450px;
 .c-content-block__footer--{
   &collection-list-2{
     margin-bottom: $act-unit;
+    position: relative;
+    z-index: 10;
     @include mq($from: desktop){
       grid-column-start:2;
       grid-column-end: 3;

@@ -24,6 +24,7 @@ $act-item-width : 600px;
   }
   &blog{
     background: white;
+    padding: 0;
     @include mq($from:desktop){
       display: flex;
     }
@@ -197,7 +198,7 @@ $act-item-width : 600px;
 
 .c-thumb__content--{
   &blog{
-
+    padding: 0 $act-unit;
   }
 }
 

@@ -139,4 +139,45 @@
     }
   }
 
+  &4252992700459 {
+    background: #FF2E1F;
+  }
+
+  &4252994371627{
+      background: #A7A9AC;
+  }
+
+  &4163474128939{
+    background: #231F20;
+    .c-product-thumb__link-title{
+      color:#fff;
+      &:hover, &:focus, &:active{
+        color:#fff !important;
+      }
+    }
+    .c-product-thumb__meta{
+      color:#fff;
+    }
+    .c-btn--product-thumb{
+      color: white;
+    }
+  }
+
+  &4252993716267{
+    background: #4D2B6D;
+    .c-product-thumb__link-title{
+      color:#fff;
+      &:hover, &:focus, &:active{
+        color:#fff !important;
+      }
+    }
+    .c-product-thumb__meta{
+      color:#fff;
+    }
+    .c-btn--product-thumb{
+      color: white;
+    }
+  }
+
+
 }

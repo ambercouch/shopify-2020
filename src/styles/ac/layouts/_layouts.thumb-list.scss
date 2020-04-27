@@ -143,3 +143,17 @@
   }
 
 }
+
+// BEM ELEMENT MODIFIER FALLBACK .l-thumb-list__item--
+
+[class*=l-thumb-list__item--] {
+  @extend .l-thumb-list__item;
+}
+
+.l-thumb-list__item--{
+
+  &blog{
+    margin-bottom: $act-unit;
+  }
+
+}

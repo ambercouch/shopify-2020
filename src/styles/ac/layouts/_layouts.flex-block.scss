@@ -78,13 +78,20 @@
 
   }
   &static-page{
+    // added margin for charity section on about page
+    margin-bottom: $act-unit;
+
     text-align: left;
     padding: 0 $act-unit;
+
     @include mq($from:desktop){
       max-width:100%;
       width: $act-wrapper-width;
       margin-left: auto;
       margin-right: auto;
+
+      // Removed margin for charity section on about page
+      margin-bottom: 0;
     }
   }
 
@@ -102,9 +109,15 @@
 
   }
   &static-page{
-    @include act-font-size($act-fs-4);
+
+    //about page charity page
+    @include act-font-size($act-fs-1);
     color: $brand-col-2;
     margin-bottom: 0 !important;
+    text-align: center;
+    @include mq($from:desktop){
+      text-align: left;
+    }
   }
 
 }

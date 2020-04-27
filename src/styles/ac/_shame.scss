@@ -202,3 +202,44 @@
 [data-control]{
   cursor: pointer !important;
 }
+
+//Facebook reviews
+
+#wprev-slider-2656 .wprev_preview_bg1_T1 {
+  background: $brand-col-2 !important;
+  color: white;
+
+}
+
+#wprev-slider-2656 .wprev_preview_tcolor1_T1 {
+  color: #fff !important;
+  text-align: left !important;
+}
+
+.wprevpro_t1_DIV_2::before {
+  color: #fff !important;
+  content: '\201C';
+
+}
+
+.wprevpro_t1_DIV_2::after {
+  border-top-color: $brand-col-2 !important;
+
+}
+
+.wprevpro_t1_SPAN_5 {
+  color:$brand-col-2 !important;
+  text-transform: none !important;
+
+}
+
+#wprev-slider-2656 .wprev_preview_bradius_T1 {
+  border-radius: $act-unit !important;
+
+}
+
+.wprevpro_t1_P_3 {
+  text-align: center !important;
+
+}
+
