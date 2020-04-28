@@ -67,8 +67,8 @@
   &checkout{
     @extend .o-box;
     background: $brand-col-1;
-
     width: 100%;
+    border-bottom: solid 90px $brand-col-4;
     &.is-sticky-bottom{
       position: absolute;
       bottom: 0;
