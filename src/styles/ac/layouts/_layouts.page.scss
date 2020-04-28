@@ -188,7 +188,7 @@
   }
   &hero{
     padding: $act-unit;
-    background: $brand-col-2;
+    background: $brand-col-5;
     min-height: 50vh;
     display: flex;
     flex-direction: column;
@@ -279,18 +279,16 @@
       max-width: $act-wrapper-width;
       margin-left: auto;
       margin-right: auto;
-      @include breakout-band($bgc: $brand-col-2);
+      @include breakout-band($bgc: $brand-col-5);
       display: grid;
       grid-template-columns: 50% 50%;
       grid-template-rows: 1fr auto auto 1fr;
+      background: $brand-col-4;
     }
   }
   &reviews{
     padding: $act-unit 0 !important;
 }
-  &static-page{
-    background: $brand-col-4;
-  }
   &collection{
     @include mq($from:desktop){
       width: 50%;
@@ -304,7 +302,7 @@
       max-width: $act-wrapper-width;
       margin-left: auto;
       margin-right: auto;
-      @include breakout-band($bgc: $brand-col-2);
+      @include breakout-band($bgc: $brand-col-5);
       display: grid;
       grid-template-columns: 50% 50%;
       grid-template-rows: 1fr auto auto 1fr;
@@ -312,6 +310,9 @@
   }
   &site-map{
     margin-bottom: $act-unit;
+  }
+  &how-to-bibado{
+    @include breakout-band($bgc: $brand-col-1);
   }
 }
 
@@ -362,9 +363,6 @@
   &reviews{
     color: $brand-col-2;
     margin-bottom: 0;
-  }
-  &static-page{
-
   }
   &about-us{
     background: $brand-col-4;
@@ -678,6 +676,8 @@
     bottom: $act-unit;
     cursor: pointer;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
 }
 

@@ -5,9 +5,9 @@
 
 .c-icon {
   @include size(100%);
-  min-width: 20px;
-    display: inline-block;
-    vertical-align: middle;
+  min-width: 10px;
+      display: block;
+
     fill: currentColor;
     .no-svg & {
       display: none;

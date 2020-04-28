@@ -57,17 +57,29 @@
     overflow: hidden;
     margin-bottom: $act-unit;
     border:solid 3px;
-    .l-thumb-list__item:first-child &{
+    .l-thumb-list__item:nth-child(4n - 3) &{
       border-color: $brand-col-1;
+      .l-thumb-list__list--more &{
+        border-color: $brand-col-5 !important;
+      }
     }
-    .l-thumb-list__item:nth-child(2) &{
+    .l-thumb-list__item:nth-child(2n) &{
       border-color: $brand-col-3;
+      .l-thumb-list__list--more &{
+        border-color: $brand-col-1 !important;
+      }
     }
-    .l-thumb-list__item:nth-child(3) &{
+    .l-thumb-list__item:nth-child(3n) &{
       border-color: $brand-col-4;
+      .l-thumb-list__list--more &{
+        border-color: $brand-col-3 !important;
+      }
     }
-    .l-thumb-list__item:nth-child(4) &{
+    .l-thumb-list__item:nth-child(4n) &{
       border-color: $brand-col-5;
+      .l-thumb-list__list--more &{
+        border-color: $brand-col-4 !important;
+      }
     }
   }
   &img{
