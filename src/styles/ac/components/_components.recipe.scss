@@ -58,16 +58,25 @@
   }
   &gallery-item{
     padding: $act-unit;
-    width: 50%;
+    @include mq($from:desktop){
+      width: 50%;
+    }
+
+  }
+  &gallery-image{
+    height: 100%;
   }
   &gallery-img{
+    object-fit: cover;
     width: 100%;
+    height: 100%;
   }
 
 &item{
   @include mq($from:desktop){
     @include act-font-size($act-fs-5);
-    white-space: nowrap;
+    width: 30%;
+    padding-right: 3%;
   }
 }
   &link {
@@ -173,7 +182,10 @@
 
 .c-recipe__heading--{
   &method{
-    color: $brand-col-2
+    color: $brand-col-2;
+    .c-recipe__gallery-item--method &{
+      margin: 0 auto !important;
+    }
   }
 }
 
@@ -187,9 +199,16 @@
   &ingredients{
     @extend .o-list-bare;
     @include mq($from:desktop){
-      column-count: 2;
-      width: 900px;
-      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 11em;
+      align-content: flex-start;
+    }
+  }
+  &method{
+    .c-recipe__gallery-item--method &{
+      margin: 0 auto !important;
     }
   }
 }
@@ -249,5 +268,32 @@
 
 [class*=c-recipe__item--] {
   @extend .c-recipe__item;
+}
+
+.c-recipe__item--{
+  &method{
+    .c-recipe__gallery &{
+      width: 100%;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__gallery-item--
+
+ [class*=c-recipe__gallery-item--] {
+   @extend .c-recipe__gallery-item;
+ }
+
+.c-recipe__gallery-item--{
+  &method{
+    display: none;
+    @include mq($from:desktop){
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items:  center;
+    }
+
+  }
 }
 

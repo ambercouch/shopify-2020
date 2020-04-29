@@ -15,6 +15,7 @@
   &recipe {
     color: $brand-col-2;
     background: white;
+
   }
   &product{
      color: $brand-col-2;
@@ -248,7 +249,9 @@
     }
   }
   &recipe{
+    @include mq($from:desktop){
       background: $brand-col-2;
+    }
   }
 
 }
@@ -679,10 +682,13 @@
       height: auto;
       padding-top: 0 !important;
       text-align: left;
+
     }
   }
   &article{
+    display: none;
     @include mq($from:desktop){
+      display: block;
       grid-row-start: 4;
       grid-column-start: 1;
       background: transparent;
@@ -690,6 +696,9 @@
       text-align: left;
       padding-top:0 ;
       padding-bottom: 0;
+      * {
+        text-align: left !important;
+      }
     }
   }
 }

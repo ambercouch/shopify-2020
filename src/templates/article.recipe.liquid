@@ -154,6 +154,23 @@
     {%  for i in (1..4) %}
       {% assign galleryId = 'gallery_' | append : i %}
       {% assign gallery = article.metafields.global[galleryId] %}
+      {% if forloop.index == 2%}
+
+      <div class="c-recipe__gallery-item--method">
+        <div class="c-recipe__wrapper">
+        <h4 class="c-recipe__heading--method">Method</h4>
+        <ol class="c-recipe__list--method">
+          {%  for i in (1..50) %}
+            {% assign methodId = 'method_' | append : i %}
+            {% assign method = article.metafields.global[methodId] %}
+            {% if method != null %}
+              <li class="c-recipe__item--method">{{method}}</li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+        </div>
+      </div>
+      {% endif %}
 
       {% if gallery != null %}
         <div class="c-recipe__gallery-item">
