@@ -14,8 +14,6 @@
 
 <article class="l-page__article is-article-blocks" role="article">
   {% if hImage != null %}
-
-
     <header class="l-page__header--article l-page__header--{{article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
       {% if article.image %}
@@ -65,7 +63,7 @@
   {% endif %}
 
 
-  <div class="l-page__content--article">
+  <div class="l-page__content--article ac test">
     {% if  article.content != blank %}
       <div class="rte">
         {{ article.content }}
@@ -74,8 +72,11 @@
   </div>
 
 
-
+  {% assign modClass = "--article-block"  %}
+  <!-- modClass = {{ modClass }} -->
+  <div class="l-page__blocks">
  {% include 'ac-block-loop' %}
+  </div>
 
   {% if article.metafields.global.footer_text %}
   <div class="l-page__footer-info">

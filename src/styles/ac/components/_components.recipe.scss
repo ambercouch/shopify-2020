@@ -5,6 +5,13 @@
 .c-recipe {
   display: block;
   position: relative;
+  @include mq($from:desktop){
+    width: $act-wrapper-width;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: $act-unit-l;
+    padding-bottom: $act-unit-l;
+  }
 }
 
 /*
@@ -40,7 +47,29 @@
   &title {
     display: inline;
   }
+  &gallery{
+    @include mq($from:desktop){
+      width: $act-wrapper-width;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &gallery-item{
+    padding: $act-unit;
+    width: 50%;
+  }
+  &gallery-img{
+    width: 100%;
+  }
 
+&item{
+  @include mq($from:desktop){
+    @include act-font-size($act-fs-5);
+    white-space: nowrap;
+  }
+}
   &link {
     display: inline
   }
@@ -80,6 +109,9 @@
       height: 0;
       overflow: hidden;
     }
+    @include mq($from:desktop){
+      padding-left: 0 !important;
+    }
   }
   &tab{
     position: absolute;
@@ -103,7 +135,18 @@
     border-radius: $act-unit-s $act-unit-s 0 0;
     padding: $act-unit-t 0;
     cursor: pointer;
-    pointer-events: all;
+    &[data-state=on]{
+      pointer-events: none !important;
+    }
+    &[data-state=off]{
+      pointer-events: all !important;
+    }
+    @include mq($from:desktop){
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+
   }
   &list{
     display: block;
@@ -143,6 +186,11 @@
 .c-recipe__list--{
   &ingredients{
     @extend .o-list-bare;
+    @include mq($from:desktop){
+      column-count: 2;
+      width: 900px;
+      max-width: 100%;
+    }
   }
 }
 
@@ -156,10 +204,14 @@
   &method{
     position: relative;
     color: $brand-col-3;
+    @include mq($from:desktop){
+      display: none;
+    }
   }
   &ingredients{
     text-align: right;
     position: relative;
+
   }
 }
 
@@ -191,5 +243,11 @@
     background: $brand-col-5;
     color: $brand-col-2;
   }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__item--
+
+[class*=c-recipe__item--] {
+  @extend .c-recipe__item;
 }
 

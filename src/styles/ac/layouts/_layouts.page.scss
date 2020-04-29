@@ -74,13 +74,11 @@
     display: block;
     text-align: center;
   }
-
   &heading {
     display: block;
     padding-top: 0 $act-unit;
 
   }
-
   &title {
     display: inline;
   }
@@ -90,15 +88,12 @@
     @include act-font-size($act-fs-4);
     color: $brand-col-2;
   }
-
   &logo{
     display: block;
   }
-
   &link {
     display: inline
   }
-
   &content {
     display: block;
     padding: 0 $act-unit $act-unit;
@@ -114,14 +109,12 @@
   &content-block{
     display: block;
   }
-
   &feature-image{
     margin-bottom: $act-unit;
     background: #fff;
     position: relative;
   }
-
-&feature-img{
+  &feature-img{
   margin: 0 auto;
   display: block;
 }
@@ -205,7 +198,6 @@
     }
   }
   &hero-text{
-
     font-family: $act-font-family-headings;
     font-weight: 500;
     color: $brand-col-1;
@@ -254,6 +246,9 @@
     @include mq($from:desktop){
       padding-top: $act-unit;
     }
+  }
+  &recipe{
+      background: $brand-col-2;
   }
 
 }
@@ -305,6 +300,7 @@
   }
   &article{
     @extend .l-page__header--static-page;
+    grid-template-rows: 1fr auto auto auto 1fr;
   }
   &reviews{
     padding: $act-unit 0 !important;
@@ -478,7 +474,7 @@
   &article{
     grid-column-start: 2;
     grid-row-start: 1;
-    grid-row-end: 5;
+    grid-row-end: 6;
     margin-bottom: 0;
   }
 }
@@ -522,9 +518,6 @@
       padding:0;
       padding-bottom: $act-unit;
 
-
-
-
     }
   }
   &collection-bundle{
@@ -532,6 +525,9 @@
   }
   &recipe{
     text-align: left;
+    @include mq($from:desktop){
+      display: none !important;
+    }
   }
   &article{
     margin-bottom: 0;
@@ -685,6 +681,17 @@
       text-align: left;
     }
   }
+  &article{
+    @include mq($from:desktop){
+      grid-row-start: 4;
+      grid-column-start: 1;
+      background: transparent;
+      color: $brand-col-2;
+      text-align: left;
+      padding-top:0 ;
+      padding-bottom: 0;
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__icon-list--
@@ -739,6 +746,17 @@
         z-index: -1;
         transform: translate( 50%, 0 );
     }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__icon--
+
+[class*=l-page__hero-text--] {
+  @extend .l-page__hero-text;
+}
+.l-page--hero-text--{
+  &article{
+    color: $brand-col-2;
   }
 }
 

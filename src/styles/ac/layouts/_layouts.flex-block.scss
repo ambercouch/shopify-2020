@@ -220,3 +220,34 @@
     }
   }
 }
+
+.l-flex-block{
+  .l-page__flex-block--article-block &{
+  }
+}
+
+.l-flex-block__item--text{
+  .l-page__flex-block--article-block &{
+    text-align: left;
+    @include mq($from:desktop){
+      width:70%
+    }
+  }
+  .is-image-size-50 &{
+    @include mq($from:desktop){
+      width:50% !important;
+    }
+  }
+}
+
+.is-image-size-none{
+  .l-page__flex-block--article-block &{
+   flex-direction: row;
+  }
+}
+
+.l-flex-block__item--image{
+  .l-page__flex-block--article-block &{
+    min-width: 30%;
+  }
+}

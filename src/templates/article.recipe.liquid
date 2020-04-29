@@ -50,28 +50,37 @@
 
 <div class="l-page--recipe">
 <article class="l-page__article" role="article">
-  <header class="l-page__header--static-page l-page__header--{{ article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+  <header class="l-page__header--article l-page__header--{{ article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
-    {% comment %}
-    {% if hImage %}
-      <div class="l-page__feature-image">
-        <img class="l-page__img" src="{{ hImage | file_img_url: 'original' }}"  alt="{{ article.title | escape }}" />
+    {% if article.image %}
+      <div class="l-page__feature-image--article">
+        <img class="l-page__img" src="{{  article.image | img_url: 'original' }}"  alt="{{article.title | escape }}" />
       </div>
     {% else %}
-      <!-- no page image -->
+      <!-- no article image -->
     {% endif %}
 
-
-
-    <h1 class="l-page__heading--static-page l-page__heading--{{ article.title | handle }}" >
+    <h1 class="l-page__heading--article l-page__heading--{{ article.title | handle }}" >
       <span class="l-page__title">{{ article.title }}</span>
     </h1>
-    {% endcomment %}
 
-    {% if pageHeroText %}
-      <div class="l-page__hero--static-page">
-        <div class="l-page__hero-text">
-          {{ pageHeroText }}
+    <div class="l-page__meta">
+    <span class="l-page__meta-text--author">
+      {{ 'blogs.article.by_author' | t: author: aAuthor }}
+    </span>
+      <span class="l-page____meta-text--date">
+      {{ article.published_at | time_tag: format: 'month_day_year' }}
+    </span>
+    </div>
+
+
+
+
+
+    {% if article.content %}
+      <div class="l-page__hero--article">
+        <div class="l-page__hero-text--article">
+          {{ article.content }}
         </div>
       </div>
 
@@ -91,19 +100,7 @@
     {% endif %}
 
   </header>
-  {% if hImage != null %}
-    <div class="l-page__hero-banner">
-     {% include "ac-hero-banner" with modClass : '--stacked'%}
-    </div>
-  {% endif %}
-  <div class="l-page__meta">
-    <span class="l-page__meta-text--author">
-      {{ 'blogs.article.by_author' | t: author: aAuthor }}
-    </span>
-    <span class="l-page____meta-text--date">
-      {{ article.published_at | time_tag: format: 'month_day_year' }}
-    </span>
-  </div>
+
 
   <div class="l-page__content--recipe">
     {% if  article.content != blank %}
