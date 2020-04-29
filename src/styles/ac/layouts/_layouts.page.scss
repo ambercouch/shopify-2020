@@ -145,9 +145,16 @@
   &meta{
     text-align: center;
     margin-bottom: $act-unit;
+    @include mq($from:desktop){
+      grid-column-start: 1;
+      grid-row-start: 3;
+      text-align: left;
+      padding-left: $act-unit;
+  }
   }
   &meta-text{
     display: block;
+
   }
   &product-form{
     padding: 0 $act-unit;
@@ -242,6 +249,12 @@
     grid-column-start: 1;
     grid-column-end: 3;
   }
+  &thumb-list{
+    background: #fff;
+    @include mq($from:desktop){
+      padding-top: $act-unit;
+    }
+  }
 
 }
 
@@ -270,9 +283,11 @@
   }
   &product{
     padding: 0 $act-unit;
+    text-align: left;
     @include mq($from: desktop){
       grid-row-start: 2;
       grid-column-start: 2;
+      text-align: left;
     }
   }
   &static-page{
@@ -287,6 +302,9 @@
       grid-template-rows: 1fr auto auto 1fr;
       background: $brand-col-4;
     }
+  }
+  &article{
+    @extend .l-page__header--static-page;
   }
   &reviews{
     padding: $act-unit 0 !important;
@@ -363,6 +381,15 @@
       padding-left: $act-unit;
     }
   }
+  &article{
+    @extend .l-page__heading--static-page;
+    background: transparent !important;
+    color: $brand-col-2 !important;
+    @include mq($from:desktop){
+      padding: 0;
+      padding-left: $act-unit;
+    }
+  }
   &reviews{
     color: $brand-col-2;
     margin-bottom: 0;
@@ -381,6 +408,10 @@
   &collection-bundle{
     color: $brand-col-5;
   }
+  &article{
+    color: $brand-col-2;
+  }
+
 
 
 }
@@ -444,6 +475,12 @@
       display: block;
     }
   }
+  &article{
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    margin-bottom: 0;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__meta-text--
@@ -453,7 +490,6 @@
  }
 
 .l-page__meta-text--{
-
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__content--

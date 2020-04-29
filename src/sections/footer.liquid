@@ -70,10 +70,10 @@
   {% endif %}
 
   <div class="l-footer__site-info">
-    <div class="c-site-info">
-    <small class="c-site-info__copy-right">{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. </small><br>
-      <small class="c-site-info__patent">UK Patent Granted: GB2528484; UK Patent Pending: 1803843.0</small><br>
-      <small class="c-site-info__powered-by" > {{ powered_by_link }}</small>
+    <div class="l-site-info">
+    <small class="l-site-info__line--copy-right">{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. </small>
+      <small class="l-site-info__line--patent">UK Patent Granted: GB2528484; UK Patent Pending: 1803843.0</small>
+      <small class="l-site-info__line--powered-by" > {{ powered_by_link }}</small>
     </div>
   </div>
 

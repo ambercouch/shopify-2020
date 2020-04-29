@@ -139,10 +139,10 @@
   }
   &text{
     @include mq($from : desktop){
-      width: $act-wrapper-width;
+      width: 1000px;
       max-width: 100%;
       margin: 0 auto;
-      text-align: left !important;
+      text-align: center;
     }
 
   }
