@@ -229,7 +229,9 @@
     @include mq($from:desktop){
       grid-column-start: 1;
       grid-column-end: 3;
-      display: flex;
+      display: grid;
+      grid-template-columns: 25% 50% 25%;
+      flex-direction: column !important;
       max-width: $act-wrapper-width;
       margin-left: auto;
       margin-right: auto;
@@ -291,10 +293,11 @@
 }
   &collection{
     @include mq($from:desktop){
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding-top: $act-unit;
+      width: 100%;
+      grid-column-start: 2;
+      grid-row-start: 1;
+      text-align: left;
     }
   }
   &about-us{
@@ -476,9 +479,11 @@
       margin-bottom: 0;
     }
     @include mq($from:desktop){
-      width: 50%;
+      width: 100%;
+      grid-row-start: 2;
+      grid-column-start:2;
       text-align: left;
-      padding-top: $act-unit;
+      padding:0;
       padding-bottom: $act-unit;
 
 

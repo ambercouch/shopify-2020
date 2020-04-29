@@ -35,7 +35,7 @@
         <li class="l-icon-list__item">
           <div class="l-icon-list__icon-thumb">
             <div class="c-icon-thumb">
-              <div class="c-icon-thumb__icon">
+              <div class="c-icon-thumb__icon--{{ collection.metafields['icon-list'][itemId] | handle }}">
                <img src="{{ collection.metafields['icon-list'][itemId] | file_img_url: '500x' }}" alt="icon" />
               </div>
               {% if collection.metafields['icon-list'][titleId] %}

@@ -59,6 +59,9 @@
     margin-bottom: $act-unit;
     margin-left: auto;
     margin-right: auto;
+    height: 100px;
+    display: flex;
+    align-items: center;
     @include mq($from:tablet){
       width:120px;
       height: 160px;
@@ -77,4 +80,16 @@
 
 [class*=c-icon-thumb__header--] {
   @extend .c-icon-thumb__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-icon-thumb__icon--
+
+[class*=c-icon-thumb__icon--] {
+  @extend .c-icon-thumb__icon;
+}
+
+.c-icon-thumb__icon--{
+  &double_dribble_tuck_in_a_layer_to_protect_little_tops-15-png{
+    width: 160px;
+  }
 }

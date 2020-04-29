@@ -130,6 +130,9 @@
       {% if section.settings.cb_text != blank %}
         <div class="c-content-block__text u-col-{{ cb_text_colour_class }}" >{{ section.settings.cb_text }}</div>
       {% endif %}
+    {% if section.settings.cb_code != blank %}
+      <div class="c-content-block__text--code" >{{ section.settings.cb_code }}</div>
+    {% endif %}
       {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
         <div class="c-content-block__footer">
           <a class="c-content-block__link--btn u-col-{{ cb_button_colour_class }}" href="{{ section.settings.cb_button_link }}">
@@ -371,7 +374,13 @@
   "type": "richtext",
   "id": "cb_text",
   "label": "Text",
-  "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+  "default": "<p>A short paragraph to go with you image</p>"
+  },
+  {
+  "type": "html",
+  "id": "cb_code",
+  "label": "Custom Code",
+  "info": "<p>Add some html code</p>"
   },
   {
   "type": "select",

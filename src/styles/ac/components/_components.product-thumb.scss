@@ -81,7 +81,6 @@
   &feature-image{
     margin-bottom: $act-unit;
     @include mq($from:desktop){
-      max-height: 400px;
       overflow: hidden;
     }
   }
@@ -281,6 +280,10 @@
   &cart{
     @include mq($from:desktop){
       padding: $act-unit-t;
+      display: flex;
+      text-align: left;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 }
@@ -327,55 +330,55 @@
 
 
 
-.is-product-id-{
-  &1859934158891{
-    .c-product-thumb {
-      background: $brand-col-5;
-    }
-  }
-  &4383271583787{
-    .c-product-thumb {
-      background: $brand-col-4;
-    }
-  }
-  &1859836051499 {
-    .c-product-thumb {
-      background: $brand-col-1;
-    }
-  }
-  &1859837722667{
-    .c-product-thumb {
-      background: $brand-col-7;
-      color: white;
-    }
-  }
-
-  &4252992700459 {
-    .c-product-thumb {
-      background: #FF2E1F;
-    }
-  }
-
-  &4252994371627{
-    .c-product-thumb {
-      background: #A7A9AC;
-    }
-  }
-
-  &4163474128939{
-    .c-product-thumb {
-      background: #231F20;
-      color: white;
-    }
-  }
-
-  &4252993716267{
-    .c-product-thumb {
-      background: #4D2B6D;
-      color: white;
-    }
-  }
-
-
-
-}
+//.is-product-id-{
+//  &1859934158891{
+//    .c-product-thumb {
+//      background: $brand-col-5;
+//    }
+//  }
+//  &4383271583787{
+//    .c-product-thumb {
+//      background: $brand-col-4;
+//    }
+//  }
+//  &1859836051499 {
+//    .c-product-thumb {
+//      background: $brand-col-1;
+//    }
+//  }
+//  &1859837722667{
+//    .c-product-thumb {
+//      background: $brand-col-7;
+//      color: white;
+//    }
+//  }
+//
+//  &4252992700459 {
+//    .c-product-thumb {
+//      background: #FF2E1F;
+//    }
+//  }
+//
+//  &4252994371627{
+//    .c-product-thumb {
+//      background: #A7A9AC;
+//    }
+//  }
+//
+//  &4163474128939{
+//    .c-product-thumb {
+//      background: #231F20;
+//      color: white;
+//    }
+//  }
+//
+//  &4252993716267{
+//    .c-product-thumb {
+//      background: #4D2B6D;
+//      color: white;
+//    }
+//  }
+//
+//
+//
+//}

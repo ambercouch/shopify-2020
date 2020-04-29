@@ -20,7 +20,7 @@
         <li class="l-icon-list__item">
           <div class="l-icon-list__icon-thumb">
             <div class="c-icon-thumb">
-              <div class="c-icon-thumb__icon">
+              <div class="c-icon-thumb__icon--{{ c }}">
                <img src="{{ shop.metafields[listNameSpace][itemId] | file_img_url: '500x' }}" alt="icon" />
               </div>
               {% if shop.metafields[listNameSpace][titleId]  %}
