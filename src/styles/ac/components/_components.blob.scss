@@ -334,11 +334,133 @@
       @include mq($from: desktop) {
         display: block;
         color: $brand-col-3;
-        bottom: -100px;
+        bottom: -150px;
         left: 40%;
         @include size(400px);
       }
     }
   }
 
+}
+
+.l-page__flex-block--our-story{
+  .c-blob-- {
+    &1 {
+      display: none;
+      @include mq($from: desktop) {
+        display: none;
+        left: -280px;
+        right: auto;
+        bottom: auto;
+        top: 100px;
+        transform: rotateZ(-60deg);
+        width: 440px;
+        height: 440px;
+        color: $brand-col-2;
+      }
+    }
+
+    &2 {
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-5;
+        bottom: 0;
+        left: auto;
+        right: -600px;
+        @include size(1000px);
+      }
+    }
+  }
+}
+
+.l-page__flex-block--working-culture{
+  .c-blob-- {
+    &1{
+      display: none;
+    }
+    &2{
+      display: none;
+    }
+  }
+}
+
+.l-page__flex-block--founding-principles{
+  .c-blob-- {
+    &1{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-5;
+        top: -450px;
+        left: -130px;
+        @include size(1000px);
+        transform: rotateZ(-50deg);
+      }
+    }
+    &2{
+      display: none;
+
+    }
+  }
+}
+
+.l-page__flex-block--feature_list1{
+  .c-blob-- {
+    &1{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-5;
+        top: -643px;
+        left: -130px;
+        @include size(1000px);
+        transform: rotateZ(-50deg);
+      }
+    }
+    &2{
+      display: none;
+
+    }
+  }
+}
+
+.l-page__flex-block--charity-support{
+  .c-blob-- {
+    &1{
+      display: none;
+
+    }
+    &2{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-3;
+        top: -50px;
+        left: -430px;
+        @include size(700px);
+        transform: rotateZ(-10deg);
+      }
+    }
+  }
+}
+
+.l-page__flex-block--our-team{
+  .c-blob-- {
+    &1{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-5;
+        top: 0px;
+        left: 25%;
+        @include size(1000px);
+        transform: rotateZ(10deg);
+      }
+    }
+    &2{
+      display: none;
+
+    }
+  }
 }

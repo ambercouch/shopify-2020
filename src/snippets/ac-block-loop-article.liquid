@@ -102,7 +102,7 @@
 
 <!-- block - {{ namespace }} -->
 <div data-namespace="{{ namespace }}" class="l-page__flex-block{{ modClass }}  is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
-  <div class="l-flex-block {{ classImagePos }} {{  classImageSize }} ">
+  <div class="l-flex-block l-flex-block--{{ blockHeading | handle }} {{ classImagePos }} {{  classImageSize }} ">
 
     {% if blockHeading %}
       <header class="l-flex-block__header{{ modClass }}">

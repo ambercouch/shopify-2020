@@ -215,7 +215,7 @@
     @include mq($from:desktop){
       grid-row-start: 3;
       grid-column-start: 1;
-      width: 100%;
+      width: 100% !important;
       text-align: left;
     }
   }

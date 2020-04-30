@@ -11,6 +11,12 @@
 {% for i in (1..10) %}
    {% capture namespace %}block{{ i }}{% endcapture %}
 
+  {% if  sObj.metafields[namespace]['block_layout'] %}
+    {% assign blockLayout = sObj.metafields[namespace]['block_layout'] %}
+  {% else %}
+    {% assign blockLayout = null %}
+  {% endif %}
+
 
 
    {% case sObj.metafields[namespace]['layout_image']  %}
@@ -26,6 +32,10 @@
    {% assign classImagePos = '' %}
    {% endcase %}
 
+
+{% if  blockLayout == 'grid' %}
+  {% assign classImageSize = "is-image-size-none" %}
+  {% else %}
    {% case sObj.metafields[namespace]['size_image']  %}
    {% when '50' %}
    {% assign classImageSize = "is-image-size-50" %}
@@ -35,6 +45,7 @@
      {% else %}
    {% assign classImageSize = "is-image-size-none" %}
    {% endcase %}
+  {% endif %}
 
    {% if  sObj.metafields[namespace]['text'] %}
      {% assign blockText = sObj.metafields[namespace]['text'] %}
@@ -99,11 +110,29 @@
   {% assign blockType = 'text' %}
 {% endif %}
 
+  {% if  sObj.metafields[namespace]['title']  %}
+    {% assign blockHandle = sObj.metafields[namespace]['title'] | handle | prepend : "--" %}
+    {% elsif sObj.metafields[namespace]['text_heading']  %}
+      {% assign blockHandle = sObj.metafields[namespace]['text_heading'] | handle | prepend : "--" %}
+    {% elsif sObj.metafields[namespace]['block_type']  %}
+      {% assign blockHandle = sObj.metafields[namespace]['block_type'] | handle | prepend : "--" %}
+    {% else %}
+      {% assign blockHandle = "--no-handle" %}
+  {% endif %}
+
 {% if sObj.metafields[namespace]['image'] or sObj.metafields[namespace]['text'] or sObj.metafields[namespace]['block_type'] %}
 
 <!-- block - {{ namespace }} -->
-<div data-namespace="{{ namespace }}" class="l-page__flex-block{{ modClass }}  is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
-  <div class="l-flex-block {{ classImagePos }} {{  classImageSize }} ">
+<div data-namespace="{{ namespace }}" class="l-page__flex-block{{ modClass }} l-page__flex-block{{ blockHandle }} is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
+
+  <div class="c-image-layer">
+    <div class="c-image-layer__background">
+      {% include 'ac-blobs' %}
+    </div>
+    <div class="c-image-layer__content">
+      <div class="l-main__content-block-wrapper">
+
+  <div class="l-flex-block{{ blockHandle }} {{ classImagePos }} {{  classImageSize }} ">
 
     {% if blockHeading %}
       <header class="l-flex-block__header{{ modClass }}">
@@ -150,6 +179,11 @@
 
     {% endif %}
   </div>
+
+      </div><!-- .l-main__content-block-wrapper -->
+    </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer__content -->
+
 </div>
   {% endif %}
 
