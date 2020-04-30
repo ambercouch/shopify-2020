@@ -308,17 +308,16 @@
   }
 }
 
-.c-image-layer--header-static-page{
+.l-page__header--about-us{
   .c-image-layer__background{
-    z-index: 2;
+
   }
 
   .c-blob-- {
     &1 {
       display: none;
-      z-index: 10;
       @include mq($from: desktop) {
-        display: none;
+        display: block;
         left: -280px;
         right: auto;
         bottom: auto;
@@ -327,16 +326,17 @@
         width: 440px;
         height: 440px;
         color: $brand-col-2;
-        z-index: 0;
       }
     }
 
     &2 {
       display: none;
-      z-index: 10;
       @include mq($from: desktop) {
-        display: none;
-
+        display: block;
+        color: $brand-col-3;
+        bottom: -100px;
+        left: 40%;
+        @include size(400px);
       }
     }
   }

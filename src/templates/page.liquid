@@ -15,6 +15,12 @@
 
 
     <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+          <div class="l-main__content-block-wrapper">
 <div class="l-page__grid-wrapper--header-static-page">
       {% if pageImage %}
         <div class="l-page__feature-image">
@@ -51,7 +57,11 @@
         <!-- no page hero image {{ pageHeroImage }} ! -->
       {% endif %}
 </div>
+          </div><!-- .l-main__content-block-wrapper -->
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
     </header>
+
 
 
     <div class="l-page__content--static-page">
