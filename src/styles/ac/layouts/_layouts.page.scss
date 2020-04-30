@@ -4,7 +4,6 @@
 
 .l-page {
   display: block;
-
 }
 
 /*
@@ -46,8 +45,8 @@
   }
   &collection{
     @include mq($from:desktop){
-      display: grid;
-      grid-template-columns: 50% 50%;
+      //display: grid;
+      //grid-template-columns: 50% 50%;
     }
   }
   &contact-us{
@@ -71,6 +70,12 @@
  */
 
 .l-page__ {
+  &grid-wrapper{
+    @include mq($from:desktop){
+      display: grid;
+    }
+
+  }
   &header {
     display: block;
     text-align: center;
@@ -196,6 +201,7 @@
     justify-content: center;
     @include mq($from:desktop){
       min-height: 0;
+      background: transparent;
     }
   }
   &hero-text{
@@ -290,19 +296,24 @@
   }
   &static-page{
     @include mq($from:desktop){
-      display: none;
-      max-width: $act-wrapper-width;
-      margin-left: auto;
-      margin-right: auto;
-      @include breakout-band($bgc: $brand-col-5);
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 1fr auto auto 1fr;
-      background: $brand-col-4;
+      //max-width: $act-wrapper-width;
+      //margin-left: auto;
+      //margin-right: auto;
+      //@include breakout-band($bgc: $brand-col-5);
+      //display: grid;
+      //grid-template-columns: 50% 50%;
+      //grid-template-rows: 1fr auto auto 1fr;
+      //background: $brand-col-4;
     }
   }
   &article{
-    @extend .l-page__header--static-page;
+    max-width: $act-wrapper-width;
+    margin-left: auto;
+    margin-right: auto;
+    @include breakout-band($bgc: $brand-col-5);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background: $brand-col-4;
     grid-template-rows: 1fr auto auto auto 1fr;
   }
   &reviews{
@@ -319,13 +330,10 @@
   }
   &about-us{
     @include mq($from:desktop){
-      max-width: $act-wrapper-width;
-      margin-left: auto;
-      margin-right: auto;
-      @include breakout-band($bgc: $brand-col-5);
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 1fr auto auto 1fr;
+
+      //@include breakout-band($bgc: $brand-col-5);
+      background: $brand-col-5;
+
     }
   }
   &site-map{
@@ -763,9 +771,29 @@
 [class*=l-page__hero-text--] {
   @extend .l-page__hero-text;
 }
+
 .l-page--hero-text--{
   &article{
     color: $brand-col-2;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__grid-wrapper--
+
+[class*=l-page__grid-wrapper--] {
+  @extend .l-page__grid-wrapper;
+}
+.l-page__grid-wrapper--{
+  &header-static-page{
+    @include mq($from:desktop){
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 1fr auto auto 1fr;
+      width: $act-wrapper-width;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+
   }
 }
 

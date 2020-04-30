@@ -4,7 +4,15 @@
 {% paginate collection.products by 12 %}
   <div class="l-main__page--collection">
     <div class="l-page--collection">
-      {% if collection.image.src %}
+      <header class="l-page__header--collection">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+
+
+             {% if collection.image.src %}
         <div class="l-page__feature-image--collection">
           {% include 'responsive-image' with
             image: collection.image,
@@ -20,7 +28,7 @@
       {% else %}
         <!-- no collection image -->
       {% endif %}
-      <div class="l-page__feature-image--collection-desktop">
+            <div class="l-page__feature-image--collection-desktop">
 
         {% include 'responsive-image' with
           image: featureImage,
@@ -32,6 +40,18 @@
         </div>
 
       </div>
+
+
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+      </header>
+
+      <div class="l-page__wrapper--collection-intro">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
 
       <div class="l-page__collection-intro">
       <header class="l-page__header--collection" role="banner">
@@ -65,6 +85,10 @@
       </div>
       {% endif %}
       </div>
+
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+      </div><!-- .l-page__wapper--collection-intro -->
 
       <div class="l-page__icon-list--collection">
         {% include 'ac-icon-list-loop-collection' %}

@@ -1,7 +1,14 @@
 {%- assign footer_linklist = section.settings.footer_linklist -%}
 <footer class="l-site__footer">
-<div class="l-footer">
 
+  <div class="c-image-layer">
+    <div class="c-image-layer__background">
+      {% include 'ac-blobs' %}
+    </div>
+    <div class="c-image-layer__content">
+      <div class="l-main__content-block-wrapper">
+
+<div class="l-footer">
 <div class="l-footer__site-title">
   {% include 'ac-footer-logo' %}
 </div>
@@ -78,6 +85,12 @@
   </div>
 
 </div>
+
+
+      </div><!-- .l-main__content-block-wrapper -->
+    </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer__content -->
+
 </footer>
 
 

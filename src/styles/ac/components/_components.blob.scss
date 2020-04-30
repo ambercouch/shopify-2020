@@ -76,6 +76,11 @@
       left: -70px;
       bottom: -90px;
       transform: rotateZ(-40deg);
+      @include mq($from:desktop){
+        @include size(500px);
+        left: -160px;
+        bottom: -160px;
+      }
     }
   }
 }
@@ -85,6 +90,14 @@
   .c-blob-- {
     &1 {
       display: none;
+      @include mq($from:desktop){
+        color: $brand-col-1;
+        display: block;
+        @include size(400px);
+        left: -130px;
+        top: 40%;
+        transform: rotateZ(140deg);
+      }
     }
     &2 {
       color: $brand-col-5;
@@ -92,6 +105,11 @@
       right: -110px;
       bottom: -60px;
       transform: rotateZ(30deg);
+      @include mq($from:desktop){
+        @include size(500px);
+        right: -220px;
+        bottom: -120px;
+      }
     }
   }
 
@@ -114,12 +132,15 @@
     &2 {
       @include size(320px);
       color: $brand-col-5;
-
       display: block;
       left: auto;
       right: -170px;
       bottom: 50%;
       transform: rotateZ(180deg);
+      @include mq($from:desktop){
+        left: 0;
+        bottom: 40%;
+      }
     }
   }
 }
@@ -133,6 +154,12 @@
       top: 200px;
       color: $brand-col-3;
       transform: rotateZ(-40deg);
+      @include mq($from:desktop){
+        left: auto;
+        right: -100px;
+        bottom: 50px;
+        top: auto;
+      }
     }
     &2 {
       display: none;
@@ -140,3 +167,178 @@
   }
 }
 
+.l-page__header--collection{
+  .c-blob-- {
+    &1 {
+      display: none;
+      z-index: 10;
+      @include mq($from:desktop){
+        display: block;
+        left: auto;
+        left: -120px;
+        bottom: -263px;
+        top: auto;
+        transform: rotateZ(-130deg );
+        width: 500px;
+        height: 500px;
+        color: $brand-col-4;
+      }
+    }
+    &2 {
+      display: none;
+      z-index: 10;
+      @include mq($from:desktop){
+        display: block;
+        left: auto;
+        right: -150px;
+        bottom: -20px;
+        top: 50px;
+        //transform: rotateZ(180deg);
+        width: 300px;
+        height: 300px;
+        color: $brand-col-2;
+      }
+    }
+  }
+}
+
+.l-page__wrapper--collection-intro{
+
+  .c-blob-- {
+    &1 {
+      display: none;
+      z-index: 10;
+      @include mq($from:desktop){
+        display: block;
+        left: auto;
+        right: -520px;
+        bottom: -200px;
+        top: auto;
+        transform: rotateZ(-130deg);
+        width: 700px;
+        height: 700px;
+        color: #66ffcc;
+      }
+    }
+    &2 {
+      display: none;
+      z-index: 10;
+      @include mq($from:desktop){
+        display: block;
+        left: -100px;
+        right: auto;
+        bottom: -20px;
+        top: -50px;
+        width: 300px;
+        height: 300px;
+        color: #e61c6d;
+        transform: rotateZ(200deg);
+      }
+    }
+  }
+
+}
+
+.l-product-list__item--last{
+
+  .c-blob-- {
+    &1 {
+      display: none;
+      z-index: 10;
+      @include mq($from: desktop) {
+        display: block;
+        left: -100px;
+        right: auto;
+        bottom: -300px;
+        top: auto;
+        transform: rotateZ(80deg);
+        width: 700px;
+        height: 700px;
+        color: #66ffcc;
+        z-index: 0;
+      }
+    }
+
+    &2 {
+      display: none;
+      z-index: 10;
+      @include mq($from: desktop) {
+        display: block;
+        left: auto;
+        right: -190px;
+        bottom: -20px;
+        top: -10px;
+        width: 300px;
+        height: 300px;
+        color: #e61c6d;
+        z-index: 0;
+      }
+    }
+  }
+
+}
+
+.l-site__footer{
+  .c-blob-- {
+    &1 {
+      display: none;
+      z-index: 10;
+      @include mq($from: desktop) {
+        display: block;
+        left: auto;
+        right: -300px;
+        bottom: -320px;
+        top: auto;
+        transform: rotateZ(5deg);
+        width: 900px;
+        height: 900px;
+        color: $brand-col-1;
+        z-index: 0;
+      }
+    }
+
+    &2 {
+      display: none;
+      z-index: 10;
+      @include mq($from: desktop) {
+        display: none;
+
+      }
+    }
+  }
+}
+
+.c-image-layer--header-static-page{
+  .c-image-layer__background{
+    z-index: 2;
+  }
+
+  .c-blob-- {
+    &1 {
+      display: none;
+      z-index: 10;
+      @include mq($from: desktop) {
+        display: none;
+        left: -280px;
+        right: auto;
+        bottom: auto;
+        top: 100px;
+        transform: rotateZ(-60deg);
+        width: 440px;
+        height: 440px;
+        color: $brand-col-2;
+        z-index: 0;
+      }
+    }
+
+    &2 {
+      display: none;
+      z-index: 10;
+      @include mq($from: desktop) {
+        display: none;
+
+      }
+    }
+  }
+
+}

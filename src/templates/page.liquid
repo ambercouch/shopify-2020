@@ -12,8 +12,10 @@
 <div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
   <div class="l-page--static-page l-page--{{ page.title | handle }}">
 
-    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
+
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+<div class="l-page__grid-wrapper--header-static-page">
       {% if pageImage %}
         <div class="l-page__feature-image">
           <img class="l-page__img" src="{{ pageImage | file_img_url: 'original' }}"  alt="{{ page.title | escape }}" />
@@ -48,8 +50,9 @@
       {% else %}
         <!-- no page hero image {{ pageHeroImage }} ! -->
       {% endif %}
-
+</div>
     </header>
+
 
     <div class="l-page__content--static-page">
       {% if page.content != blank %}

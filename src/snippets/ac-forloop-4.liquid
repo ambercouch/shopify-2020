@@ -11,6 +11,13 @@
 <!-- forloop.index {{ forloop.index }} -->
 {% if logoImage != blank or blockImage != blank or blockTitle != blank %}
   <div class="l-product-list__content-block--{{ collection.metafields.content-block.title2 | handle  }} ">
+
+    <div class="c-image-layer">
+      <div class="c-image-layer__background">
+        {% include 'ac-blobs' %}
+      </div>
+      <div class="c-image-layer__content">
+
     <div class="c-content-block--collection-list-2 c-content-block--{{  collection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
       {%  if blockLink != blank %}
       <a href="{{blockLink}}" class="c-content-block__link-thumb--collection-list-2">
@@ -66,5 +73,10 @@
       {% endif %}
 
     </div>
+
+      </div><!-- .c-image-layer__content -->
+    </div><!-- .c-image-layer__content -->
+
+
   </div>
 {% endif %}
