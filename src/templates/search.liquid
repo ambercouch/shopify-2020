@@ -19,11 +19,11 @@
     {% if search.results_count == 0 %}
       <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
     {% else %}
-    <div class="l-product-list">
+    <div class="l-product-list--search">
       <h2 class="l-product-list__heading visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
-      <ul class="l-product-list__list">
+      <ul class="l-product-list__list--search">
         {% for product in search.results %}
-          <li class="l-product-list__item test123">
+          <li class="l-product-list__item--search">
             {% assign modClass = '--search-result' %}
             <!-- modclass {{ modClass }} search.liquid -->
             {% include 'ac-product-thumb' %}

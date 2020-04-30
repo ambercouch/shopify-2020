@@ -18,7 +18,7 @@
     </div>
   {% endif %}
   <div class="c-product-thumb__info{{ modClass }}">
-  <h4 class="c-product-thumb__heading">
+  <h4 class="c-product-thumb__heading{{ modClass }}">
     <span class="c-product-thumb__title">
       <a class="c-product-thumb__link-title ac-product-title" href="{{ product.url | within: collection }}">{{ productTitle }}</a>
     </span>
@@ -54,7 +54,7 @@
       {{ 'products.product.sold_out' | t }}
     {% endunless %}
   </div>
-    <div class="c-product-thumb__btn">
+    <div class="c-product-thumb__btn{{ modClass }}">
       <a class="c-btn--product-thumb " href="{{ product.url }}">
         <span class="c-btn__link-label">View Product</span>
       </a>

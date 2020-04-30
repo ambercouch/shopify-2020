@@ -12,8 +12,11 @@
  */
 
 .l-product-list-- {
-  &type {
-    display: block
+  &search {
+    @include mq($from:desktop){
+      background: #fff;
+      padding-top: $act-unit-l;
+    }
   }
 }
 
@@ -59,8 +62,9 @@
     display: block
   }
   &content-block{
-    padding: 0 $act-unit;
+    padding: 0;
   }
+
   &item{
     position: relative;
     @include mq($from:desktop){
@@ -90,6 +94,24 @@
 }
 
 
+//BEM ELEMENT MODIFIER FALLBACK .l-product-list__list--
+
+[class*=l-product-list__list--] {
+  @extend .l-product-list__list;
+}
+
+.l-product-list__list--{
+  &search{
+    @include mq($from: desktop){
+     width: $act-wrapper-width;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+  }
+}
+
+
 //BEM ELEMENT MODIFIER FALLBACK .l-product-list__item--
 
 [class*=l-product-list__item--] {
@@ -101,6 +123,13 @@
     @include mq($from: desktop){
       width: 100%;
       display: block;
+    }
+  }
+  &search{
+    width: 100%;
+    display: block;
+    @include mq($from:desktop){
+      padding-bottom: $act-unit-l;
     }
 
   }
