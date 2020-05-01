@@ -245,6 +245,7 @@
     background: #fff;
   }
   &collection-intro{
+    padding-top: $act-unit;
     @include mq($from:desktop){
       grid-column-start: 1;
       grid-column-end: 3;
@@ -291,7 +292,7 @@
   &search{
     background: $brand-col-3;
     color: $brand-col-2;
-    padding: $act-unit-l 0;
+    padding: 0;
   }
   &blog{
     background: $brand-col-3;
@@ -337,7 +338,6 @@
 }
   &collection{
     @include mq($from:desktop){
-      padding-top: $act-unit;
       width: 100%;
       grid-column-start: 2;
       grid-row-start: 1;
@@ -485,6 +485,7 @@
   }
   &collection{
     display: block;
+    margin-bottom: 0;
     @include mq($from:desktop){
       display: none;
       grid-column-start: 1;
@@ -566,6 +567,7 @@
     text-align: left;
     margin-bottom: 0;
     padding: 0;
+    padding-top: $act-unit;
   }
   &faqs-page{
     padding: $act-unit !important;
@@ -830,7 +832,20 @@
   }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .l-page__grid-wrapper--
+//BEM ELEMENT MODIFIER FALLBACK .l-page__product-list--
+
+[class*=l-page__product-list--] {
+  @extend .l-page__product-list;
+}
+.l-page__product-list--{
+  &collection-bundle{
+    @include mq($from:desktop){
+      //padding: $act-unit-l 0;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__wrapper--
 
 [class*=l-page__wrapper--] {
   @extend .l-page__wrapper;

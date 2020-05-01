@@ -5,13 +5,13 @@
 $act-block-height : 450px;
 
 .c-content-block {
-  padding-top: $act-unit;
-  padding-bottom: $act-unit;
+
+  // Padding for blocks on homepage
+  padding: $act-unit $act-unit-s;
+
   display: flex;
   flex-direction: column;
-
   justify-content: center;
-
 
   &.has-footer-image{
     padding-bottom: 200px;

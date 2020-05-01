@@ -228,7 +228,6 @@
   .c-blob-- {
     &1 {
       display: none;
-      z-index: 10;
       @include mq($from:desktop){
         display: block;
         left: auto;
@@ -238,12 +237,18 @@
         transform: rotateZ(-130deg);
         width: 700px;
         height: 700px;
-        color: #66ffcc;
+        color: $brand-col-3;
       }
     }
     &2 {
-      display: none;
-      z-index: 10;
+      display: block;
+      left: -100px;
+      right: auto;
+      bottom: -20px;
+      top: -50px;
+     @include size(200px);
+      color: #e61c6d;
+      transform: rotateZ(200deg);
       @include mq($from:desktop){
         display: block;
         left: -100px;
@@ -281,8 +286,15 @@
     }
 
     &2 {
-      display: none;
-      z-index: 10;
+      display: block;
+      left: auto;
+      right: -110px;
+      bottom: -200px;
+      top: auto;
+      @include size(400px);
+      color: $brand-col-4;
+      z-index: 0;
+      transform: rotateZ(-100deg);
       @include mq($from: desktop) {
         display: block;
         left: auto;
@@ -525,7 +537,13 @@
 
     }
     &2{
-      display: none;
+      display: block;
+      color: $brand-col-5;
+      top: -90px;
+      left: -60px;
+      right: auto;
+
+      transform: rotateZ(230deg);
       @include mq($from: desktop) {
         display: block;
         color: $brand-col-5;
@@ -538,6 +556,36 @@
     }
   }
 }
+
+.l-page__header--search{
+  .c-blob-- {
+    &1{
+      display: none;
+
+    }
+    &2{
+      display: block;
+      color: $brand-col-4;
+      top: -110px;
+      left: auto;
+      right: -120px;
+      @include size(250px);
+
+      transform: rotateZ(-50deg);
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-4;
+        top: -110px;
+        left: auto;
+        right: -120px;
+        @include size(300px);
+
+       transform: rotateZ(-50deg);
+      }
+    }
+  }
+}
+
 
 .l-page__header--article{
   .c-blob-- {
@@ -582,6 +630,38 @@
       display: none;
       @include mq($from: desktop) {
         display: none;
+      }
+    }
+  }
+}
+
+.c-cart-drawer{
+  .c-blob-- {
+    &1{
+      display: none;
+      @include mq($from: desktop) {
+
+      }
+
+    }
+    &2{
+      display: block;
+      color: $brand-col-4;
+      bottom: auto;
+      left: -500px;
+      right: auto;
+      top:-300px;
+      @include size(1000px);
+      transform: rotateZ(-150deg) rotateY(180deg);
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-4;
+        bottom: auto;
+        left: -360px;
+        right: auto;
+        top:-500px;
+        @include size(1700px);
+        transform: rotateZ(-180deg) rotateY(180deg);
       }
     }
   }

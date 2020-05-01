@@ -2,12 +2,24 @@
 <div class="l-main__page--search">
   <div class="l-page--search">
     <header class="l-page__header--search" role="banner">
+
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+
+          <div class="l-page__heading-wrapper">
       <h1 class="l-page__heading--search" >
       <span class="l-page__title" class="visually-hidden">{{ 'Search'  }}</span>
       </h1>
       <h2 class="l-page__sub-heading">
         <span class="l-page__title-search-results">{{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</span>
       </h2>
+          </div>
+
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
     </header>
 
     <div id="searchFormSearchPage" class="l-page__site-search-form" data-state="on" data-container="siteSearch" >

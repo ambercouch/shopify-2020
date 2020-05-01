@@ -7,7 +7,7 @@
 
     <div class="l-main__page--collection-bundle">
       <div class="l-page--collection-bundle {{ classHasFeatureImage }} ">
-
+<div class="l-page__wrapper--collection-bundle">
         <header class="l-page__header" role="banner">
 
           {% if collection.image.src %}
@@ -49,11 +49,11 @@
           </div>
         </div>
         </div>
+      </div>
+        <div class="l-page__product-list--collection-bundle">
+          <div class="l-product-list--collection-bundle">
 
-        <div class="l-page__product-list">
-          <div class="l-product-list">
-
-            <div class="l-product-list__list">
+            <div class="l-product-list__list--collection-bundle">
               {% for product in collection.products %}
                 <div class="l-product-list__item">
                   <div class="l-product-list__product-thumb">

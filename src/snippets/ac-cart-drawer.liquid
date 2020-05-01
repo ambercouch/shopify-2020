@@ -1,6 +1,12 @@
 <div id="DrawerOverlay"></div>
 <div id="CartDrawer" class="c-cart-drawer is-right">
 
+  <div class="c-image-layer">
+    <div class="c-image-layer__background">
+      {% include 'ac-blobs' %}
+    </div>
+    <div class="c-image-layer__content">
+
   <div class="c-cart-drawer__header">
     <div class="c-cart-drawer__heading">
       <span class="c-cart-drawer__title" >{{ 'cart.general.title' | t }}</span>
@@ -11,5 +17,8 @@
     </div>
   </div>
   <div id="CartContainer" class="c-cart-drawer__cart" ></div>
+
+    </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer__content -->
 
 </div>

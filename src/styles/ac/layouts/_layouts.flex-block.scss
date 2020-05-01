@@ -116,7 +116,7 @@
     margin-bottom: 0 !important;
     text-align: center;
     @include mq($from:desktop){
-      text-align: left;
+      text-align: center;
     }
   }
 
