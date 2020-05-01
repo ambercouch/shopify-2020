@@ -52,6 +52,16 @@
 <article class="l-page__article" role="article">
   <header class="l-page__header--article l-page__header--{{ article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
+
+    <div class="c-image-layer">
+      <div class="c-image-layer__background">
+        {% include 'ac-blobs' %}
+      </div>
+      <div class="c-image-layer__content">
+        <div class="l-main__content-block-wrapper">
+          <div class="l-page__grid-wrapper--header-static-page">
+
+
     {% if article.image %}
       <div class="l-page__feature-image--article">
         <img class="l-page__img" src="{{  article.image | img_url: 'original' }}"  alt="{{article.title | escape }}" />
@@ -73,10 +83,6 @@
     </span>
     </div>
 
-
-
-
-
     {% if article.content %}
       <div class="l-page__hero--article">
         <div class="l-page__hero-text--article">
@@ -87,6 +93,7 @@
     {% else %}
       <!-- no page hero text {{ pageHeroText }} ! -->
     {% endif %}
+
     {% if pageHeroImage %}
       <div class="l-page__hero-image">
         {% include 'responsive-image' with
@@ -99,6 +106,10 @@
       <!-- no page hero image {{ pageHeroImage }} ! -->
     {% endif %}
 
+          </div>
+          </div><!-- .l-main__content-block-wrapper -->
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
   </header>
 
 
@@ -110,6 +121,13 @@
     {% endif %}
   </div>
   <div class="l-page__recipe">
+
+    <div class="c-image-layer">
+      <div class="c-image-layer__background">
+        {% include 'ac-blobs' %}
+      </div>
+      <div class="c-image-layer__content">
+
     <div class="c-recipe">
       {% if  article.metafields.global['ingredient_1'] %}
       <div data-container="recipeTabIng" data-state="on" data-state-group="recipeTabs"  class="c-recipe__tab--ingredients">
@@ -148,6 +166,10 @@
       </div>
       {% endif %}
     </div>
+
+    </div><!-- .c-image-layer__content -->
+  </div><!-- .c-image-layer -->
+
   </div>
 
   <div class="c-recipe__gallery">

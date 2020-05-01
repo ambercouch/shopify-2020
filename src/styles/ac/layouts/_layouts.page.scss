@@ -11,6 +11,10 @@
  */
 
 .l-page-- {
+  &landing{
+    background: white !important;
+    padding-top: $act-unit-l ;
+  }
   &recipe {
     color: $brand-col-2;
     background: white;
@@ -70,6 +74,11 @@
  */
 
 .l-page__ {
+  &wrapper{
+    width: $act-wrapper-width;
+    max-width: 100%;
+    margin: 0 auto;
+  }
   &grid-wrapper{
     @include mq($from:desktop){
       display: grid;
@@ -83,6 +92,10 @@
   &heading {
     display: block;
     padding-top: 0 $act-unit;
+
+  }
+  &heading-wrapper{
+    padding: $act-unit-l 0
 
   }
   &title {
@@ -283,7 +296,7 @@
   &blog{
     background: $brand-col-3;
     color: $brand-col-1;
-    padding: $act-unit-l 0;
+    padding: 0;
   }
   &product{
     padding: 0 $act-unit;
@@ -307,14 +320,17 @@
     }
   }
   &article{
-    max-width: $act-wrapper-width;
-    margin-left: auto;
-    margin-right: auto;
-    @include breakout-band($bgc: $brand-col-5);
-    display: grid;
-    grid-template-columns: 50% 50%;
-    background: $brand-col-4;
-    grid-template-rows: 1fr auto auto auto 1fr;
+    @include mq($from:desktop){
+      background: $brand-col-5;
+    }
+    //max-width: $act-wrapper-width;
+    //margin-left: auto;
+    //margin-right: auto;
+    //@include breakout-band($bgc: $brand-col-5);
+    //display: grid;
+    //grid-template-columns: 50% 50%;
+    //background: $brand-col-4;
+    //grid-template-rows: 1fr auto auto auto 1fr;
   }
   &reviews{
     padding: $act-unit 0 !important;
@@ -341,6 +357,9 @@
   }
   &how-to-bibado{
     @include breakout-band($bgc: $brand-col-1);
+  }
+  &faqs{
+    background: $brand-col-1;
   }
 }
 
@@ -550,6 +569,19 @@
   }
   &faqs-page{
     padding: $act-unit !important;
+    @include mq($from:desktop){
+      width: $act-wrapper-width;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+  &article{
+    @include mq($from:desktop){
+      width: $act-wrapper-width;
+      max-width: 100%;
+      margin: 0 auto;
+      padding-top: $act-unit-l;
+    }
   }
 }
 
@@ -775,7 +807,7 @@
   @extend .l-page__hero-text;
 }
 
-.l-page--hero-text--{
+.l-page__hero-text--{
   &article{
     color: $brand-col-2;
   }
@@ -795,6 +827,17 @@
       max-width: 100%;
       margin: 0 auto;
     }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__grid-wrapper--
+
+[class*=l-page__wrapper--] {
+  @extend .l-page__wrapper;
+}
+.l-page__wrapper--{
+  &collection-intro{
+    width: 100% !important;
   }
 }
 

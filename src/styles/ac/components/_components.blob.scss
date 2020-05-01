@@ -65,6 +65,27 @@
   @extend .c-blob__header;
 }
 
+.l-page__header--static-page{
+  .c-blob-- {
+    &1 {
+      display: none;
+      @include mq($from:desktop){
+        display: block;
+        @include size(1000px);
+        color: $brand-col-3;
+        left:15%;
+        bottom: auto;
+        top:-750px;
+        transform: rotateZ(30deg);
+      }
+    }
+    &2 {
+      display: none;
+
+    }
+  }
+}
+
 [data-section-type="quotes"]{
 
   .c-blob-- {
@@ -343,6 +364,17 @@
 
 }
 
+[class*=l-page__flex-block]{
+  .c-blob-- {
+    &1 {
+      display: none;
+    }
+    &2{
+      display: none;
+    }
+  }
+}
+
 .l-page__flex-block--our-story{
   .c-blob-- {
     &1 {
@@ -425,6 +457,7 @@
   }
 }
 
+
 .l-page__flex-block--charity-support{
   .c-blob-- {
     &1{
@@ -461,6 +494,95 @@
     &2{
       display: none;
 
+    }
+  }
+}
+
+.l-page__header--faqs{
+  .c-blob-- {
+    &1{
+      display: none;
+
+    }
+    &2{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-3;
+        top: -710px;
+        left: 210px;
+        @include size(1100px);
+        transform: rotateZ(-90deg);
+      }
+    }
+  }
+}
+
+.l-page__header--blog{
+  .c-blob-- {
+    &1{
+      display: none;
+
+    }
+    &2{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-5;
+        top: -20px;
+        left: auto;
+        right: -60px;
+
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+}
+
+.l-page__header--article{
+  .c-blob-- {
+    &1{
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-1;
+        bottom: -450px;
+        left: -250px;
+        right: auto;
+        @include size(700px);
+        transform: rotateZ(220deg);
+      }
+
+    }
+    &2{
+      display: none;
+      @include mq($from: desktop) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.l-page__recipe{
+  .c-blob-- {
+    &1{
+      display: none;
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-4;
+        bottom: -200px;
+        left: auto;
+        right: -200px;
+        @include size(800px);
+        transform: rotateZ(-80deg) rotateY(180deg);
+      }
+
+    }
+    &2{
+      display: none;
+      @include mq($from: desktop) {
+        display: none;
+      }
     }
   }
 }

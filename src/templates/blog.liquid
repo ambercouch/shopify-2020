@@ -12,10 +12,23 @@
   {%- endif -%}
 <div class="l-main__page--blog">
   <div class="l-page--blog">
+
     <header class="l-page__header--blog" role="banner">
+
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+<div class="l-page__heading-wrapper">
       <h1 class="l-page__heading--blog" >
         <span class="l-page__title">{{ blog_title }}</span>
       </h1>
+
+</div>
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+
     </header>
 
   {% if blog.all_tags.size > 0 %}

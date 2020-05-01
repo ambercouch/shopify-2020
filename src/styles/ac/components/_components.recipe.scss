@@ -120,6 +120,7 @@
     }
     @include mq($from:desktop){
       padding-left: 0 !important;
+      background-color: transparent;
     }
   }
   &tab{
@@ -154,6 +155,7 @@
       display: block;
       width: 100%;
       text-align: left;
+      background-color: transparent;
     }
 
   }
