@@ -90,6 +90,9 @@
 
 .c-icon-thumb__icon--{
   &double_dribble_tuck_in_a_layer_to_protect_little_tops-15-png{
-    width: 160px;
+    width: 110px;
+    @include mq($from:desktop){
+      width: 150px;
+    }
   }
 }
