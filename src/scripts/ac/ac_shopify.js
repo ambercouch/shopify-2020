@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY sticky bottom');
+console.log('ACSHOPIFY half page');
 const ACSHOPIFY = {
   common: {
     init: function() {

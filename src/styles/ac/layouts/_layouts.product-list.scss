@@ -18,6 +18,7 @@
       padding-top: $act-unit-l;
     }
   }
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-product-list--
@@ -113,6 +114,7 @@
   }
   &collection-bundle{
     background: #fff;
+    padding: $act-unit-l 0;
   }
 }
 

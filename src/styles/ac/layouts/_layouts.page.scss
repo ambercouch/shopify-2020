@@ -59,6 +59,9 @@
       padding-bottom: $act-unit;
     }
   }
+  &collection-bundle{
+    padding-top: 0;
+  }
 
 
 }
@@ -358,7 +361,11 @@
   &how-to-bibado{
     @include breakout-band($bgc: $brand-col-1);
   }
-  &faqs{
+  &faqs-shipping{
+    background: $brand-col-1;
+  }
+  &terms-conditions{
+    color: $brand-col-2;
     background: $brand-col-1;
   }
 }
@@ -432,10 +439,16 @@
     }
   }
   &collection-bundle{
-    color: $brand-col-5;
+    color: $brand-col-2;
+    @include mq($from:desktop){
+      color: $brand-col-5;
+    }
   }
   &article{
     color: $brand-col-2;
+  }
+  &terms-conditions{
+    color: $brand-col-2 !important;
   }
 
 
@@ -553,6 +566,10 @@
   }
   &collection-bundle{
     padding-bottom: 0;
+    @include mq($from:desktop){
+      padding-bottom: $act-unit;
+      margin-bottom: 0;
+    }
   }
   &recipe{
     text-align: left;
@@ -745,6 +762,9 @@
         text-align: left !important;
       }
     }
+  }
+  &collection-bundle{
+    padding: 0;
   }
 }
 

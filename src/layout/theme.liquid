@@ -15,7 +15,9 @@
   {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
   {%- endif -%}
-
+<!-- page title {{ page_title }} -->
+  <!-- general.meta.page {{ 'general.meta.page' | t: page: current_page }} -->
+  <!-- shopname {{ shop.name }} -->
   {%- capture seo_title -%}
     {{ page_title }}
     {%- if current_tags -%}

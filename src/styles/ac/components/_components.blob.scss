@@ -72,7 +72,7 @@
       @include mq($from:desktop){
         display: block;
         @include size(1000px);
-        color: $brand-col-3;
+        color: $brand-col-5;
         left:15%;
         bottom: auto;
         top:-750px;
@@ -159,7 +159,7 @@
       bottom: 50%;
       transform: rotateZ(180deg);
       @include mq($from:desktop){
-        left: 0;
+        left: -130px;
         bottom: 40%;
       }
     }
@@ -211,12 +211,11 @@
       @include mq($from:desktop){
         display: block;
         left: auto;
-        right: -150px;
+        right: -270px;
         bottom: -20px;
         top: 50px;
         //transform: rotateZ(180deg);
-        width: 300px;
-        height: 300px;
+        @include size(400px);
         color: $brand-col-2;
       }
     }
@@ -663,6 +662,75 @@
         @include size(1700px);
         transform: rotateZ(-180deg) rotateY(180deg);
       }
+    }
+  }
+}
+
+.l-page__hero--collection-bundle{
+  .c-blob-- {
+    &1 {
+      display: block;
+      color: $brand-col-4;
+      bottom: auto;
+      left: -500px;
+      right: auto;
+      top: -300px;
+      @include size(200px);
+      transform: rotateZ(-150deg) rotateY(180deg);
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-3;
+        bottom: auto;
+        left: auto;
+        right: -180px;
+        top: -180px;
+        @include size(930px);
+        transform: rotateZ(-90deg) rotateY(180deg);
+      }
+    }
+
+    &2 {
+      display: none;
+      @include mq($from: desktop) {
+        color: $brand-col-5;
+        display: block;
+        transform: rotateZ(-200deg);
+        @include size(400px);
+        left: -250px;
+      }
+
+    }
+  }
+}
+
+.l-off-page-container--mobile-nav{
+  .c-image-layer{
+    height: 100vh;
+  }
+  .c-blob-- {
+    &1 {
+      display: block;
+      color: $brand-col-3;
+
+      left: -220px;
+      right: auto;
+      top: auto;
+      bottom: -230px;
+      @include size(600px);
+      transform: rotateZ(-90deg) rotateY(180deg);
+
+    }
+
+    &2 {
+      display: none;
+      @include mq($from: desktop) {
+        color: $brand-col-5;
+        display: block;
+        transform: rotateZ(-200deg);
+        @include size(400px);
+        left: -250px;
+      }
+
     }
   }
 }

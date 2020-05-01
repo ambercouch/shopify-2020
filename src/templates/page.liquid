@@ -2,7 +2,7 @@
 {% assign pageHeroImage = images[page.metafields.global.hero_image] %}
 {% assign pageHeroText = page.metafields.global.hero_text %}
 
-{% if pageHeroImage %}
+{% if page.metafields.global.hero_image %}
   {% assign classHeroImage = 'has-hero-image' %}
 {% endif %}
 {% if pageHeroText %}

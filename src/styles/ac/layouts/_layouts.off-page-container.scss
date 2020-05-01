@@ -9,7 +9,7 @@
 
   z-index: 1000;
   opacity: 0;
-  padding: 0 $act-unit-s   $act-unit;
+  padding: 0;
 
   background: $brand-col-4;
   height: 100vh;
@@ -68,8 +68,8 @@
 .l-off-page-container__ {
   &header {
     display: block;
-    padding-top: $act-unit;
-    margin-bottom: $act-unit;
+    padding: $act-unit $act-unit 0;
+    margin-bottom: $act-unit-s;
   }
 
   &heading {
@@ -90,6 +90,9 @@
 
   &footer {
     display: block
+  }
+  &nav-menu{
+    padding: 0 $act-unit;
   }
 }
 
