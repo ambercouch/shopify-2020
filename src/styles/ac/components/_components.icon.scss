@@ -54,6 +54,7 @@
   }
   &scroll{
     @include size(40px);
+    margin: 0 auto;
   }
   &play-circle{
     color: white;

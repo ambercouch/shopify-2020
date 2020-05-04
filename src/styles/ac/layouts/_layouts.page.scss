@@ -276,6 +276,12 @@
       background: $brand-col-2;
     }
   }
+  &btn{
+    display: block;
+  }
+  &collection-logo{
+    display: block;
+  }
 
 }
 
@@ -340,6 +346,15 @@
     padding: $act-unit 0 !important;
 }
   &collection{
+    @include mq($from:desktop){
+      width: 100%;
+      grid-column-start: 2;
+      grid-row-start: 1;
+      text-align: left;
+      background: #fff;
+    }
+  }
+  &collection-intro{
     @include mq($from:desktop){
       width: 100%;
       grid-column-start: 2;
@@ -509,8 +524,10 @@
   &collection-desktop{
     display: none;
     @include mq($from:desktop){
-      grid-column-start: 1;
+      grid-column-start: 2;
       grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 5;
       margin-bottom: 0;
       display: block;
     }
@@ -850,6 +867,15 @@
       margin: 0 auto;
     }
   }
+  &collection-header{
+    @include mq($from:desktop){
+      width: $act-wrapper-width;
+      margin: 0 auto;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 1fr auto auto 1fr;
+    }
+
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__product-list--
@@ -873,6 +899,40 @@
 .l-page__wrapper--{
   &collection-intro{
     width: 100% !important;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__btn--
+
+ [class*=l-page__btn--] {
+   @extend .l-page__btn;
+ }
+.l-page__btn--{
+  &header-link-collection{
+    //position: absolute;
+    background: #fff;
+    padding: 0 $act-unit $act-unit;
+    @include mq($from:desktop){
+      grid-column-start: 1;
+      grid-row-start: 3;
+      text-align: center;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__collection-logo--
+
+[class*=l-page__collection-logo--] {
+  @extend .l-page__collection-logo;
+}
+.l-page__collection-logo--{
+  &header{
+    background: #fff;
+    @include mq($from:desktop){
+
+      grid-column-start: 1;
+      grid-row-start: 2;
+    }
   }
 }
 

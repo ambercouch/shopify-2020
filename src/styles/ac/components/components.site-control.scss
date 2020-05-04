@@ -75,7 +75,7 @@
   &cart-count{
     position: absolute;
     left: 15px;
-    top: 7px;
+    top: -20px;
   }
 }
 
@@ -104,6 +104,7 @@
 .c-site-control__link--{
   &cart{
     position: relative;
+    display: block;
   }
 }
 

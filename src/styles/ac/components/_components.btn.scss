@@ -4,6 +4,23 @@
 
 .c-btn {
  @extend .o-btn;
+  @extend .o-btn--small;
+  @extend .o-btn--ghost;
+  @extend .o-btn--block;
+  position: relative;
+  color: $brand-col-2;
+  border-radius: $act-unit-t;
+  border-width: 3px;
+  min-width: 200px;
+  max-width: 100%;
+  &:hover, &:focus{
+    color: $brand-col-2;
+    @extend .o-btn--small;
+    @extend .o-btn--block;
+    @extend .o-btn--ghost;
+    border-width: 3px;
+  }
+
 }
 
 /*
@@ -49,6 +66,10 @@
     @extend .o-btn--transparent;
     @extend .o-btn--flush;
     color: $brand-col-2;
+    border: none;
+    padding: 0;
+    min-width: 0;
+    width: 20px;
   }
   &search-submit{
     @extend .o-btn--transparent;
@@ -97,13 +118,14 @@
     @extend .c-btn--content-block;
     @extend .o-btn--full;
     color: white;
-    background: $brand-col-3;
+    background: $brand-col-3 !important;
     @include act-font-size($act-fs-5,1);
     border-radius: $act-unit-t;
     border: solid 3px $brand-col-3;
     &:hover,&:focus{
       background: darken($brand-col-3, 10%) !important;
       color: white;
+      border: solid 3px $brand-col-3;
     }
   }
   &add-to-bundle{
@@ -144,10 +166,11 @@
     @extend .o-btn--full;
     color: $brand-col-3;
     @include act-font-size($act-fs-5,1);
+    border-width: 3px;
     &:hover, &:focus{
-      background: lighten($brand-col-3, 20%);
-      color: white;
+      color: $brand-col-3;
       border-color: $brand-col-3;
+      border-width: 3px;
     }
   }
   &block{
@@ -159,9 +182,10 @@
     text-align: center;
     border: solid 3px $brand-col-3;
   border-radius: $act-unit-t;
-    &:hover{
+    &:hover, &:focus{
       @extend .o-btn--transparent;
       @extend .o-btn--full;
+      @extend .o-btn--small;
       color: $brand-col-3;
       border: solid 3px $brand-col-3;
     }
@@ -184,6 +208,7 @@
     color: $brand-col-5;
     font-family: $act-font-family-headings;
     font-weight: 700;
+    border: none;
     &:hover, &:focus{
       color: darken($brand-col-5, 10%);
       @extend .o-btn--icon-left;
@@ -265,6 +290,33 @@
       background: rgba(#fff, 0.3);
     }
   }
+  &header-link-collection{
+    width: auto;
+    min-width: 200px;
+    max-width: 100%;
+    display: inline-block !important;
+    &:after{
+      transition: width 0.2s ease-in-out;
+      content:'';
+      display: block;
+      height: 100%;
+      background: $brand-col-2;
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 0;
+    }
+    &:hover, &:focus{
+      display: inline-block !important;
+      width: auto;
+      &:after {
+        width: 100%;
+      }
+      .c-btn__label--header-link-collection{
+        color: #fff !important;
+      }
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-btn--
@@ -306,6 +358,10 @@
   }
   &icon{
     display: block;
+  }
+  &label{
+    position: relative;
+    z-index: 1;
   }
 }
 
