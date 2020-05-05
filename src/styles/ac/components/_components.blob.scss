@@ -734,3 +734,39 @@
     }
   }
 }
+
+.l-page__header--404{
+  .c-blob-- {
+    &1 {
+      display: none;
+      color: $brand-col-3;
+      left: 0px;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      @include size(600px);
+      //transform: rotateZ(-90deg) rotateY(180deg);
+    }
+
+    &2 {
+      display: block;
+      color: $brand-col-3;
+      left: auto;
+      right: -400px !important;
+      top: 0;
+      bottom: auto;
+      @include size(600px);
+      @include mq($from: desktop) {
+        display: block;
+        color: $brand-col-3;
+        left: -300px;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        @include size(600px);
+      }
+
+    }
+  }
+}
+

@@ -1,2 +1,64 @@
-<h1>{{ 'general.404.title' | t }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+{% assign pageImage = page.metafields.global.feature_image %}
+{% assign pageHeroImage = images[page.metafields.global.hero_image] %}
+{% assign pageHeroText = page.metafields.global.hero_text %}
+
+{% if page.metafields.global.hero_image %}
+  {% assign classHeroImage = 'has-hero-image' %}
+{% endif %}
+{% if pageHeroText %}
+  {% assign classHeroText = 'has-hero-text' %}
+{% endif %}
+
+<div class="l-main__page--404 l-main__page{{ page.title | handle }}">
+  <div class="l-page--404 l-page--{{ page.title | handle }}">
+    <header class="l-page__header--404 l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+          <div class="l-main__content-block-wrapper">
+            <div class="l-page__grid-wrapper--header-404">
+              {% if pageImage %}
+                <div class="l-page__feature-image">
+                  <img class="l-page__img" src="{{ pageImage | file_img_url: 'original' }}"  alt="{{ page.title | escape }}" />
+                </div>
+              {% else %}
+                <!-- no page image -->
+              {% endif %}
+
+
+              <h1 class="l-page__heading--404 l-page__heading--{{ page.title | handle }}" >
+                <span class="l-page__title">{{ 'general.404.title' | t }}</span>
+              </h1>
+              <div class="l-page__link--404">{{ 'general.404.subtext_html' | t }}</div>
+
+<!--
+                <div class="l-page__hero--404">
+                  <div class="l-page__hero-text">
+                    {{ 'general.404.title' | t }}
+                  </div>
+                </div>
+                -->
+
+
+
+                <div class="l-page__hero-image--404">
+                  {% include 'responsive-image' with
+                    image: images['bbd-404-80.jpg'],
+                    max_width: 800,
+                    max_height: 800
+                  %}
+                </div>
+            </div>
+          </div><!-- .l-main__content-block-wrapper -->
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+    </header>
+
+
+
+
+  </div>
+</div>
+

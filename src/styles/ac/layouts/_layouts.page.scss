@@ -77,6 +77,9 @@
  */
 
 .l-page__ {
+  &hero-image {
+    display: block;
+  }
   &wrapper{
     width: $act-wrapper-width;
     max-width: 100%;
@@ -292,6 +295,10 @@
 }
 
 .l-page__header--{
+  &404{
+    background: $brand-col-1;
+    color: $brand-col-2;
+  }
   &shop-collections{
     background: $brand-col-5;
     margin-bottom: 0;
@@ -393,6 +400,14 @@
 }
 
 .l-page__heading--{
+  &404{
+    @extend .o-box;
+    color: $brand-col-2;
+    @include mq($from:desktop){
+      grid-row-start: 2;
+      grid-column-start: 1;
+    }
+  }
   &shop-collections{
     color: $brand-col-2;
     margin-bottom: $act-unit-t;
@@ -858,6 +873,15 @@
   @extend .l-page__grid-wrapper;
 }
 .l-page__grid-wrapper--{
+  &header-404{
+    //@extend .o-box;
+    @include mq($from:desktop){
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 1fr auto auto 1fr;
+      max-width: $act-wrapper-width;
+      margin: 0 auto;
+    }
+  }
   &header-static-page{
     @include mq($from:desktop){
       grid-template-columns: 50% 50%;
@@ -935,6 +959,40 @@
     }
   }
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__link--
+
+[class*=l-page__link--] {
+  @extend .l-page__link;
+}
+.l-page__link--{
+  &404{
+    @extend .o-box;
+    a{
+      color: $brand-col-2;
+      &:hover{
+        color: $brand-col-2;
+      }
+    }
+    @include mq($from:desktop){
+      grid-row-start: 3;
+      grid-column-start: 1;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__link--
+
+[class*=l-page__hero-image--] {
+  @extend .l-page__hero-image;
+}
+.l-page__hero-image--{
+  &404{
+
+    }
+
+}
+
 
 .has-hero-text{
   .l-page__hero-image{
