@@ -17,18 +17,23 @@ jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
   console.log("Cart loaded")
   console.log('[data-js-sticky-bottom');
   console.log($('[data-js-sticky-bottom'));
-  let checkoutBtn = $('[data-js-sticky-bottom');
-  let elementBottom = checkoutBtn.offset().top + checkoutBtn.outerHeight();
-  console.log('el bottom');
-  console.log(elementBottom);
-  let screenBottom = $(window).scrollTop() + $(window).innerHeight();
-  console.log('screenBottom');
-  console.log(screenBottom);
+  let checkoutBtn = $('[data-js-sticky-bottom]');
 
-  if(elementBottom > screenBottom){
-    checkoutBtn.addClass('is-sticky-bottom');
-    $('.l-cart-list').addClass('is-sticky-bottom')
+  
+  if (checkoutBtn.length){
+    let elementBottom = checkoutBtn.offset().top + checkoutBtn.outerHeight();
+    console.log('el bottom');
+    console.log(elementBottom);
+    let screenBottom = $(window).scrollTop() + $(window).innerHeight();
+    console.log('screenBottom');
+    console.log(screenBottom);
+
+    if(elementBottom > screenBottom){
+      checkoutBtn.addClass('is-sticky-bottom');
+      $('.l-cart-list').addClass('is-sticky-bottom')
+    }
   }
+
 
 });
 
