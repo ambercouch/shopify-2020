@@ -3,25 +3,24 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY half page');
+console.log('ACSHOPIFY Launch Day');
 const ACSHOPIFY = {
   common: {
     init: function() {
+
+      // add js class
+      $('body')
+        .addClass('js');
+
       jQuery('body').addClass('ac-jquery-loaded');
       'use strict';
+
       //uncomment to debug
 
       fitvids();
 
       $(document).on('click', '.c-content-block__icon--scroll, [data-js-scroll-down]', function() {
-
-
         let target = $(this).parent();
-        console.log('target.offset().top');
-        console.log(target.offset().top);
-        console.log('target.outerHeight()');
-        console.log(target.outerHeight());
-        console.log(target);
         $('html, body').animate({
           scrollTop: target.offset().top + target.outerHeight(),
         }, 1000);
@@ -37,6 +36,7 @@ const ACSHOPIFY = {
       console.log('[data-js-sticky-bottom');
       console.log($('[data-js-sticky-bottom'));
 
+      // scroll top
       $("a[href='#top']").click(function() {
         console.log("scroll top");
         $('html, body').animate({ scrollTop: 0 }, 1000 );
@@ -167,12 +167,6 @@ const ACSHOPIFY = {
 
       });
 
-      // add js class
-      $('body')
-        .addClass('js');
-
-      // Fit Vids
-      // $("[data-fitvid]").fitVids();
 
       console.log('ajax cart');
       function refreshCart(cart) {
@@ -254,6 +248,7 @@ const ACSHOPIFY = {
 
         return false;
       });
+
     },
   },
   index: {
