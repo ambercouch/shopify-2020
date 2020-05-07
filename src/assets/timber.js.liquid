@@ -518,11 +518,17 @@ timber.Drawers = (function () {
 
     $container.focus();
 
-    $(document).on(eventName, function (evt) {
-      if ($container[0] !== evt.target && !$container.has(evt.target).length) {
-        $container.focus();
-      }
-    });
+    /*
+    This function was causing an error when spin to win was closed : maximum stack limit
+    removing the lines below fixed the issue and did not change the cart functions
+     */
+
+   // $(document).on(eventName, function (evt) {
+    //  if ($container[0] !== evt.target && !$container.has(evt.target).length) {
+     //   $container.focus();
+    //  }
+  //  });
+
   };
 
   Drawer.prototype.removeTrapFocus = function ($container, eventNamespace) {
