@@ -95,3 +95,21 @@
 [class*=l-quick-cart__header--] {
   @extend .l-quick-cart__header;
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .l-quick-cart__checkout--
+
+[class*=l-quick-cart__checkout--] {
+  @extend .l-quick-cart__checkout;
+}
+
+.l-quick-cart__checkout--{
+  &page{
+    border-bottom: 0;
+  }
+}
+
+.l-quick-cart__cart-list--{
+  &page{
+    margin-top: $act-unit;
+  }
+}

@@ -119,7 +119,7 @@
   justify-content: space-around;
 }
 .js-qty__num{
-  width: 30%;
+  width: 100%;
   display: none;
   border-radius: $act-unit-t;
 }
@@ -145,6 +145,7 @@
   text-align: center;
   overflow: hidden;
   user-select: none;
+  display: none !important;
 
 }
 .js-qty__adjust{
@@ -164,6 +165,7 @@
   align-content: center;
   align-items: center;
   border-radius: 50%;
+  display: none !important;
 }
 
 .js-qty input, .ajaxcart__qty input, .ajaxcart__qty input {
@@ -172,11 +174,13 @@
 
 .js-qty input, .ajaxcart__qty input {
   display: block;
+  width: 3em;
   background: none;
   text-align: center;
   padding: 0;
   margin: 0;
-  border: solid 3px $brand-col-2;
+  border: solid 1px $brand-col-2;
+  border-radius: 0;
 }
 
 .drawer input, .drawer textarea {
@@ -243,4 +247,5 @@
   text-align: center !important;
 
 }
+
 

@@ -1,109 +1,127 @@
+<div class="l-main__page--cart l-main__page{{ page.title | handle }}">
+  <div class="l-page--cart l-page--{{ page.title | handle }}">
+<div class="c-image-layer">
+  <div class="c-image-layer__background">
+    {% include 'ac-blobs' %}
+  </div>
+  <div class="c-image-layer__content">
+
 {% if cart.item_count > 0 %}
-  <h1>{{ 'cart.general.title' | t }}</h1>
+  <div class="c-cart-drawer__header">
+    <div class="c-cart-drawer__heading">
+      <span class="c-cart-drawer__title">Shopping Cart</span>
+    </div>
+  </div>
 
-  <form action="/cart" method="post" novalidate>
-    <table class="responsive-table">
-      <thead class="small--hide">
-        <tr>
-          <th colspan="2">{{ 'cart.label.product' | t }}</th>
-          <th>{{ 'cart.label.price' | t }}</th>
-          <th>{{ 'cart.label.quantity' | t }}</th>
-          <th>{{ 'cart.label.total' | t }}</th>
-        </tr>
-      </thead>
-      <tbody>
+  <form action="/cart" method="post" novalidate class="cart ajaxcart l-quick-cart__form">
+    <div class="l-quick-cart__total"><span class="l"><span>Subtotal:</span> <b class="carto">{{ cart.total_price | money }}</b></div>
+    <div class="l-quick-cart__cart-list--page ">
 
-        {% for item in cart.items %}
+      {% include 'ac-cart-discount-logic' %}
 
-        {% comment %}
+      {% unless discText == '' %}
+        <div class="l-quick-cart__discount-card">
+          <div class="c-discount-card">
+            <div class="c-discount-card__content">
+              <p>{{  discText }} <br>
+                {{  discTextExtra }}</p>
+            </div>
+          </div>
+        </div>
+      {% endunless %}
 
-        Cart Item Template
-        =====================
-        The data-label attributes on <td> elements are mobile-friendly
-        helpers used for responsive-table labels
-        {% endcomment %}
+      <div class="l-cart-list--page">
+        <ul class="l-cart-list__list test">
+          {% for item in cart.items %}
+          <li class="l-cart-list__item">
+            <div class="l-cart-list__product-thumb">
+              <div class="c-product-thumb--cart">
 
-          <tr class="responsive-table-row">
+                <div class="c-product-thumb__feature-image--cart">
 
-            <td data-label="{{ 'customer.order.product' | t }}">
+                    <img class="c-product-thumb__img--cart" src=" {{ item | img_url: '240x240'}}" alt="{{ name }}">
 
-              {% if item.image != blank %}
-                <a href="{{ item.url | within: collections.all }}">
-                  {{ item | img_url: '240x240' | img_tag: item.title }}
-                </a>
-              {% endif %}
+                </div>
 
-            </td>
-            <td>
-              <a href="{{ item.url }}">{{ item.product.title }}</a>
 
-              {% unless item.product.has_only_default_variant %}
-                <p>{{ item.variant.title }}</p>
-              {% endunless %}
+                <div class="c-product-thumb__content--cart">
 
-              <p>{{ item.vendor }}</p>
+                  <div class="c-product-thumb__cart-remove">
+                    <div class="c-cart-remove cart-remove">
+                      <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="ajaxcart__qty-remove c-btn--cart-remove">
+                        {% include 'icon-close.liquid' %}
+                      </a>
+                    </div>
+                  </div>
 
-              {%- assign property_size = item.properties | size -%}
+                  <h4 class="c-product-thumb__heading--cart">
+                    <div class="c-product-thumb__title">
+                      <a class="c-product-thumb__link-title" href="{{ item.url }}">{{ item.product.title }}</a>
+                    </div>
+                  </h4>
 
-              {% if property_size > 0 %}
-                {% for p in item.properties %}
-                  {% unless p.last == blank %}
-                  {{ p.first }}:
+                  <div class="c-product-thumb__wrapper--cart-qty">
 
-                  {% if p.last contains '/uploads/' %}
-                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                  {% else %}
-                    {{ p.last }}
-                  {% endif %}
+                    <div class="c-product-thumb__variant">
 
-                  {% endunless %}
-                {% endfor %}
-              {% endif %}
 
-              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-                <small>{{ 'cart.general.remove' | t }}</small>
-              </a>
-            </td>
-            <td data-label="{{ 'cart.label.price' | t }}">
-              {% if item.original_line_price != item.line_price %}
-                <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
-                {{ item.price | money }}
-                <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
-                <s>{{ item.original_price | money }}</s>
-              {% else %}
-                {{ item.price | money }}
-              {% endif %}
-            </td>
-            <td data-label="{{ 'cart.label.quantity' | t }}">
-              <input type="number"
-                     name="updates[]"
-                     id="updates_{{ item.key }}"
-                     value="{{ item.quantity }}"
-                     min="0"
-                     aria-label="{{ 'cart.general.item_quantity' | t }}">
-            </td>
-            <td data-label="{{ 'cart.label.total' | t }}">
-              {{ item.line_price | money }}
-            </td>
-          </tr>
+                        <span class="c-product-thumb__variant-title">{{ item.variant.title }}</span>
 
-        {% endfor %}
-      </tbody>
-    </table>
+                    </div>
 
-    {% if settings.cart_notes_enable %}
+                    <div class="c-product-thumb__qty-sep">
+                      X
+                    </div>
+
+                    <div class="c-product-thumb__qty ac-test">
+                      <input type="number"
+                             class="c-product-thumb__input--qty"
+                             name="updates[]"
+                             id="updates_{{ item.key }}"
+                             value="{{ item.quantity }}"
+                             min="0"
+                             pattern="[0-9]*"
+                             aria-label="{{ 'cart.general.item_quantity' | t }}">
+                      <div class="c-product-thumb__btn--cart-update">
+                        <button type="submit" class="c-btn--cart-update" name="update">
+                          <span>Update</span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="c-product-thumb__price--cart">
+                    <span class="c-product-thumb__line-price-money"> {{ item.line_price | money }}</span>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <!-- <div class="l-quick-cart__footer">
+           <p>Shipping and Taxes calculated at next step</p>
+         </div> -->
+      </div>
+
+    </div>
+
+
+    <!-- {% if settings.cart_notes_enable %}
       <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
       <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
-    {% endif %}
+    {% endif %} -->
 
-    <p>{{ 'cart.general.subtotal' | t }}</p>
-    <p>{{ cart.total_price | money }}</p>
-    {% if cart.total_discounts > 0 %}
-      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
-    {% endif %}
-    <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
-    <input type="submit" name="update" value="{{ 'cart.general.update' | t }}">
-    <input type="submit" name="checkout" class="button" value="{{ 'cart.general.checkout' | t }}">
+    <div class="l-quick-cart__checkout--page" >
+      <button type="submit" class="c-btn--cart-submit" name="checkout" value>
+        <i class="fa fa-lock"></i>
+        {{ 'cart.general.checkout' | t }}
+      </button>
+    </div>
   </form>
 {% else %}
   <h1>{{ 'cart.general.title' | t }}</h1>
@@ -126,3 +144,9 @@
     <p>{{ 'cart.general.cookies_required' | t }}</p>
   </div>
 {% endif %}
+
+
+  </div><!-- .c-image-layer__content -->
+</div><!-- .c-image-layer__content -->
+  </div>
+</div>
