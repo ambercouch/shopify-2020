@@ -35,6 +35,12 @@
     color: $brand-col-2;
     border-radius: 0 $act-unit-s $act-unit-s 0 ;
     height: 100%;
+    border: none;
+    background: $brand-col-5 !important;
+    min-width: 0;
+    &:hover{
+      @extend .c-btn--subscribe-submit;
+    }
   }
   &content-block{
     border-radius:  $act-unit-t;
@@ -51,14 +57,13 @@
   &contact-submit{
     border-radius:  $act-unit-t;
     color: white;
-    background: $brand-col-3;
+    background: $brand-col-3 !important;
     border: solid 3px $brand-col-3 !important;
     margin: 0 auto;
-    padding-top: $act-unit-s;
-    padding-bottom: $act-unit-s;
+    padding-top: $act-unit-s !important;
+    padding-bottom: $act-unit-s  !important;
     &:hover,&:focus{
-      background: rgba(white, 0.5);
-      color: white;
+      @extend .c-btn--contact-submit;
     }
 }
   &mobile-nav-close{
@@ -75,11 +80,25 @@
     @extend .o-btn--transparent;
     @extend .o-btn--tiny;
     colour: $brand-col-2;
+    border: none;
+    padding: $act-unit-t;
+    width: 30px;
+    min-width: 0;
+    &:hover, &:focus{
+      @extend .c-btn--search-submit;
+    }
   }
   &search-close{
     @extend .o-btn--transparent;
     @extend .o-btn--tiny;
     colour: $brand-col-2;
+    border: none;
+    padding: $act-unit-t;
+    width: 30px;
+    min-width: 0;
+    &:hover, &:focus{
+      @extend .c-btn--search-close;
+    }
   }
   &collection-thumb{
     @extend .c-btn;
@@ -209,10 +228,16 @@
     font-family: $act-font-family-headings;
     font-weight: 700;
     border: none;
+    display: flex !important;
+    margin: 0 auto;
+    width: 300px;
+    max-width: 100%;
+    cursor: pointer;
     &:hover, &:focus{
       color: darken($brand-col-5, 10%);
       @extend .o-btn--icon-left;
       @extend .o-btn--transparent;
+      @extend .c-btn--product-back;
     }
     & > :first-child{
       transform: rotateZ(90deg);
@@ -223,10 +248,10 @@
     @extend .o-btn--tiny;
     @extend .o-btn--transparent;
     color: $brand-col-2;
+    border: 0;
+    min-width: 0;
     &:hover, &:focus{
-      color: $brand-col-2;
-      @extend .o-btn--transparent;
-      @extend .o-btn--tiny;
+      @extend .c-btn--cart-update;
     }
   }
   &cart-remove{
@@ -236,6 +261,7 @@
     border-radius: 50%;
     border: solid 1px;
     @include size(30px);
+    min-width: 0;
     &:hover, &:focus, &:active{
       @include size(30px);
       padding: 3px;

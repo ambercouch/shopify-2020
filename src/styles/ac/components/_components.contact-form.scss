@@ -52,6 +52,9 @@
  */
 
 .c-contact-form__ {
+  &notice{
+    display: block;
+  }
   &header{
     display: block;
   }
@@ -119,6 +122,46 @@
   &submit{
     padding-top:$act-unit-s;
   }
+}
+
+[class*=contact-form__notice--] {
+  @extend .c-contact-form__notice;
+}
+
+.c-contact-form__notice--{
+  &success-fixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $brand-col-4;
+    left: 0;
+    text-align: center;
+    color: $brand-col-2;
+    padding: $act-unit-t;
+    pointer-events: none;
+    z-index: 10;
+    * {
+      margin: 0 !important;
+    }
+
+    animation:signup-response 2s 1;
+    -webkit-animation:signup-response 2s 1;
+    animation-fill-mode: forwards;
+
+    animation-delay:5s;
+    -webkit-animation-delay:5s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+  }
+}
+
+@keyframes signup-response{
+  from {opacity :1;}
+  to {opacity :0;}
+}
+
+@-webkit-keyframes signup-response{
+  from {opacity :1;}
+  to {opacity :0;}
 }
 
 //BEM ELEMENT MODIFIER  .c-contact-form__input--

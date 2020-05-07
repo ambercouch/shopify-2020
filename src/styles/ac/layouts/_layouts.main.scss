@@ -5,6 +5,8 @@
 .l-main {
   display: block;
   border-bottom: solid $act-unit $bbd-green;
+  //force footer to bottom when no content on page
+  min-height: 50vh;
 
 }
 

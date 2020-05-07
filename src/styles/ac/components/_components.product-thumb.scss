@@ -20,7 +20,7 @@
     display: block
   }
   &search-result{
-    background: $brand-col-2;
+    background: white;
     padding: 0;
     @include mq($from:desktop){
       display: flex;
@@ -184,8 +184,9 @@
     text-align: left;
   }
   &search-result{
+
     @include mq($from:desktop){
-      @include act-font-size($act-fs-1)
+      @include act-font-size($act-fs-1);
     }
   }
 }

@@ -211,6 +211,9 @@
   &method{
     .c-recipe__gallery-item--method &{
       margin: 0 auto !important;
+      @include mq($from:desktop){
+        margin-left: $act-unit !important;
+      }
     }
   }
 }
@@ -232,6 +235,9 @@
   &ingredients{
     text-align: right;
     position: relative;
+    @include mq($from:desktop){
+      padding: 0 $act-unit;
+    }
 
   }
 }

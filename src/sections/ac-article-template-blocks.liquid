@@ -14,51 +14,56 @@
 
 <article class="l-page__article is-article-blocks" role="article">
   {% if hImage != null %}
-    <header class="l-page__header--article l-page__header--{{article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+    <header class="l-page__header--article ac-update l-page__header--{{ article.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
 
-      {% if article.image %}
-        <div class="l-page__feature-image--article">
-          <img class="l-page__img" src="{{  article.image | img_url: 'original' }}"  alt="{{article.title | escape }}" />
+
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
         </div>
-      {% else %}
-        <!-- no page image -->
-      {% endif %}
+        <div class="c-image-layer__content">
+          <div class="l-main__content-block-wrapper">
+            <div class="l-page__grid-wrapper--header-static-page">
 
-      <h1 class="l-page__heading--article l-page__heading--{{article.title | handle }}" >
-        <span class="l-page__title">{{article.title }}</span>
-      </h1>
 
-      <div class="l-page__meta">
-        <span class="l-page__meta-text--author">
-          {{ 'blogs.article.by_author' | t: author: aAuthor }}
-        </span>
-        <span class="l-page____meta-text--date">
+              {% if article.image %}
+                <div class="l-page__feature-image--article">
+                  <img class="l-page__img" src="{{  article.image | img_url: 'original' }}"  alt="{{article.title | escape }}" />
+                </div>
+              {% else %}
+                <!-- no article image -->
+              {% endif %}
+
+              <h1 class="l-page__heading--article l-page__heading--{{ article.title | handle }}" >
+                <span class="l-page__title">{{ article.title }}</span>
+              </h1>
+
+              <div class="l-page__meta">
+    <span class="l-page__meta-text--author">
+      {{ 'blogs.article.by_author' | t: author: aAuthor }}
+    </span>
+                <span class="l-page____meta-text--date">
       {{ article.published_at | time_tag: format: 'month_day_year' }}
     </span>
-      </div>
+              </div>
 
-      {% if pageHeroText %}
-        <div class="l-page__hero--static-page">
-          <div class="l-page__hero-text">
-            {{ pageHeroText }}
-          </div>
-        </div>
 
-      {% else %}
-        <!-- no page hero text {{ pageHeroText }} ! -->
-      {% endif %}
-      {% if pageHeroImage %}
-        <div class="l-page__hero-image">
-          {% include 'responsive-image' with
-            image: pageHeroImage,
-            max_width: 800,
-            max_height: 800
-          %}
-        </div>
-      {% else %}
-        <!-- no page hero image {{ pageHeroImage }} ! -->
-      {% endif %}
+              {% if pageHeroImage %}
+                <div class="l-page__hero-image">
+                  {% include 'responsive-image' with
+                    image: pageHeroImage,
+                    max_width: 800,
+                    max_height: 800
+                  %}
+                </div>
+              {% else %}
+                <!-- no page hero image {{ pageHeroImage }} ! -->
+              {% endif %}
 
+            </div>
+          </div><!-- .l-main__content-block-wrapper -->
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
     </header>
   {% endif %}
 

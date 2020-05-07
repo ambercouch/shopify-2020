@@ -156,6 +156,7 @@
   }
   &footer{
     padding: $act-unit-s;
+    background: #000  $brand-col-2;
     @include mq($from:desktop){
       padding: $act-unit;
     }
@@ -325,7 +326,9 @@
     }
   }
   &static-page{
+    background: $brand-col-1;
     @include mq($from:desktop){
+      background: $brand-col-1;
       //max-width: $act-wrapper-width;
       //margin-left: auto;
       //margin-right: auto;
@@ -400,6 +403,10 @@
 }
 
 .l-page__heading--{
+  &landing{
+    color: $brand-col-2;
+    margin-bottom: $act-unit-l;
+  }
   &404{
     @extend .o-box;
     color: $brand-col-2;
@@ -891,6 +898,15 @@
       margin: 0 auto;
     }
   }
+  &header-recipe{
+    @include mq($from:desktop){
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 1fr auto auto auto 1fr;
+      width: $act-wrapper-width;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
   &collection-header{
     @include mq($from:desktop){
       width: $act-wrapper-width;
@@ -898,8 +914,8 @@
       grid-template-columns: 50% 50%;
       grid-template-rows: 1fr auto auto 1fr;
     }
-
   }
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__product-list--
@@ -923,6 +939,9 @@
 .l-page__wrapper--{
   &collection-intro{
     width: 100% !important;
+  }
+  &landing{
+    padding-bottom: $act-unit;
   }
 }
 

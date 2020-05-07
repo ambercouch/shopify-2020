@@ -105,6 +105,8 @@
 
 .l-product-list__list--{
   &search{
+
+    margin-bottom: 0;
     @include mq($from: desktop){
      width: $act-wrapper-width;
       margin: 0 auto;

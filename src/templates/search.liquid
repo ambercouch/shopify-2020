@@ -35,19 +35,33 @@
       <h2 class="l-product-list__heading visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
       <ul class="l-product-list__list--search">
         {% for product in search.results %}
-          <li class="l-product-list__item--search">
+          {% if product.object_type == 'product' %}
+          <li class="l-product-list__item--search is-product-item">
             {% assign modClass = '--search-result' %}
             <!-- modclass {{ modClass }} search.liquid -->
             {% include 'ac-product-thumb' %}
           </li>
+          {% else %}
+            <li class="l-product-list__item--search is-page-item">
+              {% assign modClass = '--search-result' %}
+              <!-- modclass {{ modClass }} search.liquid -->
+              {% include 'ac-page-thumb' %}
+            </li>
+          {% endif %}
         {% endfor %}
       </ul>
 
-      {% if paginate.pages > 1 %}
-        {% include 'pagination' %}
-      {% endif %}
-    {% endif %}
+
+    </div>
   {% endif %}
-  </div>
+    {% endif %}
+<div class="l-page__footer">
+ {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+</div>
+
+
+</div>
 </div>
 {% endpaginate %}

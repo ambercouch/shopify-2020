@@ -123,7 +123,7 @@
 {% if sObj.metafields[namespace]['image'] or sObj.metafields[namespace]['text'] or sObj.metafields[namespace]['block_type'] %}
 
 <!-- block - {{ namespace }} -->
-<div data-namespace="{{ namespace }}" class="l-page__flex-block{{ modClass }} l-page__flex-block{{ blockHandle }} is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
+<div id="flexBlock{{ i }}" data-namespace="{{ namespace }}" class="l-page__flex-block{{ modClass }} l-page__flex-block{{ blockHandle }} is-layout-{{ blockLayout }} {{ classImagePos }} {{  classImageSize }} u-bgc-{{ classBgColor }}">
 
   <div class="c-image-layer">
     <div class="c-image-layer__background">

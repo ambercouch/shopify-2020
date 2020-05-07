@@ -106,6 +106,10 @@
     position: relative;
     display: block;
   }
+  &search{
+    @include size(25px);
+    display: block;
+  }
 }
 
 .c-site-control__item--{

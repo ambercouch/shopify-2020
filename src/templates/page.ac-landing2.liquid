@@ -2,7 +2,7 @@
   <div class="grid l-page__wrapper--landing">
     <div class="grid__item">
       <div class="section-header text-center c-page__header">
-        <h1 class="c-page__heading--landing">{{ page.title }}</h1>
+        <h1 class="l-page__heading--landing">{{ page.title }}</h1>
       </div>
 
       <div class="rte c-page__section-grid">
@@ -52,16 +52,6 @@
         <button data-remodal-action="close" class="remodal-close"></button>
 
       </div>
-
-      {%- assign img_url = 'files/revised.png' | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-      <img class="lazyload js"
-           src="{{ 'revised.png' | file_img_url: '300x300' }}"
-           data-src="{{ 'revised.png' | file_img_url: '300x300' }}"
-           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-
-           data-sizes="auto"
-           alt="Bibado"
-           style="max-width: 100%; display: block; margin: 96px auto 0">
 
     </div>
   </div>

@@ -7,7 +7,16 @@
       {{ 'contact.form.post_success' | t }}
     </p>
     </div>
+
+    <div class="c-contact-form__notice--success-fixed">
+      <p class="form-success">
+        {{ 'contact.form.post_success' | t }}
+      </p>
+    </div>
+
   {% endif %}
+
+
 
   {{ form.errors | default_errors }}
   <label for="ContactFormName">

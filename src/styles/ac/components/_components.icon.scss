@@ -33,8 +33,7 @@
     color: $brand-col-4;
   }
   &search{
-    width: 25px;
-    height: 25px;
+    @include size(100%);
     color: $brand-col-3;
     .c-site-search-form &{
       color: $brand-col-2;
