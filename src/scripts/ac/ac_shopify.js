@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY Launch Day');
+console.log('ACSHOPIFY Post Launch22');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -33,8 +33,8 @@ const ACSHOPIFY = {
       //   }, 1000);
       //   return false;
       // });
-      console.log('[data-js-sticky-bottom');
-      console.log($('[data-js-sticky-bottom'));
+      console.log('[data-js-sticky-bottom]');
+      console.log($('[data-js-sticky-bottom]'));
 
       // scroll top
       $("a[href='#top']").click(function() {
