@@ -30,6 +30,7 @@ jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
 
     if(elementBottom > screenBottom){
       checkoutBtn.addClass('is-sticky-bottom');
+      $('.l-quick-cart__cart-list').addClass('is-sticky-bottom')
       $('.l-cart-list').addClass('is-sticky-bottom')
     }
   }

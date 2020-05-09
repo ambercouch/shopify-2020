@@ -62,7 +62,10 @@
     padding-top: $act-unit-s;
     //position: relative;
     overflow: auto;
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 300px);
+    &.is-sticky-bottom{
+      max-height: calc(100vh - 120px);
+    }
   }
   &checkout{
     @extend .o-box;

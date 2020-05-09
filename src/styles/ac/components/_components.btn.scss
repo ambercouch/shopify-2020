@@ -141,6 +141,7 @@
     @include act-font-size($act-fs-5,1);
     border-radius: $act-unit-t;
     border: solid 3px $brand-col-3;
+    min-width: 0;
     &:hover,&:focus{
       background: darken($brand-col-3, 10%) !important;
       color: white;
