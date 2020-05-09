@@ -65,6 +65,10 @@
     @extend .o-list-bare;
     margin-bottom: 0;
     padding: 0 $act-unit-s;
+    display: flex;
+    &.flickity-enabled{
+      display: block;
+    }
   }
   &item{
     width: 18%;

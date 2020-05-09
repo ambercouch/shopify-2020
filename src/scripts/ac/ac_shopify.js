@@ -854,9 +854,26 @@ const ACSHOPIFY = {
   product: {
     init: function() {
       // uncomment to debug
-      console.log('some product data-js-product-form-select');
+      console.log('v changh in shopify product');
 
       let inst = $('[data-remodal-id="acVideo"]').remodal();
+
+      $(document).on( 'change', '.single-option-selector', function() {
+
+        console.log('option change');
+
+        var searchArray = window.location.search;
+          const urlParams = new URLSearchParams(searchArray);
+          let urlVariant = urlParams.get('variant');
+
+          $('[value="'+ urlVariant +'"]').prop('selected', true);
+
+          console.log('urlVariant');
+          console.log(urlVariant );
+
+
+      }
+      );
 
 
       // // add the is-last-block to element for styling

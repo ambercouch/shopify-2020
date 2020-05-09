@@ -16,20 +16,22 @@
         {% if forloop.index0 > 0 %}
 
           {% for value in option.values %}
-            <div class="c-product-form__input-wrapper">
+            <div class="c-product-form__input-wrapper selector-wrapper">
             <input class="c-product-form__input--{{ option.name }}" type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
             <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
             </div>
           {% endfor %}
 
+
+
         {% else %}
-        <div class="c-product-form__input-wrapper--select">
+        <div class="c-product-form__input-wrapper--select selector-wrapper">
           <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}">
             {{ option.name }}
           </label>
 
           <select
-              class="c-product-form__select--{{ option.name | handle}}"
+              class="c-product-form__select--{{ option.name | handle}} single-option-selector"
               id="Option{{ option.position }}"
               name="options[{{ option.name | escape }}]"
               data-js-product-form-select
@@ -43,6 +45,24 @@
             {% endfor %}
           </select>
         </div>
+
+          <select name="id" data-productid="{{product.id }}" id="productSelect" class="product-single__variants" style="display:none">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+
+                {% comment %}
+                  Note: if you use option_selection.js, your < select > tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                {% endcomment %}
+                <!--                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option> -->
+
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" data-variants="{{ variant.option1 | handle }};{{ variant.option2 | handle }};{{ variant.option3 | handle }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
 
         {% endif %}
       </div>
