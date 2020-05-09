@@ -26,21 +26,23 @@
       {% include 'ac-site-search-form' %}
     </div><!-- site-controls__search -->
 
-
   {% if search.performed %}
     {% if search.results_count == 0 %}
       <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
     {% else %}
-    <div class="l-product-list--search">
+    <div class="l-product-list--search ">
       <h2 class="l-product-list__heading visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
       <ul class="l-product-list__list--search">
         {% for product in search.results %}
           {% if product.object_type == 'product' %}
+            {% assign unSearchable = product.metafields.setting.unsearchable %}
+            {% unless unSearchable == 'true' %}
           <li class="l-product-list__item--search is-product-item">
             {% assign modClass = '--search-result' %}
             <!-- modclass {{ modClass }} search.liquid -->
             {% include 'ac-product-thumb' %}
           </li>
+            {% endunless %}
           {% else %}
             <li class="l-product-list__item--search is-page-item">
               {% assign modClass = '--search-result' %}
