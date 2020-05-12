@@ -75,6 +75,7 @@
     margin-top: $act-unit;
     @include breakout-band($bgc : $brand-col-1);
     color:  $brand-col-2;
+    overflow: hidden;
     @include act-font-size($act-fs-5);
     a{
       @include a($col : $brand-col-2);
