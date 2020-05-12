@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY Post Launch22');
+console.log('ACSHOPIFY option changed 05202');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -860,7 +860,7 @@ const ACSHOPIFY = {
 
       $(document).on( 'change', '.single-option-selector', function() {
 
-        console.log('option change');
+        console.log('option changed 05202');
 
         var searchArray = window.location.search;
           const urlParams = new URLSearchParams(searchArray);
