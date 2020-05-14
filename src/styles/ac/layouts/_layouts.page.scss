@@ -641,6 +641,11 @@
       padding-top: $act-unit-l;
     }
   }
+  &landing{
+    text-align: center;
+    margin-bottom: $act-unit;
+    color: $brand-col-2;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__rte--

@@ -1,0 +1,66 @@
+<div class="l-page--landing">
+  <div class="grid l-page__wrapper--landing">
+      <div class="section-header text-center c-page-section__header">
+        <h1 class="l-page__heading--landing">{{ page.title }}</h1>
+      </div>
+      {% if page.metafields.global.hide_page_content != 'true' %}
+        {% if page.content %}
+      <div class="l-page__content--landing">
+        {{ page.content }}
+      </div>
+          {% endif %}
+      {% endif %}
+    <div class="grid__item">
+      {% for i in (1...10) %}
+        {% assign sectionName = 'section_' | append : forloop.index %}
+        {% if page.metafields[sectionName].heading %}
+          <div class="rte c-page-section__grid">
+        <div class="c-page-section__page-content">
+          {% if page.metafields[sectionName].heading %}
+            <h2 class="c-page-section__heading--sub"><span>{{page.metafields[sectionName].heading}}</span></h2>
+          {% endif %}
+          {% if page.metafields[sectionName].content%}
+            <p>{{ page.metafields[sectionName].content }}</p>
+          {% endif %}
+          {% if page.metafields[sectionName].list_item_1%}
+            <ul class="c-page-section__feature-list">
+              {% for i in (1..5) %}
+                {% assign itemId = 'list_item_' | append : forloop.index %}
+                {% if page.metafields[sectionName][itemId] %}
+                <li>{{ page.metafields[sectionName][itemId] }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if page.metafields[sectionName].form_code%}
+          <div class="c-page-section__download--tablet">
+            <h4 class="c-page-section__heading--download some heading" >{{ page.metafields[sectionName].download_heading }}</h4>
+            <div class="{{ page.metafields[sectionName].form_code }}"></div>
+          </div>
+          {% endif %}
+
+        </div>
+
+        <div class="c-page-section__image">
+          {% if page.metafields[sectionName].image %}
+          {% include 'responsive-image' with
+            image: images[page.metafields[sectionName].image],
+            max_width: 500,
+            max_height: 500
+          %}
+          {% endif %}
+        </div>
+        {% if page.metafields.section_1.form_code%}
+          <div class="c-page-section__download">
+            <h4 class="c-page-section__heading--download  some heading" >{{ page.metafields[sectionName].download_heading }}</h4>
+            <div class="{{ page.metafields[sectionName].form_code }}"></div>
+          </div>
+        {% endif %}
+      </div>
+        {% endif %}
+      {% endfor %}
+
+      </div>
+
+    </div>
+  </div>

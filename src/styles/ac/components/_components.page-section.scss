@@ -1,8 +1,8 @@
 /*
-  BEM BLOCK .c-page
+  BEM BLOCK .c-page-section
  */
 
-.c-page {
+.c-page-section {
   display: block;
   background: #fff;
   color: $brand-col-2;
@@ -10,27 +10,27 @@
 }
 
 /*
-  BEM BLOCK MODIFIER .c-page--
+  BEM BLOCK MODIFIER .c-page-section--
  */
 
-.c-page-- {
+.c-page-section-- {
   &type {
     display: block
   }
 
 }
 
-//BEM BLOCK MODIFIER FALLBACK .c-page--
+//BEM BLOCK MODIFIER FALLBACK .c-page-section--
 
-[class*=c-page--] {
-  @extend .c-page;
+[class*=c-page-section--] {
+  @extend .c-page-section;
 }
 
 /*
-  BEM ELEMENTS .c-page__
+  BEM ELEMENTS .c-page-section__
  */
 
-.c-page__ {
+.c-page-section__ {
   &header {
     display: block;
     text-align: center;
@@ -50,9 +50,7 @@
   }
 
   &content {
-    display: block;
-
-
+    display: block
   }
 
   &footer {
@@ -72,7 +70,7 @@
       display: none;
     }
   }
-  &section-image{
+  &image{
     margin-bottom: $act-unit-l;
     @include mq($from: tablet){
       width: 50%;
@@ -99,7 +97,7 @@
     display: block;
     margin: 0 auto;
   }
-  &section-grid{
+  &grid{
     @include mq($from: tablet){
       display: flex;
       flex-wrap: wrap;
@@ -120,21 +118,27 @@
       padding: 0 $act-unit;
     }
   }
+  &download{
+    padding: 0 $act-unit-s;
+    @include mq($from: tablet){
+      padding: 0 $act-unit;
+    }
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-page__header--
+//BEM ELEMENT MODIFIER FALLBACK .c-page-section__header--
 
-[class*=c-page__header--] {
-  @extend .c-page__header;
+[class*=c-page-section__header--] {
+  @extend .c-page-section__header;
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-page__heading--
+//BEM ELEMENT MODIFIER FALLBACK .c-page-section__heading--
 
-[class*=c-page__heading--] {
-  @extend .c-page__heading;
+[class*=c-page-section__heading--] {
+  @extend .c-page-section__heading;
 }
 
-.c-page__heading--{
+.c-page-section__heading--{
   &landing{
     @include act-font-size($act-fs-3);
     font-weight:700;
@@ -148,7 +152,7 @@
 
 }
 
-.c-page__download--{
+.c-page-section__download--{
   &tablet{
     display: none;
     @include mq($from:tablet){
@@ -161,7 +165,7 @@
   }
 }
 
-.c-page{
+.c-page-section{
   &.is-page-width-1600{
     max-width: 1600px !important;
     width: 100%;
