@@ -1,3 +1,32 @@
+{% assign productType = product.type | handle %}
+
+{% if product.metafields.global.below_form_button_text != nill %}
+  <!-- below_form_link from the product meta -->
+  {% assign belowFormButtonText =  product.metafields.global.below_form_button_text %}
+
+{% elsif shop.metafields[productType].below_form_button_text  != nill %}
+  <!-- below_form_link from the shop meta -->
+  {% assign belowFormButtonText = shop.metafields[productType].below_form_button_text %}
+
+{% else %}
+  {% assign belowFormButtonText = nil %}
+
+{% endif %}
+
+{% if product.metafields.global.below_form_button_url != nill %}
+  <!-- below_form_link from the product meta -->
+  {% assign belowFormButtonUrl =  product.metafields.global.below_form_button_url %}
+
+  {% elsif shop.metafields[productType].below_form_button_url  != nill %}
+  <!-- below_form_link from the shop meta -->
+  {% assign belowFormButtonUrl = shop.metafields[productType].below_form_button_url %}
+
+{% else %}
+  {% assign belowFormButtonUrl = nil %}
+
+{% endif %}
+
+
 <div class="l-page--product">
 <section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product">
 
@@ -17,12 +46,14 @@
 <div class="l-page__product-form">
   {% include 'ac-product-form' %}
 </div>
+  {% if belowFormButtonUrl != null %}
   <div class="l-page__product-form-after">
-    <a class="c-btn--product-bundle-link" href="/products/copy-of-bibado-coverall-the-long-sleeved-baby-weaning-highchair-bib">Pre-order Navy and Yellow designs here</a>
+    <a class="c-btn--product-bundle-link" href="{{ belowFormButtonUrl }}">{{ belowFormButtonText }}</a>
   </div>
+  {% endif %}
 
 
-  {% assign productType = product.type | handle %}
+
   <div class="l-page__content--product">
 
   {% for i in (1..10) %}
