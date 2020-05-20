@@ -66,8 +66,10 @@ register('product', {
   },
 
   onFormOptionChange(event) {
-    console.log('onFormOptionChange');
+    console.log('onFormOptionChange test after bh');
     const variant = event.dataset.variant;
+
+
 
     this.renderImages(variant);
     this.renderPrice(variant);
@@ -75,6 +77,15 @@ register('product', {
     this.renderSubmitButton(variant);
 
     this.updateBrowserHistory(variant);
+
+    var searchArray = window.location.search;
+    const urlParams = new URLSearchParams(searchArray);
+    let urlVariant = urlParams.get('variant');
+
+    $('[value="'+ urlVariant +'"]').prop('selected', true);
+
+    console.log('urlVariant ');
+    console.log(urlVariant );
   },
 
   onThumbnailClick(event) {
