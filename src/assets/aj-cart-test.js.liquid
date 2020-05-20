@@ -15,11 +15,11 @@ jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
   // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
   timber.RightDrawer.open();
   console.log("Cart loaded")
-  console.log('[data-js-sticky-bottom');
-  console.log($('[data-js-sticky-bottom'));
+  console.log('[data-js-sticky-bottom 123]');
+  console.log($('[data-js-sticky-bottom]'));
   let checkoutBtn = $('[data-js-sticky-bottom]');
 
-  
+
   if (checkoutBtn.length){
     let elementBottom = checkoutBtn.offset().top + checkoutBtn.outerHeight();
     console.log('el bottom');

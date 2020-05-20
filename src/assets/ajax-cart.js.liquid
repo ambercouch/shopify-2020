@@ -419,7 +419,9 @@ console.log('ajaxCart init')
     });
     // Add or remove from the quantity
     $body.on('click', '.ajaxcart__qty-remove', function() {
+        console.log('.ajaxcart__qty-remove')
       if (isUpdating) {
+        console.log('isupdating')
         return;
       }
 
@@ -429,7 +431,11 @@ console.log('ajaxCart init')
 
       // Remove all items of this type from the cart
       if (line) {
+        console.log('line');
+        console.log(line)
         updateQuantity(line, qty);
+      }else{
+        console.log('no line');
       }
 
     });
@@ -469,6 +475,11 @@ console.log('ajaxCart init')
     function updateQuantity(line, qty) {
       isUpdating = true;
 
+      console.log('updateQuantity ');
+      console.log(line);
+      console.log(qty);
+
+
       // Add activity classes when changing cart quantities
       var $row = $('.ajaxcart__row[data-line="' + line + '"]').addClass('is-loading');
 
@@ -476,9 +487,15 @@ console.log('ajaxCart init')
         $row.parent().addClass('is-removed');
       }
 
+      console.log('changeItem');
+      console.log(line);
+      console.log(qty);
+
+      ShopifyAPI.changeItem(line, qty, adjustCartCallback);
+
       // Slight delay to make sure removed animation is done
       setTimeout(function() {
-        ShopifyAPI.changeItem(line, qty, adjustCartCallback);
+
       }, 250);
     }
 
@@ -492,13 +509,16 @@ console.log('ajaxCart init')
   };
 
   adjustCartCallback = function (cart) {
+    console.log('adjusting the cart no time out');
     // Update quantity and price
     updateCountPrice(cart);
 
+    isUpdating = false;
+    ShopifyAPI.getCart(buildCart);
+
     // Reprint cart on short timeout so you don't see the content being removed
     setTimeout(function() {
-      isUpdating = false;
-      ShopifyAPI.getCart(buildCart);
+
     }, 150)
   };
 

@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY option changed 05202');
+console.log('ACSHOPIFY testing 20/05');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -33,8 +33,8 @@ const ACSHOPIFY = {
       //   }, 1000);
       //   return false;
       // });
-      console.log('[data-js-sticky-bottom]');
-      console.log($('[data-js-sticky-bottom]'));
+     // console.log('[data-js-sticky-bottom]');
+     // console.log($('[data-js-sticky-bottom]'));
 
       // scroll top
       $("a[href='#top']").click(function() {
@@ -852,24 +852,26 @@ const ACSHOPIFY = {
     }
   },
   product: {
+
     init: function() {
       // uncomment to debug
-      console.log('v changh in shopify product');
+      console.log('v changh in shopify product 0520');
 
       let inst = $('[data-remodal-id="acVideo"]').remodal();
 
-      $(document).on( 'change', '.single-option-selector', function() {
+      $('.single-option-selector').on( 'change', function() {
 
-        console.log('option changed 05202');
+        console.log('option changed removed');
 
-        var searchArray = window.location.search;
-          const urlParams = new URLSearchParams(searchArray);
-          let urlVariant = urlParams.get('variant');
 
-          $('[value="'+ urlVariant +'"]').prop('selected', true);
-
-          console.log('urlVariant');
-          console.log(urlVariant );
+        // var searchArray = window.location.search;
+        //   const urlParams = new URLSearchParams(searchArray);
+        //   let urlVariant = urlParams.get('variant');
+        //
+        //   $('[value="'+ urlVariant +'"]').prop('selected', true);
+        //
+        //   console.log('urlVariant');
+        //   console.log(urlVariant );
 
 
       }
