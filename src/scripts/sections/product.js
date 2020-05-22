@@ -66,7 +66,7 @@ register('product', {
   },
 
   onFormOptionChange(event) {
-    console.log('onFormOptionChange');
+    console.log('onFormOptionChange Preorder test');
     const variant = event.dataset.variant;
 
     this.renderImages(variant);
@@ -75,6 +75,13 @@ register('product', {
     this.renderSubmitButton(variant);
 
     this.updateBrowserHistory(variant);
+
+    var searchArray = window.location.search;
+    const urlParams = new URLSearchParams(searchArray);
+    let urlVariant = urlParams.get('variant');
+
+    $('[value="'+ urlVariant +'"]').prop('selected', true);
+
   },
 
   onThumbnailClick(event) {
@@ -111,12 +118,32 @@ register('product', {
       selectors.submitButtonText,
     );
 
+    console.log('sold out item');
+    var variantId = variant.id;
+    var variantEl = this.container.querySelector('[data-variant-id="'+variantId+'"]');
+
+
+    if (variantEl){
+      var variantQty = variantEl.dataset.variantQty;
+      var variantPolicy = variantEl.dataset.variantPolicy;
+    }else{
+      var variantQty = false;
+      var variantPolicy = false;
+    }
+
+    console.log('variantQty before the if');
+    console.log(variantQty);
     if (!variant) {
+      console.log('!variant');
       submitButton.disabled = true;
       submitButtonText.innerText = theme.strings.unavailable;
-    } else if (variant.available) {
+    } else if (variant.available && variantQty > 0) {
+      console.log("variant.available");
       submitButton.disabled = false;
       submitButtonText.innerText = theme.strings.addToCart;
+    }else if ( variantQty < 1 && variantPolicy == 'continue'){
+      submitButton.disabled = false;
+      submitButtonText.innerText = 'Pre-order';
     } else {
       submitButton.disabled = true;
       submitButtonText.innerText = theme.strings.soldOut;
