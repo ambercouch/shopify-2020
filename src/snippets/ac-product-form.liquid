@@ -1,4 +1,8 @@
 {% assign currentVariant = product.selected_or_first_available_variant %}
+{% assign add_to_cart_text = 'products.product.add_to_cart' | t  %}
+{% if product.metafields.global.add_to_cart_text %}
+  {% assign add_to_cart_text = product.metafields.global.add_to_cart_text  %}
+{% endif %}
 <div class="c-product-form">
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
 
@@ -96,7 +100,7 @@
       {% unless current_variant.available %}disabled="disabled"{% endunless %}>
         <span data-submit-button-text>
           {% if current_variant.available %}
-            {{ 'products.product.add_to_cart' | t }}
+            {{ add_to_cart_text }}
           {% else %}
             {{ 'products.product.sold_out' | t }}
           {% endif %}
