@@ -33,6 +33,7 @@ const selectors = {
   thumbnail: '[data-product-single-thumbnail]',
   thumbnailById: (id) => `[data-thumbnail-id='${id}']`,
   thumbnailActive: '[data-product-single-thumbnail][aria-current]',
+  variantNotice: '[data-variant-notice]',
 };
 
 register('product', {
@@ -73,6 +74,7 @@ register('product', {
     this.renderPrice(variant);
     this.renderComparePrice(variant);
     this.renderSubmitButton(variant);
+    this.renderVariantNotice(variant);
 
     this.updateBrowserHistory(variant);
 
@@ -118,10 +120,8 @@ register('product', {
       selectors.submitButtonText,
     );
 
-    console.log('sold out item');
     var variantId = variant.id;
     var variantEl = this.container.querySelector('[data-variant-id="'+variantId+'"]');
-
 
     if (variantEl){
       var variantQty = variantEl.dataset.variantQty;
@@ -131,14 +131,10 @@ register('product', {
       var variantPolicy = false;
     }
 
-    console.log('variantQty before the if');
-    console.log(variantQty);
     if (!variant) {
-      console.log('!variant');
       submitButton.disabled = true;
       submitButtonText.innerText = theme.strings.unavailable;
     } else if (variant.available && variantQty > 0) {
-      console.log("variant.available");
       submitButton.disabled = false;
       submitButtonText.innerText = theme.strings.addToCart;
     }else if ( variantQty < 1 && variantPolicy == 'continue'){
@@ -149,7 +145,28 @@ register('product', {
       submitButtonText.innerText = theme.strings.soldOut;
     }
   },
+  renderVariantNotice(variant) {
+    const variantNotice = this.container.querySelector(selectors.variantNotice);
 
+    var variantId = variant.id;
+    var variantEl = this.container.querySelector('[data-variant-id="'+variantId+'"]');
+
+    if (variantEl){
+      var variantQty = variantEl.dataset.variantQty;
+      var variantPolicy = variantEl.dataset.variantPolicy;
+    }else{
+      var variantQty = false;
+      var variantPolicy = false;
+    }
+   if ( variantQty < 1 && variantPolicy == 'continue'){
+     variantNotice.classList.add('is-shown');
+     variantNotice.classList.remove('is-hidden');
+   }else{
+     variantNotice.classList.remove('is-shown');
+     variantNotice.classList.add('is-hidden');
+   }
+
+  },
   renderImages(variant) {
     if (!variant || variant.featured_image === null) {
       return;

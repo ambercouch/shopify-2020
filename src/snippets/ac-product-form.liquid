@@ -1,3 +1,21 @@
+{% assign productType = product.type | handle %}
+<!-- productType {{ productType }}  product.type {{ product.type }} product {{ product }} -->
+{% if current_variant.metafields.global.pre_order_dispatch_text  %}
+  <!-- pre_order_dispatch_text from the current_variant meta -->
+  {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+{% elsif product.metafields.global.pre_order_dispatch_text != nill %}
+  <!-- pre_order_dispatch_text from the product meta -->
+    {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+  {% elsif shop.metafields[productType].pre_order_dispatch_text  != nill %}
+  <!-- pre_order_dispatch_text from the shop meta -->
+  {% assign preOrderDispatchText =  shop.metafields[productType].pre_order_dispatch_text %}
+
+{% else %}
+  <!-- pre_order_dispatch_text none -->
+  {% assign preOrderDispatchText = nil %}
+{% endif %}
+
+
 {% assign currentVariant = product.selected_or_first_available_variant %}
 {% assign add_to_cart_text = 'products.product.add_to_cart' | t  %}
 {% if product.metafields.global.add_to_cart_text %}
@@ -93,7 +111,7 @@
   </div>
 
 
-  <div class="c-product-form__submit test">
+  <div class="c-product-form__submit">
   <button
       class="c-btn--product-form-submit"
       type="submit"
@@ -110,6 +128,17 @@
           {% endif %}
         </span>
   </button>
+  </div>
+  {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
+    {% assign displayClass = 'is-shown'  %}
+    {% else %}
+      {% assign displayClass = 'is-hidden'  %}
+  {% endif %}
+  <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
+    <div class="c-info-notice--dispatch-date">
+      {{ preOrderDispatchText }}
+    </div>
+
   </div>
 {% endform %}
 </div>
