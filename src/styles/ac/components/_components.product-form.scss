@@ -101,7 +101,6 @@
     row-gap: $act-unit-s;
   }
   &info-notice{
-    padding-top: $act-unit;
     grid-column-start: 1;
     grid-column-end: 3;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out;
