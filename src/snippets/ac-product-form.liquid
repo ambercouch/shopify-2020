@@ -31,6 +31,18 @@
   </div>
 
 
+  {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
+    {% assign displayClass = 'is-shown'  %}
+  {% else %}
+    {% assign displayClass = 'is-hidden'  %}
+  {% endif %}
+  <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
+    <div class="c-info-notice--dispatch-date">
+      {{ preOrderDispatchText }}
+    </div>
+  </div>
+
+
   {% unless product.has_only_default_variant %}
     {% for option in product.options_with_values %}
       <div class="js c-product-form__options">
@@ -129,16 +141,6 @@
         </span>
   </button>
   </div>
-  {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
-    {% assign displayClass = 'is-shown'  %}
-    {% else %}
-      {% assign displayClass = 'is-hidden'  %}
-  {% endif %}
-  <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
-    <div class="c-info-notice--dispatch-date">
-      {{ preOrderDispatchText }}
-    </div>
 
-  </div>
 {% endform %}
 </div>
