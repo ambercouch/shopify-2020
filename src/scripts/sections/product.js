@@ -33,6 +33,7 @@ const selectors = {
   thumbnail: '[data-product-single-thumbnail]',
   thumbnailById: (id) => `[data-thumbnail-id='${id}']`,
   thumbnailActive: '[data-product-single-thumbnail][aria-current]',
+  variantNotice: '[data-variant-notice]',
 };
 
 register('product', {
@@ -66,15 +67,23 @@ register('product', {
   },
 
   onFormOptionChange(event) {
-    console.log('onFormOptionChange');
+    console.log('onFormOptionChange Preorder test');
     const variant = event.dataset.variant;
 
     this.renderImages(variant);
     this.renderPrice(variant);
     this.renderComparePrice(variant);
     this.renderSubmitButton(variant);
+    this.renderVariantNotice(variant);
 
     this.updateBrowserHistory(variant);
+
+    var searchArray = window.location.search;
+    const urlParams = new URLSearchParams(searchArray);
+    let urlVariant = urlParams.get('variant');
+
+    $('[value="'+ urlVariant +'"]').prop('selected', true);
+
   },
 
   onThumbnailClick(event) {
@@ -111,18 +120,53 @@ register('product', {
       selectors.submitButtonText,
     );
 
+    var variantId = variant.id;
+    var variantEl = this.container.querySelector('[data-variant-id="'+variantId+'"]');
+
+    if (variantEl){
+      var variantQty = variantEl.dataset.variantQty;
+      var variantPolicy = variantEl.dataset.variantPolicy;
+    }else{
+      var variantQty = false;
+      var variantPolicy = false;
+    }
+
     if (!variant) {
       submitButton.disabled = true;
       submitButtonText.innerText = theme.strings.unavailable;
-    } else if (variant.available) {
+    } else if (variant.available && variantQty > 0) {
       submitButton.disabled = false;
       submitButtonText.innerText = theme.strings.addToCart;
+    }else if ( variantQty < 1 && variantPolicy == 'continue'){
+      submitButton.disabled = false;
+      submitButtonText.innerText = 'Pre-order';
     } else {
       submitButton.disabled = true;
       submitButtonText.innerText = theme.strings.soldOut;
     }
   },
+  renderVariantNotice(variant) {
+    const variantNotice = this.container.querySelector(selectors.variantNotice);
 
+    var variantId = variant.id;
+    var variantEl = this.container.querySelector('[data-variant-id="'+variantId+'"]');
+
+    if (variantEl){
+      var variantQty = variantEl.dataset.variantQty;
+      var variantPolicy = variantEl.dataset.variantPolicy;
+    }else{
+      var variantQty = false;
+      var variantPolicy = false;
+    }
+   if ( variantQty < 1 && variantPolicy == 'continue'){
+     variantNotice.classList.add('is-shown');
+     variantNotice.classList.remove('is-hidden');
+   }else{
+     variantNotice.classList.remove('is-shown');
+     variantNotice.classList.add('is-hidden');
+   }
+
+  },
   renderImages(variant) {
     if (!variant || variant.featured_image === null) {
       return;

@@ -1,4 +1,26 @@
+{% assign productType = product.type | handle %}
+<!-- productType {{ productType }}  product.type {{ product.type }} product {{ product }} -->
+{% if current_variant.metafields.global.pre_order_dispatch_text  %}
+  <!-- pre_order_dispatch_text from the current_variant meta -->
+  {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+{% elsif product.metafields.global.pre_order_dispatch_text != nill %}
+  <!-- pre_order_dispatch_text from the product meta -->
+    {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+  {% elsif shop.metafields[productType].pre_order_dispatch_text  != nill %}
+  <!-- pre_order_dispatch_text from the shop meta -->
+  {% assign preOrderDispatchText =  shop.metafields[productType].pre_order_dispatch_text %}
+
+{% else %}
+  <!-- pre_order_dispatch_text none -->
+  {% assign preOrderDispatchText = nil %}
+{% endif %}
+
+
 {% assign currentVariant = product.selected_or_first_available_variant %}
+{% assign add_to_cart_text = 'products.product.add_to_cart' | t  %}
+{% if product.metafields.global.add_to_cart_text %}
+  {% assign add_to_cart_text = product.metafields.global.add_to_cart_text  %}
+{% endif %}
 <div class="c-product-form">
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
 
@@ -6,6 +28,18 @@
 
   <div class="c-product-form__product-price">
     {% include 'ac-product-form-price' %}
+  </div>
+
+
+  {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
+    {% assign displayClass = 'is-shown'  %}
+  {% else %}
+    {% assign displayClass = 'is-hidden'  %}
+  {% endif %}
+  <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
+    <div class="c-info-notice--dispatch-date">
+      {{ preOrderDispatchText }}
+    </div>
   </div>
 
 
@@ -55,7 +89,7 @@
                 {% endcomment %}
                 <!--                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option> -->
 
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" data-variants="{{ variant.option1 | handle }};{{ variant.option2 | handle }};{{ variant.option3 | handle }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" data-variant-id="{{ variant.id}}" data-variant-qty="{{ variant.inventory_quantity }}" data-variant-policy="{{ variant.inventory_policy}}" data-variants="{{ variant.option1 | handle }};{{ variant.option2 | handle }};{{ variant.option3 | handle }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
               {% else %}
                 <option disabled="disabled">
                   {{ variant.title }} - {{ 'products.product.sold_out' | t }}
@@ -75,7 +109,9 @@
         <option
             {% if variant == current_variant %}selected="selected"{% endif %}
             {% unless variant.available %}disabled="disabled"{% endunless %}
-            value="{{ variant.id }}">
+            value="{{ variant.id }}"
+            data-variant-qty="{{ variant.inventory_qty }}"
+        >
           {{ variant.title }}
         </option>
       {% endfor %}
@@ -95,13 +131,16 @@
       data-submit-button
       {% unless current_variant.available %}disabled="disabled"{% endunless %}>
         <span data-submit-button-text>
-          {% if current_variant.available %}
-            {{ 'products.product.add_to_cart' | t }}
-          {% else %}
+          {% if current_variant.available and current_variant.inventory_quantity > 0 %}
+            {{ add_to_cart_text }}
+          {% elsif current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'%}
+            Pre-order
+            {% else %}
             {{ 'products.product.sold_out' | t }}
           {% endif %}
         </span>
   </button>
   </div>
+
 {% endform %}
 </div>

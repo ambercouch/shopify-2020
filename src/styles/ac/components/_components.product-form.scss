@@ -100,6 +100,12 @@
     column-gap: $act-unit-s;
     row-gap: $act-unit-s;
   }
+  &info-notice{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+
 
 }
 
@@ -161,4 +167,22 @@
 
 .c-product-form__select--{
 
+}
+
+
+.is-hidden{
+  &.c-product-form__info-notice {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+  }
+}
+
+.is-shown{
+  &.c-product-form__info-notice {
+    max-height: 6em;
+    overflow: hidden;
+    opacity: 1;
+  }
 }

@@ -18,6 +18,16 @@
   &type {
     display: block
   }
+  &dispatch-date{
+    background: rgba($brand-col-3, 0.5);
+    border-radius: 0;
+    padding: $act-unit-t 0;
+    color: white;
+    @include act-font-size($act-fs-5);
+    @include mq($from:desktop){
+      @include act-font-size($act-fs-4);
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-info-notice--
@@ -72,3 +82,5 @@
 [class*=c-info-notice__header--] {
   @extend .c-info-notice__header;
 }
+
+
