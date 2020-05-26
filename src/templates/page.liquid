@@ -1,6 +1,10 @@
 {% assign pageImage = page.metafields.global.feature_image %}
 {% assign pageHeroImage = images[page.metafields.global.hero_image] %}
 {% assign pageHeroText = page.metafields.global.hero_text %}
+{% assign pageFooterText = page.metafields.block_footer.text %}
+{% assign pageFooterButtonUrl = page.metafields.block_footer.button_url %}
+{% assign pageFooterButtonText = page.metafields.block_footer.button_text %}
+{% assign classBlockPadding = page.metafields.blocks.block_padding %}
 
 {% if page.metafields.global.hero_image %}
   {% assign classHeroImage = 'has-hero-image' %}
@@ -73,5 +77,14 @@
       {% assign modClass = '--static-page'  %}
       {% include 'ac-block-loop' %}
     </div>
+
+    {% if pageFooterButtonText != '' %}
+      <div class="l-page__footer--static-page">
+        <div class="l-page__footer-btn">
+          <a href="{{ pageFooterButtonUrl }}" class="c-btn--page-footer-login">{{ pageFooterButtonText }}</a>
+        </div>
+      </div>
+    {% endif %}
+
   </div>
 </div>

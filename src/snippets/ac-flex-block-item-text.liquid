@@ -1,7 +1,7 @@
-<div class="l-flex-block__item--text">
+<div class="l-flex-block__item--text u-p-{{ classBlockPadding }}">
   {% if blockTitle %}
     <header class="c-content-block__header">
-      <h3 class="c-content-block__heading--static-page u-col-{{ classHeadingColor }} ">
+      <h3 class="c-content-block__heading--static-page u-col-{{ classHeadingColor }} u-ta-{{ classTextAlign }}">
         {{ blockTitle }}
       </h3>
     </header>
@@ -9,7 +9,15 @@
     <!-- no blockTitle -->
   {% endif %}
 
-  <div class="c-content-block__text u-col-{{ classTextColor }}">
+  <div class="c-content-block__text u-col-{{ classTextColor }} u-ta-{{ classTextAlign }}">
     {{blockText }}
   </div>
+
+  {% if buttonUrl %}
+    <div class="c-content-block__cta u-ta-{{ classTextAlign }}">
+      <div class="content-block__btn">
+        <a href="{{ buttonUrl }}" class="c-btn--content-block-login">{{ buttonText }}</a>
+    </div>
+    </div>
+  {%  endif %}
 </div>
