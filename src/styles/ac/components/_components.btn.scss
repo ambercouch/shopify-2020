@@ -344,6 +344,35 @@
       }
     }
   }
+  &content-block-login{
+    background: $brand-col-3 !important;
+    border: solid 3px $brand-col-3;
+    color: #fff !important;
+    width: 300px !important;
+    max-width: 100%;
+    &:hover{
+      background: darken($brand-col-3, 10%) !important;
+      width: 300px !important;
+      max-width: 100%;
+      border: solid 3px $brand-col-3;
+    }
+  }
+  &page-footer-login{
+    background: $brand-col-3 !important;
+    border: solid 3px $brand-col-3;
+    color: #fff !important;
+    width: 300px !important;
+    max-width: 100%;
+    display: inline-block !important;
+    &:hover{
+      background: darken($brand-col-3, 10%) !important;
+      display: inline-block;
+      width: 300px !important !important;
+      max-width: 100%;
+      border: solid 3px $brand-col-3;
+      display: inline-block !important;
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-btn--

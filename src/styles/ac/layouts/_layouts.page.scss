@@ -677,6 +677,10 @@
   &collection-bundle{
     background: $brand-col-4;
   }
+  &static-page{
+    background: $brand-col-1;
+    text-align: center;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__flex-item--
