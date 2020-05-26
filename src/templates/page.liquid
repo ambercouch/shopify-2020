@@ -5,6 +5,13 @@
 {% assign pageFooterButtonUrl = page.metafields.block_footer.button_url %}
 {% assign pageFooterButtonText = page.metafields.block_footer.button_text %}
 {% assign classBlockPadding = page.metafields.blocks.block_padding %}
+{% assign classHeroBackground = page.metafields.global.hero_background %}
+{% if page.metafields.global.page_handle %}
+  {% assign pageHandle = page.metafields.global.page_handle %}
+  {% else %}
+    {% assign pageHandle = page.handle %}
+{% endif %}
+
 
 {% if page.metafields.global.hero_image %}
   {% assign classHeroImage = 'has-hero-image' %}
@@ -15,7 +22,7 @@
 
 <div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
   <div class="l-page--static-page l-page--{{ page.title | handle }}">
-    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }} u-bgc-{{ classHeroBackground}}" role="banner">
       <div class="c-image-layer">
         <div class="c-image-layer__background">
           {% include 'ac-blobs' %}
@@ -67,15 +74,33 @@
 
     <div class="l-page__content--static-page">
       {% if page.content != blank %}
+
+
         <div class="l-page__rte--static-page rte">
           {{ page.content }}
         </div>
+
+
       {% endif %}
 
       <!-- include ac-block-loop -->
       {% assign sObj = page  %}
       {% assign modClass = '--static-page'  %}
+
+      <div class="l-page__block-loop--static-page l-page__block-loop--{{ pageHandle }}">
+
+      <div class="c-image-layer">
+        <div class="c-image-layer__background--l-page">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
       {% include 'ac-block-loop' %}
+        </div>
+      </div>
+
+      </div>
+
+
     </div>
 
     {% if pageFooterButtonText != '' %}
