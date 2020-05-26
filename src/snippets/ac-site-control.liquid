@@ -19,12 +19,15 @@
             {% include 'icon-user' %}
           </a>
         </li>
+             {% else %}
         <li class="c-site-control__item--customer">
-          {{ 'layout.customer.log_out' | t | customer_logout_link }} {% include 'icon-user' %}
-        </li>
-      {% else %}
-        <li class="c-site-control__item--customer">
-          {{ 'layout.customer.log_in' | t | customer_login_link }} {% include 'icon-user' %}
+          <a href="/account" class="c-site-control__link">
+          <span class="c-site-control__label">
+          Login
+          </span>
+          {% include 'icon-user' %}
+          </a>
+
         </li>
       {% endif %}
     {% endif %}
