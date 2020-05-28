@@ -32,6 +32,11 @@
     height: 25px;
     color: $brand-col-4;
   }
+  &user{
+    width: 25px;
+    height: 25px;
+    color: $brand-col-5;
+  }
   &search{
     @include size(100%);
     color: $brand-col-3;
