@@ -1,31 +1,51 @@
-<h1>{{ 'customer.register.title' | t }}</h1>
+<div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
+  <div class="l-page--static-page l-page--{{ page.title | handle }}">
 
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+      <h1 class="l-page__heading--static-page l-page__heading--{{ page.title | handle }}" >
+        <span class="l-page__title">{{ 'customer.register.title' | t }}</span>
+      </h1>
+    </header>
+    <div class="c-contact-form">
 {% form 'create_customer' %}
   {{ form.errors | default_errors }}
 
-  <label for="FirstName" class="label-hidden">
+  <label for="FirstName" >
+     <span class="c-contact-form__label-text" >
     {{ 'customer.register.first_name' | t }}
-  </label>
+     </span>
+    <span class="c-contact-form__input-wrapper" >
   <input type="text"
+         class="c-contact-form__input"
     name="customer[first_name]"
     id="FirstName"
     placeholder="{{ 'customer.register.first_name' | t }}"
     autofocus
     {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
-
-  <label for="LastName" class="label-hidden">
-    {{ 'customer.register.last_name' | t }}
+    </span>
   </label>
+
+  <label for="LastName" >
+     <span class="c-contact-form__label-text" >
+    {{ 'customer.register.last_name' | t }}
+     </span>
+    <span class="c-contact-form__input-wrapper" >
   <input type="text"
+         class="c-contact-form__input"
     name="customer[last_name]"
     id="LastName"
     placeholder="{{ 'customer.register.last_name' | t }}"
     {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
-
-  <label for="Email" class="label-hidden">
-    {{ 'customer.register.email' | t }}
+    </span>
   </label>
+
+  <label for="Email">
+     <span class="c-contact-form__label-text" >
+    {{ 'customer.register.email' | t }}
+     </span>
+    <span class="c-contact-form__input-wrapper" >
   <input type="email"
+         class="c-contact-form__input"
     name="customer[email]"
     id="Email"
     class="{% if form.errors contains 'email' %}input-error{% endif %}"
@@ -34,18 +54,28 @@
     spellcheck="false"
     autocomplete="off"
     autocapitalize="off">
-
-  <label for="CreatePassword" class="label-hidden">
-    {{ 'customer.register.password' | t }}
+    </span>
   </label>
+
+  <label for="CreatePassword">
+     <span class="c-contact-form__label-text" >
+    {{ 'customer.register.password' | t }}
+     </span>
+    <span class="c-contact-form__input-wrapper" >
   <input type="password"
+         class="c-contact-form__input"
     name="customer[password]"
     id="CreatePassword"
     class="{% if form.errors contains 'password' %}input-error{% endif %}"
     placeholder="{{ 'customer.register.password' | t }}">
+    </span>
+  </label>
 
-  <p>
-    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="button">
-  </p>
+      <div class="c-contact-form__input-wrapper--submit">
+    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="c-btn--contact-submit c-contact-form__input--submit">
+      </div>
   <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
 {% endform %}
+    </div>
+  </div>
+</div>

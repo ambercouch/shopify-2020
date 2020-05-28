@@ -1,8 +1,13 @@
-{% paginate customer.addresses by 5 %}
+<div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
+  <div class="l-page--static-page l-page--{{ page.title | handle }}">
 
-  <header role="banner">
-    <h1>{{ 'customer.account.title' | t }}</h1>
-  </header>
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+      <h1 class="l-page__heading--static-page l-page__heading--{{ page.title | handle }}" >
+        <span class="l-page__title">{{ 'customer.account.title' | t }}</span>
+      </h1>
+    </header>
+
+{% paginate customer.addresses by 5 %}
 
   <p>
     <a href="/account">{{ 'customer.account.return' | t }}</a>
@@ -286,3 +291,5 @@
   {% endif %}
 
 {% endpaginate %}
+  </div>
+</div>
