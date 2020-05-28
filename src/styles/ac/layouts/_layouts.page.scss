@@ -64,6 +64,7 @@
   }
 
 
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-page--
@@ -78,6 +79,9 @@
 
 .l-page__ {
   &hero-image {
+    display: block;
+  }
+  &block-loop{
     display: block;
   }
   &wrapper{
@@ -215,7 +219,7 @@
   &hero{
     padding: $act-unit;
     background: $brand-col-5;
-    min-height: 50vh;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -435,6 +439,7 @@
     text-align: left;
     margin-bottom: 0;
   }
+
   &static-page{
     background: $brand-col-4;
     color: $brand-col-3 !important;
@@ -450,6 +455,9 @@
       text-align: left;
       padding-left: $act-unit;
     }
+  }
+  &bibado-rewards{
+    color: $brand-col-5 !important;
   }
   &article{
     @extend .l-page__heading--static-page;
@@ -792,7 +800,6 @@
       height: auto;
       padding-top: 0 !important;
       text-align: left;
-
     }
   }
   &article{
@@ -1018,6 +1025,18 @@
   &404{
 
     }
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-page__link--
+
+[class*=l-page__block-loop--] {
+  @extend .l-page__block-loop;
+}
+.l-page__block-loop--{
+  &bibado-rewards{
+    margin-top: -$act-unit;
+  }
 
 }
 

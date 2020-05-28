@@ -785,7 +785,7 @@
 
     &1 {
       display: block;
-      color: $brand-col-5;
+      color: $brand-col-4;
       left: auto;
       right: -400px !important;
       top: 0;
@@ -794,7 +794,7 @@
       transform: rotateZ(-65deg);
       @include mq($from: desktop) {
         display: block;
-        color: $brand-col-5;
+        color: $brand-col-4;
         left: -350px;
         right: auto;
         top: auto;
@@ -838,7 +838,7 @@
     }
 
     &1 {
-      display: block !important;
+      display: none !important;
       @include mq($from: desktop) {
         display: block !important;
         color: $brand-col-5;
