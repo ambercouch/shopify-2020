@@ -1,43 +1,69 @@
-<h1>{{ 'customer.account.title' | t }}</h1>
+<div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
+  <div class="l-page--static-page l-page--{{ page.title | handle }}">
 
-<h2>{{ 'customer.orders.title' | t }}</h2>
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+      <h1 class="l-page__heading--static-page l-page__heading--{{ page.title | handle }}" >
+        <span class="l-page__title">{{ 'customer.account.title' | t }}</span>
+      </h1>
+    </header>
 
-{% paginate customer.orders by 20 %}
-  {% if customer.orders.size != 0 %}
-    <table class="responsive-table">
-      <thead>
-        <tr>
-          <th>{{ 'customer.orders.order_number' | t }}</th>
-          <th>{{ 'customer.orders.date' | t }}</th>
-          <th>{{ 'customer.orders.payment_status' | t }}</th>
-          <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
-          <th>{{ 'customer.orders.total' | t }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for order in customer.orders %}
-          <tr class="responsive-table-row">
-            <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
-            <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
-            <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
-            <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-            <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>{{ 'customer.orders.none' | t }}</p>
-  {% endif %}
 
-  {% if paginate.pages > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
+    <div class="l-page__content--static-page u-p-medium">
+      <a href="/account/logout">logout</a>
+      <div class="l-page__content--account">
+        <div class="l-page__section--account-order u-mbl">
 
-{% endpaginate %}
+          <h2 class="l-page__heading u-col-2" >{{ 'customer.orders.title' | t }}</h2>
 
-<h2>{{ 'customer.account.details' | t }}</h2>
+          {% paginate customer.orders by 20 %}
+            {% if customer.orders.size != 0 %}
+              <table class="responsive-table">
+                <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in customer.orders %}
+                  <tr class="responsive-table-row">
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <p>{{ 'customer.orders.none' | t }}</p>
+            {% endif %}
 
-{{ customer.default_address | format_address }}
+            {% if paginate.pages > 1 %}
+              {% include 'pagination' %}
+            {% endif %}
 
-<a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+          {% endpaginate %}
+        </div>
+        <div class="l-page__section--account-customer-details u-ta-left u-mbl u-bgc-5 o-box--small">
+          <h2 class="l-page__heading u-col-2" >{{ 'customer.account.details' | t }}</h2>
+
+          {{ customer.default_address | format_address }}
+        </div>
+
+        <div class="l-page__section--account-rewards">
+          <h2 class="l-page__heading u-col-2" >BiBADO Rewards Program</h2>
+          To earn points to spend on the products we design to make parents lives easier, <a href="/#smile-home ">click here</a>
+        </div>
+
+      </div>
+
+
+
+<!-- <a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a> -->
+    </div>
+  </div>

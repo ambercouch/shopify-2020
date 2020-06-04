@@ -138,7 +138,7 @@
 
   }
   &image{
-    padding: 0 !important;
+      padding: 0;
   }
   &text{
     @include mq($from : desktop){
@@ -232,6 +232,12 @@
 
 .l-flex-block{
   .l-page__flex-block--article-block &{
+  }
+  &.is-image-left{
+    direction: rtl;
+    *{
+      direction: ltr !important;
+    }
   }
 }
 

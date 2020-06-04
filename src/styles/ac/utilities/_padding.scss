@@ -1,19 +1,19 @@
 .u-p0{
   padding: 0;
 }
-.u-pt{
+.u-pt, .u-p-tiny{
    padding: $inuit-global-spacing-unit-tiny;
  }
-.u-ps{
+.u-ps, .u-p-small{
   padding: $inuit-global-spacing-unit-small;
 }
-.u-pm{
+.u-pm, .u-p-medium{
   padding: $inuit-global-spacing-unit;
 }
-.u-pl{
+.u-pl, .u-p-large{
   padding: $inuit-global-spacing-unit-large;
 }
-.u-ph{
+.u-ph, .u-p-huge{
   padding: $inuit-global-spacing-unit-huge;
 }
 

@@ -89,6 +89,12 @@
   {% assign classTextColor = null  %}
 {% endif %}
 
+  {% if sObj.metafields[namespace]['text_align'] %}
+    {% assign classTextAlign = sObj.metafields[namespace]['text_align']  %}
+  {% else %}
+    {% assign classTextAlign = 'none'  %}
+  {% endif %}
+
 
     {% if sObj.metafields[namespace]['heading_colour'] %}
     {% assign classHeadingColor = sObj.metafields[namespace]['heading_colour']  %}
@@ -109,6 +115,14 @@
 {% else %}
   {% assign blockType = 'text' %}
 {% endif %}
+
+  {% if  sObj.metafields[namespace]['button_url'] %}
+    {% assign buttonText = sObj.metafields[namespace]['button_text'] %}
+    {% assign buttonUrl = sObj.metafields[namespace]['button_url'] %}
+  {% else %}
+    {% assign buttonText = null %}
+    {% assign buttonUrl = null %}
+  {% endif %}
 
   {% if  sObj.metafields[namespace]['title']  %}
     {% assign blockHandle = sObj.metafields[namespace]['title'] | handle | prepend : "--" %}
@@ -145,7 +159,7 @@
     {% endif %}
 
     {% if blockImage %}
-      <div class="l-flex-block__item--image">
+      <div class="l-flex-block__item--image u-p-{{ classBlockPadding }}">
         {% include 'responsive-image' with
           image: images[blockImage],
           max_width: 700,

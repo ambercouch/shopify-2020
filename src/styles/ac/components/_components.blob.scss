@@ -736,8 +736,43 @@
 }
 
 .l-page__header--404{
+   .c-blob-- {
+     &1 {
+       display: none;
+       color: $brand-col-3;
+       left: 0px;
+       right: auto;
+       top: auto;
+       bottom: auto;
+       @include size(600px);
+       //transform: rotateZ(-90deg) rotateY(180deg);
+     }
+
+     &2 {
+       display: block;
+       color: $brand-col-3;
+       left: auto;
+       right: -400px !important;
+       top: 0;
+       bottom: auto;
+       @include size(600px);
+       @include mq($from: desktop) {
+         display: block;
+         color: $brand-col-3;
+         left: -300px;
+         right: auto;
+         top: auto;
+         bottom: auto;
+         @include size(600px);
+       }
+
+     }
+   }
+ }
+
+.l-page__header--bibado-rewards{
   .c-blob-- {
-    &1 {
+    &2{
       display: none;
       color: $brand-col-3;
       left: 0px;
@@ -748,25 +783,73 @@
       //transform: rotateZ(-90deg) rotateY(180deg);
     }
 
-    &2 {
+    &1 {
       display: block;
-      color: $brand-col-3;
+      color: $brand-col-4;
       left: auto;
       right: -400px !important;
       top: 0;
       bottom: auto;
       @include size(600px);
+      transform: rotateZ(-65deg);
       @include mq($from: desktop) {
         display: block;
-        color: $brand-col-3;
-        left: -300px;
+        color: $brand-col-4;
+        left: -350px;
         right: auto;
         top: auto;
         bottom: auto;
         @include size(600px);
+
       }
 
     }
   }
+}
+
+.l-page__block-loop--static-page{
+  .c-blob-- {
+    &2{
+      display: none;
+    }
+
+    &1 {
+      display: none;
+      @include mq($from: desktop) {
+        display: none;
+      }
+
+    }
+  }
+}
+
+.l-page__block-loop--bibado-rewards {
+  .c-image-layer__background--l-page{
+  .c-blob-- {
+    &2 {
+      display: block;
+      color: $brand-col-3;
+      left:  -600px;
+      right: auto;
+      top: 35%;
+      bottom: auto;
+      @include size(1200px);
+      transform: rotateZ(25deg);
+    }
+
+    &1 {
+      display: none !important;
+      @include mq($from: desktop) {
+        display: block !important;
+        color: $brand-col-5;
+        transform: rotateZ(115deg);
+        right: -450px;
+        @include size(800px);
+        top: 10%;
+      }
+
+    }
+  }
+}
 }
 

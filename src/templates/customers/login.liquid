@@ -1,38 +1,56 @@
-<div class="form-success hide" data-reset-success>
+<div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
+  <div class="l-page--static-page l-page--{{ page.title | handle }}">
+
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }}" role="banner">
+      <h1 class="l-page__heading--static-page l-page__heading--{{ page.title | handle }}" >
+        <span class="l-page__title">{{ 'customer.login.title' | t }}</span>
+      </h1>
+    </header>
+    <div class="form-success hide" data-reset-success>
   {{ 'customer.recover_password.success' | t }}
 </div>
 
-<div data-login-form>
+<div class="c-contact-form" data-login-form>
   {% form 'customer_login' %}
-    <h1>{{ 'customer.login.title' | t }}</h1>
 
     {{ form.errors | default_errors }}
 
-    <label for="CustomerEmail" class="label-hidden">
+    <label for="CustomerEmail">
+      <span class="c-contact-form__label-text" >
       {{ 'customer.login.email' | t }}
-    </label>
+         </span>
+      <span class="c-contact-form__input-wrapper" >
     <input type="email"
            name="customer[email]"
            id="CustomerEmail"
-           class="{% if form.errors contains 'email' %}input-error{% endif %}"
+           class="{% if form.errors contains 'email' %}input-error{% endif %} c-contact-form__input"
            placeholder="{{ 'customer.login.email' | t }}"
            spellcheck="false"
            autocomplete="off"
            autocapitalize="off"
            autofocus>
+      </span>
+    </label>
 
     {% if form.password_needed %}
-      <label for="CustomerPassword" class="label-hidden">
+      <label for="CustomerPassword" >
+        <span class="c-contact-form__label-text" >
         {{ 'customer.login.password' | t }}
-      </label>
+        </span>
+        <span class="c-contact-form__input-wrapper" >
       <input type="password"
              name="customer[password]"
              id="CustomerPassword"
-             class="{% if form.errors contains 'password' %}input-error{% endif %}"
-             placeholder="{{ 'customer.login.password' | t }}">
+             class="{% if form.errors contains 'password' %}input-error{% endif %} c-contact-form__input"
+             placeholder="{{ 'customer.login.password' | t }}"
+            >
+        </span>
+      </label>
     {% endif %}
 
-    <input type="submit" class="button" value="{{ 'customer.login.sign_in' | t }}">
+  <div class="c-contact-form__input-wrapper--submit u-mbm">
+    <input type="submit" class="c-btn--contact-submit c-contact-form__input--submit" value="{{ 'customer.login.sign_in' | t }}">
+  </div>
 
     <a href="/">{{ 'customer.login.cancel' | t }}</a>
 
@@ -48,33 +66,41 @@
 </div>
 
 <div class="hide" data-recover-form>
-  <h2>{{ 'customer.recover_password.title' | t }}</h2>
-  <p>{{ 'customer.recover_password.subtext' | t }}</p>
 
+
+  <div class="c-contact-form" data-login-form>
   {% form 'recover_customer_password' %}
+    <p>{{ 'customer.recover_password.subtext' | t }}</p>
     {{ form.errors | default_errors }}
 
     {% if form.posted_successfully? %}
       <span class="hide" data-form-state></span>
     {% endif %}
 
-    <label for="RecoverEmail" class="label-hidden">
+    <label for="RecoverEmail">
+      <span class="c-contact-form__label-text" >
       {{ 'customer.recover_password.email' | t }}
-    </label>
+      </span>
+      <span class="c-contact-form__input-wrapper" >
     <input type="email"
            name="email"
+           class="c-contact-form__input"
            id="RecoverEmail"
            placeholder="{{ 'customer.recover_password.email' | t }}"
            spellcheck="false"
            autocomplete="off"
            autocapitalize="off">
+      </span>
+    </label>
 
-    <input type="submit" class="button" value="{{ 'customer.recover_password.submit' | t }}">
-
+    <div class="c-contact-form__input-wrapper--submit">
+    <input type="submit" class="c-btn--contact-submit c-contact-form__input--submit" value="{{ 'customer.recover_password.submit' | t }}">
+    </div>
     <button type="button" data-recover-toggle>
       {{ 'customer.recover_password.cancel' | t }}
     </button>
   {% endform %}
+  </div>
 
 </div>
 
@@ -85,3 +111,5 @@
     <input type="submit" class="button" value="{{ 'customer.login.guest_continue' | t }}">
   {% endform %}
 {% endif %}
+  </div>
+</div>
