@@ -1,0 +1,22 @@
+<div class="c-collection-thumb--collection-buddies">
+
+    <div class="c-collection-thumb__feature-image">
+    <a class="c-collection-thumb__link-image--collection-buddies" href="{{ collection.url }}" title="{{ collection.title }}">
+      {%- assign image_object = collection.image -%}
+      {% include 'responsive-image' with
+        image: image_object,
+        max_width: 700,
+        max_height: 700
+      %}
+       </a>
+    </div>
+
+  <div class="c-collection-thumb__content">
+    <h2 class="c-collection-thumb__heading">{{ collection.title }}</h2>
+    <div class="c-collection__btn-cta">
+      <a href="{{ collection.url }}" class="c-btn--collection-thumb">
+        <span class="c-btn__label">Shop Now</span>
+      </a>
+    </div>
+  </div>
+</div>
