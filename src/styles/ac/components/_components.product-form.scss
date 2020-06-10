@@ -69,7 +69,7 @@
     display: block;
   }
   &label{
-   @include inuit-hidden-visually();
+   display: none;
   }
   &select{
     @include size(100%);
@@ -150,6 +150,11 @@
 .c-product-form__label--{
   &qty{
     display: none;
+  }
+  &weaning-bundle{
+    display: block;
+    height: auto;
+    width: 100%;
   }
 }
 

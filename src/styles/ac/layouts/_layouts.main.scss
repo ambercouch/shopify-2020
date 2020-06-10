@@ -27,6 +27,9 @@
   &product{
     background: #fff;
   }
+  &product-weaning-bundle{
+    @extend .l-main--product
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-main--

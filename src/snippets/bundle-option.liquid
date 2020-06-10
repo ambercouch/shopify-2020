@@ -1,0 +1,25 @@
+
+  <div class="c-product-form__input-wrapper--select selector-wrapper">
+    {% assign optionLable =  collection.metafields.global.option_lable %}
+    {% unless optionLable  %}
+    {% assign optionLable = collection.title %}
+    {% endunless %}
+    <label class="c-product-form__label--coverall1 c-product-form__label--weaning-bundle" for="Coverall1">
+      {{ optionLable }}
+    </label>
+    <select
+        class="c-product-form__select--coverall1 single-option-selector"
+        id="Covreall1"
+        name="options[coverall1]"
+    >
+      {% for optionProduct in collection.products %}
+        {% assign optionTitle = optionProduct.metafields.global.collection_title %}
+        {% unless optionTitle  %}
+        {% assign optionTitle = optionProduct.title %}
+        {% endunless %}
+        <option>{{ optionTitle }}</option>
+      {% endfor %}
+
+    </select>
+  </div>
+
