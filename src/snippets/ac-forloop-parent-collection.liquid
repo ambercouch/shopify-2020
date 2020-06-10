@@ -21,7 +21,7 @@
       </div>
       <div class="c-image-layer__content">
 
-    <div class="c-content-block--collection-list-2 c-content-block--{{  parentCollection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
+    <div class="c-content-block--collection-list-2 c-content-block--collection-buddies c-content-block--{{  parentCollection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
       {%  if blockLink != blank %}
       <a href="{{blockLink}}" class="c-content-block__link-thumb--collection-list-2">
         {% endif %}
@@ -66,7 +66,7 @@
       </div>
       {% endif %}
       {% if parentCollection.metafields.content-block.image2 %}
-        <div class="c-content-block__block-image--collection-list-2">
+        <div class="c-content-block__block-image--collection-list-2 c-content-block__block-image--collection-buddies">
           {% include 'responsive-image' with
             image: blockImage,
             max_width: 700,
