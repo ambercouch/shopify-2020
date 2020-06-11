@@ -105,6 +105,9 @@
     grid-column-end: 3;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out;
   }
+  &options{
+    display: block;
+  }
 
 
 }
@@ -139,6 +142,12 @@
   &select{
     @include size(100%);
   }
+  &bundle-product{
+    margin-bottom: $act-unit;
+    padding-bottom: $act-unit * 1.5;
+    border-bottom: solid 1px $brand-col-2;
+  }
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-product-form__label--
@@ -151,7 +160,7 @@
   &qty{
     display: none;
   }
-  &weaning-bundle{
+  &bundle-product {
     display: block;
     height: auto;
     width: 100%;
@@ -162,6 +171,11 @@
   .c-product-form &{
     @extend .c-product-form__form;
   }
+  .c-product-form--weaning-bundle &{
+    display: block;
+  }
+
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-product-form__select--
@@ -171,7 +185,27 @@
 }
 
 .c-product-form__select--{
+  &bundle-product{
+    @include mq($from:desktop){
+      width: 400px;
+      max-width: 100%;
+    }
+  }
+}
 
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__options--
+
+[class*=c-product-form__options--] {
+  @extend .c-product-form__options;
+}
+
+.c-product-form__options--{
+  &weaning-bundle{
+    margin-bottom: $act-unit;
+    @include mq($from:desktop){
+
+    }
+  }
 }
 
 

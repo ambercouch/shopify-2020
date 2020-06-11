@@ -62,6 +62,9 @@
   &collection-bundle{
     padding-top: 0;
   }
+  &bundle-product{
+
+  }
 
 
 
@@ -797,6 +800,13 @@
        grid-row-start: 5;
      }
    }
+  &bundle-product{
+    &:before{
+      @include mq($from:desktop){
+        height: $act-unit-l;
+      }
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__hero--

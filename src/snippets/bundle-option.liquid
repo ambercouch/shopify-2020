@@ -1,25 +1,29 @@
-
-  <div class="c-product-form__input-wrapper--select selector-wrapper">
+{% assign collection = collections[collectionHandle] %}
+    {% if collection != blank%}
+  <div class="c-product-form__input-wrapper--select  c-product-form__input-wrapper--bundle-product selector-wrapper">
     {% assign optionLable =  collection.metafields.global.option_lable %}
     {% unless optionLable  %}
     {% assign optionLable = collection.title %}
     {% endunless %}
-    <label class="c-product-form__label--coverall1 c-product-form__label--weaning-bundle" for="Coverall1">
+    <label class="c-product-form__label--{{ collectionHandle }}  c-product-form__label--bundle-product c-product-form__label--{{ product.handle }}" for="{{ collectionhandle }}">
       {{ optionLable }}
     </label>
     <select
-        class="c-product-form__select--coverall1 single-option-selector"
-        id="Covreall1"
-        name="options[coverall1]"
+        class="c-product-form__select--{{ collectionhandle }} c-product-form__select--bundle-product single-option-selector"
+        id="{{ collectionhandle }}"
+        name="options[collectionhandle]"
     >
       {% for optionProduct in collection.products %}
-        {% assign optionTitle = optionProduct.metafields.global.collection_title %}
+        {% for variant in  optionProduct.variants %}
+        {% assign optionTitle = variant.metafields.global.collection_title %}
         {% unless optionTitle  %}
-        {% assign optionTitle = optionProduct.title %}
+        {% assign optionTitle = variant.title %}
         {% endunless %}
         <option>{{ optionTitle }}</option>
+      {% endfor %}
       {% endfor %}
 
     </select>
   </div>
+{% endif %}
 

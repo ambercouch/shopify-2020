@@ -21,7 +21,7 @@
 {% if product.metafields.global.add_to_cart_text %}
   {% assign add_to_cart_text = product.metafields.global.add_to_cart_text  %}
 {% endif %}
-<div class="c-product-form">
+<div class="c-product-form--weaning-bundle">
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
 
   <input type="hidden" name="id" value="{{ currentVariant.id }}">
@@ -30,22 +30,30 @@
     {% include 'ac-product-form-price' %}
   </div>
 
-
+{% comment %}
   {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
     {% assign displayClass = 'is-shown'  %}
   {% else %}
     {% assign displayClass = 'is-hidden'  %}
   {% endif %}
-  <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
+  <!-- <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
     <div class="c-info-notice--dispatch-date">
       {{ preOrderDispatchText }}
     </div>
-  </div>
+  </div> -->
+{% endcomment %}
 
-  {% assign collection = collections['weaning-option-bibado'] %}
 
-  <div class="js c-product-form__options">
- {% include 'bundle-option' %}
+
+  <div class="js c-product-form__options--weaning-bundle">
+
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-1-bibado'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-2-bibado'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-3-easy-mat'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-4-easy-mat-mini'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-5-piccolo'}%}
+
+
   </div>
 
 
@@ -53,7 +61,7 @@
     {% for option in product.options_with_values %}
       <div class="js c-product-form__options">
 
-        {% if forloop.index0 > 0 %}
+
 
           {% for value in option.values %}
             <div class="c-product-form__input-wrapper selector-wrapper">
@@ -64,47 +72,6 @@
 
 
 
-        {% else %}
-        <div class="c-product-form__input-wrapper--select selector-wrapper">
-          <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}">
-            {{ option.name }}
-          </label>
-
-          <select
-              class="c-product-form__select--{{ option.name | handle}} single-option-selector"
-              id="Option{{ option.position }}"
-              name="options[{{ option.name | escape }}]"
-              data-js-product-form-select
-          >
-            {% for value in option.values %}
-              <option
-                  value="{{ value | escape }}"
-                  {% if option.selected_value == value %}selected="selected"{% endif %}>
-                {{ value }}
-              </option>
-            {% endfor %}
-          </select>
-        </div>
-
-          <select name="id" data-productid="{{product.id }}" id="productSelect" class="product-single__variants" style="display:none">
-            {% for variant in product.variants %}
-              {% if variant.available %}
-
-                {% comment %}
-                  Note: if you use option_selection.js, your < select > tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-                {% endcomment %}
-                <!--                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option> -->
-
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" data-variant-id="{{ variant.id}}" data-variant-qty="{{ variant.inventory_quantity }}" data-variant-policy="{{ variant.inventory_policy}}" data-variants="{{ variant.option1 | handle }};{{ variant.option2 | handle }};{{ variant.option3 | handle }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-              {% else %}
-                <option disabled="disabled">
-                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                </option>
-              {% endif %}
-            {% endfor %}
-          </select>
-
-        {% endif %}
       </div>
     {% endfor %}
   {% endunless %}
@@ -123,13 +90,13 @@
       {% endfor %}
     </select>
   </noscript>
-  <div class="c-product-form__input-wrapper--qty">
+  <div class="c-product-form__input-wrapper--qty .is-shown">
   <label class="c-product-form__label--qty" for="Quantity">{{ 'products.product.quantity' | t }}</label>
   <input class="c-product-form__input--qty" type="number" id="Quantity" name="quantity" value="1" min="1">
   </div>
 
 
-  <div class="c-product-form__submit">
+  <div class="c-product-form__submit--bundle-product">
   <button
       class="c-btn--product-form-submit"
       type="submit"

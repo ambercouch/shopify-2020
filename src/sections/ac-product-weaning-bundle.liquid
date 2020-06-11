@@ -27,8 +27,8 @@
 {% endif %}
 
 
-<div class="l-page--product">
-<section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product">
+<div class="l-page--product l-page--bundle-product">
+<section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product l-page__section--bundle-product">
 
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
