@@ -94,11 +94,15 @@
     grid-column-end: 3;
   }
   &form{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    column-gap: $act-unit-s;
-    row-gap: $act-unit-s;
+    display: block;
+    @include mq($from:desktop){
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      column-gap: $act-unit-s;
+      row-gap: $act-unit-s;
+    }
+
   }
   &info-notice{
     grid-column-start: 1;
@@ -267,6 +271,12 @@
 }
 
 .c-product-form__input-wrapper--qty-bundle-product{
+  margin-bottom: $act-unit;
+  @include mq($from:desktop){
+    margin-bottom: 0;
+    width: 200px;
+    max-width: 120%;
+  }
   .js-qty{
     @include mq($from:desktop){
       height: 100%;
@@ -275,6 +285,12 @@
   .js-qty__num{
     border-radius: $act-unit-t;
     border: solid 3px $brand-col-2;
+    width: 100%;
+    padding: $act-unit-s 0;
+   @include act-font-size($act-fs-5, 1);
+    @include mq($from:desktop){
+      padding: 0;
+    }
   }
 
 }
