@@ -108,7 +108,9 @@
   &options{
     display: block;
   }
-
+  &submit{
+    display: block;
+  }
 
 }
 
@@ -143,6 +145,9 @@
     @include size(100%);
   }
   &bundle-product{
+    @include mq($from:desktop){
+      height: auto;
+    }
     margin-bottom: $act-unit;
     padding-bottom: $act-unit * 1.5;
     border-bottom: solid 1px $brand-col-2;
@@ -172,7 +177,11 @@
     @extend .c-product-form__form;
   }
   .c-product-form--weaning-bundle &{
-    display: block;
+    @include mq($from:desktop){
+      display: flex;
+      flex-wrap: wrap;
+    }
+
   }
 
 
@@ -186,6 +195,7 @@
 
 .c-product-form__select--{
   &bundle-product{
+    height: auto;
     @include mq($from:desktop){
       width: 400px;
       max-width: 100%;
@@ -203,7 +213,37 @@
   &weaning-bundle{
     margin-bottom: $act-unit;
     @include mq($from:desktop){
+      width: 100%;
+    }
+  }
+}
 
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__product-price--
+
+[class*=c-product-form__product-price--] {
+  @extend .c-product-form__product-price;
+}
+
+.c-product-form__product-price--{
+  &bundle-product{
+
+    @include mq($from:desktop){
+      width: 100%;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__submit--
+
+[class*=c-product-form__submit--] {
+  @extend .c-product-form__submit;
+}
+
+.c-product-form__submit--{
+  &bundle-product{
+    @include mq($from:desktop){
+      width:400px;
+      max-width: 50%;
     }
   }
 }
@@ -224,4 +264,17 @@
     overflow: hidden;
     opacity: 1;
   }
+}
+
+.c-product-form__input-wrapper--qty-bundle-product{
+  .js-qty{
+    @include mq($from:desktop){
+      height: 100%;
+    }
+  }
+  .js-qty__num{
+    border-radius: $act-unit-t;
+    border: solid 3px $brand-col-2;
+  }
+
 }

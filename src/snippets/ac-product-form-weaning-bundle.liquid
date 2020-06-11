@@ -26,7 +26,7 @@
 
   <input type="hidden" name="id" value="{{ currentVariant.id }}">
 
-  <div class="c-product-form__product-price">
+  <div class="c-product-form__product-price--bundle-product">
     {% include 'ac-product-form-price' %}
   </div>
 
@@ -90,7 +90,7 @@
       {% endfor %}
     </select>
   </noscript>
-  <div class="c-product-form__input-wrapper--qty .is-shown">
+  <div class="c-product-form__input-wrapper--qty-bundle-product .is-shown">
   <label class="c-product-form__label--qty" for="Quantity">{{ 'products.product.quantity' | t }}</label>
   <input class="c-product-form__input--qty" type="number" id="Quantity" name="quantity" value="1" min="1">
   </div>
