@@ -1,27 +1,41 @@
 {% assign collection = collections[collectionHandle] %}
     {% if collection != blank%}
   <div class="c-product-form__input-wrapper--select  c-product-form__input-wrapper--bundle-product selector-wrapper">
-    {% assign optionLable =  collection.metafields.global.option_lable %}
-    {% unless optionLable  %}
-    {% assign optionLable = collection.title %}
+    {% assign optionLabel =  collection.metafields.global.option_label %}
+    {% unless optionLabel  %}
+    {% assign optionLabel = collection.title %}
     {% endunless %}
     <label class="c-product-form__label--{{ collectionHandle }}  c-product-form__label--bundle-product c-product-form__label--{{ product.handle }}" for="{{ collectionhandle }}">
-      {{ optionLable }}
+      {{ optionLabel }}
     </label>
     <select
-        class="c-product-form__select--{{ collectionhandle }} c-product-form__select--bundle-product single-option-selector"
-        id="{{ collectionhandle }}"
-        name="options[collectionhandle]"
+        data-option-label="{{ optionLabel }}"
+        class="c-product-form__select--{{ collectionHandle }} c-product-form__select--bundle-product single-option-selector"
+        id="{{ collectionHandle }}"
+        name="properties[{{collectionHandle}}]"
     >
+
       {% for optionProduct in collection.products %}
-        {% for variant in  optionProduct.variants %}
-        {% assign optionTitle = variant.metafields.global.collection_title %}
-        {% unless optionTitle  %}
-        {% assign optionTitle = variant.title %}
-        {% endunless %}
-        <option>{{ optionTitle }}</option>
+        {% if optionProduct.variants.size > 1 %}
+          {% for variant in  optionProduct.variants %}
+            {% assign optionTitle = variant.metafields.global.collection_title %}
+            {% unless optionTitle  %}
+            {% assign optionTitle = variant.title %}
+            {% endunless %}
+            <option>{{optionTitle}}</option>
+          {% endfor %}
+        {% else %}
+          {% assign optionTitle = optionProduct.metafields.global.collection_title %}
+          {% unless optionTitle  %}
+          {% assign optionTitle = optionProduct.title %}
+          {% endunless %}
+          <option>{{optionTitle}}</option>
+        {% endif %}
+
+
+
       {% endfor %}
-      {% endfor %}
+
 
     </select>
   </div>
