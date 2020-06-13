@@ -276,6 +276,7 @@
     margin-bottom: 0;
     width: 200px;
     max-width: 120%;
+    margin-right: $act-unit;
   }
   .js-qty{
     @include mq($from:desktop){
