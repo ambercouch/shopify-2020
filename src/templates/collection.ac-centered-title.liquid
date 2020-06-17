@@ -5,8 +5,7 @@
 {% if collection.metafields.global.collection_header_logo %}
 {% assign collectionHeaderLogo = images[collection.metafields.global.collection_header_logo] %}
 {% endif %}
-
-
+{% paginate collection.products by 12 %}
   <div class="l-main__page--collection">
     <div class="l-page--collection">
       <header class="l-page__header--collection">
@@ -31,11 +30,11 @@
               </h1>
           {% endif %}
 
-          <!-- <div class="l-page__btn--header-link-collection ac-link-text">
+          <div class="l-page__btn--header-link-collection ac-link-text">
             <a href="{{ collection.products[0].url }}" class="c-btn--header-link-collection">
               <span class="c-btn__label--header-link-collection">Buy Now</span>
             </a>
-          </div> -->
+          </div>
              {% if collection.image.src %}
         <div class="l-page__feature-image--collection">
           {% include 'responsive-image' with
@@ -79,9 +78,9 @@
         <div class="c-image-layer__content">
 
       <div class="l-page__collection-intro">
-      <header class="l-page__header--collection-intro u-tac" role="banner">
+      <header class="l-page__header--collection-intro" role="banner">
         {% unless hideTitle %}
-      <h1 class="l-page__heading" >
+      <h1 class="l-page__heading u-tac " >
         <span class="l-page__title">{{ collection.title }}</span>
       </h1>
         {% endunless %}
@@ -118,15 +117,11 @@
       <div class="l-page__icon-list--collection">
         {% include 'ac-icon-list-loop-collection' %}
       </div>
-  <div class="l-page__product-list test-commits">
+  <div class="l-page__product-list">
     <div class="l-product-list">
 
-      <div class="l-product-list__list--collection-buddies">
-        {% assign parentCollection = collection %}
-
-        {% for collection in collections %}
-      {%  assign includeInCollection =  collection.metafields.global.include_in_collection %}
-
+      <div class="l-product-list__list">
+    {% for product in collection.products %}
       {% comment %}
       {% if forloop.first == true %}
         <!-- forloop.index {{ forloop.index }} - forloop.first -->
@@ -137,21 +132,15 @@
         <!-- forloop.index {{ forloop.index }} -->
       {% endif %}
       {% endcomment %}
-
-{% if includeInCollection contains parentCollection.handle %}
-      <div class="l-product-list__item--collection-buddies is-product-id-{{ collection.id }} u-bgc-{{ collection.metafields.global.background }}">
+      <div class="l-product-list__item is-product-id-{{ product.id }} u-bgc-{{ product.metafields.global.background }}">
         <div class="l-product-list__product-thumb">
-        {% include 'ac-collection-thumb-buddies' %}
+        {% include 'ac-product-thumb' %}
         </div>
       </div>
-      {% endif %}
-
       {% if forloop.last == true %}
         <!-- forloop.index {{ forloop.index }} - forloop.last -->
         <div class="l-product-list__item--last">
-          {% assign collection = parentCollection %}
-
-          {% include 'ac-forloop-parent-collection' %}
+          {% include 'ac-forloop-4' %}
         </div>
         {% else %}
           <!-- forloop.index {{ forloop.index }} -->
@@ -162,7 +151,9 @@
     </div>
   </div>
 
-
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
     </div>
   </div>
-
+{% endpaginate %}
