@@ -105,7 +105,6 @@
 
 .l-product-list__list--{
   &search{
-
     margin-bottom: 0;
     @include mq($from: desktop){
      width: $act-wrapper-width;
@@ -117,6 +116,9 @@
   &collection-bundle{
     background: #fff;
     padding: $act-unit-l 0;
+  }
+  &collection-buddies{
+
   }
 }
 
@@ -140,7 +142,9 @@
     @include mq($from:desktop){
       padding-bottom: $act-unit-l;
     }
-
+  }
+  &collection-buddies{
+    background: #fff;
   }
 }
 

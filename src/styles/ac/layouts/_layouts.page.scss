@@ -62,6 +62,9 @@
   &collection-bundle{
     padding-top: 0;
   }
+  &bundle-product{
+
+  }
 
 
 
@@ -407,6 +410,17 @@
 }
 
 .l-page__heading--{
+  &collection{
+    background: #fff;
+    color: $brand-col-2;
+    margin-bottom: 0;
+    padding-top: $act-unit;
+    padding-bottom: $act-unit;
+    @include mq($from: desktop){
+      grid-row-start: 2;
+      text-align: center;
+    }
+  }
   &landing{
     color: $brand-col-2;
     margin-bottom: $act-unit-l;
@@ -549,6 +563,7 @@
       grid-column-start: 1;
       grid-column-end: 3;
       margin-bottom: 0;
+      position: static !important;
     }
   }
   &collection-desktop{
@@ -560,6 +575,7 @@
       grid-row-end: 5;
       margin-bottom: 0;
       display: block;
+      position: static !important;
     }
   }
   &article{
@@ -784,6 +800,13 @@
        grid-row-start: 5;
      }
    }
+  &bundle-product{
+    &:before{
+      @include mq($from:desktop){
+        height: $act-unit-l;
+      }
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__hero--

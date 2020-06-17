@@ -16,6 +16,10 @@
   &type {
     display: block
   }
+  &collection-buddies{
+    padding: $act-unit-t;
+    padding-bottom:  0;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-collection-thumb--
@@ -34,7 +38,12 @@
   }
 
   &heading {
-    display: block
+    display: block;
+    color: $brand-col-2;
+    @include mq($from:desktop){
+      text-align: left;
+    }
+
   }
 
   &title {
@@ -43,6 +52,9 @@
 
   &link {
     display: inline
+  }
+  &link-image{
+    display: block;
   }
 
   &content {
@@ -63,4 +75,16 @@
 
 [class*=c-collection-thumb__header--] {
   @extend .c-collection-thumb__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-collection-thumb__link-image--
+
+[class*=c-collection-thumb__link-image--] {
+  @extend .c-collection-thumb__link-image;
+}
+
+.c-collection-thumb__link-image--{
+  &collection-buddies{
+    border: solid 1px $brand-col-2;
+  }
 }

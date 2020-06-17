@@ -84,6 +84,7 @@
   }
   &feature-image{
     margin-bottom: $act-unit;
+    background: white;
     @include mq($from:desktop){
       overflow: hidden;
     }

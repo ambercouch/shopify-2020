@@ -64,15 +64,17 @@
                          {{#if variation}}
                          <span class="c-product-thumb__variant-title">{{variation}}</span>
                          {{/if}}
+
                          {{#properties}}
                          <div class="c-product-thumb__options">
                            {{#each this}}
                            {{#if this}}
-                           <span class="c-product-thumb__option">{{@key}}: {{this}}</span>
+                           <div class="c-product-thumb__option">{{@key}}: {{this}}</div>
                            {{/if}}
                            {{/each}}
                          </div>
                          {{/properties}}
+
                        {% endraw %}
                      </div>
 

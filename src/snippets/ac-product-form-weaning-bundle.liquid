@@ -1,0 +1,119 @@
+{% assign productType = product.type | handle %}
+<!-- productType {{ productType }}  product.type {{ product.type }} product {{ product }} -->
+{% if current_variant.metafields.global.pre_order_dispatch_text  %}
+  <!-- pre_order_dispatch_text from the current_variant meta -->
+  {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+{% elsif product.metafields.global.pre_order_dispatch_text != nill %}
+  <!-- pre_order_dispatch_text from the product meta -->
+    {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+  {% elsif shop.metafields[productType].pre_order_dispatch_text  != nill %}
+  <!-- pre_order_dispatch_text from the shop meta -->
+  {% assign preOrderDispatchText =  shop.metafields[productType].pre_order_dispatch_text %}
+
+{% else %}
+  <!-- pre_order_dispatch_text none -->
+  {% assign preOrderDispatchText = nil %}
+{% endif %}
+
+
+{% assign currentVariant = product.selected_or_first_available_variant %}
+{% assign add_to_cart_text = 'products.product.add_to_cart' | t  %}
+{% if product.metafields.global.add_to_cart_text %}
+  {% assign add_to_cart_text = product.metafields.global.add_to_cart_text  %}
+{% endif %}
+<div class="c-product-form--weaning-bundle">
+{% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+
+  <input type="hidden" name="id" value="{{ currentVariant.id }}">
+
+  <div class="c-product-form__product-price--bundle-product">
+    {% include 'ac-product-form-price' %}
+  </div>
+
+{% comment %}
+  {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
+    {% assign displayClass = 'is-shown'  %}
+  {% else %}
+    {% assign displayClass = 'is-hidden'  %}
+  {% endif %}
+  <!-- <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
+    <div class="c-info-notice--dispatch-date">
+      {{ preOrderDispatchText }}
+    </div>
+  </div> -->
+{% endcomment %}
+
+
+
+  <div class="js c-product-form__options--weaning-bundle">
+
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-1-bibado'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-2-bibado'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-3-easy-mat'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-4-easy-mat-mini'}%}
+    {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-5-piccolo'}%}
+
+
+  </div>
+
+
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      <div class="js c-product-form__options">
+
+
+
+          {% for value in option.values %}
+            <div class="c-product-form__input-wrapper selector-wrapper">
+            <input class="c-product-form__input--{{ option.name }}" type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+            <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
+            </div>
+          {% endfor %}
+
+
+
+      </div>
+    {% endfor %}
+  {% endunless %}
+
+  <noscript>
+    <select name="id">
+      {% for variant in product.variants %}
+        <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}"
+            data-variant-qty="{{ variant.inventory_qty }}"
+        >
+          {{ variant.title }}
+        </option>
+      {% endfor %}
+    </select>
+  </noscript>
+  <div class="c-product-form__input-wrapper--qty-bundle-product .is-shown">
+  <label class="c-product-form__label--qty" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+  <input class="c-product-form__input--qty" type="number" id="Quantity" name="quantity" value="1" min="1">
+  </div>
+
+
+  <div class="c-product-form__submit--bundle-product">
+  <button
+      class="c-btn--product-form-submit"
+      type="submit"
+      name="add"
+      data-submit-button
+      {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+        <span data-submit-button-text>
+          {% if current_variant.available and current_variant.inventory_quantity > 0 %}
+            {{ add_to_cart_text }}
+          {% elsif current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'%}
+            Pre-order
+            {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+  </button>
+  </div>
+
+{% endform %}
+</div>

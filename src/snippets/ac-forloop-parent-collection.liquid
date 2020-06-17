@@ -1,0 +1,85 @@
+
+{% assign blockLink =  parentCollection.metafields.content-block.url2 %}
+{% assign blockLinkText =  parentCollection.metafields.content-block.link_text2 %}
+{% assign logoImage = images[parentCollection.metafields.content-block.logo2] %}
+{% assign blockImage = images[parentCollection.metafields.content-block.image2] %}
+{% assign blockTitle = parentCollection.metafields.content-block.title2 %}
+{% assign blockSubTitle = parentCollection.metafields.content-block.subtitle2 %}
+{% assign blockText = parentCollection.metafields.content-block.text2 %}
+{% if  images[parentCollection.metafields.content-block.image2] %}
+{% assign hasImageClass = 'has-footer-image' %}
+{% endif %}
+
+
+<!-- forloop.index {{ forloop.index }} -->
+{% if logoImage != blank or blockImage != blank or blockTitle != blank %}
+  <div class="l-product-list__content-block--{{ parentCollection.metafields.content-block.title2 | handle  }} ">
+
+    <div class="c-image-layer">
+      <div class="c-image-layer__background">
+        {% include 'ac-blobs' %}
+      </div>
+      <div class="c-image-layer__content">
+
+    <div class="c-content-block--collection-list-2 c-content-block--collection-buddies c-content-block--{{  parentCollection.metafields.content-block.title2 | handle }} {{ hasImageClass }}">
+      {%  if blockLink != blank %}
+      <a href="{{blockLink}}" class="c-content-block__link-thumb--collection-list-2">
+        {% endif %}
+      <header class="c-content-block__header--collection-list-2 ">
+        {%  if logoImage != blank %}
+        {% if logoImage != blank %}
+          <h3 class="c-content-block__logo--collection-list-2">
+            {% include 'responsive-image' with
+              image: logoImage,
+              max_width: 400,
+              max_height: 700
+            %}
+          </h3>
+        {% endif %}
+        {% endif %}
+        {%  if blockTitle != blank %}
+        <h3 class="c-content-block__heading--collection-buddies">
+                <span class="c-content-block__title">
+                  {{ blockTitle }}
+                </span>
+        </h3>
+        {% endif %}
+        {%  if blockSubTitle != blank %}
+        <h4 class="c-content-block__sub-heading--collection-list-2">
+          {{ blockSubTitle }}
+        </h4>
+        {% endif %}
+      </header>
+        {%  if blockText != blank %}
+      <div class="c-content-block__body--collection-list-2">
+        <p>{{ blockText }}</p>
+      </div>
+        {% endif %}
+        {%  if blockLink != blank %}
+      </a>
+      {% endif %}
+      {% if blockLinkText %}
+      <div class="c-content-block__footer--collection-list-2">
+        <div class="c-content-block__btn--collection-list-2">
+          <a class="c-btn--collection-list-2" href="{{blockLink}}">{{ blockLinkText }}</a>
+        </div>
+      </div>
+      {% endif %}
+      {% if parentCollection.metafields.content-block.image2 %}
+        <div class="c-content-block__block-image--collection-list-2 c-content-block__block-image--collection-buddies">
+          {% include 'responsive-image' with
+            image: blockImage,
+            max_width: 700,
+            max_height: 700
+          %}
+        </div>
+      {% endif %}
+
+    </div>
+
+      </div><!-- .c-image-layer__content -->
+    </div><!-- .c-image-layer__content -->
+
+
+  </div>
+{% endif %}
