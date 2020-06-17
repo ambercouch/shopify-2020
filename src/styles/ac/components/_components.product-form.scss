@@ -152,8 +152,8 @@
     @include mq($from:desktop){
       height: auto;
     }
-    margin-bottom: $act-unit;
-    padding-bottom: $act-unit * 1.5;
+    margin-bottom: $act-unit-t;
+    padding-bottom: $act-unit-t;
     border-bottom: solid 1px $brand-col-2;
   }
 
@@ -215,7 +215,7 @@
 
 .c-product-form__options--{
   &weaning-bundle{
-    margin-bottom: $act-unit;
+    margin-bottom: $act-unit-t;
     @include mq($from:desktop){
       width: 100%;
     }

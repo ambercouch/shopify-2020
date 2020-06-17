@@ -12,7 +12,7 @@
         data-option-label="{{ optionLabel }}"
         class="c-product-form__select--{{ collectionHandle }} c-product-form__select--bundle-product single-option-selector"
         id="{{ collectionHandle }}"
-        name="properties[{{collectionHandle}}]"
+        name="properties[{{ optionLabel }}]"
     >
 
       {% for optionProduct in collection.products %}
