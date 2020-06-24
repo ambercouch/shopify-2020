@@ -1,6 +1,7 @@
 {% assign hideTitle = collection.metafields.global.hide_title %}
 {% assign collectionLogo = images[collection.metafields.global.logo] %}
 {% assign featureImage = images[collection.metafields.global.feature_image_desktop] %}
+{% assign collectionLink = collection.metafields.global.collection_link %}
 
 {% if collection.metafields.global.collection_header_logo %}
 {% assign collectionHeaderLogo = images[collection.metafields.global.collection_header_logo] %}
@@ -29,12 +30,15 @@
                 <span class="l-page__title">{{ collection.title }}</span>
               </h1>
           {% endif %}
+  {% unless collectionLink == 'false' %}
 
           <div class="l-page__btn--header-link-collection ac-link-text">
             <a href="{{ collection.products[0].url }}" class="c-btn--header-link-collection">
               <span class="c-btn__label--header-link-collection">Buy Now</span>
             </a>
           </div>
+  {% endunless %}
+
              {% if collection.image.src %}
         <div class="l-page__feature-image--collection">
           {% include 'responsive-image' with
