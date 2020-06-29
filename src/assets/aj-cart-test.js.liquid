@@ -1,14 +1,16 @@
 console.log('aj cart test');
+
 jQuery(function($) {
   console.log('ajax cart test')
-  ajaxCart.init({
-    formSelector: '.shopify-product-form',
-    cartContainer: '#CartContainer',
-    addToCartSelector: '.c-btn--product-form-submit',
-    cartCountSelector: '.CartCount',
-    cartCostSelector: '#CartCost',
-    moneyFormat: theme.moneyFormat
-});
+
+ // ajaxCart.init({
+  // formSelector: '.shopify-product-form',
+  // cartContainer: '#CartContainer',
+  // addToCartSelector: '.c-btn--product-form-submit',
+  // cartCountSelector: '.CartCount',
+  // cartCostSelector: '#CartCost',
+  // moneyFormat: theme.moneyFormat
+  // );
 });
 
 jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
