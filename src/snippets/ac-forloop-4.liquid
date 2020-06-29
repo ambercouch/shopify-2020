@@ -25,7 +25,7 @@
       <header class="c-content-block__header--collection-list-2 ">
         {%  if logoImage != blank %}
         {% if logoImage != blank %}
-          <h3 class="c-content-block__logo--collection-list-2">
+          <h3 class="c-content-block__logo--collection-list-2 c-content-block__logo--{{  collection.metafields.content-block.title2 | handle }}">
             {% include 'responsive-image' with
               image: logoImage,
               max_width: 400,
@@ -63,7 +63,7 @@
       </div>
       {% endif %}
       {% if collection.metafields.content-block.image2 %}
-        <div class="c-content-block__block-image--collection-list-2">
+        <div class="c-content-block__block-image--collection-list-2 c-content-block__block-image--{{  collection.metafields.content-block.title2 | handle }}">
           {% include 'responsive-image' with
             image: blockImage,
             max_width: 700,

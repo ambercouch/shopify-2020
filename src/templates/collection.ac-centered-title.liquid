@@ -143,14 +143,15 @@
       </div>
       {% if forloop.last == true %}
         <!-- forloop.index {{ forloop.index }} - forloop.last -->
-        <div class="l-product-list__item--last">
-          {% include 'ac-forloop-4' %}
-        </div>
+
         {% else %}
           <!-- forloop.index {{ forloop.index }} -->
       {% endif %}
 
     {% endfor %}
+        <div class="l-product-list__item--last">
+          {% include 'ac-forloop-4' %}
+        </div>
       </div>
     </div>
   </div>

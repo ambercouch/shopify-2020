@@ -89,6 +89,12 @@
       padding: 0 2%;
       margin-bottom: 0;
     }
+    .is-3-col &{
+      min-width: 30%;
+      @include mq($from:desktop){
+        min-width: 0 !important;
+      }
+    }
 
   }
   &icon-thumb{

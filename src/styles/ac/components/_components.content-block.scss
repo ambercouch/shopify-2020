@@ -83,6 +83,18 @@ $act-block-height : 450px;
 
     }
   }
+  &bibado-weaning-bundle-save-20{
+    display: flex;
+    flex-direction: column;
+    @include mq($from: desktop){
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows:  1fr auto auto 1fr;
+      padding-bottom: 0 !important;
+      padding-top: $act-unit;
+
+    }
+  }
   &product{
     padding: $act-unit-t $act-unit 0;
     @include mq($from:desktop){
@@ -408,7 +420,11 @@ $act-block-height : 450px;
   }
   &collection-list-2{
     width: 100%;
-    text-align: left;
+    text-align: center;
+    @include mq($from:desktop){
+      text-align: left;
+    }
+
   }
 
 }
@@ -463,7 +479,17 @@ $act-block-height : 450px;
     }
   }
   &collection-buddies{
-    text-align: left;
+    text-align: center;
+    @include mq($from:desktop){
+      text-align: left;
+    }
+
+  }
+  &bibado-weaning-bundle-save-20{
+    text-align: center;
+    @include mq($from:desktop){
+      text-align: left;
+    }
   }
 }
 
@@ -713,7 +739,29 @@ $act-block-height : 450px;
       }
     }
   }
+
   &collection-buddies{
+      order: -1;
+      position: static;
+      margin: 0 auto $act-unit;
+      @include mq($from:desktop){
+        order: unset;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 5;
+        position: relative;
+        left:auto;
+        right: auto;
+        top: auto;
+        width: 400px;
+        .responsive-image__wrapper{
+          max-width: 400px !important;
+          margin-left: 0;
+        }
+      }
+    }
+  &bibado-weaning-bundle-save-20{
     order: -1;
     position: static;
     margin: 0 auto $act-unit;
