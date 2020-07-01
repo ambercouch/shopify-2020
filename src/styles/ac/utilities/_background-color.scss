@@ -1,57 +1,114 @@
 
 .u-bgc-1 {
   background-color: $brand-col-1 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-1 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-1 !important;
+  }
 }
 
 .u-bgc-2 {
   background-color: $brand-col-2 !important;
-  color: $brand-col-1; //default
+  &:hover{
+    background-color: $brand-col-2;
+  }
+  &-hover:hover{
+    background-color: $brand-col-2 !important;
+  }
+
 }
 
 .u-bgc-3 {
   background-color: $brand-col-3 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-3 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-3 !important;
+  }
+
 }
 
 .u-bgc-4{
   background-color: $brand-col-4 !important;
-  color: white;
-  .nav-menu__link *{
-    color: white;
+  &:hover{
+    background-color: $brand-col-4 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-4 !important;
   }
 }
 
 .u-bgc-5 {
   background-color: $brand-col-5 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-5 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-5 !important;
+  }
 }
 
 .u-bgc-6 {
   background-color: $brand-col-6 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-6 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-6 !important;
+  }
 }
 
 .u-bgc-7 {
   background-color: $brand-col-7 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-7 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-7 !important;
+  }
 }
 
 .u-bgc-8 {
   background-color: $brand-col-8 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-8 ;
+  }
+  &-hover:hover{
+    background-color: $brand-col-8 !important;
+  }
 }
 
 .u-bgc-9 {
   background-color: $brand-col-9 !important;
-  color: white; //default
+  &:hover{
+    background-color: $brand-col-9;
+  }
+  &-hover:hover{
+    background-color: $brand-col-9 !important;
+  }
 }
 
 .u-bgc-w {
   background-color: white !important;
+  &:hover{
+    background-color: white ;
+  }
+  &-hover:hover{
+    background-color: white !important;
+  }
 
 }
 .u-bgc-t {
   background-color: transparent !important;
+  &:hover{
+    background-color: transparent;
+  }
+  &-hover:hover{
+    background-color: transparent !important;
+  }
+
 
 }

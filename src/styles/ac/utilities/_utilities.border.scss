@@ -13,31 +13,106 @@
 
 .u-bor-col-1{
   border-color: $brand-col-1;
+  &:hover{
+    border-color: $brand-col-1 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-1;
+  }
 }
 .u-bor-col-2{
   border-color: $brand-col-2;
+  &:hover{
+    border-color: $brand-col-2 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-2;
+  }
 }
 .u-bor-col-3{
   border-color: $brand-col-3;
+  &:hover{
+    border-color: $brand-col-3 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-3;
+  }
 }
 .u-bor-col-4{
   border-color: $brand-col-4;
+  &:hover{
+    border-color: $brand-col-4 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-4;
+  }
 }
 .u-bor-col-5{
   border-color: $brand-col-5;
+  &:hover{
+    border-color: $brand-col-5 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-5;
+  }
 }
 .u-bor-col-6{
   border-color: $brand-col-6;
+  &:hover{
+    border-color: $brand-col-6 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-6;
+  }
 }
 .u-bor-col-7{
   border-color: $brand-col-7;
+  &:hover{
+    border-color: $brand-col-7 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-7;
+  }
 }
 .u-bor-col-8{
   border-color: $brand-col-8;
+  &:hover{
+    border-color: $brand-col-8 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-8;
+  }
 }
 .u-bor-col-9{
   border-color: $brand-col-9;
+  &:hover{
+    border-color: $brand-col-9 !important;
+  }
+  &-hover:hover{
+    border-color:$brand-col-9;
+  }
 }
+
+.u-bor-col-w{
+  border-color: white;
+  &:hover{
+    border-color: white !important;
+  }
+  &-hover:hover{
+    border-color:white;
+  }
+}
+
+.u-bor-col-t{
+border-color: transparent;
+&:hover{
+  border-color: transparent !important;
+}
+&-hover:hover{
+  border-color: transparent;
+}
+}
+
 
 
 .u-bor-t-none{
