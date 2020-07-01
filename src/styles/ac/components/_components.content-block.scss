@@ -352,8 +352,8 @@ $act-block-height : 450px;
   &body{
     margin-bottom: $act-unit;
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     > *:last-child{
       margin-bottom: 0;
     }
@@ -368,8 +368,9 @@ $act-block-height : 450px;
     @include mq($from: desktop){
       grid-column-start: 2;
       grid-row-start: 3;
-      width: 300px;
-      margin: 0 auto;
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
 
     }
 
@@ -504,12 +505,15 @@ $act-block-height : 450px;
      display: block;
      @extend .c-btn;
      @extend .c-btn--content-block;
-     padding-left: $act-unit-t;
-     padding-right: $act-unit-t;
+     padding-left: $act-unit;
+     padding-right: $act-unit;
      @include mq($from:desktop){
-       max-width: 300px;
-
+       //max-width: 300px;
        margin-left: 0 !important;
+     }
+     &:hover{
+       padding-left: $act-unit;
+       padding-right: $act-unit;
      }
    }
    &block{

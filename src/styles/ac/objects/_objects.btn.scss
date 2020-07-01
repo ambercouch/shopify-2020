@@ -47,13 +47,18 @@
     @extend .o-btn;
     width: 100%;
   }
+  &auto-width {
+    @extend .o-btn;
+    width: auto !important;
+    display: inline-block !important;
+  }
   &block {
     @extend .o-btn;
     width: 100%;
     display: block !important;
   }
   &ghost{
-    background: transparent !important;
+    background: transparent;
     border: solid 1px;
   }
   &transparent{

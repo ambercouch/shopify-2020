@@ -53,7 +53,8 @@
   }
 
   &footer {
-    display: block
+    display: block;
+    text-align: center;
   }
   &list{
     @extend .o-list-bare;
@@ -121,19 +122,20 @@
 
 .l-thumb-list__link--{
   &btn{
-    display: block;
     @extend .c-btn;
     @extend .c-btn--content-block;
     padding-left: $act-unit-t;
     padding-right: $act-unit-t;
-    color: $brand-col-3;
-    width: 300px;
+    color: $brand-col-3 !important;
     max-width: 100%;
+    display: inline-block;
     &:focus{
       color: $brand-col-3 !important;
     }
     &:hover{
       color: $brand-col-3 !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
     }
   }
   &block{

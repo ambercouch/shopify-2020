@@ -6,7 +6,6 @@
  @extend .o-btn;
   @extend .o-btn--small;
   @extend .o-btn--ghost;
-  @extend .o-btn--block;
   position: relative;
   color: $brand-col-2;
   border-radius: $act-unit-t;
@@ -16,9 +15,9 @@
   &:hover, &:focus{
     color: $brand-col-2;
     @extend .o-btn--small;
-    @extend .o-btn--block;
     @extend .o-btn--ghost;
     border-width: 3px;
+    min-width: 200px;
   }
 
 }
@@ -143,6 +142,7 @@
     border: solid 3px $brand-col-3;
     min-width: 0;
     &:hover,&:focus{
+      @extend .o-btn--full;
       background: darken($brand-col-3, 10%) !important;
       color: white;
       border: solid 3px $brand-col-3;
