@@ -177,9 +177,12 @@
 .c-product-thumb__heading--{
   &cart{
     color: $brand-col-2;
-    margin-bottom: $act-unit-t;
+    margin-bottom: $act-unit-s;
     @include act-font-size($act-fs-5,1.2);
     text-align: left;
+    @include mq($from: desktop){
+      margin-bottom: $act-unit-t;
+    }
   }
   &modal{
     text-align: left;
@@ -257,6 +260,12 @@
     padding: $act-unit-s;
 
   }
+  &cart-qty{
+    margin-bottom: $act-unit-t;
+    @include mq($from: desktop){
+      margin-bottom: 0;
+    }
+  }
 }
 
 // BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__input--
@@ -269,7 +278,7 @@
 .c-product-thumb__input--{
   &qty{
     text-align: center;
-    width: $act-unit;
+    width: $act-unit-l;
     @include act-font-size($act-fs-5);
     padding: 0;
     line-height: 1.4;
