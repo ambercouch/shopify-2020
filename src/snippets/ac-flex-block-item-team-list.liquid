@@ -58,7 +58,7 @@
     </ul>
 
     <ul class="l-thumb-list__list--more" data-container="teamlist" data-state="off">
-      {% for c in (1..10)  offset: 3 %}
+      {% for c in (1..20)  offset: 3 %}
         {% capture imageId %}image{{ c }}{% endcapture %}
         {% capture nameId %}member_name{{ c }}{% endcapture %}
         {% capture posId %}member_pos{{ c }}{% endcapture %}
@@ -98,7 +98,7 @@
             </div>
           </li>
         {% else %}
-          <!-- no itemImage or itemName or itemPos -->
+          <!-- no itemImage or itemName or itemPos for pos-{{ forloop.index }} -->
         {% endif %}
 
       {% endfor %}
