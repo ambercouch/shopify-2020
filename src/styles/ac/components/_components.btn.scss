@@ -158,7 +158,7 @@
     border-radius: $act-unit-t;
     border: solid 3px $brand-col-3;
     &:hover,&:focus{
-
+      @extend .o-btn--full;
       color: $brand-col-3;
     }
   }
@@ -188,6 +188,7 @@
     @include act-font-size($act-fs-5,1);
     border-width: 3px;
     &:hover, &:focus{
+      @extend .o-btn--full;
       color: $brand-col-3;
       border-color: $brand-col-3;
       border-width: 3px;
