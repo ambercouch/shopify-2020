@@ -2,55 +2,66 @@
     {% assign autoDiscount = false %}
     {% assign discText = '' %}
     {% assign discTextExtra = ''  %}
-    {% if cart.item_count == 1 %}
-      {% assign discText = '' %}
-    {% endif %}
-    {% if cart.item_count == 2 %}
-      {% assign discText = '' %}
-    {% endif %}
-    {% if cart.item_count == 3 %}
-      {% assign discountPercent = 0.2 %}
-      {% assign cartTotal = cart.total_price %}
-      {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
-      {% assign autoDiscount = true %}
-      {% assign discCode = '3BIB20' %}
-      {% assign discText = 'You have 3 items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> on the next page at checkout to get <strong>20%</strong> off your order, saving you ' | append :  discountSavingMoney  %}
-      {% assign discTextExtra = 'or add 1 more product to qualify for a <strong>25%</strong> discount' %}
+{% assign cartBbdCount = 0 %}
 
-    {% endif %}
-    {% if cart.item_count == 4 %}
-      {% assign discountPercent = 0.25 %}
-      {% assign cartTotal = cart.total_price %}
-      {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
-      {% assign discountPercent = 25 %}
-      {% assign autoDiscount = true %}
-      {% assign discCode = '4BIB25' %}
-      {% assign discText = 'You have 4 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> on the next page at checkout to get <strong>25%</strong> off your order, saving you ' | append :  discountSavingMoney %}
-      {% assign discTextExtra = 'or add 2 more products to qualify for a <strong>30%</strong> discount' %}
+{% for item in cart.items %}
+  {% assign vendor =  item.product.vendor | downcase %}
+  {% if vendor contains 'bibado' %}
+      {% capture countTemp %}{{ cartBbdCount  | plus: item.quantity }}{% endcapture %}
+  {% endif %}
+  {% assign cartBbdCount = countTemp %}
+  {% assign cartBbdCount = cartBbdCount | times : 1 %}
+{% endfor %}
 
-    {% endif %}
+{% for item in cart.items %}
+  {% assign vendor =  item.product.vendor | downcase %}
+  {% if vendor contains 'bibado' %}
+    {% capture totalTemp %}{{ cartBbdTotal  | plus: item.final_line_price }}{% endcapture %}
+  {% endif %}
+  {% assign cartBbdTotal = totalTemp  %}
+{% endfor %}
 
-    {% if cart.item_count == 5 %}
-      {% assign discountPercent = 0.25 %}
-      {% assign cartTotal = cart.total_price %}
-      {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
-      {% assign discountPercent = 25 %}
-      {% assign autoDiscount = true %}
-      {% assign discCode = '4BIB25' %}
-      {% assign discText = 'You have 5 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> on the next page at checkout to get <strong>25%</strong> off your order, saving you ' | append :  discountSavingMoney %}
-      {% assign discTextExtra = 'or add 1 more product to qualify for a <strong>30%</strong> discount' %}
-    {% endif %}
 
-    {% if cart.item_count >= 6 %}
-      {% assign discountPercent = 0.3 %}
-      {% assign cartTotal = cart.total_price %}
-      {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
-      {% assign discountPercent = 30 %}
-      {% assign autoDiscount = true %}
-      {% assign discCode = '6BIB30' %}
-      {% assign discText = 'You have 6+ items in your cart. Enter code <span class="c-discount-code" > <strong>6BIB30</strong></span> on the next page at checkout to get <strong>30%</strong> off your order, saving you ' | append :  discountSavingMoney %}
-    {% endif %}
+{% case cartBbdCount | times: 1 %}
+{% when 0 %}
+{% assign discountPercent = 0%}
+{% when 1 %}
+{% assign discountPercent = 0%}
+{% when 2 %}
+{% assign discountPercent = 0%}
+{% when 3 %}
+{% assign discountPercent = 0.2 %}
+{% when 4 %}
+{% assign discountPercent = 0.25 %}
+{% when 5 %}
+{% assign discountPercent = 0.25 %}
+  {% else %}
+{% assign discountPercent = 0.3 %}
+{% endcase %}
+
+{% assign discountSaving = cartBbdTotal | times: discountPercent %}
+{% assign discountSavingMoney = discountSaving | money %}
+{% assign autoDiscount = true %}
+
+{% case cartBbdCount | times: 1 %}
+{% when 3 %}
+{% assign discCode = '3BIB20' %}
+{% assign discText = 'You have 3 Bibado items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> on the next page at checkout to get <strong>20%</strong> off your order, saving you ' | append :  discountSavingMoney  %}
+{% assign discTextExtra = 'or add 1 more Bibado product to qualify for a <strong>25%</strong> discount' %}
+
+{% when 4 %}
+{% assign autoDiscount = true %}
+{% assign discCode = '4BIB25' %}
+{% assign discText = 'You have 4 Bibado items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> on the next page at checkout to get <strong>25%</strong> off your order, saving you ' | append :  discountSavingMoney %}
+{% assign discTextExtra = 'or add 2 more Bibado products to qualify for a <strong>30%</strong> discount' %}
+{% when 5 %}
+{% assign autoDiscount = true %}
+{% assign discCode = '4BIB25' %}
+{% assign discText = 'You have 5 Bibado items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> on the next page at checkout to get <strong>25%</strong> off your order, saving you ' | append :  discountSavingMoney %}
+{% assign discTextExtra = 'or add 1 more Bibado product to qualify for a <strong>30%</strong> discount' %}
+{% when 6 %}
+{% assign autoDiscount = true %}
+{% assign discCode = '6BIB30' %}
+{% assign discText = 'You have Bibado 6+ items in your cart. Enter code <span class="c-discount-code" > <strong>6BIB30</strong></span> on the next page at checkout to get <strong>30%</strong> off your order, saving you ' | append :  discountSavingMoney %}
+{% endcase %}
+
