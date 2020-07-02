@@ -256,6 +256,7 @@
     }
   }
   &cart-remove{
+    min-width: 0;
     padding: 3px;
     @extend .o-btn--transparent;
     color: #ccc;
@@ -264,6 +265,7 @@
     @include size(30px);
     min-width: 0;
     &:hover, &:focus, &:active{
+      min-width: 0;
       @include size(30px);
       padding: 3px;
       @extend .o-btn--transparent;
