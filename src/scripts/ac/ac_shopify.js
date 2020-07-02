@@ -783,8 +783,9 @@ const ACSHOPIFY = {
           success: function () {
             //window.location.href = "/cart";
             console.log('we have success so open up and load');
-            timber.RightDrawer.open();
-            ajaxCart.load();
+            //timber.RightDrawer.open();
+            //ajaxCart.load();
+            window.location.href = "/cart";
           },
           error: function () {
             console.log('we have and error');
