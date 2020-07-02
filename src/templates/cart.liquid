@@ -31,7 +31,7 @@
       {% endunless %}
 
       <div class="l-cart-list--page">
-        <ul class="l-cart-list__list test">
+        <ul class="l-cart-list__list">
           {% for item in cart.items %}
           <li class="l-cart-list__item">
             <div class="l-cart-list__product-thumb">
@@ -63,10 +63,20 @@
                   <div class="c-product-thumb__wrapper--cart-qty">
 
                     <div class="c-product-thumb__variant">
-
-
+                      {% unless item.variant.title contains 'Default' %}
                         <span class="c-product-thumb__variant-title">{{ item.variant.title }}</span>
+                      {% endunless %}
+                      {% assign property_size = item.properties | size %}
 
+                      {% if property_size > 0 %}
+                      <div class="c-product-thumb__options">
+                        {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                        <div class="c-product-thumb__option">{{ p.first }}: {{ p.last }}</div>
+                        {% endunless %}
+                        {% endfor %}
+                      </div>
+                      {% endif %}
                     </div>
 
                     <div class="c-product-thumb__qty-sep">
