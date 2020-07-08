@@ -505,6 +505,7 @@ $act-block-height : 450px;
      display: block;
      @extend .c-btn;
      @extend .c-btn--content-block;
+     @extend .c-btn--swipe-hover;
      padding-left: $act-unit;
      padding-right: $act-unit;
      @include mq($from:desktop){

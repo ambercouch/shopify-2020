@@ -6,6 +6,7 @@
  @extend .o-btn;
   @extend .o-btn--small;
   @extend .o-btn--ghost;
+  overflow: hidden;
   position: relative;
   color: $brand-col-2;
   border-radius: $act-unit-t;
@@ -27,6 +28,30 @@
  */
 
 .c-btn-- {
+  &swipe-hover{
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    &:after{
+      transition: width 0.8s ease-in-out;
+      transform: rotateZ(-15deg);
+      content: "";
+      width: 100%;
+      height: 100vw;
+      display: block;
+      position: absolute;
+      left: -50%;
+      top: -50vw;
+      background: rgba(#fff, 0.2);
+      width: 0;
+
+    }
+    &:hover{
+      &:after{
+        width: 200% !important;
+      }
+    }
+  }
   &subscribe-submit{
     @extend .o-btn--small;
     @extend .o-btn--full;
@@ -49,7 +74,7 @@
     padding-top: $act-unit-s;
     padding-bottom: $act-unit-s;
     &:hover,&:focus{
-      background: rgba(white, 0.5);
+      //background: rgba(white, 0.5);
       color: white;
     }
   }
@@ -119,6 +144,11 @@
      &:hover{
        color: $brand-col-2;
      }
+    &:after{
+      @extend .c-btn--swipe-hover:after;
+      background: rgba(white, 0.5);
+      z-index: 0;
+    }
    }
   &thumb{
     @extend .c-btn;
@@ -143,9 +173,13 @@
     min-width: 0;
     &:hover,&:focus{
       @extend .o-btn--full;
-      background: darken($brand-col-3, 10%) !important;
+     //background: darken($brand-col-3, 10%) !important;
       color: white;
       border: solid 3px $brand-col-3;
+    }
+    &:after{
+      @extend .c-btn--swipe-hover;
+      background: darken($brand-col-3, 10%);
     }
   }
   &add-to-bundle{
@@ -169,8 +203,13 @@
     min-width: 200px;
     padding-top: $act-unit-s;
     padding-bottom: $act-unit-s;
+    position: relative;
+    overflow: hidden;
     &:hover{
       color: $brand-col-3;
+    }
+    &:after{
+      @extend .c-btn--swipe-hover:after;
     }
   }
   &buy-bundle{
@@ -187,11 +226,17 @@
     color: $brand-col-3;
     @include act-font-size($act-fs-5,1);
     border-width: 3px;
+    position: relative;
+    overflow: hidden;
     &:hover, &:focus{
       @extend .o-btn--full;
       color: $brand-col-3;
       border-color: $brand-col-3;
       border-width: 3px;
+    }
+    &:after{
+      @extend .c-btn--swipe-hover:after;
+      background: rgba($brand-col-3, 0.3);
     }
   }
   &block{
@@ -283,6 +328,10 @@
     border-radius: $act-unit-s;
     font-family: $act-font-family-headings;
     font-weight: 700;
+    &:after{
+      @extend .c-btn--swipe-hover:after;
+      background: $brand-col-3;
+    }
     &:hover, &:focus{
       @extend .o-btn--full;
       background: white;
@@ -325,16 +374,10 @@
     min-width: 200px;
     max-width: 100%;
     display: inline-block !important;
+    overflow: hidden;
     &:after{
-      transition: width 0.2s ease-in-out;
-      content:'';
-      display: block;
-      height: 100%;
+     @extend .c-btn--swipe-hover:after;
       background: $brand-col-2;
-      position: absolute;
-      top:0;
-      left: 0;
-      width: 0;
     }
     &:hover, &:focus{
       display: inline-block !important;
@@ -419,6 +462,10 @@
     display: block;
   }
   &label{
+    position: relative;
+    z-index: 1;
+  }
+  &link-label{
     position: relative;
     z-index: 1;
   }
