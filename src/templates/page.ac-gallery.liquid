@@ -1,0 +1,115 @@
+{% assign pageImage = page.metafields.global.feature_image %}
+{% assign pageHeroImage = images[page.metafields.global.hero_image] %}
+{% assign pageHeroText = page.metafields.global.hero_text %}
+{% assign pageFooterText = page.metafields.block_footer.text %}
+{% assign pageFooterButtonUrl = page.metafields.block_footer.button_url %}
+{% assign pageFooterButtonText = page.metafields.block_footer.button_text %}
+{% assign classBlockPadding = page.metafields.blocks.block_padding %}
+{% assign classHeroBackground = page.metafields.global.hero_background %}
+{% if page.metafields.global.page_handle %}
+  {% assign pageHandle = page.metafields.global.page_handle %}
+  {% else %}
+    {% assign pageHandle = page.handle %}
+{% endif %}
+
+
+{% if page.metafields.global.hero_image %}
+  {% assign classHeroImage = 'has-hero-image' %}
+{% endif %}
+{% if pageHeroText %}
+  {% assign classHeroText = 'has-hero-text' %}
+{% endif %}
+
+<div class="l-main__page--static-page l-main__page{{ page.title | handle }}">
+  <div class="l-page--static-page l-page--{{ page.title | handle }}">
+    <header class="l-page__header--static-page l-page__header--{{ page.title | handle }} {{ classHeroImage }} {{ classHeroText }} u-bgc-{{ classHeroBackground}}" role="banner">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+          <div class="l-main__content-block-wrapper">
+<div class="l-page__grid-wrapper--header-static-page">
+      {% if pageImage %}
+        <div class="l-page__feature-image">
+          <img class="l-page__img" src="{{ pageImage | file_img_url: 'original' }}"  alt="{{ page.title | escape }}" />
+        </div>
+      {% else %}
+        <!-- no page image -->
+      {% endif %}
+
+
+      <h1 class="l-page__heading--static-page l-page__heading--{{ page.title | handle }}" >
+        <span class="l-page__title">{{ page.title }}</span>
+      </h1>
+
+      {% if pageHeroText %}
+      <div class="l-page__hero--static-page">
+        <div class="l-page__hero-text">
+          {{ pageHeroText }}
+        </div>
+      </div>
+
+      {% else %}
+        <!-- no page hero text {{ pageHeroText }} ! -->
+      {% endif %}
+      {% if pageHeroImage %}
+      <div class="l-page__hero-image">
+        {% include 'responsive-image' with
+          image: pageHeroImage,
+          max_width: 800,
+          max_height: 800
+        %}
+      </div>
+      {% else %}
+        <!-- no page hero image {{ pageHeroImage }} ! -->
+      {% endif %}
+</div>
+          </div><!-- .l-main__content-block-wrapper -->
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+    </header>
+
+
+
+    <div class="l-page__content--static-page">
+      {% if page.content != blank %}
+
+
+        <div class="l-page__rte--static-page rte">
+          {{ page.content }}
+        </div>
+
+
+      {% endif %}
+
+      <!-- include ac-block-loop -->
+      {% assign sObj = page  %}
+      {% assign modClass = '--static-page'  %}
+
+      <div class="l-page__block-loop--static-page l-page__block-loop--{{ pageHandle }}">
+
+      <div class="c-image-layer">
+        <div class="c-image-layer__background--l-page">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+      {% include 'ac-block-loop-gallery' %}
+        </div>
+      </div>
+
+      </div>
+
+
+    </div>
+
+    {% if pageFooterButtonText %}
+      <div class="l-page__footer--static-page">
+        <div class="l-page__footer-btn">
+          <a href="{{ pageFooterButtonUrl }}" class="c-btn--page-footer-login">{{ pageFooterButtonText }}</a>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>

@@ -1,0 +1,59 @@
+{% if page.metafields.global.gallery_title %}
+  {% assign galleryTitle = page.metafields.global.gallery_title %}
+{% else %}
+  {% assign galleryTitle = '#supertribe Gallery' %}
+{% endif %}
+
+{% if galleryHandle %}
+  {% assign galleryHandle = galleryHandle %}
+{% else %}
+  {% assign galleryHandle = 'super-tribe' %}
+{% endif %}
+
+{% assign blog = blogs[galleryHandle] %}
+
+<div class="l-gallery__header">
+  <div class="c-header--gallery">
+    <h2 class="c-header__heading--gallery">
+      <span class="c-header__title">{{ galleryTitle }}</span>
+    </h2>
+  </div>
+</div>
+
+<div class="l-gallery__gallery">
+  <div class="c-gallery">
+    <div class="c-gallery__list">
+    {% for article in blog.articles %}
+      {% if article.image %}
+        <div class="c-gallery__item">
+          <div class="c-gallery__image lazyload" >
+            <a class="c-gallery__link-image" href="#modal-{{ article.id }}">
+              {% include 'responsive-image' with
+                image: article.image,
+                max_width: 700,
+                max_height: 700
+              %}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="remodal" data-remodal-id="modal-{{ article.id }}">
+        <button data-remodal-action="close" class="remodal-close"></button>
+
+        <div class="c-gallery__image lazyload" >
+
+            {% include 'responsive-image' with
+              image: article.image,
+              max_width: 1200,
+              max_height: 1200
+            %}
+
+        </div>
+
+      </div>
+
+    {% endfor %}
+    </div>
+  </div>
+</div>
