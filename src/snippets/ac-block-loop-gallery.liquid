@@ -28,13 +28,14 @@
 
 {% for i in (1..10) %}
   {% if forloop.index == galleryIndex %}
-
+    {% assign blog = blogs[galleryHandle] %}
+  {% if blog.articles_count > 0 %}
 <div id="gallery-{{ galleryHandle }}"  class="l-page__gallery--{{ galleryHandle }}  u-bgc-{{ galleryBgColor }}">
   <div class="l-gallery--{{ galleryHandle }}">
     {% include 'ac-gallery' %}
   </div>
 </div>
-
+  {% endif %}
 {% endif %}
    {% capture namespace %}block{{ i }}{% endcapture %}
 
