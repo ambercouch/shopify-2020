@@ -284,6 +284,24 @@ const ACSHOPIFY = {
     init: function() {
       // uncomment to debug
       console.log('pages');
+    },
+    ac_gallery: function(){
+      console.log('acGallery scripts');
+      // Product gallery flickity script for thumbs
+      let elemGallery = document.querySelector('.c-gallery__list');
+      if(elemGallery ){
+        let flktyProductThumb = new Flickity( elemGallery, {
+          // options
+          cellAlign: 'center',
+          contain: true,
+          prevNextButtons: true,
+          imagesLoaded: true,
+          pageDots: false,
+          wrapAround: true,
+        });
+      }else{
+        console.log('No .c-quote-list__list');
+      }
     }
   },
   collection: {
