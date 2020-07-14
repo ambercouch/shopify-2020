@@ -923,6 +923,23 @@ const ACSHOPIFY = {
         console.log('vid click open');
         inst.open();
       })
+    },
+    weaning_bundle: function() {
+      console.log('properties bundle updated');
+      console.log('properties bundle');
+      $(document).on('click', '[data-product-single-thumbnail]', function(event) {
+        let thumbnail = this;
+        let visibleImageWrapper = '[data-product-image-wrapper]:not(hide)';
+
+        $(visibleImageWrapper).addClass('hide');
+        $('[data-product-image-wrapper][data-image-id=' + thumbnail.dataset.thumbnailId + ']').removeClass('hide');
+
+        console.log('onThumbnailClick');
+        console.log('thumbnail.dataset.thumbnailId');
+        console.log(thumbnail.dataset.thumbnailId);
+        event.preventDefault();
+      });
+
     }
   },
   search: {
