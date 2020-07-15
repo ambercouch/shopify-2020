@@ -1,0 +1,166 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+{% assign hideTitle = collection.metafields.global.hide_title %}
+{% assign collectionLogo = images[collection.metafields.global.logo] %}
+{% assign featureImage = images[collection.metafields.global.feature_image_desktop] %}
+
+{% if collection.metafields.global.collection_header_logo %}
+{% assign collectionHeaderLogo = images[collection.metafields.global.collection_header_logo] %}
+{% endif %}
+{% paginate collection.products by 12 %}
+  <div class="l-main__page--collection">
+    <div class="l-page--collection">
+      <header class="l-page__header--collection">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+<div class="l-page__grid-wrapper--collection-header">
+
+          {% if collectionHeaderLogo %}
+            <div class="l-page__collection-logo--header">
+              {% include 'responsive-image' with
+                image: collectionHeaderLogo,
+                max_width: 800,
+                max_height: 1000
+              %}
+            </div>
+            {% else %}
+              <h1 class="l-page__heading" >
+                <span class="l-page__title">{{ collection.title }}</span>
+              </h1>
+          {% endif %}
+
+          <div class="l-page__btn--header-link-collection ac-link-text">
+            <a href="{{ collection.products[0].url }}" class="c-btn--header-link-collection">
+              <span class="c-btn__label--header-link-collection">Buy Now</span>
+            </a>
+          </div>
+             {% if collection.image.src %}
+        <div class="l-page__feature-image--collection">
+          {% include 'responsive-image' with
+            image: collection.image,
+            max_width: 800,
+            max_height: 1000
+          %}
+
+
+          <div class="l-page__icon--scroll-collection" data-js-scroll-down >
+            {% include 'icon-bbd-scroll' %}
+          </div>
+        </div>
+      {% else %}
+        <!-- no collection image -->
+      {% endif %}
+            <div class="l-page__feature-image--collection-desktop">
+
+        {% include 'responsive-image' with
+          image: featureImage,
+          max_width: 1200,
+          max_height: 1000
+        %}
+        <div class="l-page__icon--scroll-collection" data-js-scroll-down >
+          {% include 'icon-bbd-scroll' %}
+        </div>
+
+      </div>
+
+
+</div>
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+      </header>
+
+      <div class="l-page__wrapper--collection-intro">
+      <div class="c-image-layer">
+        <div class="c-image-layer__background">
+          {% include 'ac-blobs' %}
+        </div>
+        <div class="c-image-layer__content">
+
+      <div class="l-page__collection-intro">
+      <header class="l-page__header--collection-intro" role="banner">
+        {% unless hideTitle %}
+      <h1 class="l-page__heading" >
+        <span class="l-page__title">{{ collection.title }}</span>
+      </h1>
+        {% endunless %}
+
+        {% if collection.metafields.global.logo %}
+          <div class="l-page__logo--collection">
+            {% include 'responsive-image' with
+              image: collectionLogo,
+              max_width: 400,
+              max_height:400
+            %}
+          </div>
+        {% endif %}
+
+    <div class="l-page__tag-list">
+    {% include 'ac-tag-list' %}
+    </div>
+
+  </header>
+
+      {% if collection.description != blank %}
+      <div class="l-page__content--collection">
+          <div class="rte">
+            {{ collection.description }}
+          </div>
+      </div>
+      {% endif %}
+      </div>
+
+        </div><!-- .c-image-layer__content -->
+      </div><!-- .c-image-layer__content -->
+      </div><!-- .l-page__wapper--collection-intro -->
+
+      <div class="l-page__icon-list--collection">
+        {% include 'ac-icon-list-loop-collection' %}
+      </div>
+  <div class="l-page__product-list">
+    <div class="l-product-list">
+
+      <div class="l-product-list__list">
+    {% for product in collection.products %}
+      {% comment %}
+      {% if forloop.first == true %}
+        <!-- forloop.index {{ forloop.index }} - forloop.first -->
+        <div class="l-product-list__item--first">
+          {% include 'ac-forloop-2' %}
+        </div>
+      {% else %}
+        <!-- forloop.index {{ forloop.index }} -->
+      {% endif %}
+      {% endcomment %}
+      <div class="l-product-list__item is-product-id-{{ product.id }} u-bgc-{{ product.metafields.global.background }}">
+        <div class="l-product-list__product-thumb">
+        {% include 'ac-product-thumb' %}
+        </div>
+      </div>
+      {% if forloop.last == true %}
+        <!-- forloop.index {{ forloop.index }} - forloop.last -->
+        <div class="l-product-list__item--last">
+          {% include 'ac-forloop-4' %}
+        </div>
+        {% else %}
+          <!-- forloop.index {{ forloop.index }} -->
+      {% endif %}
+
+    {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+    </div>
+  </div>
+{% endpaginate %}

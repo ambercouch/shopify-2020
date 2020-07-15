@@ -11,7 +11,8 @@
 {% endif %}
 
 {% assign blog = blogs[galleryHandle] %}
-
+{% if blog.articles_count > 0 %}
+  <!--  blog.articles_count = {{  blog.articles_count }} -->
 <div class="l-gallery__header">
   <div class="c-header--gallery">
     <h2 class="c-header__heading--gallery">
@@ -20,7 +21,7 @@
   </div>
 </div>
 
-<div class="l-gallery__gallery">
+<div class="l-gallery__gallery test">
   <div class="c-gallery">
     <div class="c-gallery__list">
     {% for article in blog.articles %}
@@ -57,3 +58,4 @@
     </div>
   </div>
 </div>
+{% endif %}

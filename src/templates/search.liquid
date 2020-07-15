@@ -26,6 +26,7 @@
       {% include 'ac-site-search-form' %}
     </div><!-- site-controls__search -->
 
+
   {% if search.performed %}
     {% if search.results_count == 0 %}
       <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
