@@ -47,29 +47,24 @@
     {% for option in product.options_with_values %}
       <div class="js c-product-form__options">
 
-        {% if forloop.index0 > 0 %}
-
+        {% if forloop.index0 > 4 %}
           {% for value in option.values %}
             <div class="c-product-form__input-wrapper selector-wrapper">
             <input class="c-product-form__input--{{ option.name }}" type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
             <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
             </div>
           {% endfor %}
-
-
-
         {% else %}
         <div class="c-product-form__input-wrapper--select selector-wrapper">
           <label class="c-product-form__label--{{ option.name }}" for="Option{{ option.position }}">
             {{ option.name }}
           </label>
-
           <select
               class="c-product-form__select--{{ option.name | handle}} single-option-selector"
               id="Option{{ option.position }}"
               name="options[{{ option.name | escape }}]"
               data-js-product-form-select
-          >
+              >
             {% for value in option.values %}
               <option
                   value="{{ value | escape }}"
@@ -131,7 +126,9 @@
       data-submit-button
       {% unless current_variant.available %}disabled="disabled"{% endunless %}>
         <span data-submit-button-text class="c-btn__link-label">
-          {% if current_variant.available and current_variant.inventory_quantity > 0 %}
+          {% if current_variant.available and current_variant.inventory_quantity > 0   %}
+            {{ add_to_cart_text }}
+            {% elsif current_variant.available and current_variant.inventory_management != 'shopify'  %}
             {{ add_to_cart_text }}
           {% elsif current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'%}
             Pre-order
