@@ -48,7 +48,9 @@
 </div>
   {% if belowFormButtonUrl != null %}
   <div class="l-page__product-form-after">
-    <a class="c-btn--product-bundle-link" href="{{ belowFormButtonUrl }}">{{ belowFormButtonText }}</a>
+    <a class="c-btn--product-bundle-link" href="{{ belowFormButtonUrl }}">
+      <span class="c-btn__link-label">{{ belowFormButtonText }}</span>
+    </a>
   </div>
   {% endif %}
 
