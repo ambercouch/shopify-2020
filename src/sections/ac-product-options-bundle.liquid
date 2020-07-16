@@ -1,0 +1,316 @@
+{% assign productType = product.type | handle %}
+
+{% if product.metafields.global.below_form_button_text != nill %}
+  <!-- below_form_link from the product meta -->
+  {% assign belowFormButtonText =  product.metafields.global.below_form_button_text %}
+
+{% elsif shop.metafields[productType].below_form_button_text  != nill %}
+  <!-- below_form_link from the shop meta -->
+  {% assign belowFormButtonText = shop.metafields[productType].below_form_button_text %}
+
+{% else %}
+  {% assign belowFormButtonText = nil %}
+
+{% endif %}
+
+{% if product.metafields.global.below_form_button_url != nill %}
+  <!-- below_form_link from the product meta -->
+  {% assign belowFormButtonUrl =  product.metafields.global.below_form_button_url %}
+
+  {% elsif shop.metafields[productType].below_form_button_url  != nill %}
+  <!-- below_form_link from the shop meta -->
+  {% assign belowFormButtonUrl = shop.metafields[productType].below_form_button_url %}
+
+{% else %}
+  {% assign belowFormButtonUrl = nil %}
+
+{% endif %}
+
+
+<div class="l-page--product l-page--option-product">
+<section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product l-page__section--bundle-product">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <div class="l-page__gallery">
+    {% include 'ac-product-gallery' %}
+  </div>
+  <header class="l-page__header--product">
+  <h1 class="l-page__heading--product areviewsapp-title">
+    <span class="l-page__heading--title">
+       {{ product.title }}
+    </span>
+  </h1>
+  </header>
+<div class="l-page__product-form">
+  {% include 'ac-product-form-options-bundle' %}
+</div>
+  {% if belowFormButtonUrl != null %}
+  <div class="l-page__product-form-after">
+    <a class="c-btn--product-bundle-link" href="{{ belowFormButtonUrl }}">
+      <span class="c-btn__link-label">{{ belowFormButtonText }}</span>
+    </a>
+  </div>
+  {% endif %}
+
+
+
+  <div class="l-page__content--product">
+
+  {% for i in (1..10) %}
+    {% assign nextI = i | plus:  1 %}
+    {% assign blockimageId = 'block_image_'  | append : i %}
+    {% assign blockTitleId = 'block_title_'  | append : i %}
+    {% assign blockContentId = 'block_content_'  | append : i %}
+    {% assign blockUrlId = 'block_url_'  | append : i %}
+    {% assign blockLinkTextId = 'block_link_text_'  | append : i %}
+    {% assign blockBgColId = 'block_background_color_'  | append : i %}
+    {% assign blockNextBgColId = 'block_background_color_'  | append : nextI %}
+    {% assign blockTextColId = 'block_text_color_'  | append : i %}
+    {% assign blockVideoId = 'block_youtube_id_'  | append : i %}
+    {% assign blockTypeId = 'block_type_' | append : i %}
+
+
+    {% if product.metafields.blocks[blockTitleId] != nill %}
+
+      <!-- Title from the product meta -->
+      {% assign blockTitle = product.metafields.blocks[blockTitleId] %}
+
+    {% elsif shop.metafields[productType][blockTitleId]  != nill %}
+
+      <!-- Title from the shop meta -->
+    {% assign blockTitle = shop.metafields[productType][blockTitleId] %}
+
+      {% else %}
+        <!-- no Title -->
+        {% assign blockTitle = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockContentId] != nill %}
+
+      <!-- Content from the product meta -->
+      {% assign blockContent = product.metafields.blocks[blockContentId] %}
+
+      {% elsif shop.metafields[productType][blockContentId]  != nill %}
+
+      <!-- Content from the shop meta -->
+      {% assign blockContent = shop.metafields[productType][blockContentId] %}
+
+    {% else %}
+      <!-- no Content -->
+      {% assign blockContent = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockUrlId] != nill %}
+
+    <!-- Url from the product meta -->
+    {% assign blockUrl = product.metafields.blocks[blockUrlId] %}
+
+    {% elsif shop.metafields[productType][blockUrlId]  != nill %}
+
+    <!-- Url from the shop meta -->
+    {% assign blockUrl = shop.metafields[productType][blockUrlId] %}
+
+  {% else %}
+    <!-- no Url -->
+    {% assign blockUrl = nil %}
+  {% endif %}
+
+    {% if product.metafields.blocks[blockLinkTextId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockLinkText = product.metafields.blocks[blockLinkTextId] %}
+
+      {% elsif shop.metafields[productType][blockLinkTextId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockLinkText = shop.metafields[productType][blockLinkTextId] %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockLinkText = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockBgColId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockBgCol = product.metafields.blocks[blockBgColId] %}
+      {% assign classHasBgc = 'has-bgc' %}
+
+      <style>
+        #blockId{{ i }}:after{
+        {% case blockBgCol %}
+        {% when '1' %}
+          background-color: #fcec47
+        {% endcase %}
+        }
+      </style>
+
+      {% elsif shop.metafields[productType][blockBgColId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockBgCol = shop.metafields[productType][blockBgColId] %}
+      {% assign classHasBgc = 'has-bgc' %}
+
+      <style>
+        #blockId{{ i }}:after{
+        {% case blockBgCol %}
+        {% when '1' %}
+          background-color: #fcec47
+        {% endcase %}
+        }
+        }
+      </style>
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockBgCol = nil %}
+      {% assign classHasBgc = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockNextBgColId] != nill %}
+
+      <!-- LinkText from the product meta -->
+      {% assign blockNextBdCol = product.metafields.blocks[blockNextBgColId] %}
+      {% assign classHasNextBgc = 'has-next-bgc' %}
+
+      {% elsif shop.metafields[productType][blockNextBgColId]  != nill %}
+
+      <!-- LinkText from the shop meta -->
+      {% assign blockNextBdCol = shop.metafields[productType][blockNextBgColId] %}
+      {% assign classHasNextBgc = 'has-next-bgc' %}
+
+    {% else %}
+      <!-- no LinkText -->
+      {% assign blockNextBdCol = nil %}
+      {% assign classHasNextBgc = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockVideoId] != nill %}
+
+      <!-- vidioId from the product meta -->
+      {% assign blockVideo = product.metafields.blocks[blockVideoId] %}
+
+      {% elsif shop.metafields[productType][blockVideoId]  != nill %}
+
+      <!-- vidioId from the shop meta -->
+      {% assign blockVideo = shop.metafields[productType][blockVideoId] %}
+
+      {% else %}
+      <!-- no vidioId  -->
+      {% assign blockVideo = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockTypeId] != nill %}
+
+      <!-- vidioId from the product meta -->
+      {% assign blockType = product.metafields.blocks[blockTypeId] %}
+
+      {% if blockType contains "icon-list" %}
+        {% assign blockTypeClass = "is-icon-list"%}
+      {% endif %}
+
+      {% elsif shop.metafields[productType][blockTypeId]  != nill %}
+
+      <!-- vidioId from the shop meta -->
+      {% assign blockType = shop.metafields[productType][blockTypeId] %}
+
+      {% if blockType contains "icon-list" %}
+        {% assign blockTypeClass = "is-icon-list"%}
+      {% endif %}
+
+    {% else %}
+      <!-- no vidioId  -->
+      {% assign blockType = nil %}
+      {% assign blockTypeClass = nil%}
+    {% endif %}
+
+    {% if blockVideo != nil %}
+    <div id="blockId{{ i }}" class="l-page__content-block--product is-video">
+      <div class="c-content-block--product is-video">
+        <div class="c-video-embed">
+          <iframe class="c-video-embed__iframe--youtube" width="560" height="315" src="https://www.youtube.com/embed/{{ blockVideo }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    {% elsif blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil %}
+
+    <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }} {{ blockTypeClass }}">
+      <div class="c-content-block--product">
+    {% if blockTitle != nil %}
+        <h2 class="c-content-block__heading--product">
+          <span class="c-content-block__title" >{{ blockTitle  }}</span>
+        </h2>
+    {% endif %}
+        <div class="c-content-block__body--product">
+          {% if blockContent != nil %}
+          {{ blockContent }}
+            {% endif %}
+          {% if blockLinkText != nil %}
+          <div class="c-content-block__btn--{{ i }}">
+            <a href="{{ blockUrl }}" class="c-btn--block" >{{ blockLinkText }}</a>
+          </div>
+          {% endif %}
+
+          {% if blockType contains "icon-list" %}
+          <div class="c-content-block__icon-list">
+           {% include 'ac-icon-list-loop' %}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  {% endfor %}
+
+
+    <div class="l-page__content-block--charity">
+      <div class="c-content-block--charity">
+        <h2 class="c-content-block__heading--charity">
+          <span class="c-content-block__title" >Charity Giving</span>
+        </h2>
+        <div class="c-content-block__body--charity">
+          <div class="c-content-block__text--charity">
+          <p>£1 from every order is donated to charitable causes in the UK and overseas, including Noah's Ark Children's Hospital Charity.</p>
+          </div>
+          <img class="c-content-block__img--charity" src="{{ 'logo-noahs-ark.svg' | asset_url }}" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="l-page__footer--product">
+    <div class="l-page__btn--footer">
+      <a class="c-btn--product-back" href="#top">
+        <span class="o-btn__icon--left">{% include 'icon-arrow-left' %}</span>
+        <span class="o-btn__label">Back to top</span>
+      </a>
+    </div>
+  </div>
+
+{% comment %}
+  {% if section.settings.show_share_buttons %}
+    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+  {% endif %}
+  {% endcomment %}
+</section>
+</div>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
