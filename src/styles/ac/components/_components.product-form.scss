@@ -159,6 +159,14 @@
     padding-bottom: $act-unit-t;
     border-bottom: solid 1px $brand-col-2;
   }
+  &option-product{
+    @include mq($from:desktop){
+      height: auto;
+    }
+    margin-bottom: $act-unit-t;
+    padding-bottom: $act-unit-t;
+    border-bottom: solid 1px $brand-col-2;
+  }
 
 }
 
@@ -174,6 +182,11 @@
   }
   &bundle-product {
     display: block;
+    height: auto;
+    width: 100%;
+  }
+  &opiton-product {
+    display: block !important;
     height: auto;
     width: 100%;
   }
@@ -199,7 +212,14 @@
       display: flex;
       flex-wrap: wrap;
     }
+  }
 
+  .c-product-form--options-bundle &{
+    @include mq($from:desktop){
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 0;
+    }
   }
 
 
@@ -229,6 +249,12 @@
 
 .c-product-form__options--{
   &weaning-bundle{
+    margin-bottom: $act-unit-t;
+    @include mq($from:desktop){
+      width: 100%;
+    }
+  }
+  &options-bundle{
     margin-bottom: $act-unit-t;
     @include mq($from:desktop){
       width: 100%;

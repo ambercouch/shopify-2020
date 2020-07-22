@@ -27,7 +27,7 @@
 {% endif %}
 
 
-<div class="l-page--product l-page--bundle-product">
+<div class="l-page--product l-page--option-product">
 <section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product l-page__section--bundle-product">
 
   {%- assign current_variant = product.selected_or_first_available_variant -%}
@@ -44,7 +44,7 @@
   </h1>
   </header>
 <div class="l-page__product-form">
-  {% include 'ac-product-form-weaning-bundle' %}
+  {% include 'ac-product-form-options-bundle' %}
 </div>
   {% if belowFormButtonUrl != null %}
   <div class="l-page__product-form-after">
