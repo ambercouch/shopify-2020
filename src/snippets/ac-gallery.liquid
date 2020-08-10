@@ -4,24 +4,31 @@
   {% assign galleryTitle = '#supertribe Gallery' %}
 {% endif %}
 
-{% if galleryHandle %}
-  {% assign galleryHandle = galleryHandle %}
+{% if page.metafields.global.gallery_header_background %}
+  {% assign galleryHeaderBg = page.metafields.global.gallery_header_background  %}
 {% else %}
-  {% assign galleryHandle = 'super-tribe' %}
+  {% assign galleryHeaderBg = 3 %}
 {% endif %}
+
+{% if page.metafields.global.gallery_header_colour %}
+  {% assign galleryHeaderCol = page.metafields.global.gallery_header_colour  %}
+{% else %}
+  {% assign galleryHeaderCol = 'w' %}
+{% endif %}
+
 
 {% assign blog = blogs[galleryHandle] %}
 {% if blog.articles_count > 0 %}
   <!--  blog.articles_count = {{  blog.articles_count }} -->
-<div class="l-gallery__header">
+<div class="l-gallery__header u-bgc-{{ galleryHeaderBg }}">
   <div class="c-header--gallery">
     <h2 class="c-header__heading--gallery">
-      <span class="c-header__title">{{ galleryTitle }}</span>
+      <span class="c-header__title u-col-{{ galleryHeaderCol }} ">{{ galleryTitle }}</span>
     </h2>
   </div>
 </div>
 
-<div class="l-gallery__gallery test">
+<div class="l-gallery__gallery test another-test-2">
   <div class="c-gallery">
     <div class="c-gallery__list">
     {% for article in blog.articles %}
@@ -36,6 +43,13 @@
               %}
             </a>
           </div>
+          {% if article.metafields.global.slide_title %}
+          <div class="c-gallery__item-info">
+            <h5 class="c-gallery__item-heading">{{ article.metafields.global.slide_title }}</h5>
+          </div>
+          {% else %}
+         <!-- no metafield slide_title -->
+          {% endif %}
         </div>
       {% endif %}
 

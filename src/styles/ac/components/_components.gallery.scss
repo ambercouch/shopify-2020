@@ -84,6 +84,10 @@
 
     }
   }
+  &item-heading{
+    color: $brand-col-2;
+    font-family: $act-font-family-sans;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-gallery--

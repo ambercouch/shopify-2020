@@ -682,6 +682,10 @@
 
   &static-page{
     padding: $act-unit;
+    max-width: $act-wrapper-width;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
   }
 
 }

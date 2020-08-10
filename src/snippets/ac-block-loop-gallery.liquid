@@ -1,5 +1,5 @@
 <!-- modClass = {{ modClass }} -->
-<!-- ac-block-loop -->
+<!-- ac-block-loop-galery -->
 {% if sObj == null %}
   <!-- sObj == null -->
   {% assign sObj = article %}
@@ -23,15 +23,15 @@
 {% if page.metafields.global.gallery_colour %}
   {% assign galleryBgColor = page.metafields.global.gallery_colour %}
 {% else %}
-  {% assign galleryBgColor = 't' %}
+  {% assign galleryBgColor = 1 %}
 {% endif %}
 
 {% for i in (1..10) %}
   {% if forloop.index == galleryIndex %}
     {% assign blog = blogs[galleryHandle] %}
   {% if blog.articles_count > 0 %}
-<div id="gallery-{{ galleryHandle }}"  class="l-page__gallery--{{ galleryHandle }}  u-bgc-{{ galleryBgColor }}">
-  <div class="l-gallery--{{ galleryHandle }}">
+<div id="gallery-{{ galleryHandle }}"  class="l-page__gallery--{{ galleryHandle }}  ">
+  <div class="l-gallery--{{ galleryHandle }} u-bgc-{{ galleryBgColor }}">
     {% include 'ac-gallery' %}
   </div>
 </div>

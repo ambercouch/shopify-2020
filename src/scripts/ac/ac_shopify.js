@@ -293,7 +293,6 @@ const ACSHOPIFY = {
         let flktyProductThumb = new Flickity( elemGallery, {
           // options
           cellAlign: 'center',
-          contain: true,
           prevNextButtons: true,
           imagesLoaded: true,
           pageDots: false,
