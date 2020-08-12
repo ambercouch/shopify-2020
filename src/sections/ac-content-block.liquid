@@ -29,6 +29,10 @@
   {%- assign cb_min_height_class =  '75vh' -%}
 {% endif %}
 
+{% if section.settings.cb_min_height_px == true %}
+  {%- assign cb_min_height_class =  '500px' -%}
+{% endif %}
+
 {% if section.settings.cb_hide_title == true %}
   {%- assign cb_hide_title_class =  'is-heading-hidden' -%}
 {% endif %}
@@ -577,6 +581,13 @@
   "id": "cb_min_height",
   "label": "Block min height 75%",
   "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "cb_min_height_px",
+  "label": "Block min height 500px",
+  "default": false,
+  "info": "Overrides the 75% setting"
   },
   {
   "type": "checkbox",
