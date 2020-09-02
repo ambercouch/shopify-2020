@@ -11,9 +11,14 @@
   Theme Store optional settings
   - Home page only: only shows on the home page
 {%- endcomment -%}
+{% assign siteMastheadAnnouncementClass = 'has-no-announcement-bar' %}
+{%- if section.settings.announcement_bar_enabled -%}
+  {% assign siteMastheadAnnouncementClass = 'has-announcement-bar' %}
+{%- endif -%}
+
 <section data-section-id="{{ section.id }}" data-section-type="header">
 
-  <header id="masthead" class="l-site__masthead{{ siteMastheadModClass }} {{ siteMastheadOverlayClass }} {{ hidePageMasthead }}" role="banner">
+  <header id="masthead" class="l-site__masthead{{ siteMastheadModClass }} {{ siteMastheadAnnouncementClass }} {{ siteMastheadOverlayClass }} {{ hidePageMasthead }}" role="banner">
     <div class="l-masthead">
 
       {%- if section.settings.announcement_bar_enabled -%}

@@ -44,12 +44,14 @@
   }
   &nav-menu{
     @include mq($from : desktop){
-      grid-row-start: 2;
+      grid-row-start: 1 !important;
       grid-column-start:2;
       grid-column-end: 4;
       margin-top: $act-unit;
       z-index: 9;
-    ;
+    .has-announcement-bar &{
+      grid-row-start: 2 !important;
+    }
     }
   }
 }
