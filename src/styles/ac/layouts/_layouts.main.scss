@@ -33,6 +33,9 @@
   &product-ac-options-bundle{
     @extend .l-main--product
   }
+  &product-ac-landing{
+    @extend .l-main--product
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .l-main--
