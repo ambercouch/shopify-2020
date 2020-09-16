@@ -24,6 +24,9 @@
     background: #fff;
     margin-bottom: 0;
   }
+  &landing{
+    padding-bottom: $act-unit;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-product-form--
@@ -117,6 +120,14 @@
   }
   &submit{
     display: block;
+  }
+  &offer-icon{
+    padding: $act-unit-s 0 $act-unit-t;
+    width: 75px;
+  }
+  &offer-text{
+    @include act-font-size($act-fs-5);
+    color: $brand-col-3;
   }
 
 }

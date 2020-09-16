@@ -26,6 +26,12 @@
 
 {% endif %}
 
+{% if product.metafields.global.landingpage_title != nill %}
+  {% assign productTitle = product.metafields.global.landingpage_title %}
+  {% else %}
+    {% assign productTitle = product.title %}
+{% endif %}
+
 
 <div class="l-page--product">
 <section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product">
@@ -39,20 +45,23 @@
   <header class="l-page__header--product">
   <h1 class="l-page__heading--product areviewsapp-title">
     <span class="l-page__heading--title">
-       {{ product.title }}
+       {{ productTitle }}
     </span>
   </h1>
   </header>
 <div class="l-page__product-form">
   {% include 'ac-product-form-landing' %}
 </div>
-  {% if belowFormButtonUrl != null %}
+
   <div class="l-page__product-form-after">
-    <a class="c-btn--product-bundle-link" href="{{ belowFormButtonUrl }}">
-      <span class="c-btn__link-label">{{ belowFormButtonText }}</span>
-    </a>
+    <div class="c-quote--pull1">
+      <blockquote class="c-quote__blockquote--pull1">
+        <div class="c-quote__body--pull1"><p>Life (and Clothing) saver! If you are a first time parent - Don't think - BUY! Thank me later.</p></div>
+        <cite class="c-quote__cite--pull1">Verified Amazon Purchase, Maryland, USA</cite>
+      </blockquote>
+    </div>
   </div>
-  {% endif %}
+
 
 
 

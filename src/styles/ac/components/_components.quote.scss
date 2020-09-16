@@ -15,7 +15,7 @@ display: block;
  */
 
 .c-quote-- {
-  &type {
+  &pull1 {
     display: block
   }
 }
@@ -57,10 +57,75 @@ display: block;
   &icon{
     display: none;
   }
+  &blockquote{
+    display: block;
+  };
+  &body{
+    display: block;
+  }
+  &cite{
+    display: block;
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-quote--
+//BEM ELEMENT MODIFIER FALLBACK .c-quote__blockquote--
 
 [class*=c-quote__header--] {
   @extend .c-quote__header;
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quote__blockquote--
+
+[class*=c-quote__blockquote--] {
+  @extend .c-quote__blockquote;
+}
+
+.c-quote__blockquote--{
+  &pull1{
+    border: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quote__body--
+
+[class*=c-quote__blockquote--] {
+  @extend .c-quote__body;
+}
+
+.c-quote__body--{
+  &pull1 {
+    font-family: $act-font-family-headings;
+    font-weight: 700;
+    padding-left: $act-unit;
+    p{
+      margin-bottom: $act-unit-s;
+      &:last-child{
+        margin-bottom: $act-unit-t !important;
+      }
+    }
+    &:before{
+      content: open-quote;
+      display: block;
+      @include act-font-size($act-fs-k, 0);
+      margin-left: - $act-unit;
+      margin-top: $act-unit;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quote__cite--
+
+[class*=c-quote__cite--] {
+  @extend .c-quote__cite;
+}
+
+.c-quote__cite--{
+  &pull1 {
+    padding-left: $act-unit;
+    font-style: normal;
+  }
+}
+
+
