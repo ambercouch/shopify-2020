@@ -1067,6 +1067,13 @@
 
 }
 
+//BEM ELEMENT MODIFIER FALLBACK .l-page__gallery--
+
+[class*=l-page__gallery--] {
+  @extend .l-page__gallery;
+}
+
+
 
 .has-hero-text{
   .l-page__hero-image{

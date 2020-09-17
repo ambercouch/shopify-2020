@@ -39,8 +39,8 @@
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
-  <div class="l-page__gallery">
-    {% include 'ac-product-gallery' %}
+  <div class="l-page__gallery--landing">
+    {% include 'ac-product-gallery-landing' %}
   </div>
   <header class="l-page__header--product">
   <h1 class="l-page__heading--product areviewsapp-title">
@@ -57,7 +57,7 @@
     <div class="c-quote--pull1">
       <blockquote class="c-quote__blockquote--pull1">
         <div class="c-quote__body--pull1"><p>Life (and Clothing) saver! If you are a first time parent - Don't think - BUY! Thank me later.</p></div>
-        <cite class="c-quote__cite--pull1">Verified Amazon Purchase, Maryland, USA</cite>
+        <cite class="c-quote__cite--pull1">Samantha B</cite>
       </blockquote>
     </div>
   </div>
@@ -81,27 +81,37 @@
     {% assign blockTypeId = 'block_type_' | append : i %}
 
 
-    {% if product.metafields.blocks[blockTitleId] != nill %}
+    {% if product.metafields.blocks[blockTitleId] != nill and product.metafields.blocks[blockTitleId]  != 0 %}
 
       <!-- Title from the product meta -->
       {% assign blockTitle = product.metafields.blocks[blockTitleId] %}
 
-    {% elsif shop.metafields[productType][blockTitleId]  != nill %}
+      <!-- Shop Block title removed within product -->
+      {% elsif product.metafields.blocks[blockTitleId]  == 0 %}
+
+      {% assign blockTitle = nil %}
+
+      {% elsif shop.metafields[productType][blockTitleId]  != nill  %}
 
       <!-- Title from the shop meta -->
-    {% assign blockTitle = shop.metafields[productType][blockTitleId] %}
+      {% assign blockTitle = shop.metafields[productType][blockTitleId] %}
 
-      {% else %}
-        <!-- no Title -->
-        {% assign blockTitle = nil %}
+    {% else %}
+      <!-- no Title -->
+      {% assign blockTitle = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockContentId] != nill %}
+    {% if product.metafields.blocks[blockContentId] != nill and product.metafields.blocks[blockContentId] != 0 %}
 
       <!-- Content from the product meta -->
       {% assign blockContent = product.metafields.blocks[blockContentId] %}
 
-      {% elsif shop.metafields[productType][blockContentId]  != nill %}
+      <!-- Shop Block content removed within product -->
+      {% elsif product.metafields.blocks[blockContentId]  == 0 %}
+
+      {% assign blockContent = nil %}
+
+      {% elsif shop.metafields[productType][blockContentId]  != nill  %}
 
       <!-- Content from the shop meta -->
       {% assign blockContent = shop.metafields[productType][blockContentId] %}
@@ -111,25 +121,36 @@
       {% assign blockContent = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockUrlId] != nill %}
+    {% if product.metafields.blocks[blockUrlId] != nill  and  product.metafields.blocks[blockUrlId] != 0 %}
 
-    <!-- Url from the product meta -->
-    {% assign blockUrl = product.metafields.blocks[blockUrlId] %}
+      <!-- Url from the product meta -->
+      {% assign blockUrl = product.metafields.blocks[blockUrlId] %}
 
-    {% elsif shop.metafields[productType][blockUrlId]  != nill %}
+      <!-- Shop Block url removed within product -->
+      {% elsif product.metafields.blocks[blockUrlId]  == 0 %}
 
-    <!-- Url from the shop meta -->
-    {% assign blockUrl = shop.metafields[productType][blockUrlId] %}
+      {% assign blockUrl = nil %}
 
-  {% else %}
-    <!-- no Url -->
-    {% assign blockUrl = nil %}
-  {% endif %}
+      {% elsif shop.metafields[productType][blockUrlId]  != nill %}
 
-    {% if product.metafields.blocks[blockLinkTextId] != nill %}
+      <!-- Url from the shop meta -->
+      {% assign blockUrl = shop.metafields[productType][blockUrlId] %}
+
+    {% else %}
+      <!-- no Url -->
+      {% assign blockUrl = nil %}
+    {% endif %}
+
+    {% if product.metafields.blocks[blockLinkTextId] != nill and product.metafields.blocks[blockLinkTextId] != 0 %}
 
       <!-- LinkText from the product meta -->
       {% assign blockLinkText = product.metafields.blocks[blockLinkTextId] %}
+
+      <!-- Shop Block link text removed within product -->
+      {% elsif product.metafields.blocks[blockLinkTextId]  == 0 %}
+
+      {% assign blockLinkText = nil %}
+
 
       {% elsif shop.metafields[productType][blockLinkTextId]  != nill %}
 
@@ -141,7 +162,7 @@
       {% assign blockLinkText = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockBgColId] != nill %}
+    {% if product.metafields.blocks[blockBgColId] != nill and  product.metafields.blocks[blockBgColId] != 0 %}
 
       <!-- LinkText from the product meta -->
       {% assign blockBgCol = product.metafields.blocks[blockBgColId] %}
@@ -155,6 +176,12 @@
         {% endcase %}
         }
       </style>
+
+      {% elsif product.metafields.blocks[blockBgColId] == 0 %}
+
+      <!-- background color removered by product metafields -->
+      {% assign blockBgCol = nil %}
+      {% assign classHasBgc = nil %}
 
       {% elsif shop.metafields[productType][blockBgColId]  != nill %}
 
@@ -206,12 +233,12 @@
       <!-- vidioId from the shop meta -->
       {% assign blockVideo = shop.metafields[productType][blockVideoId] %}
 
-      {% else %}
+    {% else %}
       <!-- no vidioId  -->
       {% assign blockVideo = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockTypeId] != nill %}
+    {% if product.metafields.blocks[blockTypeId] != nill and product.metafields.blocks[blockTypeId] != 0 %}
 
       <!-- vidioId from the product meta -->
       {% assign blockType = product.metafields.blocks[blockTypeId] %}
@@ -219,6 +246,21 @@
       {% if blockType contains "icon-list" %}
         {% assign blockTypeClass = "is-icon-list"%}
       {% endif %}
+
+      {% if blockType contains "slider" %}
+        {% assign blockTypeClass = "is-slider"%}
+      {% endif %}
+
+      {% assign blockVideo = nil %}
+      {% assign blockLinkText = nil %}
+      {% assign blockUrl = nil %}
+      {% assign blockContent = nil %}
+      {% assign blockTitle = nil %}
+
+      {% elsif product.metafields.blocks[blockTypeId] == 0 %}
+
+      {% assign blockType = nil %}
+      {% assign blockTypeClass = nil %}
 
       {% elsif shop.metafields[productType][blockTypeId]  != nill %}
 
@@ -229,10 +271,21 @@
         {% assign blockTypeClass = "is-icon-list"%}
       {% endif %}
 
+      {% if blockType contains "slider" %}
+        {% assign blockTypeClass = "is-slider"%}
+      {% endif %}
+
+      {% assign blockVideo = nil %}
+      {% assign blockLinkText = nil %}
+      {% assign blockUrl = nil %}
+      {% assign blockContent = nil %}
+      {% assign blockTitle = nil %}
+
     {% else %}
       <!-- no vidioId  -->
       {% assign blockType = nil %}
       {% assign blockTypeClass = nil%}
+
     {% endif %}
 
     {% if blockVideo != nil %}
@@ -268,6 +321,12 @@
           <div class="c-content-block__icon-list">
            {% include 'ac-icon-list-loop' %}
           </div>
+          {% endif %}
+
+          {% if blockType contains "slider" %}
+            <div class="c-content-block__icon-list">
+              {% include 'ac-slider-loop' %}
+            </div>
           {% endif %}
 
         </div>

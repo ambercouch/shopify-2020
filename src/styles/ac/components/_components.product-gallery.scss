@@ -7,7 +7,6 @@
   //padding: $act-unit-s $act-unit;
 
   .responsive-image__wrapper:before{
-
     @include mq($until: desktop){
       padding-top: 100vw !important;
     }
@@ -15,15 +14,24 @@
   .responsive-image__wrapper{
     width: 100vw !important;
     max-width: 100% !important;
-  } }
+  }
+}
 
 /*
   BEM BLOCK MODIFIER .c-product-gallery--
  */
 
 .c-product-gallery-- {
-  &type {
-    display: block
+  &landing {
+    .responsive-image__wrapper:before{
+      @include mq($until: desktop){
+        padding-top: 70vw !important;
+      }
+    }
+    .responsive-image__wrapper{
+      width: 70vw !important;
+      max-width: 100% !important;
+    }
   }
 }
 
@@ -154,6 +162,34 @@
       height: auto !important;
     }
   }
+  &landing-focus{
+    height: 70vw !important;
+    max-height: 70vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: $act-unit-s;
+    @include mq($from:desktop){
+      height: auto !important;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-gallery__focus-image-container--
+
+[class*=c-product-gallery__focus-image-container--] {
+  @extend .c-product-gallery__focus-image-container;
+}
+
+.c-product-gallery__focus-image-container--{
+  &landing{
+    height: 70vw;
+
+    @include mq($from:desktop){
+      height: auto;
+    }
+
+  }
+
 }
 
 
