@@ -1,0 +1,28 @@
+
+{% assign listNameSpace = blockType %}
+
+<div class="l-icon-list">
+    <ul class="l-icon-list__list">
+      {% for c in (1..10) %}
+        {% assign itemId = 'icon_' | append : c %}
+        {% assign titleId = 'title_' | append : c %}
+        {% if product.metafields[listNameSpace][itemId] %}
+        <li class="l-icon-list__item">
+          <div class="l-icon-list__icon-thumb">
+            <div class="c-icon-thumb">
+              <div class="c-icon-thumb__icon--{{ c }}">
+               <img src="{{ product.metafields[listNameSpace][itemId] | file_img_url: '500x' }}" alt="icon" />
+              </div>
+              {% if product.metafields[listNameSpace][titleId]  %}
+                <div class="c-icon-thumb__title">
+                  {{ product.metafields[listNameSpace][titleId]  }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+

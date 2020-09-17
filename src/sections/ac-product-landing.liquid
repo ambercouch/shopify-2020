@@ -79,6 +79,7 @@
     {% assign blockTextColId = 'block_text_color_'  | append : i %}
     {% assign blockVideoId = 'block_youtube_id_'  | append : i %}
     {% assign blockTypeId = 'block_type_' | append : i %}
+    <!-- CURRENT BLOCK ID{{ i }}-->
 
 
     {% if product.metafields.blocks[blockTitleId] != nill and product.metafields.blocks[blockTitleId]  != 0 %}
@@ -240,7 +241,7 @@
 
     {% if product.metafields.blocks[blockTypeId] != nill and product.metafields.blocks[blockTypeId] != 0 %}
 
-      <!-- vidioId from the product meta -->
+      <!-- BlockType from the product meta -->
       {% assign blockType = product.metafields.blocks[blockTypeId] %}
 
       {% if blockType contains "icon-list" %}
@@ -255,7 +256,7 @@
       {% assign blockLinkText = nil %}
       {% assign blockUrl = nil %}
       {% assign blockContent = nil %}
-      {% assign blockTitle = nil %}
+
 
       {% elsif product.metafields.blocks[blockTypeId] == 0 %}
 
@@ -264,7 +265,7 @@
 
       {% elsif shop.metafields[productType][blockTypeId]  != nill %}
 
-      <!-- vidioId from the shop meta -->
+      <!-- BlockType from the shop meta -->
       {% assign blockType = shop.metafields[productType][blockTypeId] %}
 
       {% if blockType contains "icon-list" %}
@@ -307,6 +308,7 @@
           <span class="c-content-block__title" >{{ blockTitle  }}</span>
         </h2>
     {% endif %}
+
         <div class="c-content-block__body--product">
           {% if blockContent != nil %}
           {{ blockContent }}
@@ -319,19 +321,22 @@
 
           {% if blockType contains "icon-list" %}
           <div class="c-content-block__icon-list">
-           {% include 'ac-icon-list-loop' %}
+           {% include 'ac-icon-list-loop-landing' %}
           </div>
           {% endif %}
 
           {% if blockType contains "slider" %}
             <div class="c-content-block__icon-list">
-              {% include 'ac-slider-loop' %}
+              {% include 'ac-slider-loop-landing' %}
             </div>
           {% endif %}
 
         </div>
       </div>
     </div>
+      {% else %}
+        <!-- block title = {{ blocktitle }} -->
+      <!-- nothing to output BLOCKID = {{ i }} -->
     {% endif %}
 
   {% endfor %}
