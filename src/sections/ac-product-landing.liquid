@@ -173,7 +173,13 @@
         #blockId{{ i }}:after{
         {% case blockBgCol %}
         {% when '1' %}
-          background-color: #fcec47
+          background-color: #fcec47;
+        {% when '2' %}
+          background-color:#1d1c3b;
+          color: #fff;
+        {% when '3' %}
+          background-color:#e61c6d;
+
         {% endcase %}
         }
       </style>
@@ -241,15 +247,17 @@
 
     {% if product.metafields.blocks[blockTypeId] != nill and product.metafields.blocks[blockTypeId] != 0 %}
 
-      <!-- BlockType from the product meta -->
+      <!-- BlockType from the product meta  blockType = {{ blockType }}-->
       {% assign blockType = product.metafields.blocks[blockTypeId] %}
 
       {% if blockType contains "icon-list" %}
         {% assign blockTypeClass = "is-icon-list"%}
+        <!-- blockType contains "icon-list" -->
       {% endif %}
 
       {% if blockType contains "slider" %}
         {% assign blockTypeClass = "is-slider"%}
+        <!-- blockType contains "slider" -->
       {% endif %}
 
       {% assign blockVideo = nil %}
@@ -299,7 +307,7 @@
     </div>
 
 
-    {% elsif blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil %}
+    {% elsif blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil or blockType != nil %}
 
     <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }} {{ blockTypeClass }}">
       <div class="c-content-block--product">
@@ -320,13 +328,15 @@
           {% endif %}
 
           {% if blockType contains "icon-list" %}
+            <!--blockType contains "icon-list" -->
           <div class="c-content-block__icon-list">
            {% include 'ac-icon-list-loop-landing' %}
           </div>
           {% endif %}
 
           {% if blockType contains "slider" %}
-            <div class="c-content-block__icon-list">
+            <!-- blockType contains "slider" -->
+            <div class="c-content-block__slider">
               {% include 'ac-slider-loop-landing' %}
             </div>
           {% endif %}
@@ -335,7 +345,8 @@
       </div>
     </div>
       {% else %}
-        <!-- block title = {{ blocktitle }} -->
+        <!-- block title = {{ blockTitle }} -->
+        <!-- block type = {{ blockType }} -->
       <!-- nothing to output BLOCKID = {{ i }} -->
     {% endif %}
 
