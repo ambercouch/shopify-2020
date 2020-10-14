@@ -1,0 +1,75 @@
+/*
+  BEM BLOCK .c-tool-tip
+ */
+
+.c-tool-tip {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-tool-tip--
+ */
+
+.c-tool-tip-- {
+  &type {
+    display: block
+  }
+  &copied{
+    position: absolute;
+    left: 100%;
+    top:50%;
+    transform: translate(0,-50%);
+    @include act-font-size($act-fs-s);
+    font-family: $act-font-family-sans;
+    margin-left: 12px;
+    padding: $act-unit-t;
+    background: $brand-col-3;
+    border-radius: $act-unit-t;
+    text-transform: uppercase;
+    display: block;
+    line-height: 1;
+    font-weight: 400;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-tool-tip--
+
+[class*=c-tool-tip--] {
+  @extend .c-tool-tip;
+}
+
+/*
+  BEM ELEMENTS .c-tool-tip__
+ */
+
+.c-tool-tip__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-tool-tip--
+
+[class*=c-tool-tip__header--] {
+  @extend .c-tool-tip__header;
+}

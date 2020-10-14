@@ -3,10 +3,11 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY testing 20/05');
+console.log('ACSHOPIFY testing ql clicking,  c-product-price__price');
 const ACSHOPIFY = {
   common: {
     init: function() {
+
 
       // add js class
       $('body')
@@ -309,8 +310,13 @@ const ACSHOPIFY = {
       console.log('some collection');
     },
     bundles: function() {
+
+      $(document).on('click', '#bundleDiscountCode', function() {
+        var element = this;
+        ACSHOPIFY.fn.actCopyToClipBoard(element);
+      });
       // uncomment to debug
-      console.log('collection bundles');
+      console.log('collection bundles test 2020');
       console.log('collection bundles timer confirm exit');
 
       const bundledProducts = {};
@@ -940,22 +946,14 @@ const ACSHOPIFY = {
       });
 
     },
-    ac_landing: function() {
-      console.log('product ac_landing');
-      $(document).on('click', '[data-product-single-thumbnail]', function(event) {
-        let thumbnail = this;
-        let visibleImageWrapper = '[data-product-image-wrapper]:not(hide)';
-
-        $(visibleImageWrapper).addClass('hide');
-        $('[data-product-image-wrapper][data-image-id=' + thumbnail.dataset.thumbnailId + ']').removeClass('hide');
-
-        console.log('onThumbnailClick');
-        console.log('thumbnail.dataset.thumbnailId');
-        console.log(thumbnail.dataset.thumbnailId);
-        event.preventDefault();
+    ac_landing: function(){
+      console.log('ac_landing produst js ql-editor');
+      $(document).on('click', '.ql-editor p span',function() {
+        var element = this;
+        var noteAfter = true;
+        ACSHOPIFY.fn.actCopyToClipBoard(element, noteAfter);
       });
-
-    }
+}
   },
   search: {
     init: function() {
@@ -1046,6 +1044,30 @@ const ACSHOPIFY = {
         window.dispatchEvent(eventActClose);
 
       });
+    },
+    actCopyToClipBoard: function(element, noteAfter = false){
+
+      var $temp = $("<input>");
+
+      $(element).addClass("u-pos-r");
+      $("body").append($temp);
+      $temp.val($(element).text()).select();
+      document.execCommand("copy");
+      $temp.remove();
+
+
+      if (noteAfter != true){
+        var $note = $("<span>").addClass('c-tool-tip--copied').delay( 800 ).fadeOut("slow", function(){
+          $note.remove();
+        });
+        $(element).append($note);
+        $note.text('Copied');
+      }else{
+        $(element).addClass("is-copied");
+      }
+
+
+
     }
   }
 };

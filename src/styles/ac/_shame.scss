@@ -295,8 +295,44 @@
   background: $brand-col-3;
 
 }
+.ql-editor p span{
+  position: relative !important;
+}
+.ql-editor p span:after{
+  //display: none;
+}
+.ql-editor p span:after{
+  transition : opacity 0.5s ease-in-out;
+  transition-delay: 0.5s;
+  opacity: 1;
+  content : 'Copied';
+  position: absolute;
+  left: -10000px;
+  top:50%;
+  transform: translate(0,-50%);
+  @include act-font-size($act-fs-s);
+  font-family: $act-font-family-sans;
+  margin-left: 12px;
+  padding: $act-unit-t;
+  background: $brand-col-3;
+  border-radius: $act-unit-t;
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: 400;
+  width: 100%;
+  color: white;
+  //display: none;
+  display: block;
+ }
+.ql-editor p span.is-copied:after{
+  opacity: 0;
+  display: block;
+  left: 100%;
+}
 
-
+.ql-editor{
+  background: #ccc;
+}
 
 
 

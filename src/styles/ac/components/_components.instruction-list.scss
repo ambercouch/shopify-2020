@@ -176,4 +176,8 @@
     @include act-font-size($act-fs-3);
     color: $brand-col-3;
   }
+  &copy-info{
+    @include act-font-size($act-fs-s);
+    color: white;
+  }
 }
