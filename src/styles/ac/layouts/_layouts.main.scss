@@ -85,6 +85,10 @@
     @include mq($from:desktop){
       padding: 0;
     }
+    &.is-hidden{
+      display: none;
+
+    }
   }
 }
 

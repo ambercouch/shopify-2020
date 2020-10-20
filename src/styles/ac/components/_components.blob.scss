@@ -853,3 +853,38 @@
 }
 }
 
+.c-blob__id--homepage-banner{
+  .c-blob-- {
+    &2 {
+      display: block;
+      color: $brand-col-1;
+      left: auto;
+      right: -180px;
+      top: 160px !important;
+      bottom: auto;
+      @include size(600px);
+      transform: rotateZ(220deg);
+      @include mq($from: desktop) {
+        left: auto;
+        right: -13%;
+        top: -50px !important;
+        bottom: auto;
+        @include size(1000px);
+
+      }
+    }
+
+    &1 {
+      display: none;
+      @include mq($from: desktop) {
+        display: none !important;
+        color: $brand-col-1;
+        transform: rotateZ(115deg);
+        right: -450px;
+        @include size(800px);
+        top: 10%;
+      }
+
+    }
+  }
+}

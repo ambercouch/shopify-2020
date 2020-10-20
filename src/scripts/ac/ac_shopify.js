@@ -8,6 +8,21 @@ const ACSHOPIFY = {
   common: {
     init: function() {
 
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+
+      const version = urlParams.get('acabv');
+
+      console.log("URL VERSION jQ test");
+      console.log(version);
+
+      if (version == null){
+        jQuery("[class*=l-main__content-block--]").first().removeClass("is-hidden");
+
+      }else{
+        jQuery("[class*=l-main__content-block--"+version+"]").removeClass("is-hidden");
+      }
+
 
       // add js class
       $('body')
@@ -259,7 +274,7 @@ const ACSHOPIFY = {
       let browserHeight = $(window).height();
       let mastheadHeight = $('#masthead').outerHeight();
       let heroHeight = browserHeight -  mastheadHeight;
-      $('#MainContent .l-main--index > :first-child [class*=c-content-block--]').css('height', heroHeight);
+      $('[class*=c-content-block--].is-full-height').css('height', heroHeight);
 
         // $(function () {
         //   $('a[href*="#"]:not([href="#"])').click(function () {
