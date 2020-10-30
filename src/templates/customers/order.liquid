@@ -57,42 +57,42 @@
           {% endif %}
         </td>
         <td data-label="{{ 'customer.order.sku' | t }}">{{ line_item.sku }}</td>
-        <td data-label="{{ 'customer.order.price' | t }}">{{ line_item.price | money }}</td>
+        <td data-label="{{ 'customer.order.price' | t }}">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: line_item.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ line_item.price | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
         <td data-label="{{ 'customer.order.quantity' | t }}">{{ line_item.quantity }}</td>
-        <td data-label="{{ 'customer.order.total' | t }}">{{ line_item.quantity | times: line_item.price | money }}</td>
+        <td data-label="{{ 'customer.order.total' | t }}">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: line_item.quantity | times: line_item.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ line_item.quantity | times: line_item.price | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
       </tr>
     {% endfor %}
   </tbody>
   <tfoot>
     <tr class="responsive-table-row">
       <td colspan="4" class="small--hide">{{ 'customer.order.subtotal' | t }}</td>
-      <td data-label="{{ 'customer.order.subtotal' | t }}">{{ order.line_items_subtotal_price | money }}</td>
+      <td data-label="{{ 'customer.order.subtotal' | t }}">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: order.line_items_subtotal_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ order.line_items_subtotal_price | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
     </tr>
 
     {% for discount in order.discounts %}
       <tr>
         <td colspan="4" class="small--hide">{{ discount.code }} {{ 'customer.order.discount' | t }}</td>
-        <td data-label="{{ 'customer.order.discount' | t }}">{{ discount.savings | money }}</td>
+        <td data-label="{{ 'customer.order.discount' | t }}">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: discount.savings -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ discount.savings | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
       </tr>
     {% endfor %}
 
     {% for shipping_method in order.shipping_methods %}
       <tr>
         <td colspan="4" class="small--hide">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</td>
-        <td data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">{{ shipping_method.price | money }}</td>
+        <td data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: shipping_method.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ shipping_method.price | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
       </tr>
     {% endfor %}
 
     {% for tax_line in order.tax_lines %}
       <tr>
         <td colspan="4" class="small--hide">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
-        <td data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">{{ tax_line.price | money }}</td>
+        <td data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: tax_line.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ tax_line.price | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
       </tr>
     {% endfor %}
 
     <tr>
       <td colspan="4" class="small--hide">{{ 'customer.order.total' | t }}</td>
-      <td data-label="{{ 'customer.order.total' | t }}">{{ order.total_price | money }} {{ order.currency }}</td>
+      <td data-label="{{ 'customer.order.total' | t }}">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: order.total_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ order.total_price | money | prepend: geolizr_prepend_code | append: "</span>"}} {{ order.currency }}</td>
     </tr>
   </tfoot>
 </table>

@@ -31,18 +31,18 @@
       <span>
         {% if product.compare_at_price > product.price %}
           {% if product.price_varies %}
-            {%- assign sale_price = product.price | money -%}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{%- assign sale_price = product.price | money | prepend: geolizr_prepend_code | append: "</span>"-%}
             {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
           {% else %}
             {{ 'products.product.on_sale' | t }}
-            {{ product.price | money }}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ product.price | money | prepend: geolizr_prepend_code | append: "</span>"}}
           {% endif %}
         {% else %}
           {% if product.price_varies %}
-            {%- assign price = product.price | money -%}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{%- assign price = product.price | money | prepend: geolizr_prepend_code | append: "</span>"-%}
             {{ 'products.product.from_text_html' | t: price: price }}
           {% else %}
-            {{ product.price | money }}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ product.price | money | prepend: geolizr_prepend_code | append: "</span>"}}
           {% endif %}
         {% endif %}
       </span>
@@ -54,7 +54,7 @@
         {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
 
         <p>{{ 'homepage.onboarding.product_title' | t }}</p>
-        <p>{{ 1999 | money }}</p>
+        <p>{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: 1999 -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ 1999 | money | prepend: geolizr_prepend_code | append: "</span>"}}</p>
       </a>
     {% endfor %}
   {% endfor %}

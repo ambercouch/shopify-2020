@@ -1,13 +1,13 @@
 <div class="c-product-price" data-price-wrapper>
       <span class="c-product-price__price"  data-product-price>
-        {{ current_variant.price | money }}
+        {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: current_variant.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: "</span>"}}
       </span>
 
   {% if product.compare_at_price_max > product.price %}
     <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
     <s data-compare-price>
       {% if current_variant.compare_at_price > current_variant.price %}
-        {{ current_variant.compare_at_price | money }}
+        {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: current_variant.compare_at_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: "</span>"}}
       {% endif %}
     </s>
   {% endif %}

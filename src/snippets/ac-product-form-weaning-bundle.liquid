@@ -103,7 +103,7 @@
       name="add"
       data-submit-button
       {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-        <span data-submit-button-text class="c-btn__link-label">
+        <span data-submit-button-text class="c-btn__link-label"s>
           {% if current_variant.available and current_variant.inventory_quantity > 0 %}
             {{ add_to_cart_text }}
           {% elsif current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'%}

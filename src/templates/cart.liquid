@@ -14,7 +14,7 @@
   </div>
 
   <form action="/cart" method="post" novalidate class="cart ajaxcart l-quick-cart__form">
-    <div class="l-quick-cart__total"><span class="l"><span>Subtotal:</span> <b class="carto">{{ cart.total_price | money }}</b></div>
+    <div class="l-quick-cart__total"><span class="l"><span>Subtotal:</span> <b class="carto">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: cart.total_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: "</span>"}}</b></div>
     <div class="l-quick-cart__cart-list--page ">
 
       {% include 'ac-cart-discount-logic' %}
@@ -102,7 +102,7 @@
                   </div>
 
                   <div class="c-product-thumb__price--cart">
-                    <span class="c-product-thumb__line-price-money"> {{ item.line_price | money }}</span>
+                    <span class="c-product-thumb__line-price-money"> {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: item.line_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: "</span>"}}</span>
                   </div>
 
 

@@ -1,0 +1,5 @@
+{% unless format %}{% assign format = "prepend_code" %}{% endunless %}
+{% if format == "prepend_code" %}
+    {% assign geolizr_prepend_code = '<span class="geolizr-currency" data-geolizr-price="' | append: geolizr_price | append: '">' %}
+    {{ geolizr_prepend_code }}
+{% endif %}

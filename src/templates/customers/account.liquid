@@ -34,7 +34,7 @@
                     <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
                     <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
                     <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: order.total_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ order.total_price | money | prepend: geolizr_prepend_code | append: "</span>"}}</td>
                   </tr>
                 {% endfor %}
                 </tbody>

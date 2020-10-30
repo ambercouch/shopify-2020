@@ -12,7 +12,7 @@
       {% assign discountPercent = 0.2 %}
       {% assign cartTotal = cart.total_price %}
       {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
+      {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: discountSaving -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{% assign discountSavingMoney = discountSaving | money | prepend: geolizr_prepend_code | append: "</span>"%}
       {% assign autoDiscount = true %}
       {% assign discCode = '3BIB20' %}
       {% assign discText = 'You have 3 items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> on the next page at checkout to get <strong>20%</strong> off your order, saving you ' | append :  discountSavingMoney  %}
@@ -23,7 +23,7 @@
       {% assign discountPercent = 0.25 %}
       {% assign cartTotal = cart.total_price %}
       {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
+      {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: discountSaving -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{% assign discountSavingMoney = discountSaving | money | prepend: geolizr_prepend_code | append: "</span>"%}
       {% assign discountPercent = 25 %}
       {% assign autoDiscount = true %}
       {% assign discCode = '4BIB25' %}
@@ -36,7 +36,7 @@
       {% assign discountPercent = 0.25 %}
       {% assign cartTotal = cart.total_price %}
       {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
+      {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: discountSaving -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{% assign discountSavingMoney = discountSaving | money | prepend: geolizr_prepend_code | append: "</span>"%}
       {% assign discountPercent = 25 %}
       {% assign autoDiscount = true %}
       {% assign discCode = '4BIB25' %}
@@ -48,7 +48,7 @@
       {% assign discountPercent = 0.3 %}
       {% assign cartTotal = cart.total_price %}
       {% assign discountSaving = cartTotal | times: discountPercent %}
-      {% assign discountSavingMoney = discountSaving | money %}
+      {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: discountSaving -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{% assign discountSavingMoney = discountSaving | money | prepend: geolizr_prepend_code | append: "</span>"%}
       {% assign discountPercent = 30 %}
       {% assign autoDiscount = true %}
       {% assign discCode = '6BIB30' %}

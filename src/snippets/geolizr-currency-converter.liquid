@@ -1,0 +1,216 @@
+{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}
+
+    <script>
+        {% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}
+        {% capture geolizr_currency_check %}
+        {% render 'geolizr-currency' %}
+        {% endcapture %}
+        {% unless geolizr_currency_check contains 'error' %}
+        Geolizr.config({"currency_widget_enabled": "true"});
+        Geolizr.appendShopifyFormatMoney = function (method) {
+            let modified = false;
+            if ("undefined" !== typeof method && Geolizr.currency_widget_enabled === true) {
+                if (typeof method === 'function' && method(10000, "{% raw %}{{checkGeolizrExtension}}{% endraw %}") !== Geolizr.version) {
+                    Geolizr.shopifyFormatMoneySet = true;
+                    Geolizr.shopifyFormatMoney = method;
+                    method = function (cents, format) {
+                        if (format === "{% raw %}{{checkGeolizrExtension}}{% endraw %}")
+                            return Geolizr.version;
+
+                        "string" === typeof cents && (cents = cents.replace(".", ""));
+                        if (Geolizr.formatMoneyInit === true) {
+                            return Geolizr.formatMoney(cents, format);
+                        } else {
+                            return '<span class="geolizr-currency" data-geolizr-price="' + cents + '">' + Geolizr.shopifyFormatMoney(cents, format) + '</span>';
+                        }
+                    };
+                    modified = true;
+                }
+            }
+
+            return {m: method, modified: modified};
+        };
+
+        Geolizr.currency_widget_enabled = true;
+        if (Geolizr.currency_widget_enabled === true) {
+
+            /* watch from https://gist.github.com/eligrey/384583 */
+            Object.prototype.geolizrWatch || Object.defineProperty(Object.prototype, "geolizrWatch", {
+                enumerable: !1,
+                configurable: !0,
+                writable: 1,
+                value: function (e, t) {
+                    let r = this[e], n = r;
+                    const c = function () {
+                        return n
+                    }, i = function (c) {
+                        return r = n, n = t.call(this, e, r, c)
+                    };
+                    delete this[e] && Object.defineProperty(this, e, {get: c, set: i, enumerable: !0, configurable: !0})
+                }
+            }), Object.prototype.geolizrUnWatch || Object.defineProperty(Object.prototype, "geolizrUnWatch", {
+                enumerable: !1,
+                configurable: !0,
+                writable: 1,
+                value: function (e) {
+                    const t = this[e];
+                    delete this[e], this[e] = t
+                }
+            });
+
+            const watcher = function (id, oldMethod, newMethod) {
+                Geolizr.currency_widget_enabled = true; // sometimes the disabled this in this context, but it's true
+                const morph = Geolizr.appendShopifyFormatMoney(newMethod);
+                if (morph.modified) {
+                    return morph.m;
+                }
+
+                return newMethod;
+            };
+
+            let startCheck = false;
+            let endIntervalTheme = false, endIntervalShopify = false;
+            const GeolizrCurrencyWatcherInterval = function () {
+                if (startCheck === false) {
+                    startCheck = new Date() / 1000;
+                } else {
+                    const now = new Date() / 1000;
+                    if (now - startCheck > 30)
+                        return;
+                }
+
+                if (endIntervalTheme === true && endIntervalShopify === true) {
+                    return;
+                }
+
+                let fm;
+                if (endIntervalTheme === false) {
+                    if ("undefined" === typeof theme || "undefined" === typeof theme.Currency) {
+                        setTimeout(GeolizrCurrencyWatcherInterval, 10);
+                    } else {
+                        theme.Currency.geolizrWatch("formatMoney", watcher);
+                        fm = Geolizr.appendShopifyFormatMoney(theme.Currency.formatMoney);
+                        theme.Currency.formatMoney = fm.m;
+                        endIntervalTheme = true;
+                        return
+                    }
+                }
+
+                if (endIntervalShopify === false) {
+                    if ("undefined" === typeof Shopify) {
+                        setTimeout(GeolizrCurrencyWatcherInterval, 10);
+                    } else {
+                        Shopify.geolizrWatch("formatMoney", watcher);
+                        fm = Geolizr.appendShopifyFormatMoney(Shopify.formatMoney);
+                        if ("undefined" !== typeof Shopify.money_format) Geolizr.money_format = Shopify.money_format;
+                        Shopify.formatMoney = fm.m;
+                        endIntervalShopify = true;
+                    }
+                }
+            };
+
+            GeolizrCurrencyWatcherInterval();
+        }
+        {% endunless %}
+        {% else %}
+        Geolizr.config({"currency_widget_enabled": "false"});
+        {% endif %}
+    </script>
+
+    {% assign showSwitcher = shop.metafields.geolizr.currency_widget_options_json.auto_insert_currency_switcher %}
+    {% assign showSwitcher_count = showSwitcher | size %}
+    {% if showSwitcher_count == 0 %}
+        {% assign used_json = shop.metafields.geolizr.currency_widget_options | replace: '{', '' | replace: '}', '' | replace: '"', '' %}
+        {% assign used_json = used_json | split: ',' %}
+        {% assign showSwitcher = 'false' %}
+        {% for each in used_json %}
+            {% assign each_key = each | split: ':' | first %}
+            {% if each_key == "auto_insert_currency_switcher" %}
+                {% assign showSwitcher = each | split: ':' | last %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if showSwitcher == 'true' %}
+        {% render 'geolizr-currency-switcher' position: 'geolizr-absolute-auto' arrowDirection: 'up' %}
+    {% endif %}
+
+    <!--suppress JSUnusedAssignment, JSUnresolvedVariable -->
+    <script>
+        Geolizr.addSystemEventListener('geolizr.init.currency', function () {
+            Geolizr.currency_widget_enabled = true;
+            Geolizr.init(function () {
+                Geolizr.loadScript('//cdn.shopify.com/s/javascripts/currencies.js', function () {
+                    Geolizr.Currency = Currency;
+
+                    // shopify multi currency
+                    {% if shop.enabled_currencies %}
+                        Geolizr.shopifyMultiCurrencyActivated = true;
+                        Geolizr.shopifyCurrencyList = [];
+                        Geolizr.shopifyCurrencyListIndex = {};
+                        let currency = {};
+                        {% for currency in shop.enabled_currencies %}
+                            currency = {
+                                "iso_code": "{{ currency.iso_code }}",
+                                "name": "{{ currency.name }}",
+                                "symbol": "{{ currency.symbol }}",
+                                "shop_currency": {% if shop.currency == currency.iso_code %}true{% else %}false{% endif %}
+                            };
+                            Geolizr.shopifyCurrencyList.push(currency);
+                            Geolizr.shopifyCurrencyListIndex[currency.iso_code] = Geolizr.shopifyCurrencyList.indexOf(currency);
+                        {% endfor %}
+                        Geolizr.shopCurrencyBase = '{{ shop.currency }}';
+                        Geolizr.shopCurrency = '{{ cart.currency.iso_code }}';
+                    {% else %}
+                        Geolizr.shopifyMultiCurrencyActivated = false;
+                        Geolizr.shopifyCurrencyList = [];
+                        Geolizr.shopCurrency = '{{ shop.currency }}';
+                    {% endif %}
+
+                    {% if shop.metafields.geolizr.curr2lng_json %}
+                        Geolizr.currenciesToLanguages = JSON.parse('{{ shop.metafields.geolizr.curr2lng_json | json }}');
+                    {% else %}
+                        Geolizr.currenciesToLanguages = JSON.parse('{{ shop.metafields.geolizr.currencies_to_language_codes }}');
+                    {% endif %}
+
+                    Geolizr.shopMoneyFormat = '{{ shop.money_format }}';
+                    {% if shop.metafields.currency_widget_options_json %}
+                        Geolizr.currencyOptions = JSON.parse('{{ shop.metafields.geolizr.currency_widget_options_json | json }}');
+                    {% else %}
+                        Geolizr.currencyOptions = JSON.parse('{{ shop.metafields.geolizr.currency_widget_options }}');
+                    {% endif %}
+
+
+                    Geolizr.amount = '{{ amount }}';
+                    if (typeof Currency.convertAll === "undefined")
+                        Currency.convertAll = Geolizr.convertAll;
+
+                    {% if shop.metafields.geolizr.supported_currencies_json %}
+                        Geolizr.moneyFormats = JSON.parse('{{ shop.metafields.geolizr.supported_currencies_json | json }}');
+                    {% else %}
+                        Geolizr.moneyFormats = JSON.parse('{{ shop.metafields.geolizr.supported_currencies }}');
+                    {% endif %}
+
+                    if (!Geolizr.moneyFormats[Geolizr.shopCurrency]) {
+                        Geolizr.moneyFormats[Geolizr.shopCurrency] = {
+                            moneyFormat: '{{ shop.money_format | replace: "'", "\\'" }}',
+                            moneyWithCurrencyFormat: '{{ shop.money_with_currency_format | replace: "'", "\\'" }}'
+                        }
+                    }
+
+                    // save to sessionStorage
+                    Currency.moneyFormats = Geolizr.moneyFormats;
+                    sessionStorage.setItem('geolizr_currency', JSON.stringify(Currency));
+
+                    if (typeof window.Currency.shopCurrency === "undefined")
+                        window.Currency.shopCurrency = Geolizr.shopCurrency;
+
+                    if (typeof window.Currency.moneyFormats === "undefined")
+                        window.Currency.moneyFormats = Geolizr.moneyFormats;
+
+                    Geolizr.currencyConverterInit();
+                });
+            });
+        });
+    </script>
+{% endif %}

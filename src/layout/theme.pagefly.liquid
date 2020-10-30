@@ -6,6 +6,7 @@ PLEASE REMOVE ONLY AFTER YOU UNINSTALLED THE PAGEFLY APP.
 
 <html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
 <head>
+{% render 'geolizr-init' %}
   {% assign modClass = template | handle | prepend : "--"  %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,5 +69,5 @@ PLEASE REMOVE ONLY AFTER YOU UNINSTALLED THE PAGEFLY APP.
 
 </head>
 
-<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-template-type="{{ template.suffix | replace : ' ', '_'}}"><div class="pagefly-container">{{ content_for_layout }}</div></body>
+<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-template-type="{{ template.suffix | replace : ' ', '_' | replace : '-', '_'}}"><div class="pagefly-container">{{ content_for_layout }}</div>{% render 'geolizr-currency-converter' %}</body>
 </html>

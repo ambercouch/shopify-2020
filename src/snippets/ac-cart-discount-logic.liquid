@@ -40,7 +40,7 @@
 {% endcase %}
 
 {% assign discountSaving = cartBbdTotal | times: discountPercent %}
-{% assign discountSavingMoney = discountSaving | money %}
+{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: discountSaving -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{% assign discountSavingMoney = discountSaving | money | prepend: geolizr_prepend_code | append: "</span>"%}
 {% assign autoDiscount = true %}
 
 {% case cartBbdCount | times: 1 %}

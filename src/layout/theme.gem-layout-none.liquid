@@ -9,6 +9,7 @@
 
 <html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
 <head>
+{% render 'geolizr-init' %}
   {% assign modClass = template | handle | prepend : "--"  %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,5 +99,5 @@
 
 
 
-</body>
+{% render 'geolizr-currency-converter' %}</body>
 </html>

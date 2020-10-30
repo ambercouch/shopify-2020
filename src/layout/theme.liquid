@@ -16,7 +16,7 @@
   {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
   {%- endif -%}
-  <!-- page title {{ page_title }} -->
+<!-- page title {{ page_title }} -->
   <!-- general.meta.page {{ 'general.meta.page' | t: page: current_page }} -->
   <!-- shopname {{ shop.name }} -->
   {%- capture seo_title -%}
@@ -27,7 +27,7 @@
     {%- if current_page != 1 -%}
       &ndash; {{ 'general.meta.page' | t: page: current_page }}
     {%- endif -%}
-  {%- assign escaped_page_title = page_title | escape -%}
+    {%- assign escaped_page_title = page_title | escape -%}
     {%- unless escaped_page_title contains shop.name -%}
       &ndash; {{ shop.name }}
     {%- endunless -%}
@@ -37,7 +37,7 @@
   {%- if page_description -%}
     <meta name="description" content="{{ page_description | escape }}">
   {%- endif -%}
-  <!-- include 'social-meta-tags' -->
+<!-- include 'social-meta-tags' -->
   {% include 'social-meta-tags' %}
   <!-- include 'style-tags' -->
   {% include 'style-tags', layout: 'theme' %}
@@ -45,9 +45,9 @@
   {% include 'css-variables' %}
 
   <!-- Google Optimize -->
-
+  
   <script src="https://www.googleoptimize.com/optimize.js?id=OPT-TZ7N9NM "></script>
-
+  
   <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', '');
 
@@ -94,7 +94,7 @@
 <div id="page" class="l-site">
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-  {% section 'header' %}
+    {% section 'header' %}
 
   <div id="searchFormMain" class="l-site__site-search-form" data-state="off" data-container="siteSearch" >
     {% include 'ac-site-search-form' %}
@@ -102,7 +102,7 @@
 
   <main class="l-site__main" role="main" id="MainContent">
     <div class="l-main{{ modClass }}">
-      {{ content_for_layout }}
+    {{ content_for_layout }}
     </div>
   </main>
 

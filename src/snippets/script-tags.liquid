@@ -15,14 +15,18 @@
 <script type="text/javascript" src="{{ 'template.gift_card.js' | asset_url }}" defer="defer"></script>
 {%- else -%}
 <link rel="prefetch" href="{{ 'template.gift_card.js' | asset_url }}" as="script">
-{%- endif -%} {%- if template == 'index' or template == 'product' -%}
-<script type="text/javascript" src="{{ 'vendors@template.index@template.product.js' | asset_url }}" defer="defer"></script>
+{%- endif -%} {%- if template == 'index' or template == 'product' or template == 'product.ac-options-bundle' -%}
+<script type="text/javascript" src="{{ 'vendors@template.index@template.product@template.product.ac-options-bundle.js' | asset_url }}" defer="defer"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'vendors@template.index@template.product.js' | asset_url }}" as="script">
+<link rel="prefetch" href="{{ 'vendors@template.index@template.product@template.product.ac-options-bundle.js' | asset_url }}" as="script">
 {%- endif -%} {%- if template == 'index' -%}
 <script type="text/javascript" src="{{ 'template.index.js' | asset_url }}" defer="defer"></script>
 {%- else -%}
 <link rel="prefetch" href="{{ 'template.index.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template == 'product.ac-options-bundle' -%}
+<script type="text/javascript" src="{{ 'template.product.ac-options-bundle.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+<link rel="prefetch" href="{{ 'template.product.ac-options-bundle.js' | asset_url }}" as="script">
 {%- endif -%} {%- if template == 'product' -%}
 <script type="text/javascript" src="{{ 'template.product.js' | asset_url }}" defer="defer"></script>
 {%- else -%}

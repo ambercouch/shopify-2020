@@ -1,0 +1,258 @@
+<html>
+<head>
+    <style>
+        h1 {
+            padding: 5px;
+            font-size: 20px;
+            height: 20px;
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            color: #000000 !important;
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: #2c0aff;
+        }
+
+    </style>
+    <script>
+        function closePopup(url) {
+            parent.postMessage(("undefined" === typeof url) ? "GeolizrClosePopup" : "GeolizrClosePopup=>" + url, document.referrer);
+        }
+
+        function redirectPopup(url) {
+            parent.postMessage(("undefined" === typeof url) ? "GeolizrRedirect" : "GeolizrRedirect=>" + url, document.referrer);
+        }
+
+        function geolizrDispatchEvent(name, parameter) {
+            parent.postMessage("GeolizrDispatchEvent=>" + JSON.stringify({'name': name, parameter:parameter}), document.referrer);
+        }
+
+        function UrlExists(url, index, callback) {
+            let request;
+            if(window.XMLHttpRequest)
+                request = new XMLHttpRequest();
+            else
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            request.open('GET', url, false);
+            request.send();
+            if (request.status !== 404) {
+                callback(url, index)
+            }
+        }
+
+        function hasUrlPlaceholder(targetUrl) {
+            if(typeof targetUrl !== "undefined" && targetUrl != null) {
+                return targetUrl.indexOf('%path%') > -1 || targetUrl.indexOf('%path_without_locale%') > -1;
+            }
+
+            return targetUrl;
+        }
+
+        function replaceUrlPlaceholder(targetUrl) {
+            if(hasUrlPlaceholder(targetUrl)) {
+                let linkParameter = false;
+                const linkParameterArray = targetUrl.split("?");
+                if(linkParameterArray.length > 1) {
+                    targetUrl = linkParameterArray[0];
+                    linkParameter = new URLSearchParams(linkParameterArray[1]);
+                }
+
+                const tmpAnchor = document.createElement('a');
+                tmpAnchor.href = document.referrer;
+                let referrer = tmpAnchor.host;
+                if(referrer.indexOf(":") > 0) {
+                    const referrerPortSplit = referrer.split(":");
+                    referrer = referrerPortSplit[0];
+                }
+                let path = document.referrer.replace(tmpAnchor.protocol + '//' + referrer, '');
+                let path_without_locale = path;
+
+                let rootUrl = location.href.match(/rootUrl=(\/\w*)/) ? location.href.match(/rootUrl=(\/\w*)/)[1] : "/";
+                if(rootUrl !== "/") {
+                    const locale = rootUrl.replace(/^\//, "") + "\\/?";
+                    path_without_locale = path.replace(new RegExp(locale), "");
+                }
+
+                targetUrl = targetUrl.replace(/[\/]?%path%/, path);
+                targetUrl = targetUrl.replace(/[\/]?%path_without_locale%/, path_without_locale);
+
+                if(linkParameter) {
+                    if(targetUrl.indexOf("?") !== -1) {
+                        const newLinkParameterArray = targetUrl.split("?");
+                        const newLinkParameter = new URLSearchParams(newLinkParameterArray[1]);
+                        linkParameter.forEach(function(value, key) {
+                            newLinkParameter.delete(key);
+                            newLinkParameter.append(key, value);
+                        });
+                        const url = newLinkParameterArray[0].replace(/\/\/$/gm, "/");
+                        targetUrl = url + "?" + newLinkParameter;
+                    } else {
+                        targetUrl = targetUrl.replace(/\/\/$/gm, "/") + "?" + linkParameter;
+                    }
+                }
+            }
+
+            return targetUrl;
+        }
+
+        function parsePathLinks() {
+            const tmpAnchor = document.createElement('a');
+            tmpAnchor.href = document.referrer;
+            let referrer = tmpAnchor.host;
+            if(referrer.indexOf(":") > 0) {
+                const referrerPortSplit = referrer.split(":");
+                referrer = referrerPortSplit[0];
+            }
+            const links = document.getElementsByClassName('path-link');
+            for(let i = 0; i < links.length; i++) {
+                const link = links[i];
+
+                const path = document.referrer.replace(tmpAnchor.protocol + '//' + referrer, '');
+                let linkHref = ""
+                if(link.href !== "") {
+                    linkHref = link.getAttribute('href');
+                } else {
+                    linkHref = link.getAttribute('data-href');
+                }
+
+                const baseLinkUrl = linkHref;
+                const check404 = link.getAttribute('data-check404') === "true";
+                const asMethod = link.getAttribute('data-as-method') === "true";
+                const withClose = link.getAttribute('data-with-close') === "true";
+                const eventName = link.getAttribute('data-event');
+
+                const targetUrl = replaceUrlPlaceholder(baseLinkUrl);
+                if(link.href !== "") {
+                    link.href = targetUrl;
+                } else {
+                    link.setAttribute('data-href', targetUrl);
+                }
+                link.target = "_parent";
+
+                if(asMethod) {
+                    if(eventName !== null) {
+                        let parameter = {};
+                        try {
+                            parameter = JSON.parse(link.getAttribute('data-event-parameter'));
+                        } catch {}
+                        parameter.targetUrl = targetUrl;
+                        link.onclick = function(event) { event.stopPropagation(); geolizrDispatchEvent(eventName, parameter); return false; };
+                    } else if(withClose) {
+                        link.onclick = function(event) { event.stopPropagation(); closePopup(this.href); };
+                    } else {
+                        link.onclick = function(event) { event.stopPropagation(); redirectPopup(this.href); };
+                    }
+                }
+
+                if(check404) {
+                    UrlExists(link.href, i, function(url, i) {
+                        const link = links[i];
+                        link.href = url;
+                    });
+                }
+            }
+        }
+
+        function lyChangeLanguage(lycode) {
+            parent.postMessage( "GeolizrLyChangeLanguage=>" + lycode, document.referrer );
+        }
+
+        function getElementsByClassName(node,classname) {
+            if (node.getElementsByClassName) { // use native implementation if available
+                return node.getElementsByClassName(classname);
+            } else {
+                return (function getElementsByClass(searchClass,node) {
+                    if ( node == null )
+                        node = document;
+                    const classElements = [],
+                        els = node.getElementsByTagName("*"),
+                        elsLen = els.length,
+                        pattern = new RegExp("(^|\\s)" + searchClass + "(\\s|$)");
+                    let i, j;
+
+                    for (i = 0, j = 0; i < elsLen; i++) {
+                        if ( pattern.test(els[i].className) ) {
+                            classElements[j] = els[i];
+                            j++;
+                        }
+                    }
+                    return classElements;
+                })(classname, node);
+            }
+        }
+
+        function getGeodata(name, def) {
+            if(def === null) def = "";
+            if(geoData[name]) {
+                return geoData[name]
+            } else {
+                return def;
+            }
+        }
+
+        var geoData = {};
+
+        // Create IE + others compatible event handler
+        const eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        const eventCatcher = window[eventMethod];
+        const messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        // Listen to message from child window
+        eventCatcher(messageEvent,function(e) {
+            const data = e.data || "";
+            if(data.startsWith("GeolizrData") === true) {
+                e.preventDefault();
+
+                const dataArray = data.split("=>");
+                geoData = JSON.parse(dataArray[1]);
+
+                const elements = getElementsByClassName(document, 'geolizr');
+                for(let a = 0; a < elements.length; a++) {
+                    const element = elements[a];
+                    const result = getGeodata(element.attributes['data-geolizr'].value);
+                    element.innerHTML = result;
+                }
+            }
+        },false);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.getElementsByClassName('path-link');
+            if(links.length > 0) parsePathLinks();
+
+            let queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            urlParams.forEach(function(text, id) {
+                let e = document.getElementById(id);
+                e ? e.innerHTML = text : null;
+            })
+        });
+
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet" />
+<h1 style="text-align: center; height: auto;">Welcome to Geolizr Popup</h1>
+
+<div style="text-align: center;">by geolizr</div>
+
+<p>Geolizr Popup is the easy way to create full customizable popups.</p>
+
+<ul>
+	<li>Add text, photos, videos, buttons, and even additional plugins</li>
+	<li>Customize fonts, background colors, borders and much more</li>
+	<li>Open the Geolizr Popup Editor to get started!</li>
+</ul>
+
+<p>Example Buttons or links:</p>
+
+<div style="text-align: center"><a class="pure-button pure-button-primary" href="http://google.com" style="width: 150px;" target="_parent">Google</a>&nbsp;<a class="pure-button" onclick="closePopup();" style="width: 150px;" target="_blank">Close Popup</a></div>
+
+</body>
+</html>

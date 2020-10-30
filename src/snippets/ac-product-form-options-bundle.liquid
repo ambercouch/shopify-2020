@@ -72,9 +72,9 @@
                 {% comment %}
                   Note: if you use option_selection.js, your < select > tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
                 {% endcomment %}
-                <!--                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option> -->
+                <!--                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: variant.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ variant.price | money_with_currency | prepend: geolizr_prepend_code | append: "</span>"}}</option> -->
 
-                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" data-variant-id="{{ variant.id}}" data-variant-qty="{{ variant.inventory_quantity }}" data-variant-policy="{{ variant.inventory_policy}}" data-variants="{{ variant.option1 | handle }};{{ variant.option2 | handle }};{{ variant.option3 | handle }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" data-variant-id="{{ variant.id}}" data-variant-qty="{{ variant.inventory_quantity }}" data-variant-policy="{{ variant.inventory_policy}}" data-variants="{{ variant.option1 | handle }};{{ variant.option2 | handle }};{{ variant.option3 | handle }}" value="{{ variant.id }}">{{ variant.title }} - {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: variant.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ variant.price | money_with_currency | prepend: geolizr_prepend_code | append: "</span>"}}</option>
               {% else %}
                 <option disabled="disabled">
                   {{ variant.title }} - {{ 'products.product.sold_out' | t }}

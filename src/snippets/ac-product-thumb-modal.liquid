@@ -22,27 +22,27 @@
         {% if product.compare_at_price > product.price %}
 
           {% if product.price_varies %}
-            {%- assign sale_price = product.price | money -%}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{%- assign sale_price = product.price | money | prepend: geolizr_prepend_code | append: "</span>"-%}
             {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
           {% else %}
             {{ 'products.product.on_sale' | t }}
-            {{ product.price | money }}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ product.price | money | prepend: geolizr_prepend_code | append: "</span>"}}
           {% endif %}
 
         {% else %}
 
           {% if product.price_varies %}
-            {%- assign price = product.price | money -%}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{%- assign price = product.price | money | prepend: geolizr_prepend_code | append: "</span>"-%}
             {{ 'products.product.from_text_html' | t: price: price }}
           {% else %}
-            {{ product.price | money }}
+            {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ product.price | money | prepend: geolizr_prepend_code | append: "</span>"}}
           {% endif %}
 
         {% endif %}
 
         {% if product.compare_at_price > product.price %}
           <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-          <s>{{ product.compare_at_price | money }}</s>
+          <s>{%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: product.compare_at_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ product.compare_at_price | money | prepend: geolizr_prepend_code | append: "</span>"}}</s>
         {% endif %}
 
         {% unless product.available %}
