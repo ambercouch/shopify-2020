@@ -16,6 +16,8 @@
 {% endif %}
 
 
+
+
 {% assign currentVariant = product.selected_or_first_available_variant %}
 {% assign add_to_cart_text = 'products.product.add_to_cart' | t  %}
 {% if product.metafields.global.add_to_cart_text %}
@@ -43,16 +45,32 @@
   </div> -->
 {% endcomment %}
 
+{% assign bundleName = product.metafields.bundle.bundle_name %}
+
+{% assign bundleOptionsCount = product.metafields.bundle.bundle_options_count %}
+
+
 
 
   <div class="js c-product-form__options--weaning-bundle">
+
+    {% if bundleOptionsCount != blank %}
+      <!--  bundleOptionCount not blank? {{  bundleOptionsCount }} -->
+      {% for i in (1..bundleOptionsCount) %}
+        {% assign countId = '-option-' | append : i %}
+        {% assign bundleOptionCollectionHandle = bundleName | append : countId %}
+        {% include 'bundle-option' with {collectionHandle :  bundleOptionCollectionHandle }%}
+      {% endfor %}
+
+    {% else %}
+      <!--  bundleOptionCount is blank? {{ bundleOptionsCount }} -->
 
     {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-1-bibado'}%}
     {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-2-bibado'}%}
     {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-3-easy-mat'}%}
     {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-4-easy-mat-mini'}%}
     {% include 'bundle-option' with {collectionHandle : 'weaning-bundle-option-5-piccolo'}%}
-
+    {% endif %}
 
   </div>
 
