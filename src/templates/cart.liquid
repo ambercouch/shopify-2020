@@ -20,7 +20,7 @@
       {% include 'ac-cart-discount-logic' %}
 
       {% unless discText == '' %}
-        <div class="l-quick-cart__discount-card">
+        <div class="l-quick-cart__discount-card is-cart-count-{{ cartBbdCount }}">
           <div class="c-discount-card">
             <div class="c-discount-card__content">
               <p>{{  discText }} <br>

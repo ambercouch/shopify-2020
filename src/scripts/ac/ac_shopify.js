@@ -8,19 +8,24 @@ const ACSHOPIFY = {
   common: {
     init: function() {
 
+      // URL Param test
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
 
       const version = urlParams.get('acabv');
-
-      console.log("URL VERSION jQ test");
-      console.log(version);
+      const cartPreDiscountNotice = urlParams.get('acabcartpdc');
 
       if (version == null){
         jQuery("[class*=l-main__content-block--]").first().removeClass("is-hidden");
 
       }else{
         jQuery("[class*=l-main__content-block--"+version+"]").removeClass("is-hidden");
+      }
+
+      if (cartPreDiscountNotice != 'true' ){
+        jQuery("body").addClass('is-cartpdn-hidden').removeClass('is-cartpdn-show');
+      }else {
+        jQuery("body").removeClass('is-cartpdn-hidden').addClass('is-cartpdn-show');
       }
 
 

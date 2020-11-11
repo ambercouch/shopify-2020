@@ -44,6 +44,19 @@
 {% assign autoDiscount = true %}
 
 {% case cartBbdCount | times: 1 %}
+
+{% when 1 %}
+{% assign discCode = '' %}
+{% assign discText = 'You have 1 item in your cart.<br> Add 2 more items to recieve your 20% discount code start saving today!'  %}
+{% assign discTextExtra = '' %}
+
+
+{% when 2 %}
+{% assign discCode = '' %}
+{% assign discText =  'You have 2 items in your cart.<br> Add 1 more item to recieve your 20% discount code start saving today!' %}
+{% assign discTextExtra = '' %}
+
+
 {% when 3 %}
 {% assign discCode = '3BIB20' %}
 {% assign discText = 'You have 3 Bibado items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> on the next page at checkout to get <strong>20%</strong> off your order, saving you ' | append :  discountSavingMoney  %}

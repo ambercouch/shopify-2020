@@ -62,3 +62,22 @@
 [class*=c-discount-card__header--] {
   @extend .c-discount-card__header;
 }
+
+.is-cart-count-1{
+  display: none;
+  .is-cartpdn-show &{
+    display: block;
+  }
+  .is-cartpdn-hidden &{
+    display: none;
+  }
+}
+.is-cart-count-2{
+  display: none;
+  .is-cartpdn-show &{
+    display: block;
+  }
+  .is-cartpdn-hidden &{
+    display: none;
+  }
+}
