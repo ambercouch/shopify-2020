@@ -893,8 +893,38 @@ const ACSHOPIFY = {
   product: {
 
     init: function() {
+
       // uncomment to debug
       console.log('v changh in shopify product 0520');
+
+      console.log('document.body.dataset.productTags');
+
+      let productTagsArray = JSON.parse(document.body.dataset.productTags);
+
+      let productTags = productTagsArray.join();
+
+      if (productTags.indexOf("BOGO:") >= 0){
+        $('body').addClass('is-bogo');
+        let acceptBogo = $('#acceptBogo');
+
+        if (acceptBogo.is(':checked')){
+          $('.c-product-form').addClass('is-accept-bogo');
+        }
+
+        $(document).on('change', acceptBogo, function(){
+          if (acceptBogo.is(':checked')){
+            $('.c-product-form').addClass('is-accept-bogo');
+          }else{
+            $('.c-product-form').removeClass('is-accept-bogo');
+          }
+        });
+
+        $(document).on('keydown', '.c-contact-form__input--additional-address', function() {
+          console.log('type that address test');
+        });
+
+
+      }
 
       let inst = $('[data-remodal-id="acVideo"]').remodal();
 

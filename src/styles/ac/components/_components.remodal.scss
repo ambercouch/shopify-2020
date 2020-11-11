@@ -46,7 +46,8 @@
   }
 
   &content {
-    display: block
+    display: block;
+    padding: $act-unit;
   }
 
   &footer {

@@ -45,9 +45,9 @@
   {% include 'css-variables' %}
 
   <!-- Google Optimize -->
-  
+
   <script src="https://www.googleoptimize.com/optimize.js?id=OPT-TZ7N9NM "></script>
-  
+
   <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', '');
 
@@ -84,7 +84,17 @@
 
 </head>
 
-<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-template-type="{{ template.suffix | replace : ' ', '_' | replace : '-', '_'}}">
+{% assign templateSuffix = template.suffix  %}
+{% if templateSuffix == blank  %}
+{% assign templateSuffix = "standard" %}
+{% endif %}
+{% if template.name | handle == 'product' %}
+ <!-- product template -->
+  {% assign productDataTags = product.tags | join : '", "' %}
+
+{% endif %}
+
+<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-product-tags='["{{productDataTags}}"]' data-template-type="{{ templateSuffix | replace : ' ', '_' | replace : '-', '_'}}">
 
 <div style="display: none;">
   {% include "defs.svg" %}
