@@ -52,6 +52,16 @@
       }
     }
   }
+  &pre-checkout{
+    @extend .c-btn--swipe-hover;
+    background: $brand-col-3;
+    color: #fff;
+    font-weight: 700;
+    border: solid 3px $brand-col-2;
+    &:hover{
+      @extend .c-btn--pre-checkout;
+    }
+  }
   &subscribe-submit{
     @extend .o-btn--small;
     @extend .o-btn--full;
@@ -237,6 +247,13 @@
     &:after{
       @extend .c-btn--swipe-hover:after;
       background: rgba($brand-col-3, 0.3);
+    }
+  }
+  &cart-bundle-link{
+    @extend .c-btn--product-bundle-link;
+    width: auto;
+    &:hover{
+      width: auto;
     }
   }
   &block{

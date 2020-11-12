@@ -125,7 +125,17 @@
       <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
       <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
     {% endif %} -->
-
+    <div class="l-quick-cart__pre-checkout u-hidden" data-acab-pre-checkout="cart-continue">
+      <a class="c-btn--pre-checkout" href="/products/bibado-the-award-winning-baby-weaning-coverall-bib">
+        <i class="fa fa-lock"></i>
+        <span class="c-btn__link-label">Want To Add More?  Head Back To The Shop!</span>
+      </a>
+    </div>
+    <div class="l-quick-cart__pre-checkout u-hidden" data-acab-pre-checkout="cart-bundle">
+      <a class="c-btn--cart-bundle-link" href="/collections/bibado-bundles">
+        <span class="c-btn__link-label">Build your own bundle and save up to 30%!</span>
+      </a>
+    </div>
     <div class="l-quick-cart__checkout--page" >
       <button type="submit" class="c-btn--cart-submit" name="checkout" value>
         <i class="fa fa-lock"></i>

@@ -14,6 +14,7 @@ const ACSHOPIFY = {
 
       const version = urlParams.get('acabv');
       const cartPreDiscountNotice = urlParams.get('acabcartpdc');
+      const cartprecheckout = urlParams.get('acabprecheckout');
 
       if (version == null){
         jQuery("[class*=l-main__content-block--]").first().removeClass("is-hidden");
@@ -26,6 +27,14 @@ const ACSHOPIFY = {
         jQuery("body").addClass('is-cartpdn-hidden').removeClass('is-cartpdn-show');
       }else {
         jQuery("body").removeClass('is-cartpdn-hidden').addClass('is-cartpdn-show');
+      }
+
+      if (cartprecheckout == null || cartprecheckout == 'continue'){
+        jQuery('[data-acab-pre-checkout=cart-continue]').removeClass('u-hidden');
+        jQuery('[data-acab-pre-checkout=cart-bundle]').addClass('u-hidden');
+      }else{
+        jQuery('[data-acab-pre-checkout=cart-continue]').addClass('u-hidden');
+        jQuery('[data-acab-pre-checkout=cart-bundle]').removeClass('u-hidden');
       }
 
 

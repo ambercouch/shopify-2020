@@ -92,6 +92,12 @@
       margin-right: auto;
     }
   }
+  &pre-checkout{
+    display: block;
+    text-align: center;
+    padding: $act-unit-l $act-unit;
+    background: #fff;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-quick-cart--
