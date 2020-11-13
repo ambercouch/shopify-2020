@@ -130,6 +130,8 @@
     color: $brand-col-3;
     grid-column-start: 1;
     grid-column-end: 3;
+
+
   }
   &modal-control{
     display: none;
@@ -363,7 +365,11 @@
 
 .c-product-form__offer-text--{
   &bogo{
-    display: none;
+    //display: none;
+    p{
+      margin-bottom: $act-unit-t;
+    }
+    @include act-font-size($act-fs-6);
     .is-bogo &{
       display: block;
     }

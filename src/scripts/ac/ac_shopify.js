@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY testing ql clicking,  c-product-price__price');
+console.log('ACSHOPIFY');
 const ACSHOPIFY = {
   common: {
     init: function() {

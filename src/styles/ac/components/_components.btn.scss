@@ -430,10 +430,20 @@
     &:hover{
       background: darken($brand-col-3, 10%) !important;
       display: inline-block;
-      width: 300px !important !important;
+      width: 300px !important;
       max-width: 100%;
       border: solid 3px $brand-col-3;
       display: inline-block !important;
+    }
+  }
+  &modal-open{
+    background: $brand-col-3;
+    padding: $act-unit-t !important;
+    @include act-font-size($act-fs-6);
+    color:white;
+    border: none;
+    &:hover{
+      @extend .c-btn--modal-open;
     }
   }
 }

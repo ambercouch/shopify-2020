@@ -30,53 +30,7 @@
     {% include 'ac-product-form-price' %}
   </div>
 
-  {% assign bogoOffer = false %}
-  {% for tag in product.tags %}
-  {% if tag contains 'BOGO' %}
-    {% assign bogoOffer = true %}
-    {% assign bogoHandle = tag %}
-    {% assign bogoTextHandle = bogoHandle | append : '_intro' %}
-    {% assign bogoTitleHandle = bogoHandle | append : '_title' %}
-    {% assign bogoText = shop.metafields.bogo[bogoTextHandle] %}
-    {% assign bogoTitle = shop.metafields.bogo[bogoTitleHandle] %}
-  {% endif %}
-  {% endfor %}
-  {% if bogoOffer == true %}
-    {% if bogoText != blank %}
-      {{ bogoText }}
-      {% else %}
-        <div class="c-product-form__offer-text--bogo">
-        <p>Why not get a second bibado Coverall for free and send it to a friend for just £1.95 to cover postage and packing</p>
-        <p>Just check the <b>Buy One Give</b> checkbox and add your friends address</p>
-        <p class="c-product-form__property-field">
-          <input type="hidden" name="properties[{{ bogoHandle }}]" value="No">
-          <input id="acceptBogo" type="checkbox" name="properties[{{ bogoHandle }}]" value="Yes">
-          <label for="acceptBogo">Buy One Give One</label><br>
-        </p>
-          <div class="c-product-form__modal-control">
-            <a class="c-btn--s" data-remodal-target="modal-additional-address">Add your friend's address</a>
-          </div>
 
-        </div>
-
-        <div class="c-product-form__remodal" >
-          <div class="c-remodal remodal" data-remodal-id="modal-additional-address">
-            <button data-remodal-action="close" class="remodal-close c-remodal__btn--close"></button>
-            <div class="c-remodal__content">
-              <div class="c-remodal__contact-form--additional-address">
-                <p>Add your friend's name and address and we will send them a Free Bibado Coverall (£1.95 for postage)</p>
-                {% include 'ac-additional-address-form' %}
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
-
-      {%  endif %}
-
-  {% endif %}
 
 
   {% if current_variant.inventory_quantity < 1 and current_variant.inventory_policy == 'continue'  %}
@@ -186,6 +140,8 @@
         </span>
   </button>
   </div>
+
+  {% include 'ac-bogo-offer' %}
 
 {% endform %}
 </div>
