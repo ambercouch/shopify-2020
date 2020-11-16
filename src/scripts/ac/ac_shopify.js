@@ -921,6 +921,21 @@ const ACSHOPIFY = {
         $('body').addClass('is-bogo');
         let acceptBogo = $('#acceptBogo');
 
+        let FriendFirstName = $('#FriendFirstName').val();
+        let FriendLastName = $('#FriendLastName').val();
+        let FriendAddressLine1 = $('#FriendAddressLine1').val();
+        let FriendAddressLine2 = $('#FriendAddressLine2').val();
+        let FriendAddressCity = $('#FriendAddressCity').val();
+        let FriendAddressPostcode = $('#FriendAddressPostcode').val();
+
+
+
+
+        console.log('FRIEND ADDRESS');
+        console.log('FriendFirstName');
+        console.log(FriendFirstName);
+        console.log(FriendFirstName + FriendLastName + FriendAddressLine1 + FriendAddressLine2 + FriendAddressCity + FriendAddressPostcode);
+
         if (acceptBogo.is(':checked')){
           $('.c-product-form').addClass('is-accept-bogo');
         }
@@ -928,24 +943,63 @@ const ACSHOPIFY = {
         $(document).on('change', acceptBogo, function(){
           if (acceptBogo.is(':checked')){
             $('.c-product-form').addClass('is-accept-bogo');
+
+            let aAddressIsValid = true;
+
+            $('.c-contact-form--additional-address input').filter('[required]').each(function(){
+              if ($(this).val() === '') {
+                aAddressIsValid = false;
+              }
+              console.log($(this));
+              console.log(aAddressIsValid);
+            });
+
+            if(aAddressIsValid == true){
+              console.log("aAddressIsValid");
+              console.log(aAddressIsValid);
+              $('.c-product-form').addClass('has-adderess-valid').removeClass('has-adderess-not-valid');
+              console.log('[data-submit-button] disabled false')
+              $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+            }else{
+              console.log("aAddressIsValid");
+              console.log(aAddressIsValid);
+              $('.c-product-form').addClass('has-adderess-not-valid').removeClass('has-adderess-valid');
+              console.log('[data-submit-button] disable true');
+              $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
+              $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+            }
+
           }else{
             $('.c-product-form').removeClass('is-accept-bogo');
+            $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+
           }
         });
 
         $(document).on('keydown', '.c-contact-form__input--additional-address', function() {
           console.log('type that address test');
         });
-
-
       }
 
-      let inst = $('[data-remodal-id="acVideo"]').remodal();
+      let remodArray = {};
+
+      $('[data-remodal-id]').each(function(i){
+        let dataRemodalId = $(this).attr('data-remodal-id');
+        let inst = $(this).remodal();
+        remodArray[dataRemodalId] = inst;
+      });
+
+      $(document).on('click', '[data-ac-target]', function(e) {
+        let remodalId = $(this).attr('data-ac-target');
+        e.preventDefault();
+        remodArray[remodalId].open();
+      });
+
+
 
       $('.single-option-selector').on( 'change', function() {
 
         console.log('option changed removed');
-
 
         // var searchArray = window.location.search;
         //   const urlParams = new URLSearchParams(searchArray);

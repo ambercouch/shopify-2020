@@ -120,6 +120,9 @@
   }
   &submit{
     display: block;
+    .has-adderess-not-valid.is-accept-bogo &{
+      display: none;
+    }
   }
   &offer-icon{
     padding: $act-unit-s 0 $act-unit-t;
@@ -135,6 +138,7 @@
   }
   &modal-control{
     display: none;
+    grid-column-start: 2;
     .is-accept-bogo &{
     display: block;
   }

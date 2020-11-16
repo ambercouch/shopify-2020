@@ -437,11 +437,12 @@
     }
   }
   &modal-open{
-    background: $brand-col-3;
-    padding: $act-unit-t !important;
-    @include act-font-size($act-fs-6);
-    color:white;
-    border: none;
+    @extend .c-btn--product-form-submit;
+    //background: $brand-col-3;
+    //padding: $act-unit-t !important;
+    //@include act-font-size($act-fs-6);
+    //color:white;
+    //border: none;
     &:hover{
       @extend .c-btn--modal-open;
     }
