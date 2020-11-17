@@ -28,6 +28,11 @@
       @include act-font-size($act-fs-4);
     }
   }
+  &dispatch-date-cart{
+    text-align: left;
+    @include act-font-size($act-fs-6);
+    color: $brand-col-3;
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-info-notice--
