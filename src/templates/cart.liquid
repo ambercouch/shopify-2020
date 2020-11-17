@@ -33,6 +33,23 @@
       <div class="l-cart-list--page">
         <ul class="l-cart-list__list">
           {% for item in cart.items %}
+
+            {% assign currentVariant = item.product.selected_or_first_available_variant %}
+            {% if currentVariant.metafields.global.pre_order_dispatch_text  %}
+              <!-- pre_order_dispatch_text from the currentVariant meta -->
+              {% assign preOrderDispatchText =  item.product.metafields.global.pre_order_dispatch_text %}
+              {% elsif item.product.metafields.global.pre_order_dispatch_text != nill %}
+              <!-- pre_order_dispatch_text from the product meta -->
+              {% assign preOrderDispatchText =  item.product.metafields.global.pre_order_dispatch_text %}
+              {% elsif shop.metafields[productType].pre_order_dispatch_text  != nill %}
+              <!-- pre_order_dispatch_text from the shop meta -->
+              {% assign preOrderDispatchText =  shop.metafields[productType].pre_order_dispatch_text %}
+
+            {% else %}
+              <!-- pre_order_dispatch_text none -->
+              {% assign preOrderDispatchText = nil %}
+            {% endif %}
+
           <li class="l-cart-list__item">
             <div class="l-cart-list__product-thumb">
               <div class="c-product-thumb--cart">
@@ -77,6 +94,7 @@
                         {% endfor %}
                       </div>
                       {% endif %}
+
                     </div>
 
                     <div class="c-product-thumb__qty-sep">
@@ -100,7 +118,16 @@
                     </div>
 
                   </div>
-
+                  {% if currentVariant.inventory_quantity < 1 and currentVariant.inventory_policy == 'continue'  %}
+                    {% assign displayClass = 'is-shown'  %}
+                  {% else %}
+                    {% assign displayClass = 'is-hidden'  %}
+                  {% endif %}
+                  <div class="c-product-thumb__info-notice  {{ displayClass }}" data-variant-notice >
+                    <div class="c-info-notice--dispatch-date-cart">
+                      {{ preOrderDispatchText }}
+                    </div>
+                  </div>
                   <div class="c-product-thumb__price--cart">
                     <span class="c-product-thumb__line-price-money"> {%comment%}gc--[{%endcomment%}{%- capture geolizr_prepend_code -%}{%- render 'geolizr-currency', geolizr_price: item.line_price -%}{% endcapture %}{%comment%}]--gc{%endcomment%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: "</span>"}}</span>
                   </div>

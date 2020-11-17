@@ -1,3 +1,19 @@
+{% assign currentVariant = product.selected_or_first_available_variant %}
+{% if currentVariant.metafields.global.pre_order_dispatch_text  %}
+  <!-- pre_order_dispatch_text from the currentVariant meta -->
+  {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+  {% elsif product.metafields.global.pre_order_dispatch_text != nill %}
+  <!-- pre_order_dispatch_text from the product meta -->
+  {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+  {% elsif shop.metafields[productType].pre_order_dispatch_text  != nill %}
+  <!-- pre_order_dispatch_text from the shop meta -->
+  {% assign preOrderDispatchText =  shop.metafields[productType].pre_order_dispatch_text %}
+
+{% else %}
+  <!-- pre_order_dispatch_text none -->
+  {% assign preOrderDispatchText = nil %}
+{% endif %}
+
 <div class="c-product-thumb{{ modClass }}">
   <!-- modclass {{ modClass }} ac-product-thumb.liquid -->
   {% if product.featured_image != blank %}
@@ -47,6 +63,17 @@
     {% unless product.available %}
       {{ 'products.product.sold_out' | t }}
     {% endunless %}
+
+    {% if currentVariant.inventory_quantity < 1 and currentVariant.inventory_policy == 'continue'  %}
+      {% assign displayClass = 'is-shown'  %}
+    {% else %}
+      {% assign displayClass = 'is-hidden'  %}
+    {% endif %}
+    <div class="c-product-form__info-notice  {{ displayClass }}" data-variant-notice >
+      <div class="c-info-notice--dispatch-date">
+        {{ preOrderDispatchText }}
+      </div>
+    </div>
   </div>
   </div>
 </div>

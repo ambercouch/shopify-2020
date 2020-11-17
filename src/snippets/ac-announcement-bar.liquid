@@ -1,14 +1,23 @@
-{%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
-    <div class="c-announcement-bar">
+{% assign aBarItemHidden = product.metafields.setting.annoucment_bar_hidden %}
+{% assign aBar = section.settings.announcement_bar_home_page_only %}
+{% assign aBarBgcIdClass = section.settings.announcement_bar_bgc_id_class %}
+{% assign aBarColIdClass = section.settings.announcement_bar_col_id_class %}
+{%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index'  -%}
+  {% if aBarItemHidden == 'true' %}
+    <!-- hide aBarItemHidden {{ aBarItemHidden }} -->
+  {% else %}
+  <!-- show aBarItemHidden {{ aBarItemHidden }} -->
+    <div class="c-announcement-bar u-bgc-{{ aBarBgcIdClass }}">
         {%- if section.settings.announcement_bar_link != blank -%}
-          <a class="c-announcement-bar__link" href="{{ section.settings.announcement_bar_link }}">
+          <a class="c-announcement-bar__link u-col-{{ aBarColIdClass   }}" href="{{ section.settings.announcement_bar_link }}">
             {{ section.settings.announcement_bar_text | escape }}
           </a>
         {%- else -%}
-          <div class="c-announcement-bar__text">
+          <div class="c-announcement-bar__text u-col-{{ aBarColIdClass  }}">
             <p>{{ section.settings.announcement_bar_text | escape }}</p>
-
           </div>
         {%- endif -%}
     </div><!-- .c-announcement-bar -->
+    {% endif %}
+
 {%- endif -%}

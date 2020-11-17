@@ -4,6 +4,12 @@
   {% assign shortName =  product.metafields.nsac.short_name  %}
 {% endif %}
 
+{% assign currentVariant = product.selected_or_first_available_variant %}
+{% assign add_to_cart_text = 'products.product.add_to_cart' | t  %}
+{% if product.metafields.global.add_to_cart_text %}
+  {% assign add_to_cart_text = product.metafields.global.add_to_cart_text  %}
+{% endif %}
+
 <div class="c-product-form--bundle">
 <form class="c-product-form__form">
 
@@ -55,7 +61,17 @@
       type="submit"
       name="add-to-bundle"
      >
-        <span data-submit-button-text>Add to bundle</span></button>
+         <span data-submit-button-text class="c-btn__link-label">
+          {% if currentVariant.available and currentVariant.inventory_quantity > 0   %}
+            {{ add_to_cart_text }}
+            {% elsif currentVariant.available and currentVariant.inventory_management != 'shopify'  %}
+            {{ add_to_cart_text }}
+            {% elsif currentVariant.inventory_quantity < 1 and currentVariant.inventory_policy == 'continue'%}
+            Pre-order
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
   </div>
 </form>
 </div>
