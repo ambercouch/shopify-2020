@@ -115,6 +115,9 @@
 .l-quick-cart__checkout--{
   &page{
     border-bottom: 0;
+    .no-js &{
+      display: block !important;
+    }
   }
 }
 
@@ -122,4 +125,8 @@
   &page{
     margin-top: $act-unit;
   }
+}
+
+.is-waiting-for-js-cart{
+  display: none;
 }

@@ -40,7 +40,7 @@ const ACSHOPIFY = {
 
       // add js class
       $('body')
-        .addClass('js');
+        .addClass('js').removeClass('no-js');
 
       jQuery('body').addClass('ac-jquery-loaded');
       'use strict';
@@ -918,33 +918,83 @@ const ACSHOPIFY = {
       let productTags = productTagsArray.join();
 
       if (productTags.indexOf("BOGO:") >= 0){
+
         $('body').addClass('is-bogo');
-        let acceptBogo = $('#acceptBogo');
+        let acceptBogoStatus = false;
+        const acceptBogo = $('#acceptBogo');
+        const $bogoAddressPropety = $('#bogoAddressPropety');
+        let propertyAddressName = '';
+        let propertyAddressVal = '';
 
-        let FriendFirstName = $('#FriendFirstName').val();
-        let FriendLastName = $('#FriendLastName').val();
-        let FriendAddressLine1 = $('#FriendAddressLine1').val();
-        let FriendAddressLine2 = $('#FriendAddressLine2').val();
-        let FriendAddressCity = $('#FriendAddressCity').val();
-        let FriendAddressPostcode = $('#FriendAddressPostcode').val();
+        let aAddressIsValid = true;
 
+        // Check for valid address
+        $('.c-contact-form--additional-address input').filter('[required]').each(function(){
+          if ($(this).val() === '') {
+            aAddressIsValid = false;
+          }
+        });
 
-
-
-        console.log('FRIEND ADDRESS');
-        console.log('FriendFirstName');
-        console.log(FriendFirstName);
-        console.log(FriendFirstName + FriendLastName + FriendAddressLine1 + FriendAddressLine2 + FriendAddressCity + FriendAddressPostcode);
-
-        if (acceptBogo.is(':checked')){
-          $('.c-product-form').addClass('is-accept-bogo');
+        if(aAddressIsValid == true){
+          $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+          $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+        }else{
+          $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+          $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
+          $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
         }
 
+
+        // On load check if bogo is already accepted
+        if (acceptBogo.is(':checked')){
+          $('.c-product-form').addClass('is-accept-bogo');
+          acceptBogoStatus = true;
+        }else{
+          $('.c-product-form').removeClass('is-accept-bogo');
+          acceptBogoStatus = false;
+        }
+
+        $(document).on('submit', '[data-product-form]', function(e) {
+          console.log('$bogoAddressPropety')
+          console.log($bogoAddressPropety)
+          if (acceptBogoStatus == true && aAddressIsValid == true){
+            $('.c-contact-form--additional-address input').each(function(i){
+
+              console.log('i');
+              console.log(i);
+              let addressLine = $(this).val();
+              let addressSep = ' : ';
+
+              if (addressLine != '' && i < 2){
+                propertyAddressName += addressLine + ' ';
+              }
+
+              if (addressLine != '' && i > 1){
+                propertyAddressVal += addressLine + addressSep;
+              }
+
+              console.log (propertyAddressName);
+              console.log (propertyAddressVal.slice(0, -3));
+
+            });
+            $bogoAddressPropety.attr('name', 'properties[' +propertyAddressName+']');
+            $bogoAddressPropety.val(propertyAddressVal.slice(0, -3));
+            console.log('$bogoAddressPropety')
+            console.log($bogoAddressPropety)
+            //alert('submit property');
+
+
+          }else{
+            console.log()
+            //alert('do not submit')
+          }
+        })
+
+        // On change check if bogo is already accepted
         $(document).on('change', acceptBogo, function(){
           if (acceptBogo.is(':checked')){
+            acceptBogoStatus = true;
             $('.c-product-form').addClass('is-accept-bogo');
-
-            let aAddressIsValid = true;
 
             $('.c-contact-form--additional-address input').filter('[required]').each(function(){
               if ($(this).val() === '') {
@@ -957,27 +1007,44 @@ const ACSHOPIFY = {
             if(aAddressIsValid == true){
               console.log("aAddressIsValid");
               console.log(aAddressIsValid);
-              $('.c-product-form').addClass('has-adderess-valid').removeClass('has-adderess-not-valid');
-              console.log('[data-submit-button] disabled false')
+              $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+              console.log('[data-submit-button] disabled false');
               $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
             }else{
               console.log("aAddressIsValid");
               console.log(aAddressIsValid);
-              $('.c-product-form').addClass('has-adderess-not-valid').removeClass('has-adderess-valid');
+              $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
               console.log('[data-submit-button] disable true');
               $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
               $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
             }
 
           }else{
+            acceptBogoStatus = false;
             $('.c-product-form').removeClass('is-accept-bogo');
             $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
 
           }
         });
 
-        $(document).on('keydown', '.c-contact-form__input--additional-address', function() {
+        $(document).on('keyup', '.c-contact-form__input--additional-address', function() {
           console.log('type that address test');
+          aAddressIsValid = true;
+          // Check for valid address
+          $('.c-contact-form--additional-address input').filter('[required]').each(function(){
+            if ($(this).val() === '') {
+              aAddressIsValid = false;
+            }
+          });
+
+          if(aAddressIsValid == true){
+            $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+            $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+          }else{
+            $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+            $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
+            $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+          }
         });
       }
 
@@ -1067,6 +1134,112 @@ const ACSHOPIFY = {
         ACSHOPIFY.fn.actCopyToClipBoard(element, noteAfter);
       });
 }
+  },
+  cart:{
+    init: function() {
+      console.log('Some Cart Page ajax');
+
+      let $jsWaiting = $('.is-waiting-for-js-cart');
+      $jsWaiting.removeClass('is-waiting-for-js-cart');
+
+      let bogoTotal = 0;
+      let additionalShipping = 0;
+      jQuery.ajax({
+        url: '/cart.js',
+        dataType: 'json'
+      })
+        .done(function(data) {
+
+          let cartItems = data.items;
+
+          $.each(cartItems, function(i,item) {
+            let itemId = item.id;
+            let itemQty = item.quantity;
+            let itemProps = item.properties;
+            let itemPropFirst = ' : ';
+
+            if (typeof itemProps === 'object' && itemProps !== null){
+              itemPropFirst = itemProps[Object.keys(itemProps)[0]];
+            }
+
+            let itemPropFirstArray = [];
+
+            if (itemPropFirst !== undefined){
+              itemPropFirstArray = itemPropFirst.split(' : ');
+            }
+
+            if(itemPropFirstArray.length > 2){
+              bogoTotal += itemQty;
+              $jsWaiting.addClass('is-waiting-for-js-cart');
+            }
+
+            if(itemId == '32995425976363'){
+              additionalShipping += itemQty;
+              console.log('This is shipping ' + additionalShipping);
+            }
+
+
+          });
+
+
+          if (bogoTotal != additionalShipping){
+            $.ajax({
+              url: '/cart/change.js',
+              dataType: 'json',
+              method: 'POST',
+              data: {
+                'id': 32995425976363,
+                'quantity': 0
+              }
+            })
+              .done(function() {
+
+
+
+                $.ajax({
+                  url: '/cart/add.js',
+                  dataType: 'json',
+                  method: 'POST',
+                  data: {
+                    'id': 32995425976363,
+                    'quantity': bogoTotal
+                  }
+                })
+                  .done(function() {
+                    location.reload();
+                  });
+
+              });
+          }
+          else {
+            $jsWaiting.removeClass('is-waiting-for-js-cart');
+          }
+
+
+        });
+
+
+
+      // if (itemId == '32995425976363'){
+      //   console.log('Got shipping - Remove please');
+      //   console.log(item)
+      //   $.ajax({
+      //     url: '/cart/change.js',
+      //     dataType: 'json',
+      //     method: 'POST',
+      //     data: {
+      //       'id': 32995425976363,
+      //       'quantity': 0
+      //     }
+      //   })
+      //     .done(function(){
+      //         location.reload();
+      //       }
+      //
+      //     );
+      // }
+
+    },
   },
   search: {
     init: function() {

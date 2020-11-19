@@ -141,7 +141,12 @@
   </button>
   </div>
   <div class="c-product-form__modal-control">
-    <button class="c-btn--modal-open" data-ac-target="modal-additional-address" >Add your friend's address</button>
+    <div class="c-product-form__btn--modal-open">
+      <button class="c-btn--modal-open" data-ac-target="modal-additional-address" >
+      <span class="c-btn__label">Add your friend's address</span>
+      </button>
+    </div>
+    <a data-ac-target="modal-additional-address" class="c-product-form__link--modal-open">Update friend's address</a>
   </div>
 
   {% include 'ac-bogo-offer' %}
