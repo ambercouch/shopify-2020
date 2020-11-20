@@ -911,8 +911,6 @@ const ACSHOPIFY = {
       // uncomment to debug
       console.log('Product Radio Buttons');
 
-      console.log('document.body.dataset.productTags');
-
       let productTagsArray = JSON.parse(document.body.dataset.productTags);
 
       let productTags = productTagsArray.join();
@@ -988,7 +986,7 @@ const ACSHOPIFY = {
         $(document).on('submit', '[data-product-form]', function(e) {
 
           if (acceptBogoStatus == true && aAddressIsValid == true){
-
+            $('.c-contact-form--additional-address input').each(function(i){
               let addressLine = $(this).val();
               let addressSep = ' : ';
 
@@ -999,8 +997,6 @@ const ACSHOPIFY = {
               if (addressLine != '' && i > 1){
                 propertyAddressVal += addressLine + addressSep;
               }
-
-
 
             });
             $bogoAddressPropety.attr('name', 'properties[' +propertyAddressName+']');
