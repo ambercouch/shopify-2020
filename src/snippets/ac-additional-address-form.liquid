@@ -77,7 +77,7 @@
     {% if product.variants.size > 1 %}
       <p class="line-item-property__field">
         <label for="FriendColour" ><span class="c-contact-form__label-text">Select a colour for your friend</span></label><br>
-        <select id="FriendColour" required class="required" id="select-a-colour-for-your-friend" name="properties[friend colour]">
+        <select id="FriendColour" required class="required" id="select-a-colour-for-your-friend" name="propertycolour">
           {% for variant in product.variants %}
             <option value="{{ variant.title }}">{{ variant.title }}</option>
           {% endfor %}

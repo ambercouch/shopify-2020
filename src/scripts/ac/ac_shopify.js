@@ -909,7 +909,7 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('Product Radio Buttons');
+      console.log('Product Properties ');
 
       let productTagsArray = JSON.parse(document.body.dataset.productTags);
 
@@ -941,9 +941,12 @@ const ACSHOPIFY = {
         // })
 
         $('body').addClass('is-bogo');
+
         let acceptBogoStatus = false;
+
         const acceptBogo = $('#acceptBogo');
-        const $bogoAddressPropety = $('#bogoAddressPropety');
+        const $bogoAddressPropety = $('#bogoAddressProperty');
+
         let propertyAddressName = '';
         let propertyAddressVal = '';
 
@@ -958,7 +961,7 @@ const ACSHOPIFY = {
 
         if( ! $("input:radio[name='acceptBogo']").is(":checked")){
           bogoIsValid = false;
-          $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
+          $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
         }else{
           bogoIsValid = true;
         }
@@ -984,23 +987,33 @@ const ACSHOPIFY = {
         // }
 
         $(document).on('submit', '[data-product-form]', function(e) {
-
+          let variantProperty = '';
           if (acceptBogoStatus == true && aAddressIsValid == true){
-            $('.c-contact-form--additional-address input').each(function(i){
+            $('.c-contact-form--additional-address input, .c-contact-form--additional-address select').each(function(i){
               let addressLine = $(this).val();
+              let inputName = $(this).attr('name');
               let addressSep = ' : ';
 
-              if (addressLine != '' && i < 2){
+
+              if (inputName == 'propertycolour'){
+                variantProperty = 'Colour' + addressSep + addressLine;
+              }
+              else if (addressLine != '' && i < 2){
                 propertyAddressName += addressLine + ' ';
               }
 
-              if (addressLine != '' && i > 1){
+              else if (addressLine != '' && i > 1){
                 propertyAddressVal += addressLine + addressSep;
               }
 
             });
+
+            if(variantProperty == ''){
+              propertyAddressVal = propertyAddressVal.slice(0, -3)
+            }
+
             $bogoAddressPropety.attr('name', 'properties[' +propertyAddressName+']');
-            $bogoAddressPropety.val(propertyAddressVal.slice(0, -3));
+            $bogoAddressPropety.val(propertyAddressVal + variantProperty );
 
 
           }
@@ -1022,19 +1035,19 @@ const ACSHOPIFY = {
 
               $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
 
-              $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+              $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
             }else{
 
               $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
 
-              $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
-              $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+              $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
+              $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
             }
 
           }else{
             acceptBogoStatus = false;
             $('.c-product-form').removeClass('is-accept-bogo');
-            $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
 
           }
         });
@@ -1051,11 +1064,11 @@ const ACSHOPIFY = {
 
           if(aAddressIsValid == true){
             $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
-            $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
           }else{
             $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
-            $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
-            $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
           }
         });
       }
