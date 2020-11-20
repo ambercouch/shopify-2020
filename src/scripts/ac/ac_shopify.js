@@ -909,7 +909,7 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('v changh in shopify product 0520');
+      console.log('Product Radio Buttons');
 
       console.log('document.body.dataset.productTags');
 
@@ -918,6 +918,29 @@ const ACSHOPIFY = {
       let productTags = productTagsArray.join();
 
       if (productTags.indexOf("BOGO:") >= 0){
+
+        // if ($("input:radio[name='acceptBogo']").is(":checked")){
+        //   alert('dont disable')
+        //   $('.c-btn--product-form-submit').prop('disabled', false);
+        //   $('.c-btn--product-form-submit').removeAttr('disabled','disabled');
+        //   $('.c-btn--product-form-submit').addClass('ac-not-disabled');
+        //   $('.c-btn--product-form-submit').removeClass('ac-disabled');
+        // } else {
+        //   alert('yes disable');
+        //   $('.c-btn--product-form-submit').prop('disabled', true);
+        //   $('.c-btn--product-form-submit').attr('disabled','disabled');
+        //   $('.c-btn--product-form-submit').attr('data-test-attr','some value');
+        //   $('.c-btn--product-form-submit').addClass('ac-disabled');
+        //   $('.c-btn--product-form-submit').removeClass('ac-not-disabled');
+        // }
+        //
+        // $(document).on('change', "input:radio[name='acceptBogo']", function() {
+        //   alert('dont disable')
+        //   $('.c-btn--product-form-submit').prop('disabled', false);
+        //   $('.c-btn--product-form-submit').removeAttr('disabled');
+        //   $('.c-btn--product-form-submit').addClass('ac-not-disabled');
+        //   $('.c-btn--product-form-submit').removeClass('ac-disabled');
+        // })
 
         $('body').addClass('is-bogo');
         let acceptBogoStatus = false;
@@ -935,33 +958,37 @@ const ACSHOPIFY = {
           }
         });
 
-        if(aAddressIsValid == true){
-          $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
-          $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
-        }else{
-          $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+        if( ! $("input:radio[name='acceptBogo']").is(":checked")){
+          bogoIsValid = false;
           $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
-          $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
-        }
-
-
-        // On load check if bogo is already accepted
-        if (acceptBogo.is(':checked')){
-          $('.c-product-form').addClass('is-accept-bogo');
-          acceptBogoStatus = true;
         }else{
-          $('.c-product-form').removeClass('is-accept-bogo');
-          acceptBogoStatus = false;
+          bogoIsValid = true;
         }
+
+        // if(aAddressIsValid == true){
+        //   $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+        //   $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+        // }else{
+        //   $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+        //   $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
+        //   $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+        // }
+        //
+        //
+        // // On load check if bogo is already accepted
+        // if (acceptBogo.is(':checked')){
+        //   $('.c-product-form').addClass('is-accept-bogo');
+        //   acceptBogoStatus = true;
+        // }else{
+        //   $('.c-product-form').removeClass('is-accept-bogo');
+        //   acceptBogoStatus = false;
+        //
+        // }
 
         $(document).on('submit', '[data-product-form]', function(e) {
-          console.log('$bogoAddressPropety')
-          console.log($bogoAddressPropety)
-          if (acceptBogoStatus == true && aAddressIsValid == true){
-            $('.c-contact-form--additional-address input').each(function(i){
 
-              console.log('i');
-              console.log(i);
+          if (acceptBogoStatus == true && aAddressIsValid == true){
+
               let addressLine = $(this).val();
               let addressSep = ' : ';
 
@@ -973,20 +1000,13 @@ const ACSHOPIFY = {
                 propertyAddressVal += addressLine + addressSep;
               }
 
-              console.log (propertyAddressName);
-              console.log (propertyAddressVal.slice(0, -3));
+
 
             });
             $bogoAddressPropety.attr('name', 'properties[' +propertyAddressName+']');
             $bogoAddressPropety.val(propertyAddressVal.slice(0, -3));
-            console.log('$bogoAddressPropety')
-            console.log($bogoAddressPropety)
-            //alert('submit property');
 
 
-          }else{
-            console.log()
-            //alert('do not submit')
           }
         })
 
@@ -1000,21 +1020,17 @@ const ACSHOPIFY = {
               if ($(this).val() === '') {
                 aAddressIsValid = false;
               }
-              console.log($(this));
-              console.log(aAddressIsValid);
             });
 
             if(aAddressIsValid == true){
-              console.log("aAddressIsValid");
-              console.log(aAddressIsValid);
+
               $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
-              console.log('[data-submit-button] disabled false');
+
               $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
             }else{
-              console.log("aAddressIsValid");
-              console.log(aAddressIsValid);
+
               $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
-              console.log('[data-submit-button] disable true');
+
               $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
               $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
             }
