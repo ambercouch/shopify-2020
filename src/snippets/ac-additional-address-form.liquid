@@ -1,5 +1,7 @@
 <div class="c-contact-form--additional-address">
   <div class="c-contact-form__form">
+
+
     <label for="FriendFirstName">
       <span class="c-contact-form__label-text">Friend's First Name *</span>
       <span class="c-contact-form__input-wrapper">
@@ -37,12 +39,13 @@
     </label>
 
     <label for="FriendAddressLine2">
-      <span class="c-contact-form__label-text">Address Line 2</span>
+      <span class="c-contact-form__label-text">Address Line 2 *</span>
       <span class="c-contact-form__input-wrapper">
           <input type="text"
                  name="friend-address-line-2"
                  id="FriendAddressLine2"
                  value=""
+                 required
                  class="c-contact-form__input--additional-address">
           </span>
     </label>
@@ -70,6 +73,17 @@
                      class="c-contact-form__input--additional-address">
               </span>
     </label>
+
+    {% if product.variants.size > 1 %}
+      <p class="line-item-property__field">
+        <label for="FriendColour" ><span class="c-contact-form__label-text">Select a colour for your friend</span></label><br>
+        <select id="FriendColour" required class="required" id="select-a-colour-for-your-friend" name="properties[friend colour]">
+          {% for variant in product.variants %}
+            <option value="{{ variant.title }}">{{ variant.title }}</option>
+          {% endfor %}
+        </select>
+      </p>
+    {% endif %}
 
     <div class="c-contact-form__input-wrapper--submit">
       <button data-remodal-action="confirm" class="c-btn--contact-submit">Done</button>
