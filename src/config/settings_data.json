@@ -631,6 +631,7 @@
       },
       "1802652342222": {
         "type": "ac-content-block",
+        "disabled": true,
         "settings": {
           "cb_background_colour": "5",
           "cb_image": "shopify:\/\/shop_images\/11.png",
@@ -790,9 +791,50 @@
           "cb_desk_image_right": false,
           "cb_hide_on_load": false
         }
+      },
+      "1802652342333": {
+        "type": "ac-content-block",
+        "settings": {
+          "cb_background_colour": "5",
+          "cb_image": "shopify:\/\/shop_images\/bibado-long-sleave-bib_f11433a1-603e-4b77-b2c0-9de094863590.png",
+          "cb_image_fitting": "contain",
+          "cb_image_desktop": "",
+          "cb_image_layout": "right",
+          "cb_image_position": "below-text",
+          "cb_image_2": "",
+          "cb_logo_image": "",
+          "title": "Making Parents’<br>Lives Easier",
+          "cb_heading_size": "k",
+          "cb_font_weight": "700",
+          "cb_heading_colour": "2",
+          "cb_heading_layout": "left",
+          "cb_hide_title": false,
+          "cb_sub_title": "",
+          "cb_text": "<p>Buy 2 Bibado Coveralls for &pound;30 <br>and get a <strong>FREE<\/strong> EasyMat Mini!<\/p>",
+          "cb_code": "<style>\n.c-blob__id--homepage-banner .c-content-block__image {\n    right: -40px !important;\n    margin-top: -60px !important;\n}\n@media (min-width: 68.75em) {\n.c-blob__id--homepage-banner .c-content-block__image {\n    right: 0 !important;\n    margin-top: 0 !important;\n}\n}\n<\/style>",
+          "cb_css_class": "c-blob__id--homepage-banner",
+          "cb_text_colour": "2",
+          "cb_text_layout": "left",
+          "cb_button_label": "Get the Mix & MATch Bundle",
+          "cb_button_colour": "w",
+          "cb_button_bg_colour": "3",
+          "cb_button_border_colour": "t",
+          "cb_button_width": "auto-width",
+          "cb_button_link": "shopify:\/\/products\/easy-mat-bundle",
+          "cb_min_height": false,
+          "cb_min_height_px": false,
+          "cb_block_height": "650px",
+          "cb_force_full_height": false,
+          "cb_scroll_arrow": false,
+          "cb_desk_layout_1col": false,
+          "cb_desk_width_50": false,
+          "cb_desk_image_right": true,
+          "cb_hide_on_load": false
+        }
       }
     },
     "content_for_index": [
+      "1802652342333",
       "1802652342222",
       "1802652342111",
       "1802652342552",
