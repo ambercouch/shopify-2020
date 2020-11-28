@@ -85,7 +85,17 @@
 
 </head>
 
-<body id="siteBody" class="template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-template-type="{{ template.suffix | replace : ' ', '_' | replace : '-', '_'}}">
+{% assign templateSuffix = template.suffix  %}
+{% if templateSuffix == blank  %}
+{% assign templateSuffix = "standard" %}
+{% endif %}
+{% if template.name | handle == 'product' %}
+ <!-- product template -->
+  {% assign productDataTags = product.tags | join : '", "' %}
+
+{% endif %}
+
+<body id="siteBody" class="no-js template-{{ template | handle }}" data-template="{{ template.name | handle }}" data-product-tags='["{{productDataTags}}"]' data-template-type="{{ templateSuffix | replace : ' ', '_' | replace : '-', '_'}}">
 
 <div style="display: none;">
   {% include "defs.svg" %}

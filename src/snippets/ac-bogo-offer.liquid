@@ -1,0 +1,54 @@
+{% assign productName = product.type %}
+{% if product.metafields.nsac.short_name %}
+  {% assign productName = product.metafields.nsac.short_name %}
+{% endif %}
+<!--  product.type = {{ product.type }} -->
+<!-- product.metafields.nsac.short_name= {{ product.metafields.nsac.short_name }} -->
+
+{% assign bogoOffer = false %}
+  {% for tag in product.tags %}
+    {% if tag contains 'BOGO' %}
+      {% assign bogoOffer = true %}
+      {% assign bogoHandle = tag %}
+      {% assign bogoTextHandle = bogoHandle | append : '_intro' %}
+      {% assign bogoTitleHandle = bogoHandle | append : '_title' %}
+      {% assign bogoText = shop.metafields.bogo[bogoTextHandle] %}
+      {% assign bogoTitle = shop.metafields.bogo[bogoTitleHandle] %}
+    {% endif %}
+  {% endfor %}
+  {% if bogoOffer == true %}
+    {% if bogoText != blank %}
+      {{ bogoText }}
+    {% else %}
+      <div class="c-product-form__offer-text--bogo">
+        <h6>Give someone special a {{ productName }} for FREE</h6>
+        <p class="c-product-form__property-field">
+          <input id="bogoAddressProperty" type="hidden" name="" value="">
+          <input id="acceptBogo" type="radio" name="acceptBogo" value="Yes">
+          <label for="acceptBogo">Buy One Give One</label><br>
+          <input id="declineBogo" type="radio" name="acceptBogo" value="Yes">
+          <label for="declineBogo">No thank you </label><br>
+
+        </p>
+        <p>After this crazy year, why not give someone special a {{ productName }} for free? All we ask is you enter their address, pick a colour and cover the £2.95 postage. We'll do the rest!</p>
+        <p>After a tough year for us all BiBADO are celebrating the festive season by focusing on giving to those around us. Let us help you say thank you to a grandparent who helps with childcare, that friend who could use a hand, or any other unsung hero in your life</p>
+      </div>
+
+      <div class="c-product-form__remodal" >
+        <div class="c-remodal remodal" data-remodal-id="modal-additional-address" id="modal-additional-address">
+          <button data-remodal-action="close" class="remodal-close c-remodal__btn--close"></button>
+          <div class="c-remodal__content">
+            <div class="c-remodal__contact-form--additional-address">
+              <p>Add your friend's name and address and we will send them a Free {{ productName }} (£2.95 for postage)</p>
+              {% include 'ac-additional-address-form' %}
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    {%  endif %}
+
+  {% endif %}

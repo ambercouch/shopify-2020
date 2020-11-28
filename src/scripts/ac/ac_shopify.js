@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY testing ql clicking,  c-product-price__price');
+console.log('ACSHOPIFY');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -40,7 +40,7 @@ const ACSHOPIFY = {
 
       // add js class
       $('body')
-        .addClass('js');
+        .addClass('js').removeClass('no-js');
 
       jQuery('body').addClass('ac-jquery-loaded');
       'use strict';
@@ -907,15 +907,191 @@ const ACSHOPIFY = {
   product: {
 
     init: function() {
-      // uncomment to debug
-      console.log('v changh in shopify product 0520');
 
-      let inst = $('[data-remodal-id="acVideo"]').remodal();
+      // uncomment to debug
+      console.log('Product Properties ');
+
+      let productTagsArray = JSON.parse(document.body.dataset.productTags);
+
+      let productTags = productTagsArray.join();
+
+      if (productTags.indexOf("BOGO:") >= 0){
+
+        // if ($("input:radio[name='acceptBogo']").is(":checked")){
+        //   alert('dont disable')
+        //   $('.c-btn--product-form-submit').prop('disabled', false);
+        //   $('.c-btn--product-form-submit').removeAttr('disabled','disabled');
+        //   $('.c-btn--product-form-submit').addClass('ac-not-disabled');
+        //   $('.c-btn--product-form-submit').removeClass('ac-disabled');
+        // } else {
+        //   alert('yes disable');
+        //   $('.c-btn--product-form-submit').prop('disabled', true);
+        //   $('.c-btn--product-form-submit').attr('disabled','disabled');
+        //   $('.c-btn--product-form-submit').attr('data-test-attr','some value');
+        //   $('.c-btn--product-form-submit').addClass('ac-disabled');
+        //   $('.c-btn--product-form-submit').removeClass('ac-not-disabled');
+        // }
+        //
+        // $(document).on('change', "input:radio[name='acceptBogo']", function() {
+        //   alert('dont disable')
+        //   $('.c-btn--product-form-submit').prop('disabled', false);
+        //   $('.c-btn--product-form-submit').removeAttr('disabled');
+        //   $('.c-btn--product-form-submit').addClass('ac-not-disabled');
+        //   $('.c-btn--product-form-submit').removeClass('ac-disabled');
+        // })
+
+        $('body').addClass('is-bogo');
+
+        let acceptBogoStatus = false;
+
+        const acceptBogo = $('#acceptBogo');
+        const $bogoAddressPropety = $('#bogoAddressProperty');
+
+        let propertyAddressName = '';
+        let propertyAddressVal = '';
+
+        let aAddressIsValid = true;
+
+        // Check for valid address
+        $('.c-contact-form--additional-address input').filter('[required]').each(function(){
+          if ($(this).val() === '') {
+            aAddressIsValid = false;
+          }
+        });
+
+        if( ! $("input:radio[name='acceptBogo']").is(":checked")){
+          bogoIsValid = false;
+          $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
+        }else{
+          bogoIsValid = true;
+        }
+
+        // if(aAddressIsValid == true){
+        //   $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+        //   $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+        // }else{
+        //   $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+        //   $('[data-submit-button]').prop('disabled', true).addClass("is-disabled");
+        //   $('[data-submit-button]').prop('disabled', false).removeClass("is-disabled");
+        // }
+        //
+        //
+        // // On load check if bogo is already accepted
+        // if (acceptBogo.is(':checked')){
+        //   $('.c-product-form').addClass('is-accept-bogo');
+        //   acceptBogoStatus = true;
+        // }else{
+        //   $('.c-product-form').removeClass('is-accept-bogo');
+        //   acceptBogoStatus = false;
+        //
+        // }
+
+        $(document).on('submit', '[data-product-form]', function(e) {
+          let variantProperty = '';
+          if (acceptBogoStatus == true && aAddressIsValid == true){
+            $('.c-contact-form--additional-address input, .c-contact-form--additional-address select').each(function(i){
+              let addressLine = $(this).val();
+              let inputName = $(this).attr('name');
+              let addressSep = ' : ';
+
+
+              if (inputName == 'propertycolour'){
+                variantProperty = 'Colour' + addressSep + addressLine;
+              }
+              else if (addressLine != '' && i < 1){
+                  propertyAddressName += addressLine ;
+              }
+
+              else if (addressLine != '' && i > 1){
+                propertyAddressVal += addressLine + addressSep;
+              }
+
+            });
+
+            if(variantProperty == ''){
+              propertyAddressVal = propertyAddressVal.slice(0, -3)
+            }
+
+            $bogoAddressPropety.attr('name', 'properties[' +propertyAddressName+']');
+            $bogoAddressPropety.val(propertyAddressVal + variantProperty );
+
+
+          }
+        })
+
+        // On change check if bogo is already accepted
+        $(document).on('change', acceptBogo, function(){
+          if (acceptBogo.is(':checked')){
+            acceptBogoStatus = true;
+            $('.c-product-form').addClass('is-accept-bogo');
+
+            $('.c-contact-form--additional-address input').filter('[required]').each(function(){
+              if ($(this).val() === '') {
+                aAddressIsValid = false;
+              }
+            });
+
+            if(aAddressIsValid == true){
+
+              $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+
+              $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
+            }else{
+
+              $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+
+              $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
+              $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
+            }
+
+          }else{
+            acceptBogoStatus = false;
+            $('.c-product-form').removeClass('is-accept-bogo');
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
+
+          }
+        });
+
+        $(document).on('keyup', '.c-contact-form__input--additional-address', function() {
+          console.log('type that address test');
+          aAddressIsValid = true;
+          // Check for valid address
+          $('.c-contact-form--additional-address input').filter('[required]').each(function(){
+            if ($(this).val() === '') {
+              aAddressIsValid = false;
+            }
+          });
+
+          if(aAddressIsValid == true){
+            $('.c-product-form').addClass('has-address-valid').removeClass('has-address-not-valid');
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
+          }else{
+            $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
+            $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
+          }
+        });
+      }
+
+      let remodArray = {};
+
+      $('[data-remodal-id]').each(function(i){
+        let dataRemodalId = $(this).attr('data-remodal-id');
+        let inst = $(this).remodal();
+        remodArray[dataRemodalId] = inst;
+      });
+
+      $(document).on('click', '[data-ac-target]', function(e) {
+        let remodalId = $(this).attr('data-ac-target');
+        e.preventDefault();
+        remodArray[remodalId].open();
+      });
+
+
 
       $('.single-option-selector').on( 'change', function() {
 
         console.log('option changed removed');
-
 
         // var searchArray = window.location.search;
         //   const urlParams = new URLSearchParams(searchArray);
@@ -983,6 +1159,112 @@ const ACSHOPIFY = {
         ACSHOPIFY.fn.actCopyToClipBoard(element, noteAfter);
       });
 }
+  },
+  cart:{
+    init: function() {
+      console.log('Some Cart Page ajax');
+
+      let $jsWaiting = $('.is-waiting-for-js-cart');
+      $jsWaiting.removeClass('is-waiting-for-js-cart');
+
+      let bogoTotal = 0;
+      let additionalShipping = 0;
+      jQuery.ajax({
+        url: '/cart.js',
+        dataType: 'json'
+      })
+        .done(function(data) {
+
+          let cartItems = data.items;
+
+          $.each(cartItems, function(i,item) {
+            let itemId = item.id;
+            let itemQty = item.quantity;
+            let itemProps = item.properties;
+            let itemPropFirst = ' : ';
+
+            if (typeof itemProps === 'object' && itemProps !== null){
+              itemPropFirst = itemProps[Object.keys(itemProps)[0]];
+            }
+
+            let itemPropFirstArray = [];
+
+            if (itemPropFirst !== undefined){
+              itemPropFirstArray = itemPropFirst.split(' : ');
+            }
+
+            if(itemPropFirstArray.length > 2){
+              bogoTotal += itemQty;
+              $jsWaiting.addClass('is-waiting-for-js-cart');
+            }
+
+            if(itemId == '32995425976363'){
+              additionalShipping += itemQty;
+              console.log('This is shipping ' + additionalShipping);
+            }
+
+
+          });
+
+
+          if (bogoTotal != additionalShipping){
+            $.ajax({
+              url: '/cart/change.js',
+              dataType: 'json',
+              method: 'POST',
+              data: {
+                'id': 32995425976363,
+                'quantity': 0
+              }
+            })
+              .done(function() {
+
+
+
+                $.ajax({
+                  url: '/cart/add.js',
+                  dataType: 'json',
+                  method: 'POST',
+                  data: {
+                    'id': 32995425976363,
+                    'quantity': bogoTotal
+                  }
+                })
+                  .done(function() {
+                    location.reload();
+                  });
+
+              });
+          }
+          else {
+            $jsWaiting.removeClass('is-waiting-for-js-cart');
+          }
+
+
+        });
+
+
+
+      // if (itemId == '32995425976363'){
+      //   console.log('Got shipping - Remove please');
+      //   console.log(item)
+      //   $.ajax({
+      //     url: '/cart/change.js',
+      //     dataType: 'json',
+      //     method: 'POST',
+      //     data: {
+      //       'id': 32995425976363,
+      //       'quantity': 0
+      //     }
+      //   })
+      //     .done(function(){
+      //         location.reload();
+      //       }
+      //
+      //     );
+      // }
+
+    },
   },
   search: {
     init: function() {

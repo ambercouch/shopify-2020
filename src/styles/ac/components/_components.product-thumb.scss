@@ -152,6 +152,10 @@
   &price{
     display: block;
   }
+  &bogo-text{
+    padding-top: $act-unit-t;
+    @include act-font-size($act-fs-s, 1.3);
+  }
 }
 
 // BEM ELEMENT MODIFIER FALLBACK .c-product-thumb__header--

@@ -995,6 +995,7 @@ $act-block-height : 450px;
     @include mq($from:desktop){
       grid-row-start: 2;
     }
+    margin-bottom: 0 !important;
   }
   .c-content-block__body{
     @include mq($from:desktop){

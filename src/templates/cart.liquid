@@ -50,6 +50,8 @@
               {% assign preOrderDispatchText = nil %}
             {% endif %}
 
+
+
           <li class="l-cart-list__item">
             <div class="l-cart-list__product-thumb">
               <div class="c-product-thumb--cart">
@@ -87,10 +89,28 @@
 
                       {% if property_size > 0 %}
                       <div class="c-product-thumb__options">
+                        {% assign bogoProduct = false %}
+                        {% assign propSep = ': ' %}
                         {% for p in item.properties %}
+                          {% if p.last contains ' : ' %}
+                            {% assign bogoProduct = true %}
+                            {% assign propSep = ', ' %}
+                          {% endif %}
                         {% unless p.last == blank %}
-                        <div class="c-product-thumb__option">{{ p.first }}: {{ p.last }}</div>
+                          {% if bogoProduct == true %}
+                        <div class="c-product-thumb__bogo-text">
+                            {{ item.quantity }} items sent to you, {{ item.quantity }} items sent to :
+                        </div>
+                          {% endif %}
+                          {% assign addressArray = p.last | split: ' : ' %}
+                          {% assign colourVariant = addressArray | last %}
+                        <div class="c-product-thumb__option">
+                          {{ p.first }}{{ propSep }}{{ p.last | remove : ' : Colour : ' | remove : colourVariant | replace: ' : ', ', '}} <br>
+                          Colour : {{ colourVariant }}
+                        </div>
+
                         {% endunless %}
+
                         {% endfor %}
                       </div>
                       {% endif %}
@@ -101,6 +121,15 @@
                       X
                     </div>
 
+                    {% assign additionalItem = false %}
+                    {% for t in item.product.tags %}
+                      {% if t == 'additional-item' %}
+                      {% assign additionalItem = true %}
+                      {% endif %}
+                    {% endfor %}
+
+
+                    {% if additionalItem != true and bogoProduct != true %}
                     <div class="c-product-thumb__qty ac-test">
                       <input type="number"
                              class="c-product-thumb__input--qty"
@@ -109,15 +138,21 @@
                              value="{{ item.quantity }}"
                              min="0"
                              pattern="[0-9]*"
-                             aria-label="{{ 'cart.general.item_quantity' | t }}">
+                             aria-label="{{ 'cart.general.item_quantity' | t }}"
+                             {% if bogoProduct == true %}disabled{% endif %}
+                              >
                       <div class="c-product-thumb__btn--cart-update">
+                        {% if bogoProduct != true %}
                         <button type="submit" class="c-btn--cart-update" name="update">
                           <span>Update</span>
                         </button>
+                        {% endif %}
                       </div>
                     </div>
+                    {% endif %}
 
                   </div>
+
                   {% if currentVariant.inventory_quantity < 1 and currentVariant.inventory_policy == 'continue'  %}
                     {% assign displayClass = 'is-shown'  %}
                   {% else %}
@@ -163,8 +198,8 @@
         <span class="c-btn__link-label">Build your own bundle and save up to 30%!</span>
       </a>
     </div>
-    <div class="l-quick-cart__checkout--page" >
-      <button type="submit" class="c-btn--cart-submit" name="checkout" value>
+    <div class="l-quick-cart__checkout--page is-waiting-for-js-cart" >
+      <button type="submit" class="c-btn--cart-submit some-btn" name="checkout" disabled value>
         <i class="fa fa-lock"></i>
         <span class="c-btn__link-label">
         {{ 'cart.general.checkout' | t }}

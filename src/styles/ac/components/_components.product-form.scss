@@ -53,7 +53,7 @@
   }
 
   &link {
-    display: inline
+    display: inline;
   }
 
   &content {
@@ -63,20 +63,25 @@
   &footer {
     display: block
   }
+
   &product-price{
     margin-bottom: $act-unit-t;
     grid-column-start: 1;
     grid-column-end: 3;
   }
+
   &input{
     max-width: 100%;
   }
+
   &input-wrapper{
     display: block;
   }
+
   &label{
    display: none;
   }
+
   &select{
     @include size(100%);
     display: block;
@@ -95,10 +100,12 @@
     @include act-font-size($inuit-font-size-h5,1);
     padding: $act-unit-s;
   }
+
   &add-to-bundle{
     grid-column-start: 1;
     grid-column-end: 3;
   }
+
   &form{
     display: block;
     @include mq($from:desktop){
@@ -108,26 +115,48 @@
       column-gap: $act-unit-s;
       row-gap: $act-unit-s;
     }
-
   }
+
   &info-notice{
     grid-column-start: 1;
     grid-column-end: 3;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, padding 0.3s ease-in-out;
   }
+
   &options{
     display: block;
   }
+
   &submit{
     display: block;
+    .has-address-not-valid.is-accept-bogo &{
+      display: none;
+    }
   }
+
   &offer-icon{
     padding: $act-unit-s 0 $act-unit-t;
     width: 75px;
   }
+
   &offer-text{
     @include act-font-size($act-fs-5);
     color: $brand-col-3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  &modal-control{
+    display: none;
+    grid-column-start: 2;
+    .is-accept-bogo &{
+      display: block;
+    }
+
+  }
+
+  &btn{
+    display: block;
   }
 
 }
@@ -303,6 +332,42 @@
   }
 }
 
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__link--
+
+ [class*=c-product-form__link--] {
+   @extend .c-product-form__link;
+ }
+
+.c-product-form__link--{
+  &modal-open{
+    color: $brand-col-5;
+    @include act-font-size($act-fs-6);
+    display: none;
+    .has-address-valid.is-accept-bogo &{
+      display: inline;
+      vertical-align: top;
+      cursor: pointer;
+      color: $brand-col-5;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__link--
+
+[class*=c-product-form__btn--] {
+  @extend .c-product-form__btn;
+}
+
+.c-product-form__btn--{
+  &modal-open{
+    .has-address-valid.is-accept-bogo &{
+      display: none;
+    }
+  }
+}
+
+
+
 
 .is-hidden{
   &.c-product-form__info-notice {
@@ -345,4 +410,30 @@
     }
   }
 
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-form__submit--
+
+[class*=c-product-form__offer-text--] {
+  @extend .c-product-form__offer-text;
+}
+
+.c-product-form__offer-text--{
+  &bogo{
+    //display: none;
+    padding: $act-unit-s $act-unit;
+    background: #eee !important;
+    h6{
+      color: $brand-col-3;
+      line-height: 1.2;
+      margin-bottom: $act-unit-t;
+    }
+    p{
+      margin-bottom: $act-unit-t;
+    }
+    @include act-font-size($act-fs-6);
+    .is-bogo &{
+      display: block;
+    }
+  }
 }
