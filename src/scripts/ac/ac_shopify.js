@@ -998,8 +998,8 @@ const ACSHOPIFY = {
               if (inputName == 'propertycolour'){
                 variantProperty = 'Colour' + addressSep + addressLine;
               }
-              else if (addressLine != '' && i < 2){
-                propertyAddressName += addressLine + ' ';
+              else if (addressLine != '' && i < 1){
+                  propertyAddressName += addressLine ;
               }
 
               else if (addressLine != '' && i > 1){
