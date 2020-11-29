@@ -42,8 +42,8 @@
           "announcement_bar_bgc_id_class": "5",
           "announcement_bar_enabled": true,
           "announcement_bar_home_page_only": false,
-          "announcement_bar_text": "2 Bibado Coveralls for £30 plus a FREE <b>EasyMat<\/b> - saving £25.89!",
-          "announcement_bar_link": "shopify:\/\/products\/easy-mat-bundle",
+          "announcement_bar_text": "Buy One Give One On All BiBADO Products (excluding penguin design)",
+          "announcement_bar_link": "shopify:\/\/products\/bibado-the-award-winning-baby-weaning-coverall-bib",
           "mobile_logo": "shopify:\/\/shop_images\/Icon-mint_-39.png",
           "logo": "shopify:\/\/shop_images\/bibado-logo.png",
           "logo_max_width": 250,
@@ -631,7 +631,6 @@
       },
       "1802652342222": {
         "type": "ac-content-block",
-        "disabled": true,
         "settings": {
           "cb_background_colour": "5",
           "cb_image": "shopify:\/\/shop_images\/11.png",
@@ -648,7 +647,7 @@
           "cb_heading_layout": "left",
           "cb_hide_title": false,
           "cb_sub_title": "",
-          "cb_text": "<p>Buy One Get One Free On All BiBADO Products Using Code <strong>BBGFREE<\/strong> (excluding Penguin design)<\/p>",
+          "cb_text": "<p>Say thank you to someone special...on us!<br><strong>Buy One Give One On<\/strong> All BiBADO Products (excluding penguin design)<\/p>",
           "cb_code": "<style>\n.c-blob__id--homepage-banner .c-content-block__image {\n    right: -40px !important;\n    margin-top: -60px !important;\n}\n@media (min-width: 68.75em) {\n.c-blob__id--homepage-banner .c-content-block__image {\n    right: 0 !important;\n    margin-top: 0 !important;\n}\n}\n<\/style>",
           "cb_css_class": "c-blob__id--homepage-banner",
           "cb_text_colour": "2",
@@ -729,12 +728,12 @@
           "cb_heading_layout": "center",
           "cb_hide_title": false,
           "cb_sub_title": "",
-          "cb_text": "<p>Pre-order your limited edition easy-wipe, quick-dry Bibado Coverall for dispatch on the 30th November. Only limited availability - pre-order to avoid missing out.<\/p>",
+          "cb_text": "<p>This year, we've made your Special Edition Bibado Coverall Easy-wipe and quick-dry so it'll be ready for action whenever you need it!<\/p>",
           "cb_code": "",
           "cb_css_class": "",
           "cb_text_colour": "w",
           "cb_text_layout": "center",
-          "cb_button_label": "Pre-Order Now",
+          "cb_button_label": "Order Now",
           "cb_button_colour": "w",
           "cb_button_bg_colour": "t",
           "cb_button_border_colour": "w",
@@ -794,6 +793,7 @@
       },
       "1802652342333": {
         "type": "ac-content-block",
+        "disabled": true,
         "settings": {
           "cb_background_colour": "5",
           "cb_image": "shopify:\/\/shop_images\/bibado-long-sleave-bib_f11433a1-603e-4b77-b2c0-9de094863590.png",
@@ -905,4 +905,3 @@
     }
   }
 }
-
