@@ -18,7 +18,7 @@
 .c-contact-form-- {
   &additional-address{
     text-align: left;
-   
+
 
   }
   &request {
@@ -156,6 +156,13 @@
     animation-delay:5s;
     -webkit-animation-delay:5s; /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
+  }
+  &required{
+    background: rgba(white, 0.8);
+    @include act-font-size($act-fs-6,1);
+    color: red;
+    padding: $act-unit-t;
+    text-align: center;
   }
 }
 
