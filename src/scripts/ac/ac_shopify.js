@@ -1002,7 +1002,7 @@ const ACSHOPIFY = {
                   propertyAddressName += addressLine ;
               }
 
-              else if (addressLine != '' && i > 1){
+              else if (addressLine != '' && i >= 1){
                 propertyAddressVal += addressLine + addressSep;
               }
 
