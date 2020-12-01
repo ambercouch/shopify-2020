@@ -945,6 +945,7 @@ const ACSHOPIFY = {
         let acceptBogoStatus = false;
 
         const acceptBogo = $('#acceptBogo');
+        const declineBogo = $('#declineBogo');
         const $bogoAddressPropety = $('#bogoAddressProperty');
 
         let propertyAddressName = '';
@@ -964,6 +965,7 @@ const ACSHOPIFY = {
           $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
         }else{
           bogoIsValid = true;
+          $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
         }
 
         // if(aAddressIsValid == true){
@@ -1020,8 +1022,10 @@ const ACSHOPIFY = {
         })
 
         // On change check if bogo is already accepted
-        $(document).on('change', acceptBogo, function(){
+        $(document).on('change click', 'input:radio[name=acceptBogo]', function(e){
           if (acceptBogo.is(':checked')){
+            console.log('BOGO Accepted');
+            console.log(e);
             acceptBogoStatus = true;
             $('.c-product-form').addClass('is-accept-bogo');
 
@@ -1037,18 +1041,20 @@ const ACSHOPIFY = {
 
               $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
             }else{
-
+              console.log('BOGO Accepted');
+              console.log(e);
               $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
 
               $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
               $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
             }
 
-          }else{
+          }
+          else{
+            console.log('Bogo Declined');
             acceptBogoStatus = false;
             $('.c-product-form').removeClass('is-accept-bogo');
             $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
-
           }
         });
 
