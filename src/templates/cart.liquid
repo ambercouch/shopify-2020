@@ -101,14 +101,16 @@
                         <div class="c-product-thumb__bogo-text">
                             {{ item.quantity }} items sent to you, {{ item.quantity }} items sent to :
                         </div>
-                          {% endif %}
+
                           {% assign addressArray = p.last | split: ' : ' %}
                           {% assign colourVariant = addressArray | last %}
                         <div class="c-product-thumb__option">
                           {{ p.first }}{{ propSep }}{{ p.last | remove : ' : Colour : ' | remove : colourVariant | replace: ' : ', ', '}} <br>
                           Colour : {{ colourVariant }}
                         </div>
-
+                            {% else %}
+                              <div class="c-product-thumb__option">{{ p.first }}: {{ p.last }}</div>
+                          {% endif %}
                         {% endunless %}
 
                         {% endfor %}
