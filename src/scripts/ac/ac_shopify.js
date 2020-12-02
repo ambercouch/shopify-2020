@@ -1073,19 +1073,54 @@ const ACSHOPIFY = {
         });
       }
 
+      // Remodal fixes for multiple modals and firefox
+
+      // Create and array for all the modals
       let remodArray = {};
 
+      // Get each element and add to the remodal array
       $('[data-remodal-id]').each(function(i){
         let dataRemodalId = $(this).attr('data-remodal-id');
         let inst = $(this).remodal();
         remodArray[dataRemodalId] = inst;
       });
 
+      // Click a modal open button or link
       $(document).on('click', '[data-ac-target]', function(e) {
-        let remodalId = $(this).attr('data-ac-target');
+
         e.preventDefault();
+
+        // Get the remodal ID
+        let remodalId = $(this).attr('data-ac-target');
+
+
+        // Open the correct modal from the array
+        console.log('open the modal');
         remodArray[remodalId].open();
+        remodArray[remodalId].state = 'opened';
+
+        console.log(remodArray[remodalId].state);
+
+        $(document).on('opening', remodArray[remodalId], function(){
+
+          console.log('opening');
+          remodArray[remodalId].state = 'opened';
+
+          $('[data-remodal-id]').each(function(i){
+            console.log('re set each modal in array ');
+            let dataRemodalId = $(this).attr('data-remodal-id');
+            let inst = $(this).remodal();
+            remodArray[dataRemodalId] = inst;
+          });
+        });
       });
+
+      // $(document).on('opening', '.remodal', function () {
+      //   let remodalId = $(this).attr('data-ac-target');
+      //   remodArray[remodalId].state = 'opened';
+      //   console.log('remodArray[remodalId].state');
+      //   console.log(remodArray[remodalId].state);
+      // });
 
 
 
