@@ -75,7 +75,10 @@
         {% assign answer = page.metafields.faq[answerId] %}
         {% if question != null %}
           <li id="question{{ forloop.index }}" class="c-qanda-list__item">
-            <div class="c-qanda-list__question" data-control="{{ questionId }}" data-state="off"> <div class="c-qanda-list__question-text">{{ question }}</div><div class="c-qanda-list__question-control" >{% include 'icon-bbd-open-arrow' %}</div></div>
+            <div class="c-qanda-list__question" data-control="{{ questionId }}" data-state="off">
+              <div class="c-qanda-list__question-text">{{ question }}</div>
+              <div class="c-qanda-list__question-control" >{% include 'icon-bbd-open-arrow' %}</div>
+            </div>
             <div  class="c-qanda-list__answer" data-container="{{ questionId }}" data-state="off" >{{ answer }}</div>
           </li>
         {% endif %}

@@ -67,6 +67,8 @@
   <div class="l-page__content--product">
 
   {% for i in sectionOrderArray %}
+    {% assign questionId = 'question' | append : i %}
+
     {% assign nextI = i | plus:  1 %}
     {% assign blockimageId = 'block_image_'  | append : i %}
     {% assign blockTitleId = 'block_title_'  | append : i %}
@@ -78,7 +80,18 @@
     {% assign blockTextColId = 'block_text_color_'  | append : i %}
     {% assign blockVideoId = 'block_youtube_id_'  | append : i %}
     {% assign blockTypeId = 'block_type_' | append : i %}
+    {% assign blockCollapseId = 'block_collapse_' | append : i %}
 
+    {% if product.metafields.blocks[blockCollapseId] != nil and product.metafields.blocks[blockCollapseId] != 'false' %}
+      <!-- Collapse from the product meta -->
+      {% assign blockCollapse = true %}
+      {% elsif shop.metafields[productType][blockCollapseId]  != nil and shop.metafields[productType][blockCollapseId] != 'false' %}
+      <!-- Collapse from the shop meta -->
+      {% assign blockCollapse = true %}
+    {% else %}
+      <!-- no Collapse -->
+      {% assign blockCollapse = nil %}
+    {% endif %}
 
     {% if product.metafields.blocks[blockTitleId] != nil and product.metafields.blocks[blockTitleId] != 'false'%}
       <!-- Title from the product meta -->
@@ -217,10 +230,14 @@
     <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }} {{ blockTypeClass }}">
       <div class="c-content-block--product">
     {% if blockTitle != nil %}
+        <div class="c-qanda-list__question" {% if blockCollapse %} data-control="{{ questionId }}" data-state="off" {% endif %}>
         <h2 class="c-content-block__heading--product">
           <span class="c-content-block__title" >{{ blockTitle  }}</span>
         </h2>
+      {% if blockCollapse %} <div class="c-qanda-list__question-control" >{% include 'icon-bbd-open-arrow' %}</div>{% endif %}
+          </div>
     {% endif %}
+        <div  class="c-qanda-list__answer" {% if blockCollapse %} data-container="{{ questionId }}" data-state="off" {% endif %} >
         <div class="c-content-block__body--product">
           {% if blockContent != nil %}
           {{ blockContent }}
@@ -237,6 +254,7 @@
           </div>
           {% endif %}
 
+        </div>
         </div>
       </div>
     </div>
