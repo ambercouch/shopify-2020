@@ -243,7 +243,7 @@
 
     <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }} {{ blockTypeClass }}">
       <div class="c-content-block--product">
-    {% if blockTitle != nil %}
+    {% if blockTitle != nil and blockTitle != 'false'%}
         <h2 class="c-content-block__heading--product">
           <span class="c-content-block__title" >{{ blockTitle  }}</span>
         </h2>
