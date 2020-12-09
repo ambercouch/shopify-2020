@@ -80,11 +80,15 @@
     overflow: hidden;
     padding: 0 $act-unit-s;
     &[data-state=on]{
-      max-height: 500px;
+      max-height: 1000px;
       padding-top: $act-unit-s;
     }
     &[data-state=off]{
       max-height: 0;
+    }
+    .video-wrapper{
+      max-width: 800px;
+      margin: 0 auto;
     }
   }
   &question-text{
