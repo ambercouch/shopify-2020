@@ -3,12 +3,13 @@
 {% if product.metafields.global.below_form_button_text != nil %}
   <!-- below_form_link from the product meta -->
   {% assign belowFormButtonText =  product.metafields.global.below_form_button_text %}
-
+  {% elsif shop.metafields[productType].below_form_button_text  != nil %}
   <!-- below_form_link from the shop meta -->
   {% assign belowFormButtonText = shop.metafields[productType].below_form_button_text %}
 {% else %}
   {% assign belowFormButtonText = nil %}
 {% endif %}
+
 {% if product.metafields.global.below_form_button_url != nil %}
   <!-- below_form_link from the product meta -->
   {% assign belowFormButtonUrl =  product.metafields.global.below_form_button_url %}
