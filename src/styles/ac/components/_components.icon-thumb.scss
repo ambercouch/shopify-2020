@@ -35,7 +35,10 @@
   }
 
   &heading {
-    display: block
+    display: block;
+    color:$brand-col-2;
+    text-align: center;
+    width: 100%;
   }
 
   &title {
