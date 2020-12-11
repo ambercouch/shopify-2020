@@ -279,6 +279,9 @@
       max-width: 100%;
     }
   }
+  &color{
+    margin-bottom: $act-unit;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-product-form__options--

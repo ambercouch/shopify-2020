@@ -125,8 +125,11 @@
  }
 
 .c-product-gallery__list--{
-  &type{
-
+  &thumb{
+    display: none !important;
+    @include mq($from : desktop){
+      display: block !important;
+    }
   }
 }
 
@@ -188,6 +191,18 @@
       height: auto;
     }
 
+  }
+  &desk{
+    display: none;
+    @include mq($from : desktop){
+      display: block;
+    }
+  }
+  &mobile-thumb{
+    display: block;
+    @include mq($from: desktop){
+      display: none;
+    }
   }
 
 }

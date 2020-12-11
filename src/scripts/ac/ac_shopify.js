@@ -122,6 +122,21 @@ const ACSHOPIFY = {
         console.log('No .c-quote-list__list');
       }
 
+      // Product gallery flickity script for thumbs
+      elemProductThumb = document.querySelector('.c-product-gallery__list--mobile');
+      if(elemProductThumb){
+        let flktyProductThumb = new Flickity( elemProductThumb, {
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+          imagesLoaded: true,
+          pageDots: false,
+        });
+      }else{
+        console.log('No .c-quote-list__list');
+      }
+
       /*
       Radio toggle controls
        */

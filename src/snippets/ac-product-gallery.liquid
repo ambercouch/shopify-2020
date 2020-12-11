@@ -1,27 +1,49 @@
 <div class="c-product-gallery">
 
-  <div class="c-product-gallery__focus-image-container">
+  <div class="c-product-gallery__focus-image-container--mobile-thumb">
+<div class="c-product-gallery__list--mobile">
+  <div class="c-product-gallery__item--mobile">
+    {% for image in product.images %}
 
-{% for image in product.images %}
-  {% capture wrapper_class %}
-    {%- unless featured_image == image -%}
-      hide
-    {%- endunless -%}
-  {% endcapture %}
-  <div class="c-product-gallery__focus-image">
-  {% include 'responsive-image' with
-    image: image,
-    max_width: 700,
-    max_height: 700,
-    image_attributes: "data-product-featured-image",
-    wrapper_class: wrapper_class,
-    image_class : 'c-product-gallery__img--focus'
-    wrapper_attributes: "data-product-image-wrapper",
-  %}
+      <div class="c-product-gallery__focus-image-mobile-thumb">
+        {% include 'responsive-image' with
+          image: image,
+          max_width: 700,
+          max_height: 700,
+          image_attributes: "data-product-featured-image-mob",
+          wrapper_class: wrapper_class,
+          image_class : 'c-product-gallery__img--focus'
+          wrapper_attributes: "data-product-image-wrapper-mob",
+        %}
+      </div>
+    {% endfor %}
   </div>
+</div>
+
+  </div>
+  <div class="c-product-gallery__focus-image-container--desk">
+
+      {% for image in product.images %}
+        {% capture wrapper_class %}
+          {%- unless featured_image == image -%}
+            hide
+          {%- endunless -%}
+        {% endcapture %}
+        <div class="c-product-gallery__focus-image">
+          {% include 'responsive-image' with
+            image: image,
+            max_width: 700,
+            max_height: 700,
+            image_attributes: "data-product-featured-image",
+            wrapper_class: wrapper_class,
+            image_class : 'c-product-gallery__img--focus'
+            wrapper_attributes: "data-product-image-wrapper",
+          %}
+        </div>
 
 {% endfor %}
   </div>
+
 
   {% if product.images.size > 1 %}
     <ul class="c-product-gallery__list--thumb">
