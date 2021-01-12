@@ -16,10 +16,19 @@
       {% for c in (1..10) %}
         {% assign itemId = 'icon_' | append : c %}
         {% assign titleId = 'title_' | append : c %}
+        {% assign headingId = 'heading_' | append : c %}
         {% if shop.metafields[listNameSpace][itemId] or product.metafields[listNameSpace][itemId] %}
         <li class="l-icon-list__item">
           <div class="l-icon-list__icon-thumb">
             <div class="c-icon-thumb">
+        {% if shop.metafields[listNameSpace][headingId]  or product.metafields[listNameSpace][headingId] %}
+          {%  if product.metafields[listNameSpace][headingId] %}
+            {% assign iconHeading =  product.metafields[listNameSpace][headingId] %}
+          {% else %}
+            {% assign iconHeading = shop.metafields[listNameSpace][headingId] %}
+          {% endif %}
+              <h4 class="c-icon-thumb__heading">{{ iconHeading }}</h4>
+            {% endif %}
               <div class="c-icon-thumb__icon--{{ c }}">
                 {%  if product.metafields[listNameSpace][itemId] %}
                   {% assign iconFileName =  product.metafields[listNameSpace][itemId] %}

@@ -1,43 +1,37 @@
 {% assign productType = product.type | handle %}
 
-{% if product.metafields.global.below_form_button_text != nil %}
+{% if product.metafields.global.below_form_button_text != nill %}
   <!-- below_form_link from the product meta -->
   {% assign belowFormButtonText =  product.metafields.global.below_form_button_text %}
-  {% elsif shop.metafields[productType].below_form_button_text  != nil %}
+
+{% elsif shop.metafields[productType].below_form_button_text  != nill %}
   <!-- below_form_link from the shop meta -->
   {% assign belowFormButtonText = shop.metafields[productType].below_form_button_text %}
+
 {% else %}
   {% assign belowFormButtonText = nil %}
+
 {% endif %}
 
-{% if product.metafields.global.below_form_button_url != nil %}
+{% if product.metafields.global.below_form_button_url != nill %}
   <!-- below_form_link from the product meta -->
   {% assign belowFormButtonUrl =  product.metafields.global.below_form_button_url %}
+
   {% elsif shop.metafields[productType].below_form_button_url  != nill %}
   <!-- below_form_link from the shop meta -->
   {% assign belowFormButtonUrl = shop.metafields[productType].below_form_button_url %}
+
 {% else %}
   {% assign belowFormButtonUrl = nil %}
+
 {% endif %}
 
-{% if product.metafields.global.section_order != nil %}
-  {% assign sectionOrder =  product.metafields.global.section_order  %}
-  {% elsif shop.metafields[productType].section_order != nil %}
-  {% assign sectionOrder =  shop.metafields[productType].section_order  %}
-{% else %}
-  {% assign sectionOrder = '2,1,3,5,6,8,9,10,arrive,care' %}
-{% endif %}
 
-{% assign sectionOrderArray = sectionOrder | split : ',' %}
+<div class="l-page--product">
+<section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product">
 
-{% comment %} Gallery Logic {% endcomment %}
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
-
-
-
-<div class="l-page--product some-ac-test">
-<section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product">
 
   <div class="l-page__gallery">
     {% include 'ac-product-gallery' %}
@@ -53,7 +47,7 @@
   {% include 'ac-product-form' %}
 </div>
   <!-- below_form_button_url -->
-  {% if belowFormButtonUrl != nil %}
+  {% if belowFormButtonUrl != null %}
     {% unless  belowFormButtonUrl == 'hide'%}
   <div class="l-page__product-form-after">
     <a class="c-btn--product-bundle-link" href="{{ belowFormButtonUrl }}">
@@ -67,79 +61,82 @@
 
   <div class="l-page__content--product">
 
-  {% for i in sectionOrderArray %}
-    {% assign questionId = 'question' | append : i %}
-
+  {% for i in (1..10) %}
     {% assign nextI = i | plus:  1 %}
-    {% assign nextId = sectionOrderArray[nextI] %}
     {% assign blockimageId = 'block_image_'  | append : i %}
     {% assign blockTitleId = 'block_title_'  | append : i %}
     {% assign blockContentId = 'block_content_'  | append : i %}
     {% assign blockUrlId = 'block_url_'  | append : i %}
     {% assign blockLinkTextId = 'block_link_text_'  | append : i %}
     {% assign blockBgColId = 'block_background_color_'  | append : i %}
-    {% assign blockNextBgColId = 'block_background_color_'  | append : nextId %}
+    {% assign blockNextBgColId = 'block_background_color_'  | append : nextI %}
     {% assign blockTextColId = 'block_text_color_'  | append : i %}
     {% assign blockVideoId = 'block_youtube_id_'  | append : i %}
     {% assign blockTypeId = 'block_type_' | append : i %}
-    {% assign blockCollapseId = 'block_collapse_' | append : i %}
 
-    {% if product.metafields.blocks[blockCollapseId] != nil and product.metafields.blocks[blockCollapseId] != 'false' %}
-      <!-- Collapse from the product meta -->
-      {% assign blockCollapse = true %}
-      {% elsif shop.metafields[productType][blockCollapseId]  != nil and shop.metafields[productType][blockCollapseId] != 'false' %}
-      <!-- Collapse from the shop meta -->
-      {% assign blockCollapse = true %}
-    {% else %}
-      <!-- no Collapse -->
-      {% assign blockCollapse = nil %}
-    {% endif %}
 
-    {% if product.metafields.blocks[blockTitleId] != nil and product.metafields.blocks[blockTitleId] != 'false'%}
+    {% if product.metafields.blocks[blockTitleId] != nill %}
+
       <!-- Title from the product meta -->
       {% assign blockTitle = product.metafields.blocks[blockTitleId] %}
-    {% elsif shop.metafields[productType][blockTitleId]  != nil and shop.metafields[productType][blockTitleId] != 'false' %}
+
+    {% elsif shop.metafields[productType][blockTitleId]  != nill %}
+
       <!-- Title from the shop meta -->
     {% assign blockTitle = shop.metafields[productType][blockTitleId] %}
+
       {% else %}
         <!-- no Title -->
         {% assign blockTitle = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockContentId] != nil %}
+    {% if product.metafields.blocks[blockContentId] != nill %}
+
       <!-- Content from the product meta -->
       {% assign blockContent = product.metafields.blocks[blockContentId] %}
-      {% elsif shop.metafields[productType][blockContentId]  != nil %}
+
+      {% elsif shop.metafields[productType][blockContentId]  != nill %}
+
       <!-- Content from the shop meta -->
       {% assign blockContent = shop.metafields[productType][blockContentId] %}
+
     {% else %}
       <!-- no Content -->
       {% assign blockContent = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockUrlId] != nil %}
+    {% if product.metafields.blocks[blockUrlId] != nill %}
+
     <!-- Url from the product meta -->
     {% assign blockUrl = product.metafields.blocks[blockUrlId] %}
-    {% elsif shop.metafields[productType][blockUrlId]  != nil %}
+
+    {% elsif shop.metafields[productType][blockUrlId]  != nill %}
+
     <!-- Url from the shop meta -->
     {% assign blockUrl = shop.metafields[productType][blockUrlId] %}
+
   {% else %}
     <!-- no Url -->
     {% assign blockUrl = nil %}
   {% endif %}
 
-    {% if product.metafields.blocks[blockLinkTextId] != nil %}
+    {% if product.metafields.blocks[blockLinkTextId] != nill %}
+
       <!-- LinkText from the product meta -->
       {% assign blockLinkText = product.metafields.blocks[blockLinkTextId] %}
-      {% elsif shop.metafields[productType][blockLinkTextId]  != nil %}
+
+      {% elsif shop.metafields[productType][blockLinkTextId]  != nill %}
+
       <!-- LinkText from the shop meta -->
       {% assign blockLinkText = shop.metafields[productType][blockLinkTextId] %}
+
     {% else %}
       <!-- no LinkText -->
       {% assign blockLinkText = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockBgColId] != nil %}
+    {% if product.metafields.blocks[blockBgColId] != nill %}
+
       <!-- LinkText from the product meta -->
       {% assign blockBgCol = product.metafields.blocks[blockBgColId] %}
       {% assign classHasBgc = 'has-bgc' %}
@@ -153,11 +150,12 @@
         }
       </style>
 
-      {% elsif shop.metafields[productType][blockBgColId]  != nil %}
+      {% elsif shop.metafields[productType][blockBgColId]  != nill %}
 
       <!-- LinkText from the shop meta -->
       {% assign blockBgCol = shop.metafields[productType][blockBgColId] %}
       {% assign classHasBgc = 'has-bgc' %}
+
       <style>
         #blockId{{ i }}:after{
         {% case blockBgCol %}
@@ -174,45 +172,59 @@
       {% assign classHasBgc = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockNextBgColId] != nil %}
+    {% if product.metafields.blocks[blockNextBgColId] != nill %}
+
       <!-- LinkText from the product meta -->
       {% assign blockNextBdCol = product.metafields.blocks[blockNextBgColId] %}
       {% assign classHasNextBgc = 'has-next-bgc' %}
-      {% elsif shop.metafields[productType][blockNextBgColId]  != nil %}
+
+      {% elsif shop.metafields[productType][blockNextBgColId]  != nill %}
+
       <!-- LinkText from the shop meta -->
       {% assign blockNextBdCol = shop.metafields[productType][blockNextBgColId] %}
       {% assign classHasNextBgc = 'has-next-bgc' %}
+
     {% else %}
       <!-- no LinkText -->
       {% assign blockNextBdCol = nil %}
       {% assign classHasNextBgc = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockVideoId] != nil %}
+    {% if product.metafields.blocks[blockVideoId] != nill %}
+
       <!-- vidioId from the product meta -->
       {% assign blockVideo = product.metafields.blocks[blockVideoId] %}
-      {% elsif shop.metafields[productType][blockVideoId]  != nil %}
+
+      {% elsif shop.metafields[productType][blockVideoId]  != nill %}
+
       <!-- vidioId from the shop meta -->
       {% assign blockVideo = shop.metafields[productType][blockVideoId] %}
+
       {% else %}
       <!-- no vidioId  -->
       {% assign blockVideo = nil %}
     {% endif %}
 
-    {% if product.metafields.blocks[blockTypeId] != nil %}
-      <!-- blockTypeId from the product meta -->
+    {% if product.metafields.blocks[blockTypeId] != nill %}
+
+      <!-- vidioId from the product meta -->
       {% assign blockType = product.metafields.blocks[blockTypeId] %}
+
       {% if blockType contains "icon-list" %}
         {% assign blockTypeClass = "is-icon-list"%}
       {% endif %}
-      {% elsif shop.metafields[productType][blockTypeId]  != nil %}
-      <!-- blockTypeId from the shop meta -->
+
+      {% elsif shop.metafields[productType][blockTypeId]  != nill %}
+
+      <!-- vidioId from the shop meta -->
       {% assign blockType = shop.metafields[productType][blockTypeId] %}
+
       {% if blockType contains "icon-list" %}
         {% assign blockTypeClass = "is-icon-list"%}
       {% endif %}
+
     {% else %}
-      <!-- no blockTypeId  -->
+      <!-- no vidioId  -->
       {% assign blockType = nil %}
       {% assign blockTypeClass = nil%}
     {% endif %}
@@ -227,19 +239,15 @@
     </div>
 
 
-    {% elsif blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil or blockType != nil%}
+    {% elsif blockTitle != nil or blockContent != nil or blockUrl != nil or blockLinkText != nil %}
 
     <div id="blockId{{ i }}" class="l-page__content-block--product u-bgc-{{ blockBgCol }} {{ classHasBgc }} {{ classHasNextBgc }} {{ blockTypeClass }}">
       <div class="c-content-block--product">
     {% if blockTitle != nil and blockTitle != 'false'%}
-      <div class="c-qanda-list__question" {% if blockCollapse %} data-control="{{ questionId }}" data-state="off" {% endif %}>
         <h2 class="c-content-block__heading--product">
           <span class="c-content-block__title" >{{ blockTitle  }}</span>
         </h2>
-      {% if blockCollapse %} <div class="c-qanda-list__question-control" >{% include 'icon-bbd-open-arrow' %}</div>{% endif %}
-          </div>
     {% endif %}
-        <div  class="c-qanda-list__answer" {% if blockCollapse %} data-container="{{ questionId }}" data-state="off" {% endif %} >
         <div class="c-content-block__body--product">
           {% if blockContent != nil %}
           {{ blockContent }}
@@ -256,7 +264,6 @@
           </div>
           {% endif %}
 
-        </div>
         </div>
       </div>
     </div>
