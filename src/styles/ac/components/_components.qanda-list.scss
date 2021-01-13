@@ -68,6 +68,7 @@
   }
   &question-control{
     @include size(20px);
+    flex-basis: 25px;
     .c-qanda-list__question[data-state=on] &{
       transform: rotateX(180deg);
       transform-origin: 0% 80%;

@@ -182,6 +182,12 @@ $act-block-height : 450px;
  */
 
 .c-content-block__ {
+
+  &item{
+    display: flex;
+    justify-content: space-between;
+  }
+
   &header {
     display: block;
     margin-bottom: $act-unit;
@@ -198,9 +204,7 @@ $act-block-height : 450px;
     &.is-heading-layout-left{
       width: 100%;
     }
-    &item{
-      display: flex;
-    }
+
   }
 
   &heading {
@@ -456,6 +460,7 @@ $act-block-height : 450px;
     color: $brand-col-2;
     margin-bottom: $act-unit;
     text-align: left;
+    flex-shrink: 2;
     @include mq($from:desktop){
       width: 100% !important;
     }
