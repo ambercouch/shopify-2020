@@ -49,6 +49,7 @@ $act-block-height : 450px;
       padding-bottom: $act-unit-h * 1.5;
     }
   }
+
   &dribble-bib{
     @include mq($from : desktop){
     }
@@ -196,6 +197,9 @@ $act-block-height : 450px;
     }
     &.is-heading-layout-left{
       width: 100%;
+    }
+    &item{
+      display: flex;
     }
   }
 
@@ -1029,8 +1033,17 @@ $act-block-height : 450px;
 
 .is-icon-list{
   text-align: center;
+
+  .c-content-block--product{
+    padding: 0;
+    @include mq($from: tablet){
+      padding: 0 $act-unit;
+    }
+  }
+
   .c-content-block__heading--product{
     text-align: center;
+
   }
 }
 
