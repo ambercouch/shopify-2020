@@ -68,6 +68,7 @@
   }
   &question-control{
     @include size(20px);
+    flex-basis: 25px;
     .c-qanda-list__question[data-state=on] &{
       transform: rotateX(180deg);
       transform-origin: 0% 80%;
@@ -75,10 +76,9 @@
   }
   &answer{
     transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-
     height: auto;
     overflow: hidden;
-    padding: 0 $act-unit-s;
+    padding: 0;
     &[data-state=on]{
       max-height: 1000px;
       padding-top: $act-unit-s;
@@ -89,6 +89,9 @@
     .video-wrapper{
       max-width: 800px;
       margin: 0 auto;
+    }
+    @include mq($from:tablet){
+      padding: 0 $act-unit-s;
     }
   }
   &question-text{

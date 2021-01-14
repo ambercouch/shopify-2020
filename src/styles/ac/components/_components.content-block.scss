@@ -40,6 +40,7 @@ $act-block-height : 450px;
 
     }
   }
+
   &quote{
     text-align: center;
     padding-bottom: $act-unit-l;
@@ -49,15 +50,18 @@ $act-block-height : 450px;
       padding-bottom: $act-unit-h * 1.5;
     }
   }
+
   &dribble-bib{
     @include mq($from : desktop){
     }
   }
+
   &collection-list-1{
      text-align: center;
      padding-bottom: $act-unit-l;
      margin-bottom: $act-unit;
    }
+
   &collection-list-2{
     text-align: center;
     padding-bottom: $act-unit-l;
@@ -71,6 +75,7 @@ $act-block-height : 450px;
 
     }
   }
+
   &collection-buddies{
     display: flex;
     flex-direction: column;
@@ -83,6 +88,7 @@ $act-block-height : 450px;
 
     }
   }
+
   &bibado-weaning-bundle-save-20{
     display: flex;
     flex-direction: column;
@@ -95,10 +101,14 @@ $act-block-height : 450px;
 
     }
   }
+
   &product{
-    padding: $act-unit-t $act-unit 0;
+    padding: $act-unit-t 0 0;
+    @include mq($from:tablet){
+      padding: $act-unit-t $act-unit 0;
+    }
     @include mq($from:desktop){
-      padding: $act-unit 0 $act-unit-l  * 1.5;
+      padding: $act-unit 0 $act-unit !important;
       display: block;
     }
   }
@@ -181,6 +191,12 @@ $act-block-height : 450px;
  */
 
 .c-content-block__ {
+
+  &item{
+    display: flex;
+    justify-content: space-between;
+  }
+
   &header {
     display: block;
     margin-bottom: $act-unit;
@@ -197,6 +213,7 @@ $act-block-height : 450px;
     &.is-heading-layout-left{
       width: 100%;
     }
+
   }
 
   &heading {
@@ -450,8 +467,13 @@ $act-block-height : 450px;
   }
   &product{
     color: $brand-col-2;
-    margin-bottom: $act-unit;
+    margin-bottom: $act-unit-t;
+    @include act-font-size($act-fs-3);
     text-align: left;
+    flex-shrink: 2;
+    @include mq($from: tablet){
+      margin-bottom: $act-unit;
+    }
     @include mq($from:desktop){
       width: 100% !important;
     }
@@ -820,6 +842,22 @@ $act-block-height : 450px;
   }
 }
 
+// BEM ELEMENT MODIFIER FALLBACK .c-content-block__icon-list--
+
+[class*=c-content-block__icon-list--] {
+  @extend .c-content-block__icon-list;
+}
+
+.c-content-block__icon-list--{
+  &icon-list1{
+    @include mq($from: desktop){
+    display: none;
+    }
+  }
+  &desktop{
+  }
+}
+
 
 /*
   BEM ATTRIBUTES
@@ -1029,8 +1067,17 @@ $act-block-height : 450px;
 
 .is-icon-list{
   text-align: center;
+
+  .c-content-block--product{
+    padding: 0;
+    @include mq($from: tablet){
+      padding: 0 $act-unit;
+    }
+  }
+
   .c-content-block__heading--product{
     text-align: center;
+
   }
 }
 

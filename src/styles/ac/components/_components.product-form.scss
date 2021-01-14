@@ -4,8 +4,8 @@
 
 .c-product-form {
   display: block;
-  margin-bottom: $act-unit * 1.5;
-  padding-bottom: $act-unit-l;
+  margin-bottom: $act-unit-t;
+  padding-bottom: $act-unit * 1.5;
   border-bottom: solid 3px $brand-col-6;
   @include mq($from:desktop){
     margin-bottom: 0;
@@ -125,6 +125,10 @@
 
   &options{
     display: block;
+    margin-bottom: $act-unit-s;
+    @include mq($from:desktop){
+      margin-bottom: 0;
+    }
   }
 
   &submit{
