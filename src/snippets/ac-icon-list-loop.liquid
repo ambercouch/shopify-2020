@@ -8,6 +8,9 @@
   {% endunless %}
   {% assign listNameSpace = listNameSpace | append: initial  %}
 {% endfor %}
+{% unless blockType %}
+{%  assign blockType = 'icon-list1' %}
+{% endunless %}
 
 {% assign listNameSpace = listNameSpace | append: '-' | append: blockType %}
 

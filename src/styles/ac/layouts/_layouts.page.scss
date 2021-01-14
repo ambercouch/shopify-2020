@@ -612,6 +612,14 @@
       grid-column-end: 3;
     }
   }
+  &product-desk-icons{
+    display: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    @include mq($from: desktop){
+      display: block;
+    }
+  }
   &collection{
     margin-bottom: 0;
     .rte *:last-child{
@@ -739,6 +747,7 @@
   &product{
     padding: 0 $act-unit;
 
+
     &:after{
       content: '';
       display: block;
@@ -759,7 +768,7 @@
       border-bottom:none;
     }
     @include mq($from:desktop){
-      margin-bottom: $act-unit-l !important;
+      margin-bottom: $act-unit !important;
     }
   }
 

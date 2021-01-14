@@ -52,6 +52,7 @@
 <div class="l-page__product-form">
   {% include 'ac-product-form' %}
 </div>
+
   <!-- below_form_button_url -->
   {% if belowFormButtonUrl != nil %}
     {% unless  belowFormButtonUrl == 'hide'%}
@@ -62,6 +63,12 @@
   </div>
     {% endunless %}
   {% endif %}
+
+  <div class="l-page__content--product-desk-icons">
+    <div class="c-content-block__icon-list--desktop">
+      {% include 'ac-icon-list-loop' %}
+    </div>
+  </div>
 
 
 
@@ -251,7 +258,7 @@
           {% endif %}
 
           {% if blockType contains "icon-list" %}
-          <div class="c-content-block__icon-list">
+          <div class="c-content-block__icon-list--{{ blockType }}">
            {% include 'ac-icon-list-loop' %}
           </div>
           {% endif %}
