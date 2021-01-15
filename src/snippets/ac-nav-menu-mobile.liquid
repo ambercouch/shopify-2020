@@ -3,18 +3,23 @@
     {% for link in linklists[section.settings.mobile_menu].links %}
       {% if link.links != blank %}
         <li  class="c-nav-menu__item--mobile">
-          <a  class="c-nav-menu__link--mobile" href="{{ link.url }}" data-control-radio="menuMobile" data-state="off" data-control="{{ link.title | handle }}">
+          <a  class="c-nav-menu__link--mobile" href="{{ link.url }}"
+              data-control-radio="menuMobile"
+              data-state="off"
+              data-control="{{ link.title | handle }}"
+          >
             <span  class="c-nav-menu__label--mobile">{{ link.title }} </span>
             <span  class="c-nav-menu__icon--arrow-down">{% include 'icon-arrow-down' %}</span>
           </a>
-          <ul class="c-nav-menu__list--mobile-sub-list" data-container-radio="menuMobile" data-state="off" data-container="{{ link.title | handle }}">
+          <ul class="c-nav-menu__list--mobile-sub-list"
+              data-container-radio="menuMobile"
+              data-state="off"
+              data-container="{{ link.title | handle }}"
+          >
             {% for childlink in link.links %}
-              <li  class="c-nav-menu__item--mobile-sub-item">
-                <a class="c-nav-menu__link--mobile-sub-link" href="{{ childlink.url }}">
-                  <span  class="c-nav-menu__mobile-sub-label">{{ childlink.title }}</span>
-                </a>
-              </li>
+             {% include 'ac-nav-sub-links.liquid' %}
             {% endfor %}
+
           </ul>
         </li>
       {% else %}

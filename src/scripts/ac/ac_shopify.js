@@ -134,27 +134,43 @@ const ACSHOPIFY = {
 
       $.each(aRadioIds, function(i) {
         currentRadioId = aRadioIds[i];
-        let controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
-        let containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
+        const controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
+        const containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
         $.each(controls, function(i) {
 
           const containerId = $(this).attr('data-control');
+          const containerParentId = $(this).attr('data-container-parent');
+
           const containerSelector = (containerId != '' )? '[data-container='+ containerId + ']' : '[data-container]';
+          const containerParentSelector = (containerParentId != '' )? '[data-container='+ containerParentId + ']': null ;
+          const controleParentSelector = (containerParentId != '' )? '[data-control='+ containerParentId + ']': null ;
+
           const container = $(containerSelector);
+          const containerParent = $(containerParentSelector);
+
           const control = $(this);
+          const controlParent = $(controleParentSelector);
+
+
           $(this).on('click', function(e) {
+            console.log('clicked has parent');
+            console.log(this);
             e.preventDefault();
             const state = control.attr('data-state');
-            // toggele state of this controller
+
+            // toggle state of this controller
             ACSHOPIFY.fn.actStateToggleSelect(control, state);
-            // toggele state of this container
+
+            // toggle state of this container
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
+
             // toggle off all other container
-            containers.not(container).each(function() {
+              containers.not(container).not(containerParent).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
+
             // toggle off all other controllers
-            controls.not(control).each(function() {
+            controls.not(control).not(controlParent).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
           });

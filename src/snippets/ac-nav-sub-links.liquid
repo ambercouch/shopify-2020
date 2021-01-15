@@ -1,0 +1,35 @@
+{% if childlink.links != blank %}
+  <li class="c-nav-menu__item--mobile-sub-item">
+    <a class="c-nav-menu__link--mobile-sub-link"
+       href="{{ childlink.url }}"
+       data-control-radio="menuMobile"
+       data-state="off"
+       data-control="{{ childlink.title | handle }}"
+       data-container-parent="{{ link.title | handle }}"
+    >
+      <span  class="c-nav-menu__mobile-sub-label">{{ childlink.title }}</span>
+      <span  class="c-nav-menu__icon--arrow-down">{% include 'icon-arrow-down' %}</span>
+    </a>
+    <ul class="c-nav-menu__list--mobile-sub-list"
+        data-container-radio="menuMobile"
+        data-state="off"
+        data-container="{{ childlink.title | handle }}"
+        data-container-parent="{{ link.title | handle }}"
+    >
+      {% for childlink in childlink.links %}
+        <li  class="c-nav-menu__item--mobile-sub-item">
+          <a class="c-nav-menu__link--mobile-sub-link" href="{{ childlink.url }}">
+            <span  class="c-nav-menu__mobile-sub-label">{{ childlink.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+
+    </ul>
+  </li>
+{% else %}
+  <li  class="c-nav-menu__item--mobile-sub-item">
+    <a class="c-nav-menu__link--mobile-sub-link" href="{{ childlink.url }}">
+      <span  class="c-nav-menu__mobile-sub-label">{{ childlink.title }}</span>
+    </a>
+  </li>
+{% endif %}
