@@ -50,8 +50,10 @@
     background: $brand-col-4;
   }
   &mobile-nav{
-    width: 300px;
-    max-width: 60%;
+    width: calc(100% - 6px);
+    //max-width: 60%;
+    border-radius: $act-unit-s;
+    margin: $act-unit-t / 2;
   }
 }
 
@@ -68,8 +70,10 @@
 .l-off-page-container__ {
   &header {
     display: block;
-    padding: $act-unit $act-unit 0;
+    padding: $act-unit-t ;
+    padding-bottom: 0;
     margin-bottom: $act-unit-s;
+    line-height: 1;
   }
 
   &heading {
@@ -92,7 +96,7 @@
     display: block
   }
   &nav-menu{
-    padding: 0 $act-unit;
+    padding: 0 $act-unit-t;
   }
 }
 
