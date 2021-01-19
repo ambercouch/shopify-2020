@@ -95,7 +95,6 @@ const ACSHOPIFY = {
 
         // Quote flickity script
       let elemQuote = document.querySelector('.c-quote-list__list');
-
       if(elemQuote){
         let flktyQuote = new Flickity( elemQuote, {
           // options
@@ -122,6 +121,25 @@ const ACSHOPIFY = {
         console.log('No .c-quote-list__list');
       }
 
+      // Nav menu flickity script
+      // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
+      //
+      $(document).on('click', '[data-control].has-1-levels', function(){
+        console.log('is filckrty');
+        let controlParent = $(this).parent();
+        let elemMenuList = $('.c-nav-menu__list--mobile-sub-list', controlParent);
+
+        elemMenuList.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+          imagesLoaded: true,
+          pageDots: false,
+        });
+
+
+        });
       /*
       Radio toggle controls
        */

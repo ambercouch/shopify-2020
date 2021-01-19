@@ -1,6 +1,6 @@
 {% if childlink.links != blank %}
   <li class="c-nav-menu__item--mobile-sub-item">
-    <a class="c-nav-menu__link--mobile-sub-link"
+    <a class="c-nav-menu__link--mobile-sub-link is-second-parent has-{{ childlink.levels }}-levels "
        href="{{ childlink.url }}"
        data-control-radio="menuMobile"
        data-state="off"
