@@ -1,25 +1,61 @@
+{% if modClass %}
+{% assign modClass = modClass | prepend : '--' %}
+{% endif %}
 {% if childlink.links != blank %}
-  <li class="c-nav-menu__item--mobile-sub-item">
-    <a class="c-nav-menu__link--mobile-sub-link is-second-parent has-{{ childlink.levels }}-levels "
+  <li class="c-nav-menu__item{{ modClass }} modClass{{ modClass }}">
+    <a class="c-nav-menu__link{{ modClass }} is-second-parent has-{{ childlink.levels }}-levels "
        href="{{ childlink.url }}"
        data-control-radio="menuMobile"
        data-state="off"
        data-control="{{ childlink.title | handle }}"
        data-container-parent="{{ link.title | handle }}"
     >
-      <span  class="c-nav-menu__mobile-sub-label test">{{ childlink.title }}</span>
-      <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
+      <span  class="c-nav-menu__label{{ modClass }} test">{{ childlink.title }}</span>
+      <span  class="c-nav-menu__icon--angle-down">{% render 'icon-angle-down' %}</span>
     </a>
-    <ul class="c-nav-menu__list--mobile-sub-list"
+    <ul class="c-nav-menu__list{{ modClass }}"
         data-container-radio="menuMobile"
         data-state="off"
         data-container="{{ childlink.title | handle }}"
         data-container-parent="{{ link.title | handle }}"
     >
       {% for childlink in childlink.links %}
-        <li  class="c-nav-menu__item--mobile-sub-item">
-          <a class="c-nav-menu__link--mobile-sub-link" href="{{ childlink.url }}">
-            <span  class="c-nav-menu__mobile-sub-label">{{ childlink.title }}</span>
+        {% assign item = childlink.object %}
+
+        {% if  item.metafields.global.menu_item_thumb and item.metafields.global.menu_item_thumb != 'false'%}
+
+          {% assign navImage = images[item.metafields.global.menu_item_thumb] %}
+        {% else %}
+          {% case childlink.type %}
+            {% when 'product_link' %}
+          {% assign navImage = item.featured_image %}
+          {% when 'collection_link' %}
+          {% assign navImage = item.image %}
+          {% endcase %}
+        {% endif %}
+
+        <li  class="c-nav-menu__item{{ modClass }}">
+          <a class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
+            <div class="c-nav-menu__nav-thumb{{ modClass }}">
+              <div class="c-nav-thumb">
+                {% if childlink.title contains ':' %}
+                  {% assign titleArray = childlink.title | split: ':' %}
+                  <h4  class="c-nav-thumb__heading"><span class="c-nav-thumb__title-prefix" >{{ titleArray[0] }}</span> <span class="c-nav-thumb__sep">:</span> <span class="c-nav-thumb__title">{{ titleArray[1] }}</span></h4>
+                {% else %}
+                  <h4  class="c-nav-thumb__heading"><span class="c-nav-thumb__title">{{ childlink.title }}</span></h4>
+                  {% endif %}
+              </div>
+              {% if navImage %}
+                <div class="c-nav-thumb__image{{ modClass }}">
+                  {% render 'responsive-image' with
+                    image: navImage,
+                    max_width: 700,
+                    max_height: 700
+                  %}
+                </div>
+              {% endif %}
+            </div>
+
           </a>
         </li>
       {% endfor %}
@@ -27,9 +63,9 @@
     </ul>
   </li>
 {% else %}
-  <li  class="c-nav-menu__item--mobile-sub-item">
-    <a class="c-nav-menu__link--mobile-sub-link" href="{{ childlink.url }}">
-      <span  class="c-nav-menu__mobile-sub-label">{{ childlink.title }}</span>
+  <li  class="c-nav-menu__item{{ modClass }}">
+    <a class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
+      <span  class="c-nav-menu__mobile-sub">{{ childlink.title }}</span>
     </a>
   </li>
 {% endif %}

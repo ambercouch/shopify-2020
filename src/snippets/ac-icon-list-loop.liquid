@@ -30,7 +30,9 @@
           {% else %}
             {% assign iconHeading = shop.metafields[listNameSpace][headingId] %}
           {% endif %}
-              <h4 class="c-icon-thumb__heading">{{ iconHeading }}</h4>
+              <h4 class="c-icon-thumb__heading">
+                <span class="c-icon-thumb__title">{{ iconHeading }}</span>
+              </h4>
             {% endif %}
               <div class="c-icon-thumb__icon--{{ c }}">
                 {%  if product.metafields[listNameSpace][itemId] %}
@@ -38,7 +40,7 @@
                   {% else %}
                     {% assign iconFileName = shop.metafields[listNameSpace][itemId] %}
                     {% endif %}
-               <img src="{{ iconFileName  | file_img_url: '500x' }}" alt="icon" />
+               <img class="c-icon-thumb__img" src="{{ iconFileName  | file_img_url: '500x' }}" alt="icon" />
               </div>
               {% if shop.metafields[listNameSpace][titleId]  or product.metafields[listNameSpace][titleId] %}
                 {%  if product.metafields[listNameSpace][titleId] %}
@@ -46,7 +48,7 @@
                 {% else %}
                   {% assign iconTitle = shop.metafields[listNameSpace][titleId] %}
                 {% endif %}
-                <div class="c-icon-thumb__title">
+                <div class="c-icon-thumb__info">
                   {{ iconTitle  }}
                 </div>
               {% endif %}

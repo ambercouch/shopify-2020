@@ -79,6 +79,9 @@
     margin-left: $act-unit-s;
     width: $act-unit-s;
   }
+  &nav-thumb{
+    width: 100%;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-nav-menu--
@@ -129,14 +132,16 @@
         box-shadow: 0px 2px  5px rgba(#000, 0.5);
         margin-left: -1px;
       }
+
     }
-  &mobile-sub-list{
+  &mobile-sub{
     &[data-state=off]{
       display: none;
     }
     //background: rgba(#fff, 0.5);
     flex-direction: column;
     margin-left: $act-unit-s;
+
     @include mq($from: desktop){
       position: absolute;
       background: $brand-col-2;
@@ -145,6 +150,33 @@
       box-shadow: 0px 2px  5px rgba(#000, 0.5);
       margin-left: -1px;
     }
+
+    ul{
+      margin-left: 0;
+    }
+
+  }
+  &main-sub{
+    &[data-state=off]{
+      display: none;
+    }
+    //background: rgba(#fff, 0.5);
+    flex-direction: column;
+    margin-left: $act-unit-s;
+
+    @include mq($from: desktop){
+      position: absolute;
+      background: $brand-col-2;
+      padding: $act-unit-s;
+      border: solid 1px rgba(white, 0.2);
+      box-shadow: 0px 2px  5px rgba(#000, 0.5);
+      margin-left: -1px;
+    }
+
+    ul{
+      margin-left: 0;
+    }
+
   }
 }
 
@@ -168,14 +200,25 @@
     font-weight: 700;
     margin-left: 0;
   }
-  &mobile-sub-item{
+  &mobile-sub{
     padding: 0;
     margin-bottom: $act-unit-t;
     font-family: $act-font-family-body;
     font-weight: 700;
     margin-left: 0;
-    .c-nav-menu__item--mobile-sub-item{
+    .c-nav-menu__item--mobile-sub{
      @include act-font-size($act-fs-6);
+      width: 150px;
+    }
+  }
+  &main-sub{
+    padding: 0;
+    margin-bottom: $act-unit-t;
+    font-family: $act-font-family-body;
+    font-weight: 700;
+    margin-left: 0;
+    .c-nav-menu__item--mobile-sub{
+      @include act-font-size($act-fs-6);
       width: 150px;
     }
   }
@@ -218,9 +261,10 @@
       color: $brand-col-3;
     }
   }
-  &mobile-sub-link{
+  &mobile-sub{
     @include a($col : $brand-col-2);
     padding: $act-unit-t;
+    //height: 100%;
     &:hover, &:focus, &[data-state=on]{
       color: $brand-col-3 !important;
     }
@@ -241,7 +285,7 @@
   &main{
     @include a($col: $brand-col-1, $col-hov: $brand-col-3);
     &[data-state=on]{
-      border: solid 1px rgba(white, 0.2);
+      //border: solid 1px rgba(white, 0.2);
       border-bottom: none;
       position: relative;
       margin: -1px;
@@ -285,11 +329,28 @@
   &angle-down{
     width: $act-unit / 1.5;
     transition: transform 0.3s ease-in-out;
-    .c-nav-menu__item--mobile-sub-item &{
+    .c-nav-menu__item--mobile-sub &{
       width:  $act-unit-s;
     }
     a[data-state=on] &{
       transform: rotateX(180deg);
     }
   }
+}
+
+.c-nav-menu__list--mobile-sub[data-state=on]{
+  .c-nav-menu__item--mobile-sub{
+    //min-height: 100%;
+
+  }
+  .c-nav-menu__link--mobile-sub{
+    //min-height: 100%;
+  }
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-menu--
+
+[class*=c-nav-menu__nav-thumb--] {
+  @extend .c-nav-menu__nav-thumb;
 }

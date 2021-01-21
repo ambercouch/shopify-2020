@@ -127,7 +127,7 @@ const ACSHOPIFY = {
       $(document).on('click', '[data-control].has-1-levels', function(){
         console.log('is filckrty');
         let controlParent = $(this).parent();
-        let elemMenuList = $('.c-nav-menu__list--mobile-sub-list', controlParent);
+        let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
 
         elemMenuList.flickity({
           // options

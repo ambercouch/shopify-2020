@@ -32,6 +32,7 @@
 .c-icon-thumb__ {
   &header {
     display: block
+
   }
 
   &heading {
@@ -45,6 +46,10 @@
     }
     @include mq($from:desktop){
       @include act-font-size($act-fs-5)
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 
@@ -78,10 +83,15 @@
       margin-bottom: $act-unit;
     }
     @include mq($from:desktop){
-      @include size(80px, 110px);
+      @include size(80px);
     }
   }
-  &title{
+  &img{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+  }
+  &info{
     width: 100%;
     text-align: center;
     @include act-font-size($act-fs-6, 1.2);

@@ -9,6 +9,7 @@
   border-bottom: solid 3px $brand-col-6;
   @include mq($from:desktop){
     margin-bottom: 0;
+    padding-bottom: $act-unit-l;
   }
 }
 

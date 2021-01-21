@@ -11,13 +11,14 @@
             <span  class="c-nav-menu__label--mobile test">{{ link.title }} </span>
             <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
           </a>
-          <ul class="c-nav-menu__list--mobile-sub-list"
+          <ul class="c-nav-menu__list--mobile-sub"
               data-container-radio="menuMobile"
               data-state="off"
               data-container="{{ link.title | handle }}"
           >
             {% for childlink in link.links %}
-             {% include 'ac-nav-sub-links.liquid' %}
+              {% assign modClass = 'mobile-sub' %}
+             {% render 'ac-nav-sub-links.liquid' with childlink: childlink, link: link, modClass: modClass %}
             {% endfor %}
 
           </ul>
