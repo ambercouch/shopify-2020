@@ -819,7 +819,10 @@
      @include mq($from:desktop){
        display: grid;
        grid-template-columns: 40% 60%;
-       grid-template-rows: 1fr auto auto auto 1fr auto auto auto auto
+       grid-template-rows: 1fr auto auto auto 0fr auto auto auto auto;
+       .template-product-2020 &{
+         grid-template-rows: 1fr auto auto auto 1fr auto auto auto auto !important;
+       }
      }
      &:before{
        content: "";

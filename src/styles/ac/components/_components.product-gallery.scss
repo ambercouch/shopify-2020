@@ -84,6 +84,7 @@
     padding: $act-unit-t;
     @include mq($from: desktop){
       height: 85px;
+      padding-bottom: 0;
     }
 
   }
