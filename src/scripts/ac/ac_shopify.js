@@ -138,6 +138,16 @@ const ACSHOPIFY = {
           pageDots: false,
         });
 
+        let elemMenuListDesk = $('.c-nav-menu__list--main-sub', controlParent);
+
+        elemMenuListDesk.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+          imagesLoaded: true,
+          pageDots: false,
+        });
 
         });
       /*
