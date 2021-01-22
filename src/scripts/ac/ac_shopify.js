@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY');
+console.log('ACSHOPIFY submit btn');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -909,11 +909,18 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('Product Properties ');
+      console.log('Product submit test ');
 
       let productTagsArray = JSON.parse(document.body.dataset.productTags);
 
       let productTags = productTagsArray.join();
+
+
+      $('.c-product-footer__btn').addClass('submit btn');
+      $(document).on('click', '.c-product-footer__btn', function() {
+        $('[data-product-form]').submit();
+        console.log('clicked');
+      });
 
       if (productTags.indexOf("BOGO:") >= 0){
 
@@ -941,6 +948,8 @@ const ACSHOPIFY = {
         // })
 
         $('body').addClass('is-bogo');
+
+
 
         let acceptBogoStatus = false;
 
