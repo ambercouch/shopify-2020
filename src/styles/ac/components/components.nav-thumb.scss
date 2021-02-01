@@ -38,7 +38,10 @@
     @include act-font-size($act-fs-6, 1.2);
     color: $brand-col-2 !important;
     margin-bottom: $act-unit-t;
-    min-height: 3.5em;
+    //min-height: 3.5em;
+    .c-nav-menu__link--main-sub:hover &{
+      color: $brand-col-3 !important;
+    }
   }
 
   &title {
@@ -60,6 +63,9 @@
     border: solid 3px $brand-col-2;
     border-radius: $act-unit-s;
     overflow: hidden;
+    .c-nav-menu__link--main-sub:hover &{
+      border: solid 3px $brand-col-3;
+    }
   }
 }
 
@@ -67,6 +73,19 @@
 
 [class*=c-nav-thumb__header--] {
   @extend .c-nav-thumb__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-nav-thumb--
+
+[class*=c-nav-thumb__heading--] {
+  @extend .c-nav-thumb__heading;
+}
+
+.c-nav-thumb__heading--{
+  &main-sub{
+    @include act-font-size($act-fs-sp, 1.2);
+    height: 2em;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-nav-thumb__image--

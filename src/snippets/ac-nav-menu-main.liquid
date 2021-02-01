@@ -1,5 +1,31 @@
 <nav class="c-nav-menu--main" role="navigation" >
   <ul  class="c-nav-menu__list">
+
+    <li class="c-nav-menu__item">
+      <a  class="c-nav-menu__link--main"
+          href="#"
+          data-control-radio="menuMain"
+          data-state="off"
+          data-control="shop"
+      >
+        <span  class="c-nav-menu__label">Shop</span>
+        <span  class="c-nav-menu__icon--arrow-down">{% include 'icon-angle-down' %}</span>
+      </a>
+
+      <ul class="c-nav-menu__list--main-sub c-nav-menu__list--shop"
+          id="menu-list-0-shop"
+          data-container-radio="menuMain"
+          data-state="off"
+          data-container="shop"
+      >
+        {% for childlink in linklists['shop-menu-2021'].links %}
+          {% assign modClass = 'main-sub' %}
+          {% render 'ac-nav-sub-links.liquid' with childlink: childlink, link: linklists['shop-menu-2021'], modClass: modClass %}
+        {% endfor %}
+      </ul>
+
+    </li>
+
     {% for link in linklists[section.settings.menu].links %}
       {% if link.links != blank %}
         <li class="c-nav-menu__item">
@@ -13,7 +39,8 @@
             <span  class="c-nav-menu__icon--arrow-down">{% include 'icon-angle-down' %}</span>
           </a>
 
-          <ul class="c-nav-menu__list--main-sub"
+          <ul class="c-nav-menu__list--main-sub c-nav-menu__list--{{ link.title | handle }}"
+              id="menu-list-{{ forloop.index }}-{{ link.title | handle }}"
               data-container-radio="menuMain"
               data-state="off"
               data-container="{{ link.title | handle }}"
