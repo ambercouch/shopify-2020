@@ -125,7 +125,7 @@ const ACSHOPIFY = {
       // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
       //
       $(document).on('click', '[data-control].has-1-levels', function(){
-        console.log('is filckrty');
+        console.log('is filckrty > .c-nav-menu__list');
         let controlParent = $(this).parent();
         let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
 
@@ -137,6 +137,12 @@ const ACSHOPIFY = {
           imagesLoaded: true,
           pageDots: false,
         });
+
+
+        // Nav menu flickity script
+        // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
+        //
+
 
         /*
         Flickity Desktop menu
@@ -155,6 +161,22 @@ const ACSHOPIFY = {
         // });
 
         });
+      $(document).on('click', '[data-control].has-2-levels', function() {
+        console.log('is filckrty .c-product-type-list');
+        let controlParent = $(this)
+          .parent();
+        let elemMenuList = $('.c-product-type-list__list--mobile-sub', controlParent);
+
+        elemMenuList.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+          imagesLoaded: true,
+          pageDots: false,
+        });
+      });
+
       /*
       Radio toggle controls
        */

@@ -1,5 +1,32 @@
 <nav class="c-nav-menu--mobile" role="navigation" >
   <ul  class="c-nav-menu__list--mobile">
+
+    <li class="c-nav-menu__item--mobile">
+      <a  class="c-nav-menu__link--mobile"
+          href="#"
+          data-control-radio="menuMain"
+          data-state="off"
+          data-control="shop"
+      >
+        <span  class="c-nav-menu__label--mobile">Shop</span>
+        <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
+      </a>
+
+      <ul class="c-nav-menu__list--mobile-sub c-nav-menu__list--shop"
+          id="menu-list-0-shop"
+          data-container-radio="menuMain"
+          data-state="off"
+          data-container="shop"
+      >
+        {% for childlink in linklists['shop-menu-2021'].links %}
+          {% assign modClass = 'mobile-sub' %}
+          {% render 'ac-nav-sub-links.liquid' with childlink: childlink, link: linklists['shop-menu-2021'], modClass: modClass %}
+        {% endfor %}
+      </ul>
+
+    </li>
+
+
     {% for link in linklists[section.settings.mobile_menu].links %}
       {% if link.links != blank %}
         <li  class="c-nav-menu__item--mobile">

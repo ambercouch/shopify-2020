@@ -160,7 +160,7 @@
   }
   &shop{
     @include mq($from: desktop){
-      height: 213px !important;
+      height: 218px !important;
       border-radius: $act-unit-t 0 0 $act-unit-t;
     }
 
@@ -212,13 +212,25 @@
   }
   &mobile-sub{
     padding: 0;
+    padding-bottom:0;
     margin-bottom: $act-unit-t;
     font-family: $act-font-family-body;
     font-weight: 700;
     margin-left: 0;
+    [data-state=on] [data-state=on] [data-state=on] &{
+      padding-bottom:$act-unit;
+      &.c-nav-menu__item--product-type-list{
+        padding-bottom: 0!important;
+      }
+    }
     .c-nav-menu__item--mobile-sub{
-     @include act-font-size($act-fs-6);
-      width: 150px;
+      padding-bottom: 0;
+     @include act-font-size($act-fs-5);
+      width: 140px;
+      margin-left: $act-unit-s;
+      &:first-child{
+        margin-left: 0;
+      }
     }
   }
   &main-sub{
@@ -255,6 +267,21 @@
   &see-all{
     width: 100% !important;
     text-align: left;
+    margin-top: $act-unit-t;
+    margin-left: 0 !important;
+
+    &.c-nav-menu__item--mobile-sub{
+      left: 0 !important;
+      bottom: -$act-unit * 1.5 !important;
+    }
+    .c-nav-menu__list--dribble-bibs &{
+      position: static;
+      padding-bottom: 0 !important;
+    }
+  }
+  &product-type-list{
+    width: 100% !important;
+    margin-left: 0 !important;
   }
 }
 
@@ -279,8 +306,9 @@
   }
   &mobile-sub{
     @include a($col : $brand-col-2);
-    padding: $act-unit-t;
+    padding: 0;
     //height: 100%;
+    margin-bottom: $act-unit-t;
     &:hover, &:focus, &[data-state=on]{
       color: $brand-col-3 !important;
     }
@@ -313,7 +341,7 @@
   }
   &main-sub{
     @include a($col: white, $col-hov: $brand-col-3);
-    padding: $act-unit-t / 2;
+    padding: 0;
   }
   &sub-link{
     @include a($col: $brand-col-1, $col-hov: $brand-col-3);
@@ -425,6 +453,7 @@
     top:0;
     border-radius: 0 $act-unit-t $act-unit-t 0;
     padding: $act-unit;
+    padding-bottom: $act-unit-t;
     &.flickity-enabled {
       position: absolute;
     }
@@ -432,10 +461,14 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
     }
     .c-nav-menu__item--main-sub{
       width: 30%;
+      margin-left: $act-unit-t;
+      &:first-child{
+        margin-left: 0;
+      }
       @include mq($from: desktop){
         width: 120px;
       }

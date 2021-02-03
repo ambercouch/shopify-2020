@@ -1,6 +1,8 @@
+{% comment %}
 {% if navThumbModClass %}
   {% assign navThumbModClass = navThumbModClass | prepend : '--' %}
 {% endif %}
+{% endcomment %}
 <div class="c-nav-thumb{{ navThumbModClass }} test childling">
   {% if childlink.title contains ':' %}
     {% assign titleArray = childlink.title | split: ':' %}
