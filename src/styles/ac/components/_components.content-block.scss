@@ -44,10 +44,16 @@ $act-block-height : 450px;
   &quote{
     text-align: center;
     padding-bottom: $act-unit-l;
+
+
     @include mq($from: desktop){
       display: flex;
       padding-top: $act-unit-h;
       padding-bottom: $act-unit-h * 1.5;
+    }
+    .styles-2021 &{
+      color: $brand-col-2;
+      background: white;
     }
   }
 
@@ -214,6 +220,13 @@ $act-block-height : 450px;
       width: 100%;
     }
 
+    &.is-heading-style-text{
+      margin-bottom: $act-unit-s;
+
+    }
+    .styles-2021 &{
+      margin-bottom: $act-unit-s;
+    }
   }
 
   &heading {
@@ -231,6 +244,12 @@ $act-block-height : 450px;
     }
     .is-heading-hidden &{
       @include inuit-hidden-visually;
+    }
+    .is-heading-style-text &{
+      font-family: $act-font-family-body;
+      font-weight: 700;
+      @include act-font-size($act-fs-3);
+
     }
 
   }
@@ -283,6 +302,11 @@ $act-block-height : 450px;
     &.is-pos-below-text{
       order: 3;
       margin-bottom: 0;
+
+      .styles-2021 &{
+        margin-bottom: $act-unit;
+      }
+
       @include mq($from:desktop){
         display: flex;
         align-items:flex-end;
@@ -292,7 +316,6 @@ $act-block-height : 450px;
         @include mq($from:desktop){
           max-height: 100%;
       }
-
       }
     }
     @include mq($from:desktop){
@@ -338,6 +361,10 @@ $act-block-height : 450px;
   &sub-heading{
     font-weight: 300;
     font-family: $act-font-family-sans;
+    .styles-2021 &{
+      margin-bottom: 0;
+      font-weight: 700;
+    }
   }
 
   &logo{
@@ -463,7 +490,7 @@ $act-block-height : 450px;
 
 .c-content-block__heading--{
   &quote{
-    color: $brand-col-4;
+    color: $brand-col-2;
   }
   &product{
     color: $brand-col-2;

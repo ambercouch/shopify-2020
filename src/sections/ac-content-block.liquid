@@ -23,6 +23,7 @@
 {%- assign cb_heading_size_class =  section.settings.cb_heading_size -%}
 {%- assign cb_font_weight_class =  section.settings.cb_font_weight -%}
 {%- assign cb_heading_layout =  section.settings.cb_heading_layout -%}
+{%- assign cb_heading_style =  section.settings.cb_heading_style -%}
 {%- assign cb_text_colour_class =  section.settings.cb_text_colour -%}
 {%- assign cb_image_pos_class =  section.settings.cb_image_position -%}
 {%- assign cb_css_class =  section.settings.cb_css_class -%}
@@ -132,7 +133,7 @@
   <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_50_class }} {{ cb_single_col_class }}  has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }} {{ cb_additional_image_class }} {{ cb_force_full_height_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
-      <header class="c-content-block__header  is-heading-layout-{{ cb_heading_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
+      <header class="c-content-block__header  is-heading-style-{{ cb_heading_style }} is-heading-layout-{{ cb_heading_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
 
         {% if section.settings.cb_logo_image != blank %}
           <div class="c-content-block__logo">
@@ -148,7 +149,7 @@
           <span  class="c-content-block__title">{{ section.settings.title }}</span>
         </h2>
         {% if section.settings.cb_sub_title != blank %}
-          <h4 class="c-content-block__sub-heading">
+          <h4 class="c-content-block__sub-heading u-col-{{ cb_heading_colour_class }}">
             {{  section.settings.cb_sub_title }}
           </h4>
         {% endif %}
@@ -436,6 +437,22 @@
   {
   "value": "hidden",
   "label": "Hidden"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "cb_heading_style",
+  "label": "Heading style",
+  "default": "heading",
+  "options": [
+  {
+  "value": "heading",
+  "label": "Heading"
+  },
+  {
+  "value": "text",
+  "label": "Text"
   }
   ]
   },
