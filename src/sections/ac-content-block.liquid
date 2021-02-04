@@ -13,6 +13,7 @@
 {%- endcomment -%}
 
 {%- assign cb_image_layout =  section.settings.cb_image_layout -%}
+{%- assign cb_section_edge_style_class =  section.settings.cb_section_edge_style -%}
 {%- assign cb_text_layout =  section.settings.cb_text_layout -%}
 {%- assign cb_background_colour_class =  section.settings.cb_background_colour -%}
 {%- assign cb_button_colour_class =  section.settings.cb_button_colour -%}
@@ -60,13 +61,21 @@
   {%- assign cb_single_col_class =  'is-single-col-desktop' -%}
 {% endif %}
 
-{% if section.settings.cb_desk_width_50 == true %}
-  {%- assign cb_desk_width_50_class =  'is-block-width-50' -%}
-{% endif %}
 
-{% if section.settings.cb_desk_width_50 == true %}
-  {%- assign cb_layout_desk_width_50_class =  'is-block-layout-width-50' -%}
-{% endif %}
+
+
+
+{% case section.settings.cb_desk_width %}
+  {% when '50' %}
+{%- assign cb_desk_width_class =  'is-block-width-50' -%}
+{%- assign cb_layout_desk_width_class =  'is-block-layout-width-50' -%}
+  {% when '33' %}
+{%- assign cb_desk_width_class =  'is-block-width-33' -%}
+{%- assign cb_layout_desk_width_class =  'is-block-layout-width-33' -%}
+  {% else %}
+{%- assign cb_desk_width_class =  'is-block-width-100' -%}
+{%- assign cb_layout_desk_width_class =  'is-block-layout-width-100' -%}
+{% endcase %}
 
 {% if section.settings.cb_desk_image_right == true %}
   {%- assign cb_desk_image_right_class =  'is-block-image-right' -%}
@@ -123,12 +132,21 @@
   </style>
 {%- endif %}
 
-<section id="{{ section.settings.title | handle }}" class="{{ cb_css_class }} ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }} {{ cb_hide_on_load_class }}" data-section-id="{{ section.id }}" data-section-type="content-block" >
-  <div class="c-image-layer--edge">
-    <div class="c-svg-img--wave-top">
+{% unless cb_background_colour_class  == 'w' %}
+{% assign bg_colour_class = 'has-background-colour'%}
+  {% else %}
+{% assign bg_colour_class = 'has-no-background-colour'%}
+{% endunless %}
+<section id="{{ section.settings.title | handle }}" class="{{ cb_css_class }} {{ bg_colour_class }} ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }} {{ cb_hide_on_load_class }}" data-section-id="{{ section.id }}" data-section-type="content-block" >
+
+
+  {% unless cb_background_colour_class  == 'w'%}
+  <div class="c-image-layer--edge is-style-{{ cb_section_edge_style_class }}">
+    <div class="c-svg-img--wave-top u-col-{{ cb_background_colour_class  }}">
     {% render'img-wave-top' %}
     </div>
   </div>
+  {% endunless %}
   <div class="c-image-layer">
     <div class="c-image-layer__background">
       {% include 'ac-blobs' %}
@@ -136,7 +154,7 @@
     <div class="c-image-layer__content">
       <div class="l-main__content-block-wrapper">
 
-  <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_50_class }} {{ cb_single_col_class }}  has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }} {{ cb_additional_image_class }} {{ cb_force_full_height_class }}">
+  <div class="c-content-block--{{ section.settings.title | handle }} {{ cb_desk_width_class }} {{ cb_single_col_class }}  has-image-pos-{{ cb_image_pos_class }} u-minh-{{ cb_min_height_class }} {{ cb_desk_width_50_class }} {{ cb_desk_image_right_class }} {{ cb_additional_image_class }} {{ cb_force_full_height_class }}">
 {{ cb_anchor_markup_open }}
     {% if section.settings.title != blank %}
       <header class="c-content-block__header  is-heading-style-{{ cb_heading_style }} is-heading-layout-{{ cb_heading_layout }} {{ cb_sub_class }} {{ cb_hide_title_class  }}">
@@ -224,6 +242,15 @@
     </div><!-- .c-image-layer__content -->
   </div><!-- .c-image-layer__content -->
 
+  {% unless cb_background_colour_class  == 'w'%}
+    <div class="c-image-layer--edge is-style-{{ cb_section_edge_style_class }}">
+      <div class="c-svg-img--wave-bottom u-col-{{ cb_background_colour_class  }}">
+        {% render'img-wave-bottom' %}
+
+      </div>
+    </div>
+  {% endunless %}
+
 </section>
 
 {% schema %}
@@ -235,7 +262,7 @@
   {
   "type": "select",
   "id": "cb_background_colour",
-  "label": "Background colour test schema",
+  "label": "Background colour",
   "default": "t",
   "options": [
   {
@@ -265,6 +292,26 @@
   {
   "value": "w",
   "label": "BBD white"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "cb_section_edge_style",
+  "label": "Section Edge Style",
+  "default": "0",
+  "options": [
+  {
+  "value": "0",
+  "label": "No Section Edges"
+  },
+  {
+  "value": "1",
+  "label": "Style 1"
+  },
+  {
+  "value": "2",
+  "label": "Style 2"
   }
   ]
   },
@@ -749,6 +796,26 @@
   ]
   },
   {
+  "type": "select",
+  "id": "cb_desk_width",
+  "label": "Desktop block width",
+  "default": "100",
+  "options": [
+  {
+  "value": "100",
+  "label": "100%"
+  },
+  {
+  "value": "50",
+  "label": "50%"
+  },
+  {
+  "value": "33",
+  "label": "33%"
+  }
+  ]
+  },
+  {
   "type": "checkbox",
   "id": "cb_force_full_height",
   "label": "Force the block to be the height of the browser window",
@@ -764,12 +831,6 @@
   "type": "checkbox",
   "id": "cb_desk_layout_1col",
   "label": "Desktop single column",
-  "default": false
-  },
-  {
-  "type": "checkbox",
-  "id": "cb_desk_width_50",
-  "label": "Desktop block width 50%",
   "default": false
   },
   {

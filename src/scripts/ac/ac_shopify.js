@@ -81,6 +81,11 @@ const ACSHOPIFY = {
         if (desk50){
           $(this).addClass('is-section-width-50');
         }
+        let desk33 = $('.is-block-width-33', this).length;
+        console.log('desk33' + desk33);
+        if (desk33){
+          $(this).addClass('is-section-width-33');
+        }
       });
 
       // Facebook reviews script

@@ -39,6 +39,12 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
+    .no-blobs &{
+      display: none !important;
+    }
+    .styles-2021 &{
+      overflow: visible;
+    }
   }
   &content{
     position: relative;
