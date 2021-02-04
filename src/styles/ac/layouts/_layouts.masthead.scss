@@ -29,7 +29,7 @@
     padding: $act-unit-s 0 $act-unit-s $act-unit-s;
     align-items: center;
     @include mq($from : desktop){
-      padding: $act-unit 0 $act-unit-s $act-unit-s;
+      padding: $act-unit-s 0 $act-unit-s $act-unit-s;
     }
   }
   &site-control{

@@ -77,12 +77,12 @@ const ACSHOPIFY = {
       $('[class*=l-main--] .shopify-section').each(function() {
         console.log('section found');
         let desk50 = $('.is-block-width-50', this).length;
-        console.log('desk50' + desk50);
+        console.log('desk50 ' + desk50);
         if (desk50){
           $(this).addClass('is-section-width-50');
         }
         let desk33 = $('.is-block-width-33', this).length;
-        console.log('desk33' + desk33);
+        console.log('desk33 ' + desk33);
         if (desk33){
           $(this).addClass('is-section-width-33');
         }
