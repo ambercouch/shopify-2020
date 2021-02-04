@@ -25,6 +25,9 @@ $act-block-height : 450px;
     max-width: $act-wrapper-width;
     margin-left: auto;
     margin-right: auto;
+    .styles-2021 &{
+      column-gap: $act-unit;
+    }
   }
 }
 
@@ -218,6 +221,9 @@ $act-block-height : 450px;
     }
     &.is-heading-layout-left{
       width: 100%;
+      @include mq($from:desktop){
+        margin-left: $act-unit;
+      }
     }
 
     &.is-heading-style-text{
@@ -290,6 +296,9 @@ $act-block-height : 450px;
   }
 
   &image{
+    .styles-2021 &{
+      margin: $act-unit;
+    }
     pointer-events: none;
     position: relative;
     margin-bottom: $act-unit;
@@ -299,10 +308,12 @@ $act-block-height : 450px;
     &.is-pos-above-header{
       order: -1;
     }
-    &.is-pos-below-text{
+    &.is-pos-flush-bottom{
+      margin-bottom: 0 !important;
+    }
+    &.is-pos-below-text, &.is-pos-flush-bottom{
       order: 3;
       margin-bottom: 0;
-
       .styles-2021 &{
         margin-bottom: $act-unit;
       }
@@ -317,6 +328,8 @@ $act-block-height : 450px;
           max-height: 100%;
       }
       }
+
+
     }
     @include mq($from:desktop){
       grid-column-start: 1;
@@ -343,6 +356,31 @@ $act-block-height : 450px;
         //min-height: 100%;
       }
     }
+
+    &.is-image-style-plain{
+      img{
+      border-radius: 0 !important;
+      border: none !important;
+      }
+    }
+    &.is-image-style-border{
+      img{
+      border: solid $act-unit-t / 2 $brand-col-2;
+      }
+    }
+    &.is-image-style-border-radius{
+      img{
+      border-radius: $act-unit-t !important;
+      }
+    }
+    &.is-image-style-border-and-radius{
+      img{
+      border: solid $act-unit-t / 2 $brand-col-2;
+      border-radius: $act-unit-t;
+      }
+    }
+
+
 
   }
 
@@ -898,6 +936,15 @@ $act-block-height : 450px;
   }
 }
 
+.is-pos-flush-bottom{
+  img{
+    @include mq($from: desktop){
+      height: 100% !important;
+      max-height: none !important;
+    }
+  }
+}
+
 
 .is-text-layout-center{
   text-align: center;
@@ -1045,7 +1092,7 @@ $act-block-height : 450px;
   }
 }
 
-.has-image-pos-below-text{
+.has-image-pos-below-text, .has-image-pos-flush-bottom{
   &.c-content-block{
     padding-bottom: 0;
   }
@@ -1061,6 +1108,9 @@ $act-block-height : 450px;
       grid-row-start: 2;
     }
     margin-bottom: 0 !important;
+    .styles-2021 &{
+      margin-bottom: $act-unit !important;
+    }
   }
   .c-content-block__body{
     @include mq($from:desktop){

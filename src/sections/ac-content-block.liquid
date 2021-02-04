@@ -26,6 +26,7 @@
 {%- assign cb_heading_style =  section.settings.cb_heading_style -%}
 {%- assign cb_text_colour_class =  section.settings.cb_text_colour -%}
 {%- assign cb_image_pos_class =  section.settings.cb_image_position -%}
+{%- assign cb_image_style =  section.settings.cb_image_style -%}
 {%- assign cb_css_class =  section.settings.cb_css_class -%}
 
 
@@ -162,7 +163,7 @@
     {% endif %}
 
     {% if section.settings.cb_image != blank %}
-    <div class="c-content-block__image is-pos-{{ cb_image_pos_class }}">
+    <div class="c-content-block__image is-pos-{{ cb_image_pos_class }} is-image-style-{{ cb_image_style }}">
         {% include 'responsive-image' with
           image: section.settings.cb_image,
           max_width: 800,
@@ -172,7 +173,7 @@
     {% endif %}
 
     {% if section.settings.cb_image_desktop != blank %}
-      <div class="c-content-block__image--desktop is-pos-{{ cb_image_pos_class }}">
+      <div class="c-content-block__image--desktop is-pos-{{ cb_image_pos_class }} is-image-style-{{ cb_image_style }}">
         {% include 'responsive-image' with
           image: section.settings.cb_image_desktop,
           max_width: 1500,
@@ -274,6 +275,30 @@
   },
   {
   "type": "select",
+  "id": "cb_image_style",
+  "label": "Image Style",
+  "default": "border-radius",
+  "options": [
+  {
+  "value": "plain",
+  "label": "Plain"
+  },
+  {
+  "value": "border",
+  "label": "Border"
+  },
+  {
+  "value": "border-radius",
+  "label": "Rounded Corners"
+  },
+  {
+  "value": "border-and-radius",
+  "label": "Border and Rounded Corners"
+  }
+  ]
+  },
+  {
+  "type": "select",
   "id": "cb_image_fitting",
   "label": "Image Fitting",
   "default": "cover",
@@ -338,6 +363,10 @@
   {
   "value": "below-text",
   "label": "Below text"
+  },
+  {
+  "value": "flush-bottom",
+  "label": "Flush bottom"
   }
   ]
   },
