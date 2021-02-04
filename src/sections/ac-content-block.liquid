@@ -123,6 +123,11 @@
 {%- endif %}
 
 <section id="{{ section.settings.title | handle }}" class="{{ cb_css_class }} ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_50_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }} {{ cb_hide_on_load_class }}" data-section-id="{{ section.id }}" data-section-type="content-block" >
+  <div class="c-image-layer--edge">
+    <div class="c-svg-img--wave-top">
+    {% render'img-wave-top' %}
+    </div>
+  </div>
   <div class="c-image-layer">
     <div class="c-image-layer__background">
       {% include 'ac-blobs' %}
