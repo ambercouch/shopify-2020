@@ -6,6 +6,9 @@
   display: block;
   position: relative;
   width: 100%;
+  .l-site__footer &{
+    overflow: hidden;
+  }
 }
 
 /*

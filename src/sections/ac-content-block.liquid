@@ -22,6 +22,7 @@
 {%- assign cb_button_width_class =  section.settings.cb_button_width -%}
 {%- assign cb_heading_colour_class =  section.settings.cb_heading_colour -%}
 {%- assign cb_heading_size_class =  section.settings.cb_heading_size -%}
+{%- assign cb_heading_size_mobile_class =  section.settings.cb_heading_size_mobile -%}
 {%- assign cb_font_weight_class =  section.settings.cb_font_weight -%}
 {%- assign cb_heading_layout =  section.settings.cb_heading_layout -%}
 {%- assign cb_heading_style =  section.settings.cb_heading_style -%}
@@ -178,7 +179,7 @@
           </div>
         {% endif %}
 
-        <h2 class="c-content-block__heading u-col-{{ cb_heading_colour_class }} u-fs-{{ cb_heading_size_class }} u-fw-{{ cb_font_weight_class }}">
+        <h2 class="c-content-block__heading u-col-{{ cb_heading_colour_class }} u-fs-{{ cb_heading_size_class }}-desk u-fs-{{ cb_heading_size_mobile_class }} u-fw-{{ cb_font_weight_class }}">
           <span  class="c-content-block__title">{{ section.settings.title }}</span>
         </h2>
         {% if section.settings.cb_sub_title != blank %}
@@ -451,6 +452,30 @@
   {
   "value": "2",
   "label": "Normal"
+  },
+  {
+  "value": "1",
+  "label": "Big"
+  },
+  {
+  "value": "k",
+  "label": "Bigger"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "cb_heading_size_mobile",
+  "label": "Heading Size Mobile",
+  "default": "2",
+  "options": [
+  {
+  "value": "2",
+  "label": "Normal"
+  },
+  {
+  "value": "1",
+  "label": "Big"
   },
   {
   "value": "k",

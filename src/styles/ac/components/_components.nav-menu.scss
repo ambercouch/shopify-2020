@@ -56,12 +56,12 @@
   &list{
     @extend .o-list-bare;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   &item{
     display: block;
     @extend .o-list-bare__item;
-    margin-left: 12%;
+    margin-left: $act-unit;
     position: relative;
     &:first-child{
       margin-left: 0;
@@ -100,6 +100,7 @@
 
 .c-nav-menu__list--{
   &social{
+    justify-content: center;
     @include mq($from: desktop){
       text-align: left;
       justify-content: flex-start;
@@ -328,7 +329,8 @@
   }
   &main{
     @include a($col: $brand-col-1, $col-hov: $brand-col-3);
-    font-weight: 700 !important;
+    font-weight: 500 !important;
+    @include act-font-size($act-fs-4);
     &[data-state=on]{
       //border: solid 1px rgba(white, 0.2);
       border-bottom: none;
@@ -387,12 +389,15 @@
     width: $act-unit / 1.5;
     transition: transform 0.3s ease-in-out;
     @include mq($from : desktop){
-      width: $act-unit-s / 1.5;
-      margin-left: $act-unit-t;
+      width: $act-unit-s * 1.5 ;
+      margin-left: $act-unit-s;
       position: relative;
       top: 1px;
     }
     .c-nav-menu__item--mobile-sub &{
+      width:  $act-unit-s;
+    }
+    .c-nav-menu__item--main-sub &{
       width:  $act-unit-s;
     }
     a[data-state=on] &{
@@ -445,7 +450,7 @@
 
 
 .c-nav-menu__list--main-sub {
-  min-width: 200px;
+  min-width: 280px;
   .c-nav-menu__list--main-sub{
     background: white !important;
     left: 100%;

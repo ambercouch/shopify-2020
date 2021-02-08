@@ -8,7 +8,7 @@
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
   @include mq($from : desktop){
-    grid-template-columns: 160px 1fr 1fr 160px;
+    grid-template-columns: 25% 1fr 1fr 25%;
   }
 }
 
