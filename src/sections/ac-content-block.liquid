@@ -34,6 +34,14 @@
 
 {%- assign cb_image_fitting =  section.settings.cb_image_fitting -%}
 
+
+
+{%- if section.settings.cb_button_shadow == true -%}
+  {%- assign cb_button_shadow_class =  'has-drop-shadow' -%}
+{%- else -%}
+  {%- assign cb_button_shadow_class =  'has-no-drop-shadow' -%}
+{% endif %}
+
 {%- if section.settings.cb_force_full_height == true -%}
 {%- assign cb_force_full_height_class =  'is-full-height' -%}
 {%- else -%}
@@ -97,7 +105,7 @@
 
 {% if section.settings.cb_button_label == blank and section.settings.cb_button_link != blank %}
   {% capture cb_anchor_markup_open %}
-    <a class="c-content-block__link--block" href="{{ section.settings.cb_button_link }}" >
+    <a class="c-content-block__link--block " href="{{ section.settings.cb_button_link }}" >
   {% endcapture %}
   {% capture cb_anchor_markup_close %}
     </a>
@@ -153,7 +161,7 @@
   {% unless cb_background_colour_class  == 'w'%}
   <div class="c-image-layer--edge is-style-{{ cb_section_edge_style_class }}">
     <div class="c-svg-img--wave-top u-col-{{ cb_background_colour_class  }}">
-    {% render'img-wave-top' %}
+      {% render'img-wave-top' %}
     </div>
   </div>
   {% endunless %}
@@ -219,7 +227,7 @@
     {% endif %}
       {% if section.settings.cb_button_label != blank and section.settings.cb_button_link != blank %}
         <div class="c-content-block__footer">
-          <a class="c-content-block__link--btn o-btn--{{ cb_button_width_class }} u-bor-col-{{ cb_button_border_colour_class }} u-bgc-{{ cb_button_bg_colour_class }} u-col-{{ cb_button_colour_class }}" href="{{ section.settings.cb_button_link }}">
+          <a class="c-content-block__link--btn o-btn--{{ cb_button_width_class }} u-bor-col-{{ cb_button_border_colour_class }} u-bgc-{{ cb_button_bg_colour_class }} u-col-{{ cb_button_colour_class }} {{ cb_button_shadow_class }}" href="{{ section.settings.cb_button_link }}">
             <span class="c-content-block__link-label">{{ section.settings.cb_button_label  }}</span>
           </a>
         </div>
@@ -765,6 +773,12 @@
   "label": "BBD white"
   }
   ]
+  },
+  {
+  "type": "checkbox",
+  "id": "cb_button_shadow",
+  "label": "Button drop shadow",
+  "default": false
   },
   {
   "type": "select",

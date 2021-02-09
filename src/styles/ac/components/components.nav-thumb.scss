@@ -65,15 +65,21 @@
     display: block
   }
   &image{
-    border: solid 3px $brand-col-2;
-    border-radius: $act-unit-s;
-    overflow: hidden;
-    .c-nav-menu__link--main-sub:hover &{
-      border: solid 3px $brand-col-3;
-    }
-    .c-product-type-list__link:hover &{
-      border: solid 3px $brand-col-3;
-    }
+
+      border: solid 3px $brand-col-2;
+    background: $brand-col-2;
+      border-radius: $act-unit-s;
+      overflow: hidden;
+      .c-nav-menu__link--main-sub:hover &{
+        border: solid 3px $brand-col-3;
+        background: $brand-col-3;
+      }
+      .c-product-type-list__link:hover &{
+        border: solid 3px $brand-col-3;
+        background: $brand-col-3;
+      }
+
+
   }
 }
 

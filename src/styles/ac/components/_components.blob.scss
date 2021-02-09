@@ -220,15 +220,22 @@
       display: none;
     }
     &2 {
-      @include size(1200px);
+      @include size(800px);
       color: $brand-col-5;
       display: block;
       left: auto;
-      right: -470px;
-      bottom: -450px;
+      right: -570px;
+      bottom: -390px;
       transform: rotateZ(90deg);
+      @include mq($from:tablet){
+        @include size(1200px);
+        right: -470px;
+        bottom: -450px;
+      }
       @include mq($from:desktop){
-
+        @include size(1200px);
+        right: -470px;
+        bottom: -450px;
       }
     }
   }

@@ -11,13 +11,19 @@
   color: $brand-col-2;
   border-radius: $act-unit-t;
   border-width: 3px;
-  min-width: 200px;
+  min-width: 145px;
   max-width: 100%;
   &:hover, &:focus{
     color: $brand-col-2;
     @extend .o-btn--small;
     @extend .o-btn--ghost;
     border-width: 3px;
+    min-width: 145px;
+    @include mq($from : tablet){
+      min-width: 200px;
+    }
+  }
+  @include mq($from : tablet){
     min-width: 200px;
   }
 
