@@ -18,7 +18,7 @@
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id={your-pixel-id-goes-here}&ev=PageView&noscript=1"/>
+         src="https://www.facebook.com/tr?id=387929451574338&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Facebook Pixel Code -->
 
@@ -135,7 +135,7 @@
     {{ content_for_layout }}
     </div>
   </main>
-
+  {% include 'ac-header-script-tags' %}
   {% section 'footer' %}
   {% include 'ac-timberjs' %}
 </div>
@@ -145,6 +145,6 @@
 
 {% render 'ocuapp-theme', ocuapp: ocuapp %}
 {% assign ocuapp = true %}
-{% include 'ac-header-script-tags' %}
+
 </body>
 </html>
