@@ -1,4 +1,5 @@
 /* Jonathan Snook - MIT License - https://github.com/snookca/prepareTransition */
+
 (function(a){a.fn.prepareTransition=function(){return this.each(function(){var b=a(this);b.one("TransitionEnd webkitTransitionEnd transitionend oTransitionEnd",function(){b.removeClass("is-transitioning")});var c=["transition-duration","-moz-transition-duration","-webkit-transition-duration","-o-transition-duration"];var d=0;a.each(c,function(a,c){d=parseFloat(b.css(c))||d});if(d!=0){b.addClass("is-transitioning");b[0].offsetWidth}})}})(jQuery);
 
 /* replaceUrlParam - http://stackoverflow.com/questions/7171099/how-to-replace-url-parameter-with-javascript-jquery */
@@ -100,7 +101,7 @@ timber.init = function () {
   timber.drawersInit();
   timber.mobileNavToggle();
   timber.productImageSwitch();
-  timber.responsiveVideos();
+  //timber.responsiveVideos();
   timber.collectionViews();
   timber.loginForms();
 };
@@ -318,23 +319,23 @@ timber.switchImage = function (src, imgObject, el) {
 
 };
 
-timber.responsiveVideos = function () {
-  var $iframeVideo = $('iframe[src*="youtube.com/embed"], iframe[src*="player.vimeo"]');
-  var $iframeReset = $iframeVideo.add('iframe#admin_bar_iframe');
-
-  $iframeVideo.each(function () {
-    // Add wrapper to make video responsive
-    $(this).wrap('<div class="video-wrapper"></div>');
-  });
-
-  $iframeReset.each(function () {
-    // Re-set the src attribute on each iframe after page load
-    // for Chrome's "incorrect iFrame content on 'back'" bug.
-    // https://code.google.com/p/chromium/issues/detail?id=395791
-    // Need to specifically target video and admin bar
-    this.src = this.src;
-  });
-};
+// timber.responsiveVideos = function () {
+//   var $iframeVideo = $('iframe[src*="youtube.com/embed"], iframe[src*="player.vimeo"]');
+//   var $iframeReset = $iframeVideo.add('iframe#admin_bar_iframe');
+//
+//   $iframeVideo.each(function () {
+//     // Add wrapper to make video responsive
+//     $(this).wrap('<div class="video-wrapper"></div>');
+//   });
+//
+//   $iframeReset.each(function () {
+//     // Re-set the src attribute on each iframe after page load
+//     // for Chrome's "incorrect iFrame content on 'back'" bug.
+//     // https://code.google.com/p/chromium/issues/detail?id=395791
+//     // Need to specifically target video and admin bar
+//     this.src = this.src;
+//   });
+// };
 
 timber.collectionViews = function () {
   if (timber.cache.$changeView.length) {
@@ -614,7 +615,7 @@ $(document).ready(function() {
   }
 });
 */
-  
+
 
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
 (function(r,G,f,v){var J=f("html"),n=f(r),p=f(G),b=f.fancybox=function(){b.open.apply(this,arguments)},I=navigator.userAgent.match(/msie/i),B=null,s=G.createTouch!==v,t=function(a){return a&&a.hasOwnProperty&&a instanceof f},q=function(a){return a&&"string"===f.type(a)},E=function(a){return q(a)&&0<a.indexOf("%")},l=function(a,d){var e=parseInt(a,10)||0;d&&E(a)&&(e*=b.getViewport()[d]/100);return Math.ceil(e)},w=function(a,b){return l(a,b)+"px"};f.extend(b,{version:"2.1.5",defaults:{padding:15,margin:20,

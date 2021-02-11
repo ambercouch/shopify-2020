@@ -3,10 +3,17 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY submit btn');
+console.log('ACSHOPIFY  $(document) on off test controlSelector');
 const ACSHOPIFY = {
   common: {
     init: function() {
+
+      if (window.navigator.cookieEnabled) {
+        document.documentElement.className = document.documentElement.className.replace(
+          'supports-no-cookies',
+          'supports-cookies',
+        );
+      }
 
       // URL Param test
       const queryString = window.location.search;
@@ -162,6 +169,7 @@ const ACSHOPIFY = {
       });
 
       $('[data-control]:not([data-control-radio])').each(function() {
+
         const containerId = $(this).attr('data-control');
 
         const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
@@ -174,10 +182,10 @@ const ACSHOPIFY = {
 
         const container = $(containerSelector);
 
-        control.off('click');
+        $(document).off('click', controlSelector );
 
-        control.on('click',  function (e) {
-          console.log('clickered');
+        $(document).on('click', controlSelector, function (e) {
+          //console.log('clickered');
           const state = control.attr('data-state');
           e.preventDefault();
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
@@ -1303,8 +1311,10 @@ const ACSHOPIFY = {
 
     },
     actStateToggleSelect : function (element, state) {
-    console.log('element');
+    console.log('actStateToggleSelect element');
     console.log(element);
+    console.log('actStateToggleSelect state');
+      console.log(state);
       if('off' === state ){
         element.attr('data-state', 'on');
       }
