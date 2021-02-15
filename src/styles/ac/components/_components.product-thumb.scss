@@ -364,6 +364,15 @@
   }
 }
 
+.is-hidden{
+  &.c-product-thumb__info-notice {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+  }
+}
+
 
 
 //.is-product-id-{
