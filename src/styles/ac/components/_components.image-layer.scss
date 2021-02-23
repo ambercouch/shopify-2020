@@ -6,7 +6,20 @@
   display: block;
   position: relative;
   width: 100%;
+  overflow: visible;
   .l-site__footer &{
+    overflow: hidden;
+  }
+  .l-page__header--static-page &{
+    overflow: hidden;
+  }
+  .l-page__header--blog &{
+    overflow: hidden;
+  }
+  .l-page__header--article &{
+    overflow: hidden;
+  }
+  .l-page__recipe &{
     overflow: hidden;
   }
 }

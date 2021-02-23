@@ -20,7 +20,12 @@
     top: -62px;
 
     .is-style-2 &{
-      transform: translate(-35%,0) rotateY(180deg);
+
+      transform: translate(-54% , 0) rotateY(180deg);
+      @include mq($from : tablet){
+        transform: translate(-35% , 0) rotateY(180deg);
+
+      }
     }
 
   }

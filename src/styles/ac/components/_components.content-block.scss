@@ -208,6 +208,8 @@ $act-block-height : 450px;
   &header {
     display: block;
     margin-bottom: $act-unit;
+    position: relative;
+    z-index: 1;
     @include mq($from:tablet, $until : desktop){
       width: 800px;
       margin-left: auto;
@@ -459,6 +461,8 @@ $act-block-height : 450px;
     margin-left: 0;
     margin-right: 0;
     padding: 0 $act-unit;
+    position: relative;
+    z-index: 1;
     > *:last-child{
       margin-bottom: 0;
     }
