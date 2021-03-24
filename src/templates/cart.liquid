@@ -35,9 +35,10 @@
           {% for item in cart.items %}
 
             {% assign currentVariant = item.product.selected_or_first_available_variant %}
-            {% if currentVariant.metafields.global.pre_order_dispatch_text  %}
+
+            {% if item.variant.metafields.global.pre_order_dispatch_text  %}
               <!-- pre_order_dispatch_text from the currentVariant meta -->
-              {% assign preOrderDispatchText =  item.product.metafields.global.pre_order_dispatch_text %}
+              {% assign preOrderDispatchText =  item.variant.metafields.global.pre_order_dispatch_text %}
               {% elsif item.product.metafields.global.pre_order_dispatch_text != nill %}
               <!-- pre_order_dispatch_text from the product meta -->
               {% assign preOrderDispatchText =  item.product.metafields.global.pre_order_dispatch_text %}
@@ -155,11 +156,13 @@
 
                   </div>
 
-                  {% if currentVariant.inventory_quantity < 1 and currentVariant.inventory_policy == 'continue'  %}
+                  {% if item.variant.inventory_quantity < 1 and item.variant.inventory_policy == 'continue'  %}
                     {% assign displayClass = 'is-shown'  %}
                   {% else %}
                     {% assign displayClass = 'is-hidden'  %}
                   {% endif %}
+                  <!-- item.variant.inventory_quantity = {{ item.variant.inventory_quantity }} -->
+                  <!-- item.variant.inventory_policy = {{ item.variant.inventory_policy}} -->
                   <div class="c-product-thumb__info-notice  {{ displayClass }}" data-variant-notice >
                     <div class="c-info-notice--dispatch-date-cart">
                       {{ preOrderDispatchText }}
