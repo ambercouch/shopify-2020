@@ -88,13 +88,16 @@ register('product', {
   },
 
   onThumbnailClick(event) {
+    console.log('thumbclick');
+    event.preventDefault();
+
     const thumbnail = event.target.closest(selectors.thumbnail);
 
     if (!thumbnail) {
       return;
     }
 
-    event.preventDefault();
+
 
     this.renderFeaturedImage(thumbnail.dataset.thumbnailId);
     this.renderActiveThumbnail(thumbnail.dataset.thumbnailId);
