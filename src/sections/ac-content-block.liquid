@@ -155,7 +155,7 @@
   {% else %}
 {% assign bg_colour_class = 'has-no-background-colour'%}
 {% endunless %}
-<section id="{{ section.settings.title | handle }}" class="{{ cb_css_class }} {{ bg_colour_class }} ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }} {{ cb_hide_on_load_class }}" data-section-id="{{ section.id }}" data-section-type="content-block" >
+<section id="{{ section.settings.title | handle }}" class="is-style-{{ cb_section_edge_style_class }} {{ cb_css_class }} {{ bg_colour_class }} ac-json-schema l-main__content-block--{{ section.id }} u-bgc-{{ cb_background_colour_class  }} {{ cb_layout_desk_width_class }} is-image-layout-{{ cb_image_layout }} {{ cb_desktop_image_class }} {{ cb_hide_on_load_class }}" data-section-id="{{ section.id }}" data-section-type="content-block" >
 
 
   {% unless cb_background_colour_class  == 'w'%}

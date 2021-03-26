@@ -27,6 +27,9 @@
 
       }
     }
+    .is-style-0 &{
+      display: none;
+    }
 
   }
   &wave-bottom {
@@ -38,6 +41,9 @@
 
     .is-style-2 &{
       transform: translate(-35% , 0);
+    }
+    .is-style-0 &{
+     display: none;
     }
 
   }
