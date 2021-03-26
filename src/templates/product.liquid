@@ -4,7 +4,10 @@
 {% include 'ac-product-json' %}
 
 
-<div id='Areviewsapp' class='page-full'>{% include 'aliexpress_reviews' %}
+<div id='Areviewsapp' class='page-full'>
+{% comment %}
+  {% include 'aliexpress_reviews' %}
+  {% endcomment %}
   <div class="l-main__page--product-footer u-tac u-pm">
     <div class="c-product-footer">
       <a href="#" class="c-product-footer__btn o-btn u-bgc-3">Add your <b>{{ product.metafields.nsac.short_name }}</b> to the cart</a>

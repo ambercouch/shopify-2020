@@ -37,15 +37,26 @@
     {% include 'ac-product-gallery' %}
   </div>
   <header class="l-page__header--product">
-  <h1 class="l-page__heading--product areviewsapp-title">
+  <h1 class="l-page__heading--product">
     <span class="l-page__heading--title">
        {{ product.title }}
     </span>
   </h1>
+
+    <!-- OKENDO  okendo-reviews-product-rating-summary -->
+    {% render 'okendo-reviews-product-rating-summary', product: product %}
+    <!-- /OKENDO  okendo-reviews-product-rating-summary -->
+
   </header>
 <div class="l-page__product-form">
   {% include 'ac-product-form' %}
+  <!-- OKENDO  okendo-reviews-product-rating-summary -->
+  {% render 'okendo-reviews-widget', product: product %}
+  <!-- /OKENDO  okendo-reviews-product-rating-summary -->
 </div>
+
+
+
   <!-- below_form_button_url -->
   {% if belowFormButtonUrl != null %}
     {% unless  belowFormButtonUrl == 'hide'%}
