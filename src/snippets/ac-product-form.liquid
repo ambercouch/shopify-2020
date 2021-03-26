@@ -2,7 +2,7 @@
 <!-- productType {{ productType }}  product.type {{ product.type }} product {{ product }} -->
 {% if current_variant.metafields.global.pre_order_dispatch_text  %}
   <!-- pre_order_dispatch_text from the current_variant meta -->
-  {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
+  {% assign preOrderDispatchText =  current_variant.metafields.global.pre_order_dispatch_text %}
 {% elsif product.metafields.global.pre_order_dispatch_text != nill %}
   <!-- pre_order_dispatch_text from the product meta -->
     {% assign preOrderDispatchText =  product.metafields.global.pre_order_dispatch_text %}
