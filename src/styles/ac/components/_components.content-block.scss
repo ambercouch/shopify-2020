@@ -71,6 +71,7 @@ $act-block-height : 450px;
    }
 
   &collection-list-2{
+
     text-align: center;
     padding-bottom: $act-unit-l;
     margin-bottom: 0;
@@ -477,7 +478,7 @@ $act-block-height : 450px;
     @include mq($from: desktop){
       grid-column-start: 2;
       grid-row-start: 3;
-      max-width: 600px;
+      max-width: 100%;
 
       margin-left: $act-unit !important;
       padding-left: 0 !important; ;
@@ -539,6 +540,7 @@ $act-block-height : 450px;
   &collection-list-2{
     width: 100%;
     text-align: center;
+
     @include mq($from:desktop){
       text-align: left;
     }

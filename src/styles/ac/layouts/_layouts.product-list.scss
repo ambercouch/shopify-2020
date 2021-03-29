@@ -132,6 +132,7 @@
 
 .l-product-list__item--{
   &last{
+    background: $brand-col-2;
     @include mq($from: desktop){
       width: 100%;
       display: block;
@@ -153,6 +154,12 @@
 
 [class*=l-product-list__content-block--] {
   @extend .l-product-list__content-block;
+}
+
+.l-product-list__content-block--{
+  &bibado-weaning-bundle-save-20{
+    background: $brand-col-2;
+  }
 }
 
 //.is-product-id-{

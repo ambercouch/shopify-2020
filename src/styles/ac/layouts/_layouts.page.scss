@@ -259,6 +259,7 @@
     background: #fff;
   }
   &collection-intro{
+    background-color: $brand-col-2;
     padding-top: $act-unit;
     @include mq($from:desktop){
       grid-column-start: 1;
