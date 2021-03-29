@@ -7,6 +7,7 @@
           data-control-radio="menuMain"
           data-state="off"
           data-control="shop"
+          id="navControlShop"
       >
         <span  class="c-nav-menu__label">Shop</span>
         <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
@@ -34,6 +35,7 @@
               data-control-radio="menuMain"
               data-state="off"
               data-control="{{ link.title | handle }}"
+              id="navControl{{ link.handle }}"
           >
             <span  class="c-nav-menu__label">{{ link.title }} </span>
             <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
