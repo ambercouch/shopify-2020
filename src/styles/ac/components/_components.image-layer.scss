@@ -23,7 +23,7 @@
      overflow: hidden;
    }
   .c-blob__id--homepage-banner &{
-    overflow: hidden;
+    //overflow: hidden;
   }
   .l-product-list__content-block--bibado-weaning-bundle-save-20 &{
     overflow:hidden;
@@ -32,6 +32,15 @@
     overflow: hidden;
   }
   .l-product-list__item--last &{
+    overflow: hidden;
+  }
+  .l-page__wrapper--collection-intro &{
+    overflow: hidden;
+  }
+  .l-page__hero--collection-bundle &{
+    overflow: hidden;
+  }
+  .l-page--cart &{
     overflow: hidden;
   }
 }

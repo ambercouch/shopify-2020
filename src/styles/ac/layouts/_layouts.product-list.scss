@@ -77,6 +77,9 @@
         justify-content: flex-start;
       }
     }
+    &:last-child{
+      justify-content: center !important;
+    }
   }
   &product-thumb{
     @include mq($from:desktop){
