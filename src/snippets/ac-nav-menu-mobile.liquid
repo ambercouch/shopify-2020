@@ -7,6 +7,7 @@
           data-control-radio="menuMain"
           data-state="off"
           data-control="shop"
+          id="navControlMobileShop"
       >
         <span  class="c-nav-menu__label--mobile">Shop</span>
         <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
@@ -34,6 +35,7 @@
               data-control-radio="menuMobile"
               data-state="off"
               data-control="{{ link.title | handle }}"
+              id="navControlMobile{{ link.handle }}"
           >
             <span  class="c-nav-menu__label--mobile test">{{ link.title }} </span>
             <span  class="c-nav-menu__icon--angle-down">{% include 'icon-angle-down' %}</span>
@@ -52,7 +54,7 @@
         </li>
       {% else %}
         <li class="c-nav-menu__item--mobile">
-          <a  class="c-nav-menu__link--mobile" href="{{ link.url }}">
+          <a id="navControlMobile{{ link.handle }}" class="c-nav-menu__link--mobile" href="{{ link.url }}">
             <span  class="c-nav-menu__label--mobile">{{ link.title }} </span>
           </a>
         </li>
