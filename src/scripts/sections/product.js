@@ -88,15 +88,15 @@ register('product', {
   },
 
   onThumbnailClick(event) {
-    console.log('thumbclick');
-    event.preventDefault();
-
-    const thumbnail = event.target.closest(selectors.thumbnail);
+    console.log('thumbclick update');
 
     if (!thumbnail) {
       return;
     }
 
+    event.preventDefault();
+
+    const thumbnail = event.target.closest(selectors.thumbnail);
 
 
     this.renderFeaturedImage(thumbnail.dataset.thumbnailId);
