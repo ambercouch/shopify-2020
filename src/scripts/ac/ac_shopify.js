@@ -3,10 +3,14 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY  $(document) on off test controlSelector');
+console.log('ACSHOPIFY 31032021 test');
 const ACSHOPIFY = {
   common: {
     init: function() {
+
+      $(document).on('click', function(){
+        // console.log('clicked the document');
+      });
 
       if (window.navigator.cookieEnabled) {
         document.documentElement.className = document.documentElement.className.replace(
@@ -139,6 +143,7 @@ const ACSHOPIFY = {
       $(document).on('click', '[data-control].has-1-levels', function(){
         console.log('is filckrty > .c-nav-menu__list');
         let controlParent = $(this).parent();
+        console.log($(this));
         let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
 
         elemMenuList.flickity({
@@ -175,6 +180,7 @@ const ACSHOPIFY = {
         });
       $(document).on('click', '[data-control].has-2-levels', function() {
         console.log('is filckrty .c-product-type-list');
+        console.log( $(this));
         let controlParent = $(this)
           .parent();
         let elemMenuList = $('.c-product-type-list__list--mobile-sub', controlParent);
@@ -200,11 +206,14 @@ const ACSHOPIFY = {
       });
 
       $.each(aRadioIds, function(i) {
+        // console.log('[data-control-radio]');
+        // console.log(aRadioIds[i]);
         currentRadioId = aRadioIds[i];
         const controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
         const containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
         $.each(controls, function(i) {
-
+          // console.log('[data-control-radio=' + currentRadioId + '][data-control]');
+          // console.log(this);
           const containerId = $(this).attr('data-control');
           const containerParentId = $(this).attr('data-container-parent');
 
@@ -218,10 +227,14 @@ const ACSHOPIFY = {
           const control = $(this);
           const controlParent = $(controleParentSelector);
 
+          // $(document).on('click', function(){
+          //   console.log('radio document click + clicker');
+          //   console.log( clickerId);
+          // });
 
           $(this).on('click', function(e) {
-            console.log('clicked has parent');
-            console.log(this);
+            console.log('[data-control-radio] this clicker log ');
+            console.log(clickerId);
             e.preventDefault();
             const state = control.attr('data-state');
 
@@ -245,7 +258,7 @@ const ACSHOPIFY = {
       });
 
       $('[data-control]:not([data-control-radio])').each(function() {
-
+        console.log('[data-control]:not([data-control-radio])');
         const containerId = $(this).attr('data-control');
 
         const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
@@ -261,7 +274,7 @@ const ACSHOPIFY = {
         $(document).off('click', controlSelector );
 
         $(document).on('click', controlSelector, function (e) {
-          //console.log('clickered');
+          console.log('clickered clicked');
           const state = control.attr('data-state');
           e.preventDefault();
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
@@ -1387,10 +1400,10 @@ const ACSHOPIFY = {
 
     },
     actStateToggleSelect : function (element, state) {
-    console.log('actStateToggleSelect element');
-    console.log(element);
-    console.log('actStateToggleSelect state');
-      console.log(state);
+    // console.log('actStateToggleSelect element');
+    // console.log(element);
+    // console.log('actStateToggleSelect state');
+    //   console.log(state);
       if('off' === state ){
         element.attr('data-state', 'on');
       }
@@ -1405,13 +1418,13 @@ const ACSHOPIFY = {
       showButton.on('click', function(e){
         e.preventDefault();
         elState = $(this).attr('data-state');
-        console.log('elState');
-        console.log(this);
-
-        console.log(elState);
+        // console.log('elState');
+        // console.log(this);
+        //
+        // console.log(elState);
 
         if ('off' === elState ) {
-          console.log('click on');
+          // console.log('click on');
           $(this).attr('data-state', 'on');
           $(container).attr('data-state', 'on');
           $(parent).attr('data-state', 'on');
@@ -1420,7 +1433,7 @@ const ACSHOPIFY = {
           window.dispatchEvent(eventActOpen);
 
         } else {
-          console.log('click off');
+          // console.log('click off');
           $(this).attr('data-state', 'off');
           $(container).attr('data-state', 'off');
           $(parent).attr('data-state', 'off');
@@ -1446,7 +1459,7 @@ const ACSHOPIFY = {
         e.preventDefault();
         elState = $(this).attr('data-state');
 
-        console.log('click off');
+        // console.log('click off');
         showButton.attr('data-state', 'off');
         closeButton.attr('data-state', 'off');
         $(container).attr('data-state', 'off');
