@@ -55,11 +55,12 @@
   </header>
 <div class="l-page__product-form">
   {% include 'ac-product-form' %}
-
+{% comment %}
   <!-- OKENDO  okendo-reviews-product-rating-summary -->
   {% render 'okendo-reviews-widget', product: product %}
   <!-- /OKENDO  okendo-reviews-product-rating-summary -->
-  
+  {% endcomment %}
+
 </div>
 
   <!-- below_form_button_url -->
