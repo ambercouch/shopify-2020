@@ -4,9 +4,9 @@
     <li class="c-nav-menu__item--mobile">
       <a  class="c-nav-menu__link--mobile"
           href="#"
-          data-control-radio="menuMain"
+          data-control-radio="menuMobile"
           data-state="off"
-          data-control="shop"
+          data-control="shopMobile"
           id="navControlMobileShop"
       >
         <span  class="c-nav-menu__label--mobile">Shop</span>
@@ -15,9 +15,9 @@
 
       <ul class="c-nav-menu__list--mobile-sub c-nav-menu__list--shop"
           id="menu-list-0-shop"
-          data-container-radio="menuMain"
+          data-container-radio="menuMobile"
           data-state="off"
-          data-container="shop"
+          data-container="shopMobile"
       >
         {% for childlink in linklists['shop-menu-2021'].links %}
           {% assign modClass = 'mobile-sub' %}

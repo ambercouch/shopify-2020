@@ -7,9 +7,9 @@
        href="{{ childlink.url }}"
        data-control-radio="menu{{ link.title | handle }}"
        data-state="off"
-       data-control="{{ childlink.title | handle }}"
+       data-control="{{ link.title | handle }}{{ childlink.title | handle }}"
        data-container-parent="{{ link.title | handle }}"
-       id="navControl{{  childlink.handle }}"
+       id="navControl{{ link.title | handle }}{{  childlink.handle }}{{ modClass }}"
     >
       <span  class="c-nav-menu__label{{ modClass }} test">{{ childlink.title }}</span>
       <span  class="c-nav-menu__icon--angle-down">{% render 'icon-angle-down' %}</span>
@@ -17,7 +17,7 @@
     <ul id="menu-list-{{ forloop.index }}-{{ childlink.title | handle }}" class="c-nav-menu__list{{ modClass }} c-nav-menu__list--{{ childlink.title | handle }}"
         data-container-radio="menu{{ link.title | handle }}"
         data-state="off"
-        data-container="{{ childlink.title | handle }}"
+        data-container="{{ link.title | handle }}{{ childlink.title | handle }}"
         data-container-parent="{{ link.title | handle }}"
     >
       {% for childlink in childlink.links %}
@@ -38,7 +38,7 @@
 
           {% if childlink.url != "#" %}
             <li  class="c-nav-menu__item{{ modClass }}">
-          <a id="navControl{{  childlink.handle }}" class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
+          <a id="navControl{{  link.handle }}{{  childlink.handle }}" class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
             <div class="c-nav-menu__nav-thumb{{ modClass }}">
 
               {%  render 'ac-nav-thumb' with childlink: childlink, navImage: navImage, navThumbModClass:  modClass %}
@@ -73,7 +73,7 @@
                 {% endif %}
 
               <li class="c-product-type-list__item{{ modClass }}">
-                <a id="navControl{{  grandChildLink.handle }}" class="c-product-type-list__link{{ modClass }}" href="{{  grandChildLink.url }}">
+                <a id="navControl{{  link.handle }}{{  childlink.handle }}{{  grandChildLink.handle }}" class="c-product-type-list__link{{ modClass }}" href="{{  grandChildLink.url }}">
                   <div class="c-product-type-list__nav-thumb{{ modClass }}">
                 {%  render 'ac-nav-thumb' with childlink: grandChildLink, navImage: navImage, navThumbModClass:  modClass %}
                   </div>
