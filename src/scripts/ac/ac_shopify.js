@@ -212,6 +212,8 @@ const ACSHOPIFY = {
         const controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
         const containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
         $.each(controls, function(i) {
+          // console.log('[data-control-radio] control');
+          // console.log(this);
           // console.log('[data-control-radio=' + currentRadioId + '][data-control]');
           // console.log(this);
           const containerId = $(this).attr('data-control');
@@ -232,9 +234,12 @@ const ACSHOPIFY = {
           //   console.log( clickerId);
           // });
 
-          $(this).on('click', function(e) {
-            console.log('[data-control-radio] this clicker log ');
-            console.log(clickerId);
+          // $(document).off('click', '#'+this.id);
+
+          $(document).on('click', '#'+this.id, function(e) {
+            // console.log('[data-control-radio] this clicker log ');
+            // console.log('#'+this.id);
+            //console.log(clickerId);
             e.preventDefault();
             const state = control.attr('data-state');
 
@@ -258,7 +263,7 @@ const ACSHOPIFY = {
       });
 
       $('[data-control]:not([data-control-radio])').each(function() {
-        console.log('[data-control]:not([data-control-radio])');
+        // console.log('[data-control]:not([data-control-radio])');
         const containerId = $(this).attr('data-control');
 
         const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
@@ -274,7 +279,7 @@ const ACSHOPIFY = {
         $(document).off('click', controlSelector );
 
         $(document).on('click', controlSelector, function (e) {
-          console.log('clickered clicked');
+          // console.log('clickered clicked');
           const state = control.attr('data-state');
           e.preventDefault();
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
@@ -324,7 +329,7 @@ const ACSHOPIFY = {
       });
 
       $('.add-form__form').submit(function(e) {
-        console.log('add click');
+        // console.log('add click');
         e.preventDefault();
         var $addToCartForm = $(this);
         var $addToCartBtn = $addToCartForm.find('.add-form__submit-btn');
