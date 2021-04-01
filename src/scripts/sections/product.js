@@ -88,7 +88,7 @@ register('product', {
   },
 
   onThumbnailClick(event) {
-    console.log('thumbclick update');
+    //console.log('thumbclick update');
 
     if (!thumbnail) {
       return;
