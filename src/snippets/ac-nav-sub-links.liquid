@@ -5,7 +5,7 @@
   <li class="c-nav-menu__item{{ modClass }} modClass{{ modClass }}">
     <a class="c-nav-menu__link{{ modClass }} is-second-parent has-{{ childlink.levels }}-levels "
        href="{{ childlink.url }}"
-       data-control-radio="menuMobile"
+       data-control-radio="menu{{ link.title | handle }}"
        data-state="off"
        data-control="{{ childlink.title | handle }}"
        data-container-parent="{{ link.title | handle }}"
@@ -15,7 +15,7 @@
       <span  class="c-nav-menu__icon--angle-down">{% render 'icon-angle-down' %}</span>
     </a>
     <ul id="menu-list-{{ forloop.index }}-{{ childlink.title | handle }}" class="c-nav-menu__list{{ modClass }} c-nav-menu__list--{{ childlink.title | handle }}"
-        data-container-radio="menuMobile"
+        data-container-radio="menu{{ link.title | handle }}"
         data-state="off"
         data-container="{{ childlink.title | handle }}"
         data-container-parent="{{ link.title | handle }}"
@@ -91,7 +91,7 @@
       {% endfor %}
       <li class="c-nav-menu__item{{ modClass }} c-nav-menu__item--see-all">
 
-          <a class="c-nav-menu__link{{ modClass }} c-nav-menu__link--see-all"
+          <a id="navControlSeeAll{{ childlink.handle }}" class="c-nav-menu__link{{ modClass }} c-nav-menu__link--see-all"
              href="{{ childlink.url }}"
           >
 
@@ -106,7 +106,7 @@
   </li>
 {% else %}
   <li  class="c-nav-menu__item{{ modClass }}">
-    <a class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
+    <a id="navControl{{  childlink.handle }}" class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
       <span  class="c-nav-menu__mobile-sub">{{ childlink.title }}</span>
     </a>
   </li>
