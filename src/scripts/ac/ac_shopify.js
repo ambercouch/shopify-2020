@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 31032021 test');
+console.log('ACSHOPIFY 31032021 removed image loaded');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -130,70 +130,13 @@ const ACSHOPIFY = {
           cellAlign: 'left',
           contain: true,
           prevNextButtons: false,
-          imagesLoaded: true,
+          // imagesLoaded: true,
           pageDots: false,
         });
       }else{
         console.log('No .c-quote-list__list');
       }
 
-      // Nav menu flickity script
-      // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
-      //
-      $(document).on('click', '[data-control].has-1-levels', function(){
-        console.log('is filckrty > .c-nav-menu__list');
-        let controlParent = $(this).parent();
-        console.log($(this));
-        let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
-
-        elemMenuList.flickity({
-          // options
-          cellAlign: 'left',
-          contain: true,
-          prevNextButtons: false,
-          imagesLoaded: true,
-          pageDots: false,
-        });
-
-
-        // Nav menu flickity script
-        // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
-        //
-
-
-        /*
-        Flickity Desktop menu
-        No longer used
-         */
-
-        // let elemMenuListDesk = $('.c-nav-menu__list--main-sub', controlParent);
-        //
-        // elemMenuListDesk.flickity({
-        //   // options
-        //   cellAlign: 'left',
-        //   contain: true,
-        //   prevNextButtons: false,
-        //   imagesLoaded: true,
-        //   pageDots: false,
-        // });
-
-        });
-      $(document).on('click', '[data-control].has-2-levels', function() {
-        console.log('is filckrty .c-product-type-list');
-        console.log( $(this));
-        let controlParent = $(this)
-          .parent();
-        let elemMenuList = $('.c-product-type-list__list--mobile-sub', controlParent);
-
-        elemMenuList.flickity({
-          // options
-          cellAlign: 'left',
-          contain: true,
-          prevNextButtons: false,
-          imagesLoaded: true,
-          pageDots: false,
-        });
-      });
 
       /*
       Radio toggle controls
@@ -236,7 +179,10 @@ const ACSHOPIFY = {
 
           // $(document).off('click', '#'+this.id);
 
-          $(document).on('click', '#'+this.id, function(e) {
+          // select via ID or this
+          //$('#'+this.id).on('click',  function(e)
+          //select via document
+          $(document).on('click',  '#'+this.id, function(e) {
             // console.log('[data-control-radio] this clicker log ');
             // console.log('#'+this.id);
             //console.log(clickerId);
@@ -298,6 +244,45 @@ const ACSHOPIFY = {
         });
 
       });
+
+      // Nav menu flickity script
+      // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
+      //
+      $(document).on('click', '[data-control].has-1-levels', function(){
+        console.log('is filckrty > .c-nav-menu__list');
+        let controlParent = $(this).parent();
+        console.log($(this));
+        let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
+
+        elemMenuList.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+
+          pageDots: false,
+        });
+
+
+      });
+
+      $(document).on('click', '[data-control].has-2-levels', function() {
+        console.log('is filckrty .c-product-type-list');
+        console.log( $(this));
+        let controlParent = $(this)
+          .parent();
+        let elemMenuList = $('.c-product-type-list__list--mobile-sub', controlParent);
+
+        elemMenuList.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+
+          pageDots: false,
+        });
+      });
+
 
 
       console.log('ajax cart');
