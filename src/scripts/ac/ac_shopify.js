@@ -1008,7 +1008,7 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('Product gallery freeScroll: true');
+      console.log('Product gallery freeScroll: true ');
 
       // Product Gallery
       // Moved form product.js due to issues caused by slow connection speeds .
@@ -1043,19 +1043,19 @@ const ACSHOPIFY = {
       //   pageDots: false,
       // });
 
-      //let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
-      // if(elemProductThumb){
-      //   let flktyProductThumb = new Flickity( elemProductThumb, {
-      //     // options
-      //     cellAlign: 'left',
-      //     contain: true,
-      //     prevNextButtons: false,
-      //     // imagesLoaded: true,
-      //     pageDots: false,
-      //   });
-      // }else{
-      //   console.log('No .c-quote-list__list');
-      // }
+      let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      if(elemProductThumb){
+        let flktyProductThumb = new Flickity( elemProductThumb, {
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+          // imagesLoaded: true,
+          pageDots: false,
+        });
+      }else{
+        console.log('No .c-quote-list__list');
+      }
 
 
 
