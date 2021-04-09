@@ -1,0 +1,115 @@
+/*
+  BEM BLOCK .c-product-type-list
+ */
+
+.c-product-type-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-product-type-list--
+ */
+
+.c-product-type-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-product-type-list--
+
+[class*=c-product-type-list--] {
+  @extend .c-product-type-list;
+}
+
+/*
+  BEM ELEMENTS .c-product-type-list__
+ */
+
+.c-product-type-list__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block;
+    color: $brand-col-2;
+    font-family: $act-font-family-body;
+    @include act-font-size($act-fs-6, 1.2);
+    font-weight: 700;
+    margin-bottom: $act-unit-s;
+
+  }
+
+  &list{
+    display: flex;
+    margin-bottom: $act-unit-s;
+  }
+  &item{
+    width: 120px;
+    margin-left: $act-unit-t;
+    list-style: none;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: block;
+    text-decoration: none;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-type-list--
+
+[class*=c-product-type-list__header--] {
+  @extend .c-product-type-list__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-type-list__heading--
+
+[class*=c-product-type-list__heading--] {
+  @extend .c-product-type-list__heading;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-type-list__list--
+
+[class*=c-product-type-list__list--] {
+  @extend .c-product-type-list__list;
+}
+
+.c-product-type-list__list-- {
+  &mobile-sub{
+    display: block;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-type-list__item--
+
+[class*=c-product-type-list__item--] {
+  @extend .c-product-type-list__item;
+}
+
+.c-product-type-list__item-- {
+  &mobile-sub{
+    width: 140px;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-type-list__link--
+
+[class*=c-product-type-list__link--] {
+  @extend .c-product-type-list__link;
+}

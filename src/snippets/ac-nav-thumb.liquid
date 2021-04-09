@@ -1,0 +1,24 @@
+{% comment %}
+{% if navThumbModClass %}
+  {% assign navThumbModClass = navThumbModClass | prepend : '--' %}
+{% endif %}
+{% endcomment %}
+<div class="c-nav-thumb{{ navThumbModClass }} test childling">
+  {% if childlink.title contains ':' %}
+    {% assign titleArray = childlink.title | split: ':' %}
+    <h4  class="c-nav-thumb__heading{{ navThumbModClass }}"><span class="c-nav-thumb__title-prefix" >{{ titleArray[0] }}</span><span class="c-nav-thumb__sep">:</span> <span class="c-nav-thumb__title">{{ titleArray[1] }}</span></h4>
+  {% else %}
+    <h4  class="c-nav-thumb__heading{{ navThumbModClass }}"><span class="c-nav-thumb__title">{{ childlink.title }}</span></h4>
+  {% endif %}
+
+  {% if navImage %}
+  <div class="c-nav-thumb__image{{ modClass }}">
+    {% render 'responsive-image' with
+      image: navImage,
+      max_width: 700,
+      max_height: 700
+    %}
+  </div>
+
+{% endif %}
+</div>

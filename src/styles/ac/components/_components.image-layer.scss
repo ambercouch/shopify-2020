@@ -6,6 +6,43 @@
   display: block;
   position: relative;
   width: 100%;
+  overflow: visible;
+  .l-site__footer &{
+    overflow: hidden;
+  }
+  .l-page__header--static-page &{
+    overflow: hidden;
+  }
+  .l-page__header--blog &{
+    overflow: hidden;
+  }
+  .l-page__header--article &{
+    overflow: hidden;
+  }
+  .l-page__recipe &{
+     overflow: hidden;
+   }
+  .c-blob__id--homepage-banner &{
+    //overflow: hidden;
+  }
+  .l-product-list__content-block--bibado-weaning-bundle-save-20 &{
+    overflow:hidden;
+  }
+  .l-page__header--collection &{
+    overflow: hidden;
+  }
+  .l-product-list__item--last &{
+    overflow: hidden;
+  }
+  .l-page__wrapper--collection-intro &{
+    overflow: hidden;
+  }
+  .l-page__hero--collection-bundle &{
+    overflow: hidden;
+  }
+  .l-page--cart &{
+    overflow: hidden;
+  }
 }
 
 /*
@@ -39,6 +76,12 @@
     right: 0;
     bottom: 0;
     overflow: hidden;
+    .no-blobs &{
+      display: none !important;
+    }
+    .styles-2021 &{
+      overflow: visible;
+    }
   }
   &content{
     position: relative;

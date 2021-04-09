@@ -3,10 +3,14 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY  $(document) on off test controlSelector');
+console.log('ACSHOPIFY 31032021 filckty test');
 const ACSHOPIFY = {
   common: {
     init: function() {
+
+      $(document).on('click', function(){
+        // console.log('clicked the document');
+      });
 
       if (window.navigator.cookieEnabled) {
         document.documentElement.className = document.documentElement.className.replace(
@@ -84,9 +88,14 @@ const ACSHOPIFY = {
       $('[class*=l-main--] .shopify-section').each(function() {
         console.log('section found');
         let desk50 = $('.is-block-width-50', this).length;
-        console.log('desk50' + desk50);
+        console.log('desk50 ' + desk50);
         if (desk50){
           $(this).addClass('is-section-width-50');
+        }
+        let desk33 = $('.is-block-width-33', this).length;
+        console.log('desk33 ' + desk33);
+        if (desk33){
+          $(this).addClass('is-section-width-33');
         }
       });
 
@@ -102,7 +111,6 @@ const ACSHOPIFY = {
 
         // Quote flickity script
       let elemQuote = document.querySelector('.c-quote-list__list');
-
       if(elemQuote){
         let flktyQuote = new Flickity( elemQuote, {
           // options
@@ -115,19 +123,32 @@ const ACSHOPIFY = {
       }
 
       // Product gallery flickity script for thumbs
-      let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
-      if(elemProductThumb){
-        let flktyProductThumb = new Flickity( elemProductThumb, {
-          // options
-          cellAlign: 'left',
-          contain: true,
-          prevNextButtons: false,
-          imagesLoaded: true,
-          pageDots: false,
-        });
-      }else{
-        console.log('No .c-quote-list__list');
-      }
+     // let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      //let elemProductThumb = $('.c-product-gallery__list--thumb');
+      // if(elemProductThumb){
+      //   let flktyProductThumb = new Flickity( elemProductThumb, {
+      //     // options
+      //     cellAlign: 'left',
+      //     contain: true,
+      //     prevNextButtons: false,
+      //     // imagesLoaded: true,
+      //     pageDots: false,
+      //   });
+      // }else{
+      //   console.log('No .c-quote-list__list');
+      // }
+
+      // elemProductThumb.flickity({
+      //   // options
+      //   cellAlign: 'left',
+      //   contain: true,
+      //   prevNextButtons: false,
+      //
+      //   pageDots: false,
+      // });
+
+
+
 
       /*
       Radio toggle controls
@@ -140,28 +161,59 @@ const ACSHOPIFY = {
       });
 
       $.each(aRadioIds, function(i) {
+        // console.log('[data-control-radio]');
+        // console.log(aRadioIds[i]);
         currentRadioId = aRadioIds[i];
-        let controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
-        let containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
+        const controls = $('[data-control-radio=' + currentRadioId + '][data-control]');
+        const containers = $('[data-container-radio=' + currentRadioId + '][data-container]');
         $.each(controls, function(i) {
-
+          // console.log('[data-control-radio] control');
+          // console.log(this);
+          // console.log('[data-control-radio=' + currentRadioId + '][data-control]');
+          // console.log(this);
           const containerId = $(this).attr('data-control');
+          const containerParentId = $(this).attr('data-container-parent');
+
           const containerSelector = (containerId != '' )? '[data-container='+ containerId + ']' : '[data-container]';
+          const containerParentSelector = (containerParentId != '' )? '[data-container='+ containerParentId + ']': null ;
+          const controleParentSelector = (containerParentId != '' )? '[data-control='+ containerParentId + ']': null ;
+
           const container = $(containerSelector);
+          const containerParent = $(containerParentSelector);
+
           const control = $(this);
-          $(this).on('click', function(e) {
+          const controlParent = $(controleParentSelector);
+
+          // $(document).on('click', function(){
+          //   console.log('radio document click + clicker');
+          //   console.log( clickerId);
+          // });
+
+          // $(document).off('click', '#'+this.id);
+
+          // select via ID or this
+          //$('#'+this.id).on('click',  function(e)
+          //select via document
+          $(document).on('click',  '#'+this.id, function(e) {
+            // console.log('[data-control-radio] this clicker log ');
+            // console.log('#'+this.id);
+            //console.log(clickerId);
             e.preventDefault();
             const state = control.attr('data-state');
-            // toggele state of this controller
+
+            // toggle state of this controller
             ACSHOPIFY.fn.actStateToggleSelect(control, state);
-            // toggele state of this container
+
+            // toggle state of this container
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
+
             // toggle off all other container
-            containers.not(container).each(function() {
+              containers.not(container).not(containerParent).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
+
             // toggle off all other controllers
-            controls.not(control).each(function() {
+            controls.not(control).not(controlParent).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
           });
@@ -169,7 +221,7 @@ const ACSHOPIFY = {
       });
 
       $('[data-control]:not([data-control-radio])').each(function() {
-
+        // console.log('[data-control]:not([data-control-radio])');
         const containerId = $(this).attr('data-control');
 
         const controlSelector = (containerId != '' )? '[data-control='+ containerId + ']' : this;
@@ -185,7 +237,7 @@ const ACSHOPIFY = {
         $(document).off('click', controlSelector );
 
         $(document).on('click', controlSelector, function (e) {
-          //console.log('clickered');
+          // console.log('clickered clicked');
           const state = control.attr('data-state');
           e.preventDefault();
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
@@ -204,6 +256,45 @@ const ACSHOPIFY = {
         });
 
       });
+
+      // Nav menu flickity script
+      // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
+      //
+      $(document).on('click', '[data-control].has-1-levels', function(){
+        console.log('is filckrty > .c-nav-menu__list');
+        let controlParent = $(this).parent();
+        console.log($(this));
+        let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
+
+        elemMenuList.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+
+          pageDots: false,
+        });
+
+
+      });
+
+      $(document).on('click', '[data-control].has-2-levels', function() {
+        console.log('is filckrty .c-product-type-list');
+        console.log( $(this));
+        let controlParent = $(this)
+          .parent();
+        let elemMenuList = $('.c-product-type-list__list--mobile-sub', controlParent);
+
+        elemMenuList.flickity({
+          // options
+          cellAlign: 'left',
+          contain: true,
+          prevNextButtons: false,
+
+          pageDots: false,
+        });
+      });
+
 
 
       console.log('ajax cart');
@@ -235,7 +326,7 @@ const ACSHOPIFY = {
       });
 
       $('.add-form__form').submit(function(e) {
-        console.log('add click');
+        // console.log('add click');
         e.preventDefault();
         var $addToCartForm = $(this);
         var $addToCartBtn = $addToCartForm.find('.add-form__submit-btn');
@@ -917,7 +1008,59 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('Product submit test ');
+      console.log('Product gallery freeScroll: true');
+
+      // Product Gallery
+      // Moved form product.js due to issues caused by slow connection speeds .
+      $(document).on('click', '[data-product-single-thumbnail]', function(e){
+
+        e.preventDefault();
+
+        let currentImage = $('[data-product-image-wrapper]:not(".hide")');
+
+        let thumbId = $(this).attr('data-thumbnail-id');
+
+        let activeImage = $('[data-product-image-wrapper][data-image-id=' + thumbId + ']' )
+
+        currentImage.addClass('hide');
+
+        activeImage.removeClass('hide');
+
+      });
+      // /Product Gallery
+
+      // Product flickity thumbs
+
+      // Product gallery flickity script for thumbs
+
+      // let elemProductThumb = $(document).find('.c-product-gallery__list--thumb');
+      // elemProductThumb.flickity({
+      //   // options
+      //   freeScroll: true,
+      //   cellAlign: 'left',
+      //   contain: true,
+      //   prevNextButtons: false,
+      //   pageDots: false,
+      // });
+
+      //let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      // if(elemProductThumb){
+      //   let flktyProductThumb = new Flickity( elemProductThumb, {
+      //     // options
+      //     cellAlign: 'left',
+      //     contain: true,
+      //     prevNextButtons: false,
+      //     // imagesLoaded: true,
+      //     pageDots: false,
+      //   });
+      // }else{
+      //   console.log('No .c-quote-list__list');
+      // }
+
+
+
+
+
 
       let productTagsArray = JSON.parse(document.body.dataset.productTags);
 
@@ -1311,10 +1454,10 @@ const ACSHOPIFY = {
 
     },
     actStateToggleSelect : function (element, state) {
-    console.log('actStateToggleSelect element');
-    console.log(element);
-    console.log('actStateToggleSelect state');
-      console.log(state);
+    // console.log('actStateToggleSelect element');
+    // console.log(element);
+    // console.log('actStateToggleSelect state');
+    //   console.log(state);
       if('off' === state ){
         element.attr('data-state', 'on');
       }
@@ -1329,13 +1472,13 @@ const ACSHOPIFY = {
       showButton.on('click', function(e){
         e.preventDefault();
         elState = $(this).attr('data-state');
-        console.log('elState');
-        console.log(this);
-
-        console.log(elState);
+        // console.log('elState');
+        // console.log(this);
+        //
+        // console.log(elState);
 
         if ('off' === elState ) {
-          console.log('click on');
+          // console.log('click on');
           $(this).attr('data-state', 'on');
           $(container).attr('data-state', 'on');
           $(parent).attr('data-state', 'on');
@@ -1344,7 +1487,7 @@ const ACSHOPIFY = {
           window.dispatchEvent(eventActOpen);
 
         } else {
-          console.log('click off');
+          // console.log('click off');
           $(this).attr('data-state', 'off');
           $(container).attr('data-state', 'off');
           $(parent).attr('data-state', 'off');
@@ -1370,7 +1513,7 @@ const ACSHOPIFY = {
         e.preventDefault();
         elState = $(this).attr('data-state');
 
-        console.log('click off');
+        // console.log('click off');
         showButton.attr('data-state', 'off');
         closeButton.attr('data-state', 'off');
         $(container).attr('data-state', 'off');

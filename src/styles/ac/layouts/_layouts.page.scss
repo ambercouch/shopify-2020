@@ -15,6 +15,9 @@
     background: white !important;
     padding-top: $act-unit-l ;
   }
+  &cart{
+    background: $brand-col-2;
+  }
   &recipe {
     color: $brand-col-2;
     background: white;
@@ -259,6 +262,7 @@
     background: #fff;
   }
   &collection-intro{
+    //background-color: $brand-col-2;
     padding-top: $act-unit;
     @include mq($from:desktop){
       grid-column-start: 1;
@@ -878,6 +882,7 @@
   }
   &collection-bundle{
     padding: 0;
+    background: $brand-col-2;
   }
 }
 
@@ -990,6 +995,7 @@
     }
   }
 
+
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .l-page__product-list--
@@ -1013,6 +1019,8 @@
 .l-page__wrapper--{
   &collection-intro{
     width: 100% !important;
+      background: $brand-col-2;
+
   }
   &landing{
     padding-bottom: $act-unit;

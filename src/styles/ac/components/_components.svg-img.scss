@@ -1,0 +1,92 @@
+/*
+  BEM BLOCK .c-svg-img
+ */
+
+.c-svg-img {
+  display: block;
+  fill: currentColor;
+
+}
+
+/*
+  BEM BLOCK MODIFIER .c-svg-img--
+ */
+
+.c-svg-img-- {
+  &wave-top {
+    width: 4500px;
+    position: absolute;
+    transform: translate(-35%,0);
+    top: -62px;
+
+    .is-style-2 &{
+
+      transform: translate(-54% , 0) rotateY(180deg);
+      @include mq($from : tablet){
+        transform: translate(-35% , 0) rotateY(180deg);
+
+      }
+    }
+    .is-style-0 &{
+      display: none;
+    }
+
+  }
+  &wave-bottom {
+    width: 4500px;
+    position: absolute;
+    transform: translate(-33%,0);
+    bottom: -64px;
+    z-index: 1;
+
+    .is-style-2 &{
+      transform: translate(-35% , 0);
+    }
+    .is-style-0 &{
+     display: none;
+    }
+
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-svg-img--
+
+[class*=c-svg-img--] {
+  @extend .c-svg-img;
+}
+
+/*
+  BEM ELEMENTS .c-svg-img__
+ */
+
+.c-svg-img__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-svg-img--
+
+[class*=c-svg-img__header--] {
+  @extend .c-svg-img__header;
+}

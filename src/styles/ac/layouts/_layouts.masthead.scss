@@ -8,7 +8,7 @@
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
   @include mq($from : desktop){
-    grid-template-columns: 160px 1fr 1fr 160px;
+    grid-template-columns: 25% 1fr 1fr 25%;
   }
 }
 
@@ -29,7 +29,7 @@
     padding: $act-unit-s 0 $act-unit-s $act-unit-s;
     align-items: center;
     @include mq($from : desktop){
-      padding: $act-unit 0 $act-unit-s $act-unit-s;
+      padding: $act-unit-s 0 $act-unit-s $act-unit-s;
     }
   }
   &site-control{

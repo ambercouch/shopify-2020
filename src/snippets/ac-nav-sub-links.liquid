@@ -1,0 +1,113 @@
+{% if modClass %}
+{% assign modClass = modClass | prepend : '--' %}
+{% endif %}
+{% if childlink.links != blank %}
+  <li class="c-nav-menu__item{{ modClass }} modClass{{ modClass }}">
+    <a class="c-nav-menu__link{{ modClass }} is-second-parent has-{{ childlink.levels }}-levels "
+       href="{{ childlink.url }}"
+       data-control-radio="menu{{ link.title | handle }}"
+       data-state="off"
+       data-control="{{ link.title | handle }}{{ childlink.title | handle }}"
+       data-container-parent="{{ link.title | handle }}"
+       id="navControl{{ link.title | handle }}{{  childlink.handle }}{{ modClass }}"
+    >
+      <span  class="c-nav-menu__label{{ modClass }} test">{{ childlink.title }}</span>
+      <span  class="c-nav-menu__icon--angle-down">{% render 'icon-angle-down' %}</span>
+    </a>
+    <ul id="menu-list-{{ forloop.index }}-{{ childlink.title | handle }}" class="c-nav-menu__list{{ modClass }} c-nav-menu__list--{{ childlink.title | handle }}"
+        data-container-radio="menu{{ link.title | handle }}"
+        data-state="off"
+        data-container="{{ link.title | handle }}{{ childlink.title | handle }}"
+        data-container-parent="{{ link.title | handle }}"
+    >
+      {% for childlink in childlink.links %}
+        {% assign item = childlink.object %}
+
+        {% if  item.metafields.global.menu_item_thumb and item.metafields.global.menu_item_thumb != 'false'%}
+
+          {% assign navImage = images[item.metafields.global.menu_item_thumb] %}
+        {% else %}
+          {% case childlink.type %}
+            {% when 'product_link' %}
+          {% assign navImage = item.featured_image %}
+          {% when 'collection_link' %}
+          {% assign navImage = item.image %}
+          {% endcase %}
+        {% endif %}
+
+
+          {% if childlink.url != "#" %}
+            <li  class="c-nav-menu__item{{ modClass }}">
+          <a id="navControl{{  link.handle }}{{  childlink.handle }}" class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
+            <div class="c-nav-menu__nav-thumb{{ modClass }}">
+
+              {%  render 'ac-nav-thumb' with childlink: childlink, navImage: navImage, navThumbModClass:  modClass %}
+
+            </div>
+
+          </a>
+            </li>
+          {% else %}
+            <li  class="c-nav-menu__item{{ modClass }} c-nav-menu__item--product-type-list ">
+            <div class="c-nav-menu__product-type-list">
+              <div class="c-product-type-list{{ modClass }}">
+                <h4 class="c-product-type-list__heading{{ modClass }}">
+                  {{ childlink.title }}
+                </h4>
+              </div>
+            <ul class="c-product-type-list__list{{ modClass }}">
+              {% for grandChildLink in childlink.links %}
+
+                {% assign item = grandChildLink.object %}
+
+                {% if  item.metafields.global.menu_item_thumb and item.metafields.global.menu_item_thumb != 'false'%}
+
+                  {% assign navImage = images[item.metafields.global.menu_item_thumb] %}
+                {% else %}
+                  {% case grandChildLink.type %}
+                  {% when 'product_link' %}
+                  {% assign navImage = item.featured_image %}
+                  {% when 'collection_link' %}
+                  {% assign navImage = item.image %}
+                  {% endcase %}
+                {% endif %}
+
+              <li class="c-product-type-list__item{{ modClass }}">
+                <a id="navControl{{  link.handle }}{{  childlink.handle }}{{  grandChildLink.handle }}" class="c-product-type-list__link{{ modClass }}" href="{{  grandChildLink.url }}">
+                  <div class="c-product-type-list__nav-thumb{{ modClass }}">
+                {%  render 'ac-nav-thumb' with childlink: grandChildLink, navImage: navImage, navThumbModClass:  modClass %}
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            </div>
+            </li>
+
+          {% endif %}
+
+        </li>
+
+      {% endfor %}
+      <li class="c-nav-menu__item{{ modClass }} c-nav-menu__item--see-all">
+
+          <a id="navControlSeeAll{{ childlink.handle }}" class="c-nav-menu__link{{ modClass }} c-nav-menu__link--see-all"
+             href="{{ childlink.url }}"
+          >
+
+            <span  class="c-nav-menu__icon--arrow-left-alt">{% render 'icon-arrow-left-alt' %}</span>
+            <span  class="c-nav-menu__label{{ modClass }} c-nav-menu__label--see-all">See all {{  childlink.title }}</span>
+          </a>
+
+      </li>
+
+    </ul>
+
+  </li>
+{% else %}
+  <li  class="c-nav-menu__item{{ modClass }}">
+    <a id="navControl{{  childlink.handle }}" class="c-nav-menu__link{{ modClass }}" href="{{ childlink.url }}">
+      <span  class="c-nav-menu__mobile-sub">{{ childlink.title }}</span>
+    </a>
+  </li>
+{% endif %}

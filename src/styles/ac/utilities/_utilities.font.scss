@@ -1,30 +1,165 @@
 //Font size
 .u-fs-1{
   @include act-font-size($act-fs-1);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-1);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-1);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-1);
+    }
+  }
 }
 .u-fs-2{
   @include act-font-size($act-fs-2);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-2);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-2);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-2);
+    }
+  }
 }
 .u-fs-3{
   @include act-font-size($act-fs-3);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-3);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-3);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-3);
+    }
+  }
 }
 .u-fs-4{
   @include act-font-size($act-fs-4);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-4);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-4);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-4);
+    }
+  }
 }
 .u-fs-5{
   @include act-font-size($act-fs-5);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-5);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-5);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-5);
+    }
+  }
 }
 .u-fs-6{
   @include act-font-size($act-fs-6);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-6);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-6);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-6);
+    }
+  }
 }
 .u-fs-k{
   @include act-font-size($act-fs-k);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-k);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-k);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-k);
+    }
+  }
 }
 .u-fs-g{
   @include act-font-size($act-fs-g);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-g);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-g);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-g);
+    }
+  }
 }
 .u-fs-m{
   @include act-font-size($act-fs-m);
+  &-mob{
+    @include mq($from: mobile, $until: tablet){
+      @include act-font-size($act-fs-m);
+    }
+  }
+  &-tablet{
+    @include mq($from: tablet, $until: desktop){
+      @include act-font-size($act-fs-m);
+    }
+  }
+  &-desk{
+    @include mq($from: desktop){
+      @include act-font-size($act-fs-m);
+    }
+  }
 }
 
 //Font weight
