@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 31032021 removed image loaded');
+console.log('ACSHOPIFY 31032021 filckty test');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -123,19 +123,31 @@ const ACSHOPIFY = {
       }
 
       // Product gallery flickity script for thumbs
-      let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
-      if(elemProductThumb){
-        let flktyProductThumb = new Flickity( elemProductThumb, {
-          // options
-          cellAlign: 'left',
-          contain: true,
-          prevNextButtons: false,
-          // imagesLoaded: true,
-          pageDots: false,
-        });
-      }else{
-        console.log('No .c-quote-list__list');
-      }
+     // let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      //let elemProductThumb = $('.c-product-gallery__list--thumb');
+      // if(elemProductThumb){
+      //   let flktyProductThumb = new Flickity( elemProductThumb, {
+      //     // options
+      //     cellAlign: 'left',
+      //     contain: true,
+      //     prevNextButtons: false,
+      //     // imagesLoaded: true,
+      //     pageDots: false,
+      //   });
+      // }else{
+      //   console.log('No .c-quote-list__list');
+      // }
+
+      // elemProductThumb.flickity({
+      //   // options
+      //   cellAlign: 'left',
+      //   contain: true,
+      //   prevNextButtons: false,
+      //
+      //   pageDots: false,
+      // });
+
+
 
 
       /*
@@ -996,7 +1008,59 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('Product submit test ');
+      console.log('Product gallery freeScroll: true');
+
+      // Product Gallery
+      // Moved form product.js due to issues caused by slow connection speeds .
+      $(document).on('click', '[data-product-single-thumbnail]', function(e){
+
+        e.preventDefault();
+
+        let currentImage = $('[data-product-image-wrapper]:not(".hide")');
+
+        let thumbId = $(this).attr('data-thumbnail-id');
+
+        let activeImage = $('[data-product-image-wrapper][data-image-id=' + thumbId + ']' )
+
+        currentImage.addClass('hide');
+
+        activeImage.removeClass('hide');
+
+      });
+      // /Product Gallery
+
+      // Product flickity thumbs
+
+      // Product gallery flickity script for thumbs
+
+      // let elemProductThumb = $(document).find('.c-product-gallery__list--thumb');
+      // elemProductThumb.flickity({
+      //   // options
+      //   freeScroll: true,
+      //   cellAlign: 'left',
+      //   contain: true,
+      //   prevNextButtons: false,
+      //   pageDots: false,
+      // });
+
+      //let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      // if(elemProductThumb){
+      //   let flktyProductThumb = new Flickity( elemProductThumb, {
+      //     // options
+      //     cellAlign: 'left',
+      //     contain: true,
+      //     prevNextButtons: false,
+      //     // imagesLoaded: true,
+      //     pageDots: false,
+      //   });
+      // }else{
+      //   console.log('No .c-quote-list__list');
+      // }
+
+
+
+
+
 
       let productTagsArray = JSON.parse(document.body.dataset.productTags);
 

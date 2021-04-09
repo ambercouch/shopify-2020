@@ -38,7 +38,10 @@ const selectors = {
 
 register('product', {
   async onLoad() {
-    console.log('TEST - SECTION PRODUCT');
+    console.log('TEST - SECTION PRODUCT 042021 console jQuery');
+    console.log('this');
+    console.log(this);
+
     const productFormElement = document.querySelector(selectors.productForm);
 
     this.product = await this.getProductJson(
@@ -48,11 +51,26 @@ register('product', {
       onOptionChange: this.onFormOptionChange.bind(this),
     });
 
-    this.onThumbnailClick = this.onThumbnailClick.bind(this);
-    this.onThumbnailKeyup = this.onThumbnailKeyup.bind(this);
+    console.log('this.product');
+    console.log(this.product);
 
-    this.container.addEventListener('click', this.onThumbnailClick);
-    this.container.addEventListener('keyup', this.onThumbnailKeyup);
+    console.log("this.productForm");
+    console.log(this.productForm);
+
+    // this.onThumbnailClick = this.onThumbnailClick.bind(this);
+    // this.onThumbnailKeyup = this.onThumbnailKeyup.bind(this);
+    //
+    // console.log("this.onThumbnailClick");
+    // console.log(this.onThumbnailClick);
+    //
+    // this.container.addEventListener('click', this.onThumbnailClick);
+    // this.container.addEventListener('keyup', this.onThumbnailKeyup);
+    //
+    // console.log('this.container');
+    // console.log(this.container);
+    // jQuery('body').on('click', function() {
+    //   console.log('body click')
+    // })
   },
 
   onUnload() {
@@ -88,15 +106,17 @@ register('product', {
   },
 
   onThumbnailClick(event) {
-    //console.log('thumbclick update');
-
-    if (!thumbnail) {
-      return;
-    }
-
-    event.preventDefault();
+    console.log('thumbclick return;');
+    // event.preventDefault();
+    // return;
 
     const thumbnail = event.target.closest(selectors.thumbnail);
+
+    if (!thumbnail) {
+      //console.log('no thumb');
+      return;
+    }
+    event.preventDefault();
 
 
     this.renderFeaturedImage(thumbnail.dataset.thumbnailId);
