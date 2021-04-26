@@ -24,7 +24,7 @@
 <div class="c-product-form">
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
 
-  <input type="hidden" name="id" value="{{ currentVariant.id }}">
+  <input data-form-variant-input type="hidden" name="id" value="{{ currentVariant.id }}">
 
   <div class="c-product-form__product-price">
     {% include 'ac-product-form-price' %}
