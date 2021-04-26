@@ -38,7 +38,7 @@ const selectors = {
 
 register('product', {
   async onLoad() {
-    console.log('TEST - SECTION PRODUCT 042021 console jQuery');
+    console.log('Testing 20210416 123');
     console.log('this');
     console.log(this);
 
@@ -86,8 +86,13 @@ register('product', {
   },
 
   onFormOptionChange(event) {
-    console.log('onFormOptionChange Preorder test');
+    console.log('onFormOptionChange variant test 123 id');
     const variant = event.dataset.variant;
+
+    console.log('variant');
+    console.log(variant);
+    console.log('variant id');
+    console.log(variant.id);
 
     this.renderImages(variant);
     this.renderPrice(variant);
@@ -101,7 +106,14 @@ register('product', {
     const urlParams = new URLSearchParams(searchArray);
     let urlVariant = urlParams.get('variant');
 
-    $('[value="'+ urlVariant +'"]').prop('selected', true);
+    $('[value="'+ variant.id +'"]').prop('selected', true);
+
+    console.log('urlVariant');
+    console.log(urlVariant);
+
+    console.log('Update Variant variant.id');
+    $('[data-form-variant-input]').val(variant.id);
+
 
   },
 
