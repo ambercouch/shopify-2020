@@ -346,5 +346,25 @@ a strong, a b{
 }
 
 
+.okeReviews .okeReviews-reviewsWidget.is-okeReviews-reviewsWidget-large .okeReviews-reviewsAggregate-mod {
+@include mq($from: desktop){
+  width: 100%;
+}
+
+}
+
+.okeReviews .okeReviews-reviewsWidget.is-okeReviews-reviewsWidget-large .okeReviews-reviewsAggregate-mod-itm--attRtgAv {
+  @include mq($from:desktop){
+    width: auto;
+  }
+
+}
+.okeReviews .okeReviews-reviewsWidget.is-okeReviews-reviewsWidget-large .okeReviews-reviewsAggregate-mod-itm+.okeReviews-reviewsAggregate-mod-itm--medAgg {
+  @include mq($from:desktop){
+
+  width: auto;
+  }
+}
+
 
 
