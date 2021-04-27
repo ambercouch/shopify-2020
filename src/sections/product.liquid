@@ -36,7 +36,7 @@
 
 
 
-<div class="l-page--product some-ac-test">
+<div class="l-page--product ac-test-okendo">
 <section data-section-id="{{ section.id }}" data-section-type="product" class="l-page__section--product">
 
   <div class="l-page__gallery">
@@ -55,11 +55,9 @@
   </header>
 <div class="l-page__product-form">
   {% include 'ac-product-form' %}
-{% comment %}
-  <!-- OKENDO  okendo-reviews-product-rating-summary -->
-  {% render 'okendo-reviews-widget', product: product %}
-  <!-- /OKENDO  okendo-reviews-product-rating-summary -->
-  {% endcomment %}
+
+
+
 
 </div>
 
@@ -297,14 +295,7 @@
     </div>
 
   </div>
-  <div class="l-page__footer--product">
-    <div class="l-page__btn--footer">
-      <a class="c-btn--product-back" href="#top">
-        <span class="o-btn__icon--left">{% include 'icon-arrow-left' %}</span>
-        <span class="o-btn__label">Back to top</span>
-      </a>
-    </div>
-  </div>
+
 
 {% comment %}
   {% if section.settings.show_share_buttons %}

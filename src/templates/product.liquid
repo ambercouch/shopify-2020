@@ -9,9 +9,22 @@
   {% include 'aliexpress_reviews' %}
   {% endcomment %}
   <div class="l-main__page--product-footer u-tac u-pm">
+    <!-- OKENDO  okendo-reviews-product-rating-summary -->
+    {% render 'okendo-reviews-widget', product: product %}
+    <!-- /OKENDO  okendo-reviews-product-rating-summary -->
     <div class="c-product-footer">
       <a href="#" class="c-product-footer__btn o-btn u-bgc-3">Add your <b>{{ product.metafields.nsac.short_name }}</b> to the cart</a>
     </div>
+    <div class="l-page__footer--product">
+      <div class="l-page__btn--footer">
+        <a class="c-btn--product-back" href="#top">
+          <span class="o-btn__icon--left">{% include 'icon-arrow-left' %}</span>
+          <span class="o-btn__label">Back to top</span>
+        </a>
+      </div>
+    </div>
   </div>
+
+
 </div>
 
