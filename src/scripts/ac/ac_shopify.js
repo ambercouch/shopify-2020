@@ -550,7 +550,7 @@ const ACSHOPIFY = {
       // Create our number formatter.
       let formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'GBP',
+        currency: 'USD',
       });
 
       function bundleFormatSaving(){
