@@ -80,12 +80,27 @@
   &footer {
     display: block
   }
+  &cta{
+    display: flex;
+    justify-content: center;
+    padding: $act-unit-t 0 ;
+  }
+  &btn{
+    padding: $act-unit-t
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-info-notice--
 
 [class*=c-info-notice__header--] {
   @extend .c-info-notice__header;
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .c-info-notice__btn--
+
+[class*=c-info-notice__btn--] {
+  @extend .c-info-notice__btn;
 }
 
 

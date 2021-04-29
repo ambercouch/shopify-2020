@@ -58,6 +58,15 @@
       }
     }
   }
+  &redirect-uk{
+    background: $brand-col-3;
+    border-color: darken($brand-col-3, 15%);
+    color: #fff;
+    &:hover{
+      @extend .c-btn--redirect-uk;
+      background: darken($brand-col-3, 15%);
+    }
+  }
   &pre-checkout{
     @extend .c-btn--swipe-hover;
     background: $brand-col-3;
