@@ -12,6 +12,12 @@ const ACSHOPIFY = {
         // console.log('clicked the document');
       });
 
+      $(document).on('confirmation', '.c-remodal-country-select', function () {
+        console.log('Confirmation button is clicked');
+        Cookies.set('foo', 'bar');
+        console.log(Cookies.get('foo'));
+      });
+
       if (window.navigator.cookieEnabled) {
         document.documentElement.className = document.documentElement.className.replace(
           'supports-no-cookies',
@@ -26,6 +32,8 @@ const ACSHOPIFY = {
       const version = urlParams.get('acabv');
       const cartPreDiscountNotice = urlParams.get('acabcartpdc');
       const cartprecheckout = urlParams.get('acabprecheckout');
+
+
 
       if (version == null){
         jQuery("[class*=l-main__content-block--]").first().removeClass("is-hidden");
