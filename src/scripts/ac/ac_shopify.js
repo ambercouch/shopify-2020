@@ -12,10 +12,43 @@ const ACSHOPIFY = {
         // console.log('clicked the document');
       });
 
+      // set IP - 'check' gets current users ip or set an ip address '123.123.123.123'
+      const ip = 'check';
+      const token = '86d4e1932da4875ff6ede75796359b67';
+
+      let modalCountrySelect = $('[data-remodal-id=modal-country-select]').remodal();
+      let confirmUs = Cookies.get('_bbd-country-confirm-us');
+
+      let siteCountries = ['US','CA'];
+      let localVisitor = true;
+
+      // get the API result via jQuery.ajax
+      if(confirmUs != 'true') {
+        $.ajax({
+          url: 'https://api.ipstack.com/' + ip + '?access_key=' + token,
+          dataType: 'jsonp',
+          success: function(json) {
+
+            let visitorCountryCode = json.country_code;
+
+            if (siteCountries.includes(visitorCountryCode)) {
+
+              localVisitor = true;
+            } else {
+
+              localVisitor = false;
+              modalCountrySelect.open();
+            }
+          },
+        });
+      }
+
       $(document).on('confirmation', '.c-remodal-country-select', function () {
-        console.log('Confirmation button is clicked');
-        Cookies.set('foo', 'bar');
-        console.log(Cookies.get('foo'));
+        console.log('Confirmation country');
+        Cookies.set('_bbd-country-confirm-us', 'true', { expires: 30 });
+        confirmUs = Cookies.get('_bbd-country-confirm-us');
+        console.log('confirmUs');
+        console.log(confirmUs);
       });
 
       if (window.navigator.cookieEnabled) {
