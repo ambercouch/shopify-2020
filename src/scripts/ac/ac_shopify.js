@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 31032021 filckty test');
+console.log('ACSHOPIFY local test');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -33,11 +33,12 @@ const ACSHOPIFY = {
 
             if (siteCountries.includes(visitorCountryCode)) {
 
-              localVisitor = true;
-            } else {
-
               localVisitor = false;
               modalCountrySelect.open();
+            } else {
+
+              localVisitor = true;
+
             }
           },
         });
