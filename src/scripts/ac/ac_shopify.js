@@ -99,14 +99,15 @@ const ACSHOPIFY = {
         console.log(confirmUs);
       });
 
+      $(document).on('click', '.c-btn--redirect-uk', function(e){
+        //e.preventDefault();
+        console.log('confirm redirect');
+        Cookies.set('_bbd-country-redirect', 'true', { expires: 7 });
+      });
 
 
-      if (window.navigator.cookieEnabled) {
-        document.documentElement.className = document.documentElement.className.replace(
-          'supports-no-cookies',
-          'supports-cookies',
-        );
-      }
+
+
 
       // URL Param test
       const queryString = window.location.search;
