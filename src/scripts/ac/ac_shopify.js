@@ -14,6 +14,22 @@ const ACSHOPIFY = {
 
       let modalCountrySelect = $('[data-remodal-id=modal-country-select]').remodal();
       let confirmUs = Cookies.get('_bbd-country-confirm-us');
+      let countryRedirect = Cookies.get('_bbd-country-redirect');
+      let countryRedirectPath = window.location.pathname;
+      let countryRedirectQuery = window.location.search;
+      let usDomain = 'https://bibado.co' + countryRedirectPath + countryRedirectQuery;
+      let ukDomain = 'https://bibado.co.uk' + countryRedirectPath + countryRedirectQuery;
+
+      if (countryRedirectQuery.includes('clearredirect')){
+        countryRedirect = 'false';
+        Cookies.set('_bbd-country-redirect', false);
+      }
+
+      if (countryRedirectQuery.includes('clearcountry')){
+        console.log('clearcountry');
+        confirmUs = 'false';
+        Cookies.set('_bbd-country-confirm-us', false);
+      }
 
       let siteCountries = ['US','CA'];
       let localVisitor = true;
