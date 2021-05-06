@@ -53,8 +53,10 @@ const ACSHOPIFY = {
         console.log('countryRedirect False No Redirect');
         console.log(countryRedirect);
       }
+
       // get the API result via jQuery.ajax
-      if(confirmUs != 'true') {
+      if(confirmUs != 'true' && countryRedirect != 'true') {
+        console.log('get the user location');
         $.ajax({
           url: 'https://api.ipstack.com/' + ip + '?access_key=' + token,
           dataType: 'jsonp',
@@ -66,11 +68,17 @@ const ACSHOPIFY = {
 
               localVisitor = false;
               modalCountrySelect.open();
+
             } else {
 
               localVisitor = true;
-
+              Cookies.set('_bbd-country-confirm-us', 'true', { expires: 30 });
             }
+          },
+          error: function(json) {
+            console.log('ipstack error');
+            console.log(json);
+            Cookies.set('_bbd-country-confirm-us', 'true', { expires: 7 });
           },
         });
       }
