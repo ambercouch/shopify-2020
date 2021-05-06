@@ -8,12 +8,6 @@ const ACSHOPIFY = {
   common: {
     init: function() {
 
-      $(document).on('click', function(){
-        // console.log('clicked the document');
-      });
-
-
-
       // set IP - 'check' gets current users ip or set an ip address '123.123.123.123'
       const ip = 'check';
       const token = '86d4e1932da4875ff6ede75796359b67';
