@@ -83,9 +83,20 @@ const ACSHOPIFY = {
         });
       }
 
-      $(document).on('confirmation', '.c-remodal-country-select', function () {
+      $(document).on('closed', '.c-remodal-country-select', function (e) {
         console.log('Confirmation country');
-        Cookies.set('_bbd-country-confirm-us', 'true', { expires: 30 });
+        if(e.reason == 'confirmation'){
+          console.log('closed Confirmation');
+          console.log('e.reason');
+          console.log(e.reason);
+
+          Cookies.set('_bbd-country-confirm-us', 'true', { expires: 30 });
+        }else{
+          console.log('closed cancelled');
+          console.log('e.reason');
+          console.log(e.reason);
+          Cookies.set('_bbd-country-confirm-us', 'true', { expires: 7 });
+        }
         confirmUs = Cookies.get('_bbd-country-confirm-us');
         console.log('confirmUs');
         console.log(confirmUs);
