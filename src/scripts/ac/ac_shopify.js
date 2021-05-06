@@ -45,6 +45,14 @@ const ACSHOPIFY = {
         confirmUs == true;
       }
 
+      if(countryRedirect == 'true'){
+        console.log('countryRedirect True redirect');
+        console.log(countryRedirect);
+        window.location.href = usDomain;
+      }else{
+        console.log('countryRedirect False No Redirect');
+        console.log(countryRedirect);
+      }
       // get the API result via jQuery.ajax
       if(confirmUs != 'true') {
         $.ajax({
