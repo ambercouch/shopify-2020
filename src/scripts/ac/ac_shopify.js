@@ -34,6 +34,17 @@ const ACSHOPIFY = {
       let siteCountries = ['US','CA'];
       let localVisitor = true;
 
+      if (window.navigator.cookieEnabled) {
+        console.log('cookies supported');
+        document.documentElement.className = document.documentElement.className.replace(
+          'supports-no-cookies',
+          'supports-cookies',
+        );
+      }else{
+        console.log('no cookies supported');
+        confirmUs == true;
+      }
+
       // get the API result via jQuery.ajax
       if(confirmUs != 'true') {
         $.ajax({
