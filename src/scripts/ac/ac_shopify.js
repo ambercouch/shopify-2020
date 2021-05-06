@@ -3,14 +3,10 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY local test');
+console.log('ACSHOPIFY 31032021 IPSTACK');
 const ACSHOPIFY = {
   common: {
     init: function() {
-
-      $(document).on('click', function(){
-        // console.log('clicked the document');
-      });
 
       // set IP - 'check' gets current users ip or set an ip address '123.123.123.123'
       const ip = 'check';
