@@ -91,12 +91,15 @@ const ACSHOPIFY = {
         console.log(confirmUs);
       });
 
-      if (window.navigator.cookieEnabled) {
-        document.documentElement.className = document.documentElement.className.replace(
-          'supports-no-cookies',
-          'supports-cookies',
-        );
-      }
+      $(document).on('click', '.c-btn--redirect-uk', function(e){
+        //e.preventDefault();
+        console.log('confirm redirect');
+        Cookies.set('_bbd-country-redirect', 'true', { expires: 7 });
+      });
+
+
+
+
 
       // URL Param test
       const queryString = window.location.search;
