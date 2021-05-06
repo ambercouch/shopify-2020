@@ -48,7 +48,7 @@ const ACSHOPIFY = {
       if(countryRedirect == 'true'){
         console.log('countryRedirect True redirect');
         console.log(countryRedirect);
-        window.location.href = usDomain;
+        window.location.href = ukDomain;
       }else{
         console.log('countryRedirect False No Redirect');
         console.log(countryRedirect);
