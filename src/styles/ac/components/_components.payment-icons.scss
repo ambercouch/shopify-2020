@@ -1,0 +1,67 @@
+/*
+  BEM BLOCK .c-payment-icons
+ */
+
+.c-payment-icons {
+  display: block;
+  //display: none !important;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-payment-icons--
+ */
+
+.c-payment-icons-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-payment-icons--
+
+[class*=c-payment-icons--] {
+  @extend .c-payment-icons;
+}
+
+/*
+  BEM ELEMENTS .c-payment-icons__
+ */
+
+.c-payment-icons__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-flex;
+    @extend .o-list-bare;
+  }
+  &item{
+    @extend .o-list-bare__item
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-payment-icons--
+
+[class*=c-payment-icons__header--] {
+  @extend .c-payment-icons__header;
+}

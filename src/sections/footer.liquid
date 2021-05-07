@@ -64,16 +64,20 @@
   {% endif %}
 
   {% if section.settings.show_payment_icons %}
+  <div class="l-footer__payment-icons">
     {% unless shop.enabled_payment_types == empty %}
       <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-      <ul class="payment-icons">
+    <div class="c-payment-icons">
+      <ul class="c-payment-icons__list">
         {% for type in shop.enabled_payment_types %}
-          <li>
-            {{ type | payment_type_svg_tag: class: 'icon' }}
+          <li class="c-payment-icons__list" >
+            {{ type | payment_type_svg_tag: class: 'c-icon' }}
           </li>
         {% endfor %}
       </ul>
+    </div>
     {% endunless %}
+  </div>
   {% endif %}
 
   <div class="l-footer__site-info">
@@ -83,6 +87,8 @@
       <small class="l-site-info__line--powered-by" > {{ powered_by_link }}</small>
     </div>
   </div>
+
+
 
 </div>
 
