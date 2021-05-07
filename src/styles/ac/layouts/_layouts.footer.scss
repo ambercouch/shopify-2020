@@ -82,7 +82,7 @@
       text-decoration: none;
     }
     @include mq($from: desktop){
-      grid-row-start: 4;
+      grid-row-start: 5;
       grid-column-start: 1;
       grid-column-end: 4;
     }
@@ -107,6 +107,10 @@
       grid-column-start: 3;
       grid-row-start: 2;
     }
+  }
+  &payment-icons{
+    grid-row-start: 4;
+
   }
 }
 
