@@ -26,7 +26,7 @@ const ACSHOPIFY = {
       }
 
       if (countryRedirectQuery.includes('clearcountry')){
-        console.log('clearcountry');
+        //console.log('clearcountry');
         confirmUs = 'false';
         Cookies.set('_bbd-country-confirm-us', false);
       }
@@ -35,28 +35,28 @@ const ACSHOPIFY = {
       let localVisitor = true;
 
       if (window.navigator.cookieEnabled) {
-        console.log('cookies supported');
+        //console.log('cookies supported');
         document.documentElement.className = document.documentElement.className.replace(
           'supports-no-cookies',
           'supports-cookies',
         );
       }else{
-        console.log('no cookies supported');
+        //console.log('no cookies supported');
         confirmUs == true;
       }
 
       if(countryRedirect == 'true'){
-        console.log('countryRedirect True redirect');
-        console.log(countryRedirect);
+        //console.log('countryRedirect True redirect');
+        //console.log(countryRedirect);
         window.location.href = ukDomain;
       }else{
-        console.log('countryRedirect False No Redirect');
-        console.log(countryRedirect);
+        //console.log('countryRedirect False No Redirect');
+        //console.log(countryRedirect);
       }
 
       // get the API result via jQuery.ajax
       if(confirmUs != 'true' && countryRedirect != 'true') {
-        console.log('get the user location');
+        //console.log('get the user location');
         $.ajax({
           url: 'https://api.ipstack.com/' + ip + '?access_key=' + token,
           dataType: 'jsonp',
@@ -73,35 +73,35 @@ const ACSHOPIFY = {
             }
           },
           error: function(json) {
-            console.log('ipstack error');
-            console.log(json);
+            //console.log('ipstack error');
+            //console.log(json);
             Cookies.set('_bbd-country-confirm-us', 'true', { expires: 7 });
           },
         });
       }
 
       $(document).on('closed', '.c-remodal-country-select', function (e) {
-        console.log('Confirmation country');
+        //console.log('Confirmation country');
         if(e.reason == 'confirmation'){
-          console.log('closed Confirmation');
-          console.log('e.reason');
-          console.log(e.reason);
+          //console.log('closed Confirmation');
+          //console.log('e.reason');
+          //console.log(e.reason);
 
           Cookies.set('_bbd-country-confirm-us', 'true', { expires: 30 });
         }else{
-          console.log('closed cancelled');
-          console.log('e.reason');
-          console.log(e.reason);
+          // console.log('closed cancelled');
+          // console.log('e.reason');
+          // console.log(e.reason);
           Cookies.set('_bbd-country-confirm-us', 'true', { expires: 7 });
         }
         confirmUs = Cookies.get('_bbd-country-confirm-us');
-        console.log('confirmUs');
-        console.log(confirmUs);
+        //console.log('confirmUs');
+        //console.log(confirmUs);
       });
 
       $(document).on('click', '.c-btn--redirect-uk', function(e){
         //e.preventDefault();
-        console.log('confirm redirect');
+        //console.log('confirm redirect');
         Cookies.set('_bbd-country-redirect', 'true', { expires: 7 });
       });
 
@@ -166,42 +166,42 @@ const ACSHOPIFY = {
       //   }, 1000);
       //   return false;
       // });
-     // console.log('[data-js-sticky-bottom]');
-     // console.log($('[data-js-sticky-bottom]'));
+      // console.log('[data-js-sticky-bottom]');
+      // console.log($('[data-js-sticky-bottom]'));
 
       // scroll top
       $("a[href='#top']").click(function() {
-        console.log("scroll top");
+        //console.log("scroll top");
         $('html, body').animate({ scrollTop: 0 }, 1000 );
         return false;
       });
 
       //content for index add class to shopify sections
       $('[class*=l-main--] .shopify-section').each(function() {
-        console.log('section found');
+        //console.log('section found');
         let desk50 = $('.is-block-width-50', this).length;
-        console.log('desk50 ' + desk50);
+        //console.log('desk50 ' + desk50);
         if (desk50){
           $(this).addClass('is-section-width-50');
         }
         let desk33 = $('.is-block-width-33', this).length;
-        console.log('desk33 ' + desk33);
+        //console.log('desk33 ' + desk33);
         if (desk33){
           $(this).addClass('is-section-width-33');
         }
       });
 
       // Facebook reviews script
-        setTimeout(function(){
-          if ($(window).width() > 899){
-            $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
-          }else{
-            $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)');
-          }
+      setTimeout(function(){
+        if ($(window).width() > 899){
+          $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
+        }else{
+          $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)');
+        }
 
-        }, 3000);
+      }, 3000);
 
-        // Quote flickity script
+      // Quote flickity script
       let elemQuote = document.querySelector('.c-quote-list__list');
       if(elemQuote){
         let flktyQuote = new Flickity( elemQuote, {
@@ -211,11 +211,11 @@ const ACSHOPIFY = {
           prevNextButtons: false,
         });
       }else{
-        console.log('No .c-quote-list__list');
+        //console.log('No .c-quote-list__list');
       }
 
       // Product gallery flickity script for thumbs
-     // let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      // let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
       //let elemProductThumb = $('.c-product-gallery__list--thumb');
       // if(elemProductThumb){
       //   let flktyProductThumb = new Flickity( elemProductThumb, {
@@ -300,7 +300,7 @@ const ACSHOPIFY = {
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
 
             // toggle off all other container
-              containers.not(container).not(containerParent).each(function() {
+            containers.not(container).not(containerParent).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
 
@@ -335,13 +335,13 @@ const ACSHOPIFY = {
           ACSHOPIFY.fn.actStateToggleSelect(control, state);
 
           if (controlGroupId){
-            console.log('clickered group');
+            //console.log('clickered group');
             ACSHOPIFY.fn.actStateToggleGroup(control, controlGroupId, state);
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
             //ACSHOPIFY.fn.actStateToggleGroup(container, controlGroupId);
 
           }else{
-            console.log('clickered not group');
+            //console.log('clickered not group');
             // ACTIMBER.fn.actStateToggle(container, control);
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
           }
@@ -353,9 +353,9 @@ const ACSHOPIFY = {
       // let elemNavlist = document.querySelectorAll('.c-nav-menu__list--mobile-sub-list .c-nav-menu__list--mobile-sub-list');
       //
       $(document).on('click', '[data-control].has-1-levels', function(){
-        console.log('is filckrty > .c-nav-menu__list');
+        //console.log('is filckrty > .c-nav-menu__list');
         let controlParent = $(this).parent();
-        console.log($(this));
+        //console.log($(this));
         let elemMenuList = $('.c-nav-menu__list--mobile-sub', controlParent);
 
         elemMenuList.flickity({
@@ -371,8 +371,8 @@ const ACSHOPIFY = {
       });
 
       $(document).on('click', '[data-control].has-2-levels', function() {
-        console.log('is filckrty .c-product-type-list');
-        console.log( $(this));
+        //console.log('is filckrty .c-product-type-list');
+        //console.log( $(this));
         let controlParent = $(this)
           .parent();
         let elemMenuList = $('.c-product-type-list__list--mobile-sub', controlParent);
@@ -413,7 +413,7 @@ const ACSHOPIFY = {
         //      $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
         //  }, 1000);
         window.history.back();
-        console.log('back button');
+        //console.log('back button');
         //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
       });
 
@@ -441,9 +441,6 @@ const ACSHOPIFY = {
               $addToCartBtn.removeAttr('disabled').removeClass('disabled');
               $addToCartBtn.find('span').addClass("fadeOut").text($addToCartBtn.data('label')).removeClass('fadeIn').removeClass("fadeOut").addClass('zoomIn');
             }, 2500);
-
-
-
 
             $.getJSON("/cart.js", function(cart) {
               refreshCart(cart);
@@ -481,20 +478,20 @@ const ACSHOPIFY = {
       let heroHeight = browserHeight -  mastheadHeight;
       $('[class*=c-content-block--].is-full-height').css('height', heroHeight);
 
-        // $(function () {
-        //   $('a[href*="#"]:not([href="#"])').click(function () {
-        //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        //       let target = $(this.hash);
-        //       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        //       if (target.length) {
-        //         $('html, body').animate({
-        //           scrollTop: target.offset().top,
-        //         }, 1000);
-        //         return false;
-        //       }
-        //     }
-        //   });
-        // });
+      // $(function () {
+      //   $('a[href*="#"]:not([href="#"])').click(function () {
+      //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      //       let target = $(this.hash);
+      //       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      //       if (target.length) {
+      //         $('html, body').animate({
+      //           scrollTop: target.offset().top,
+      //         }, 1000);
+      //         return false;
+      //       }
+      //     }
+      //   });
+      // });
 
 
 
@@ -504,10 +501,10 @@ const ACSHOPIFY = {
   page: {
     init: function() {
       // uncomment to debug
-      console.log('pages');
+      //console.log('pages');
     },
     ac_gallery: function(){
-      console.log('acGallery scripts');
+      //console.log('acGallery scripts');
       // Product gallery flickity script for thumbs
       let elemGallery = document.querySelector('.c-gallery__list');
       if(elemGallery ){
@@ -520,14 +517,14 @@ const ACSHOPIFY = {
           wrapAround: true,
         });
       }else{
-        console.log('No .c-quote-list__list');
+        //console.log('No .c-quote-list__list');
       }
     }
   },
   collection: {
     init: function() {
       // uncomment to debug
-      console.log('some collection');
+      //console.log('some collection');
     },
     bundles: function() {
 
@@ -536,8 +533,8 @@ const ACSHOPIFY = {
         ACSHOPIFY.fn.actCopyToClipBoard(element);
       });
       // uncomment to debug
-      console.log('collection bundles test 2020');
-      console.log('collection bundles timer confirm exit');
+      //console.log('collection bundles test 2020');
+      //console.log('collection bundles timer confirm exit');
 
       const bundledProducts = {};
       let elBundlenNoticeCurrentDiscount = document.getElementById('bundleNoticeTextCurrentDiscount');
@@ -598,25 +595,25 @@ const ACSHOPIFY = {
         let dataRemodalId = $(this).attr('data-remodal-id');
         let inst = $(this).remodal();
         remodArray[dataRemodalId] = inst;
-        console.log('remod found');
-        console.log(dataRemodalId);
+        //console.log('remod found');
+        //console.log(dataRemodalId);
       });
 
 
 
-      console.log('remodArray');
-      console.log(remodArray);
+      //console.log('remodArray');
+      //console.log(remodArray);
 
       $(document).on('click', '#linkBundleImage', function(e) {
         let productId = $(this).attr('data-product-id');
         let remodalId = 'modal' + productId;
-        console.log('image click');
+        //console.log('image click');
         e.preventDefault();
         remodArray[remodalId].open();
       });
 
       $(document).on('click', '#linkBundleTitle', function(e) {
-        console.log('title click');
+        //console.log('title click');
         e.preventDefault();
       });
 
@@ -719,8 +716,8 @@ const ACSHOPIFY = {
       }
 
       function updateBundleNoticeNext() {
-        console.log('bundleCount');
-        console.log(bundleCount);
+        //console.log('bundleCount');
+        //console.log(bundleCount);
 
         let el = elBundlenNoticeNextDiscountItem;
         if(bundleCount == 0){
@@ -807,7 +804,7 @@ const ACSHOPIFY = {
           `;
 
           elBundleList.append(elTemp);
-         // elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+          // elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
 
           $('#qty' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty c-product-thumb__input--qty " type=text min="0" value=' + obj.qty + '>')
 
@@ -969,10 +966,10 @@ const ACSHOPIFY = {
         let productShortName = $('input[name=productShortName]',this).val();
         let qty = $('[name="quantity"]', this).val();
 
-        console.log('variantPrice');
-        console.log(variantPrice);
-        console.log('qty');
-        console.log(qty);
+        //console.log('variantPrice');
+        //console.log(variantPrice);
+        //console.log('qty');
+        //console.log(qty);
 
         bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName, qty, variantImg );
 
@@ -1012,7 +1009,7 @@ const ACSHOPIFY = {
 
         window.onbeforeunload = true;
 
-        console.log('#AddBundleToCartHeader jQuery post updates');
+        //console.log('#AddBundleToCartHeader jQuery post updates');
 
         for (const [product, obj] of entries) {
           values[obj.variantId] = obj.qty;
@@ -1025,13 +1022,13 @@ const ACSHOPIFY = {
           dataType: 'json',
           success: function () {
             //window.location.href = "/cart";
-            console.log('we have success so open up and load');
+            //console.log('we have success so open up and load');
             //timber.RightDrawer.open();
             //ajaxCart.load();
             window.location.href = "/cart";
           },
           error: function () {
-            console.log('we have and error');
+            //console.log('we have and error');
           },
           complete: function(jqxhr, text) {
             $body.trigger('completeAddItem.ajaxCart', [this, jqxhr, text]);
@@ -1100,7 +1097,7 @@ const ACSHOPIFY = {
     init: function() {
 
       // uncomment to debug
-      console.log('Product gallery freeScroll: true ');
+      //console.log('Product gallery freeScroll: true ');
 
       // Product Gallery
       // Moved form product.js due to issues caused by slow connection speeds .
@@ -1146,7 +1143,7 @@ const ACSHOPIFY = {
           pageDots: false,
         });
       }else{
-        console.log('No .c-quote-list__list');
+        // console.log('No .c-quote-list__list');
       }
 
 
@@ -1162,7 +1159,7 @@ const ACSHOPIFY = {
       $('.c-product-footer__btn').addClass('submit btn');
       $(document).on('click', '.c-product-footer__btn', function() {
         $('[data-product-form]').submit();
-        console.log('clicked');
+        //console.log('clicked');
       });
 
       if (productTags.indexOf("BOGO:") >= 0){
@@ -1253,7 +1250,7 @@ const ACSHOPIFY = {
                 variantProperty = 'Colour' + addressSep + addressLine;
               }
               else if (addressLine != '' && i < 1){
-                  propertyAddressName += addressLine ;
+                propertyAddressName += addressLine ;
               }
 
               else if (addressLine != '' && i >= 1){
@@ -1276,8 +1273,8 @@ const ACSHOPIFY = {
         // On change check if bogo is already accepted
         $(document).on('change click', 'input:radio[name=acceptBogo]', function(e){
           if (acceptBogo.is(':checked')){
-            console.log('BOGO Accepted');
-            console.log(e);
+            //console.log('BOGO Accepted');
+            //console.log(e);
             acceptBogoStatus = true;
             $('.c-product-form').addClass('is-accept-bogo');
 
@@ -1293,8 +1290,8 @@ const ACSHOPIFY = {
 
               $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
             }else{
-              console.log('BOGO Accepted');
-              console.log(e);
+              //console.log('BOGO Accepted');
+              //console.log(e);
               $('.c-product-form').addClass('has-address-not-valid').removeClass('has-address-valid');
 
               $('[data-submit-button], .c-product-form__select--color').prop('disabled', true).addClass("is-disabled");
@@ -1303,7 +1300,7 @@ const ACSHOPIFY = {
 
           }
           else{
-            console.log('Bogo Declined');
+            //console.log('Bogo Declined');
             acceptBogoStatus = false;
             $('.c-product-form').removeClass('is-accept-bogo');
             $('[data-submit-button], .c-product-form__select--color').prop('disabled', false).removeClass("is-disabled");
@@ -1311,7 +1308,7 @@ const ACSHOPIFY = {
         });
 
         $(document).on('keyup', '.c-contact-form__input--additional-address', function() {
-          console.log('type that address test');
+          //console.log('type that address test');
           aAddressIsValid = true;
           // Check for valid address
           $('.c-contact-form--additional-address input').filter('[required]').each(function(){
@@ -1349,19 +1346,19 @@ const ACSHOPIFY = {
 
       $('.single-option-selector').on( 'change', function() {
 
-        console.log('option changed removed');
+          //console.log('option changed removed');
 
-        // var searchArray = window.location.search;
-        //   const urlParams = new URLSearchParams(searchArray);
-        //   let urlVariant = urlParams.get('variant');
-        //
-        //   $('[value="'+ urlVariant +'"]').prop('selected', true);
-        //
-        //   console.log('urlVariant');
-        //   console.log(urlVariant );
+          // var searchArray = window.location.search;
+          //   const urlParams = new URLSearchParams(searchArray);
+          //   let urlVariant = urlParams.get('variant');
+          //
+          //   $('[value="'+ urlVariant +'"]').prop('selected', true);
+          //
+          //   console.log('urlVariant');
+          //   console.log(urlVariant );
 
 
-      }
+        }
       );
 
 
@@ -1388,13 +1385,13 @@ const ACSHOPIFY = {
       // });
       $('.l-page__content-block--product').last().addClass('is-last-block');
       $(document).on('click', '.c-video-popup__link', function() {
-        console.log('vid click open');
+        //console.log('vid click open');
         inst.open();
       })
     },
     weaning_bundle: function() {
-      console.log('properties bundle updated sometest');
-      console.log('properties bundle');
+      //console.log('properties bundle updated sometest');
+      //console.log('properties bundle');
       $(document).on('click', '[data-product-single-thumbnail]', function(event) {
         let thumbnail = this;
         let visibleImageWrapper = '[data-product-image-wrapper]:not(hide)';
@@ -1402,21 +1399,21 @@ const ACSHOPIFY = {
         $(visibleImageWrapper).addClass('hide');
         $('[data-product-image-wrapper][data-image-id=' + thumbnail.dataset.thumbnailId + ']').removeClass('hide');
 
-        console.log('onThumbnailClick');
-        console.log('thumbnail.dataset.thumbnailId');
-        console.log(thumbnail.dataset.thumbnailId);
+        //console.log('onThumbnailClick');
+        //console.log('thumbnail.dataset.thumbnailId');
+        //console.log(thumbnail.dataset.thumbnailId);
         event.preventDefault();
       });
 
     },
     ac_landing: function(){
-      console.log('ac_landing produst js ql-editor');
+      //console.log('ac_landing produst js ql-editor');
       $(document).on('click', '.ql-editor p span',function() {
         var element = this;
         var noteAfter = true;
         ACSHOPIFY.fn.actCopyToClipBoard(element, noteAfter);
       });
-}
+    }
   },
   cart:{
     init: function() {
@@ -1434,10 +1431,10 @@ const ACSHOPIFY = {
         .done(function(data) {
 
           let cartItems = data.items;
-
           $.each(cartItems, function(i,item) {
             let itemId = item.id;
             let itemQty = item.quantity;
+            let itemPrice = item.price;
             let itemProps = item.properties;
             let itemPropFirst = ' : ';
 
@@ -1458,7 +1455,7 @@ const ACSHOPIFY = {
 
             if(itemId == '32995425976363'){
               additionalShipping += itemQty;
-              console.log('This is shipping ' + additionalShipping);
+              //console.log('This is shipping ' + additionalShipping);
             }
 
 
@@ -1476,8 +1473,6 @@ const ACSHOPIFY = {
               }
             })
               .done(function() {
-
-
 
                 $.ajax({
                   url: '/cart/add.js',
@@ -1527,29 +1522,29 @@ const ACSHOPIFY = {
   search: {
     init: function() {
       // uncomment to debug
-      console.log('search page');
+      //console.log('search page');
       $('#searchFormMain').attr('data-state', 'on' );
     }
   },
   fn: {
     actStateToggleGroup : function (control, stateGroupId, state){
-        $('[data-state-group='+stateGroupId+']').not(control).each(function(){
-          if ('off' === $(this).attr('data-state') ) {
-            $(this).attr('data-state', 'on');
-          } else if ('on' === $(this).attr('data-state') ) {
-            $(this).attr('data-state', 'off');
-          } else{
-            console.log('compfail');
-            console.log($(this).attr('data-state'));
-          }
-        })
+      $('[data-state-group='+stateGroupId+']').not(control).each(function(){
+        if ('off' === $(this).attr('data-state') ) {
+          $(this).attr('data-state', 'on');
+        } else if ('on' === $(this).attr('data-state') ) {
+          $(this).attr('data-state', 'off');
+        } else{
+          //console.log('compfail');
+          //console.log($(this).attr('data-state'));
+        }
+      })
 
     },
     actStateToggleSelect : function (element, state) {
-    // console.log('actStateToggleSelect element');
-    // console.log(element);
-    // console.log('actStateToggleSelect state');
-    //   console.log(state);
+      // console.log('actStateToggleSelect element');
+      // console.log(element);
+      // console.log('actStateToggleSelect state');
+      //   console.log(state);
       if('off' === state ){
         element.attr('data-state', 'on');
       }
