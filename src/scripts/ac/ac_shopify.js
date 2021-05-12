@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 31032021 IPSTACK');
+console.log('ACSHOPIFY 12052021 AJAX CART');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -169,8 +169,8 @@ const ACSHOPIFY = {
       //   }, 1000);
       //   return false;
       // });
-     // console.log('[data-js-sticky-bottom]');
-     // console.log($('[data-js-sticky-bottom]'));
+      // console.log('[data-js-sticky-bottom]');
+      // console.log($('[data-js-sticky-bottom]'));
 
       // scroll top
       $("a[href='#top']").click(function() {
@@ -195,16 +195,16 @@ const ACSHOPIFY = {
       });
 
       // Facebook reviews script
-        setTimeout(function(){
-          if ($(window).width() > 899){
-            $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
-          }else{
-            $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)');
-          }
+      setTimeout(function(){
+        if ($(window).width() > 899){
+          $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
+        }else{
+          $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)');
+        }
 
-        }, 3000);
+      }, 3000);
 
-        // Quote flickity script
+      // Quote flickity script
       let elemQuote = document.querySelector('.c-quote-list__list');
       if(elemQuote){
         let flktyQuote = new Flickity( elemQuote, {
@@ -218,7 +218,7 @@ const ACSHOPIFY = {
       }
 
       // Product gallery flickity script for thumbs
-     // let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
+      // let elemProductThumb = document.querySelector('.c-product-gallery__list--thumb');
       //let elemProductThumb = $('.c-product-gallery__list--thumb');
       // if(elemProductThumb){
       //   let flktyProductThumb = new Flickity( elemProductThumb, {
@@ -303,7 +303,7 @@ const ACSHOPIFY = {
             ACSHOPIFY.fn.actStateToggleSelect(container, state);
 
             // toggle off all other container
-              containers.not(container).not(containerParent).each(function() {
+            containers.not(container).not(containerParent).each(function() {
               ACSHOPIFY.fn.actStateToggleSelect($(this), 'on');
             });
 
@@ -420,11 +420,11 @@ const ACSHOPIFY = {
         //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
       });
 
-      $('.add-form__form').submit(function(e) {
+      $('.shopify-product-form').submit(function(e) {
         // console.log('add click');
         e.preventDefault();
         var $addToCartForm = $(this);
-        var $addToCartBtn = $addToCartForm.find('.add-form__submit-btn');
+        var $addToCartBtn = $addToCartForm.find('.c-btn--product-form-submit');
 
         $.ajax({
           url: '/cart/add.js',
@@ -484,20 +484,20 @@ const ACSHOPIFY = {
       let heroHeight = browserHeight -  mastheadHeight;
       $('[class*=c-content-block--].is-full-height').css('height', heroHeight);
 
-        // $(function () {
-        //   $('a[href*="#"]:not([href="#"])').click(function () {
-        //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        //       let target = $(this.hash);
-        //       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        //       if (target.length) {
-        //         $('html, body').animate({
-        //           scrollTop: target.offset().top,
-        //         }, 1000);
-        //         return false;
-        //       }
-        //     }
-        //   });
-        // });
+      // $(function () {
+      //   $('a[href*="#"]:not([href="#"])').click(function () {
+      //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      //       let target = $(this.hash);
+      //       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      //       if (target.length) {
+      //         $('html, body').animate({
+      //           scrollTop: target.offset().top,
+      //         }, 1000);
+      //         return false;
+      //       }
+      //     }
+      //   });
+      // });
 
 
 
@@ -810,7 +810,7 @@ const ACSHOPIFY = {
           `;
 
           elBundleList.append(elTemp);
-         // elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+          // elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
 
           $('#qty' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty c-product-thumb__input--qty " type=text min="0" value=' + obj.qty + '>')
 
@@ -1256,7 +1256,7 @@ const ACSHOPIFY = {
                 variantProperty = 'Colour' + addressSep + addressLine;
               }
               else if (addressLine != '' && i < 1){
-                  propertyAddressName += addressLine ;
+                propertyAddressName += addressLine ;
               }
 
               else if (addressLine != '' && i >= 1){
@@ -1352,19 +1352,19 @@ const ACSHOPIFY = {
 
       $('.single-option-selector').on( 'change', function() {
 
-        console.log('option changed removed');
+          console.log('option changed removed');
 
-        // var searchArray = window.location.search;
-        //   const urlParams = new URLSearchParams(searchArray);
-        //   let urlVariant = urlParams.get('variant');
-        //
-        //   $('[value="'+ urlVariant +'"]').prop('selected', true);
-        //
-        //   console.log('urlVariant');
-        //   console.log(urlVariant );
+          // var searchArray = window.location.search;
+          //   const urlParams = new URLSearchParams(searchArray);
+          //   let urlVariant = urlParams.get('variant');
+          //
+          //   $('[value="'+ urlVariant +'"]').prop('selected', true);
+          //
+          //   console.log('urlVariant');
+          //   console.log(urlVariant );
 
 
-      }
+        }
       );
 
 
@@ -1419,7 +1419,7 @@ const ACSHOPIFY = {
         var noteAfter = true;
         ACSHOPIFY.fn.actCopyToClipBoard(element, noteAfter);
       });
-}
+    }
   },
   cart:{
     init: function() {
@@ -1536,23 +1536,23 @@ const ACSHOPIFY = {
   },
   fn: {
     actStateToggleGroup : function (control, stateGroupId, state){
-        $('[data-state-group='+stateGroupId+']').not(control).each(function(){
-          if ('off' === $(this).attr('data-state') ) {
-            $(this).attr('data-state', 'on');
-          } else if ('on' === $(this).attr('data-state') ) {
-            $(this).attr('data-state', 'off');
-          } else{
-            console.log('compfail');
-            console.log($(this).attr('data-state'));
-          }
-        })
+      $('[data-state-group='+stateGroupId+']').not(control).each(function(){
+        if ('off' === $(this).attr('data-state') ) {
+          $(this).attr('data-state', 'on');
+        } else if ('on' === $(this).attr('data-state') ) {
+          $(this).attr('data-state', 'off');
+        } else{
+          console.log('compfail');
+          console.log($(this).attr('data-state'));
+        }
+      })
 
     },
     actStateToggleSelect : function (element, state) {
-    // console.log('actStateToggleSelect element');
-    // console.log(element);
-    // console.log('actStateToggleSelect state');
-    //   console.log(state);
+      // console.log('actStateToggleSelect element');
+      // console.log(element);
+      // console.log('actStateToggleSelect state');
+      //   console.log(state);
       if('off' === state ){
         element.attr('data-state', 'on');
       }
