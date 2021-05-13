@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 31032021 IPSTACK US');
+console.log('ACSHOPIFY 31032021 IPSTACK US REDIRECTy');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -417,11 +417,10 @@ const ACSHOPIFY = {
         //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
       });
 
-      $('.add-form__form').submit(function(e) {
-        // console.log('add click');
+      $('.shopify-product-form').submit(function(e) {
         e.preventDefault();
         var $addToCartForm = $(this);
-        var $addToCartBtn = $addToCartForm.find('.add-form__submit-btn');
+        var $addToCartBtn = $addToCartForm.find('.c-btn--product-form-submit');
 
         $.ajax({
           url: '/cart/add.js',
@@ -444,7 +443,10 @@ const ACSHOPIFY = {
 
             $.getJSON("/cart.js", function(cart) {
               refreshCart(cart);
-            });
+            }).done(function() {
+              console.log( "cart refresh" );
+              window.location.href = '/cart';
+            })
           },
           error: function(XMLHttpRequest) {
             var response = eval('(' + XMLHttpRequest.responseText + ')');
@@ -1484,6 +1486,7 @@ const ACSHOPIFY = {
                   }
                 })
                   .done(function() {
+                    console.log('sent');
                     location.reload();
                   });
 
