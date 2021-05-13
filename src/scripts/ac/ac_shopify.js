@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 12052021 AJAX CART');
+console.log('ACSHOPIFY 12052021 AJAX CART TEST');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -421,7 +421,6 @@ const ACSHOPIFY = {
       });
 
       $('.shopify-product-form').submit(function(e) {
-        // console.log('add click');
         e.preventDefault();
         var $addToCartForm = $(this);
         var $addToCartBtn = $addToCartForm.find('.c-btn--product-form-submit');
@@ -450,7 +449,10 @@ const ACSHOPIFY = {
 
             $.getJSON("/cart.js", function(cart) {
               refreshCart(cart);
-            });
+            }).done(function() {
+              console.log( "cart refresh" );
+              window.location.href = '/cart';
+            })
           },
           error: function(XMLHttpRequest) {
             var response = eval('(' + XMLHttpRequest.responseText + ')');
@@ -1492,6 +1494,7 @@ const ACSHOPIFY = {
                   }
                 })
                   .done(function() {
+                    console.log('sent');
                     location.reload();
                   });
 
