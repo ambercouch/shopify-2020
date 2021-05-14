@@ -58,10 +58,12 @@ const ACSHOPIFY = {
       if(confirmUs != 'true' && countryRedirect != 'true') {
         console.log('get the user location');
         $.ajax({
-          url: 'https://api.ipstack.com/' + ip + '?access_key=' + token,
-          dataType: 'jsonp',
+          url: 'https://acip.country/api/bbd/check',
+          dataType: 'json',
           success: function(json) {
 
+            console.log('got country json acip');
+            console.log(json.country_code);
             let visitorCountryCode = json.country_code;
 
             if (siteCountries.includes(visitorCountryCode)) {
