@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 31032021 IPSTACK US REDIRECTy');
+console.log('ACSHOPIFY 05052021 modal cookies');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -21,28 +21,35 @@ const ACSHOPIFY = {
       let ukDomain = 'https://bibado.co.uk' + countryRedirectPath + countryRedirectQuery;
 
       if (countryRedirectQuery.includes('clearredirect')){
-        countryRedirect = 'false';
-        Cookies.set('_bbd-country-redirect', false);
+        countryRedirect = false;
+        Cookies.set('_bbd-country-redirect', 'false');
       }
 
       if (countryRedirectQuery.includes('clearcountry')){
         //console.log('clearcountry');
-        confirmUs = 'false';
-        Cookies.set('_bbd-country-confirm-us', false);
+        confirmUs = false;
+        Cookies.set('_bbd-country-confirm-us', 'false');
+      }
+
+      if (countryRedirectQuery.includes('setcountry')){
+        //console.log('clearcountry');
+        confirmUs = 'true';
+        Cookies.set('_bbd-country-confirm-us', 'true');
       }
 
       let siteCountries = ['US','CA'];
       let localVisitor = true;
 
+      console.log('test cookies');
       if (window.navigator.cookieEnabled) {
-        //console.log('cookies supported');
+        console.log('cookies supported');
         document.documentElement.className = document.documentElement.className.replace(
           'supports-no-cookies',
           'supports-cookies',
         );
       }else{
-        //console.log('no cookies supported');
-        confirmUs == true;
+        console.log('no cookies supported');
+        confirmUs = 'true';
       }
 
       if(countryRedirect == 'true'){
@@ -56,12 +63,14 @@ const ACSHOPIFY = {
 
       // get the API result via jQuery.ajax
       if(confirmUs != 'true' && countryRedirect != 'true') {
-        //console.log('get the user location');
+        console.log('get the user location');
         $.ajax({
-          url: 'https://api.ipstack.com/' + ip + '?access_key=' + token,
-          dataType: 'jsonp',
+          url: 'https://acip.country/api/bbd/check',
+          dataType: 'json',
           success: function(json) {
 
+            console.log('got country json acip');
+            console.log(json.country_code);
             let visitorCountryCode = json.country_code;
 
             if (siteCountries.includes(visitorCountryCode)) {
@@ -81,7 +90,7 @@ const ACSHOPIFY = {
       }
 
       $(document).on('closed', '.c-remodal-country-select', function (e) {
-        //console.log('Confirmation country');
+        console.log('Confirmation country');
         if(e.reason == 'confirmation'){
           //console.log('closed Confirmation');
           //console.log('e.reason');
