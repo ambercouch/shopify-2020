@@ -84,8 +84,10 @@
     font-style: italic;
   }
   &discount-card{
+    display: none !important;
     padding: 0 $act-unit $act-unit;
     @include mq($from:desktop){
+      display: none !important;
       width: 1000px;
       max-width: 100%;
       margin-left: auto;
