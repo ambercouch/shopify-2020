@@ -3,7 +3,7 @@
  * Created by Richard on 19/09/2016.
  */
 
-console.log('ACSHOPIFY 12052021 AJAX CART TEST');
+console.log('ACSHOPIFY 20210525 ');
 const ACSHOPIFY = {
   common: {
     init: function() {
@@ -21,19 +21,26 @@ const ACSHOPIFY = {
       let ukDomain = 'https://bibado.co.uk' + countryRedirectPath + countryRedirectQuery;
 
       if (countryRedirectQuery.includes('clearredirect')){
-        countryRedirect = 'false';
-        Cookies.set('_bbd-country-redirect', false);
+        countryRedirect = false;
+        Cookies.set('_bbd-country-redirect', 'false');
       }
 
       if (countryRedirectQuery.includes('clearcountry')){
-        console.log('clearcountry');
-        confirmUs = 'false';
-        Cookies.set('_bbd-country-confirm-us', false);
+        //console.log('clearcountry');
+        confirmUs = false;
+        Cookies.set('_bbd-country-confirm-us', 'false');
+      }
+
+      if (countryRedirectQuery.includes('setcountry')){
+        //console.log('clearcountry');
+        confirmUs = 'true';
+        Cookies.set('_bbd-country-confirm-us', 'true', { expires: 30 });
       }
 
       let siteCountries = ['US','CA'];
       let localVisitor = true;
 
+      console.log('test cookies');
       if (window.navigator.cookieEnabled) {
         console.log('cookies supported');
         document.documentElement.className = document.documentElement.className.replace(
@@ -42,7 +49,7 @@ const ACSHOPIFY = {
         );
       }else{
         console.log('no cookies supported');
-        confirmUs == true;
+        confirmUs = 'true';
       }
 
       if(countryRedirect == 'true'){
@@ -61,7 +68,6 @@ const ACSHOPIFY = {
           url: 'https://acip.country/api/bbd/check',
           dataType: 'json',
           success: function(json) {
-
             console.log('got country json acip');
             console.log(json.country_code);
             let visitorCountryCode = json.country_code;
